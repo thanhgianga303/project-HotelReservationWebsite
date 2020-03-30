@@ -2,7 +2,7 @@ using System;
 
 namespace HotelReservationWebsite.Models
 {
-    public class Custommer
+    public class Customer
     {
         public int CustomerID { get; set; }
         public string CustomerCode { get; set; }
