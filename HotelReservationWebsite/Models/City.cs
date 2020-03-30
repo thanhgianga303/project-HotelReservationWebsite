@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 namespace HotelReservationWebsite.Models
 {
     public class City
@@ -5,6 +6,7 @@ namespace HotelReservationWebsite.Models
         public int CityID { get; set; }
         public string CityCode { get; set; }
         public string CityName { get; set; }
+        public List<Address> ListAddress { get; set; }
     }
 
 }

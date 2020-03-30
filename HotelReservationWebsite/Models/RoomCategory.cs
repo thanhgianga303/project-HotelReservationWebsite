@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 namespace HotelReservationWebsite.Models
 {
     public class RoomCategory
@@ -6,6 +7,7 @@ namespace HotelReservationWebsite.Models
         public string CategoryCode { get; set; }
         public string CategoryName { get; set; }
         public double UnitPrice { get; set; }
+        public List<Room> ListRoom { get; set; }
     }
 
 }

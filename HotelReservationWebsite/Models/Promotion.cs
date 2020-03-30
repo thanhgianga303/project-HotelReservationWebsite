@@ -1,5 +1,5 @@
 using System;
-
+using System.Collections.Generic;
 namespace HotelReservationWebsite.Models
 {
     public class Promotion
@@ -10,6 +10,7 @@ namespace HotelReservationWebsite.Models
         public DateTime PromotionFinishTime { get; set; }
         public string FormOfPromotion { get; set; }
         public int PromotionStatus { get; set; }
+        public List<Room> ListRoom { get; set; }
     }
 
 }
