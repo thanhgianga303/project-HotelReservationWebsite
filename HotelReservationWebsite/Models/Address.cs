@@ -1,6 +1,6 @@
 namespace HotelReservationWebsite.Models
 {
-    public class Address
+    public class Addres
     {
         public int AddressID { get; set; }
         public string AddressName { get; set; }
