@@ -1,0 +1,30 @@
+﻿@model IEnumerable<Account>
+
+@{
+    ViewData["Title"] = "List of Movies";
+}
+
+<h2>Movie List</h2>
+
+<table class="table">
+    <thead>
+        <th>@Html.DisplayNameFor(model => model.Username)</th>
+        <th>@Html.DisplayNameFor(model => model.Password)</th>
+        <th></th>
+    </thead>
+    <tbody>
+        @foreach (var account in Model)
+        {
+            <tr>
+                <td>@account.Username</td>
+                <td>@account.Password</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@account.AccountID">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@account.AccountID">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-action="Create" asp-controller="Movie">Create new Movie</a>
