@@ -35,7 +35,7 @@ namespace HotelReservationWebsiteAPI
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            SeedData(app);
+            // SeedData(app);
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -50,39 +50,39 @@ namespace HotelReservationWebsiteAPI
                 endpoints.MapControllers();
             });
         }
-        private void SeedData(IApplicationBuilder app)
-        {
-            using (var scope = app.ApplicationServices.CreateScope())
-            {
-                var services = scope.ServiceProvider;
-                var context = services.GetRequiredService<HotelReservationWebsiteContext>();
-                context.Database.EnsureCreated();
-                if (!context.Account.Any())
-                {
-                    context.Account.AddRange(
-                        new Account()
-                        {
-                            Username = "When Harry met Sally",
-                            Password = "Romantic Comedy"
-                        },
-                        new Account()
-                        {
-                            Username = "Ghostbusters",
-                            Password = "Comedy"
-                        },
-                        new Account()
-                        {
-                            Username = "Ghostbusters 2",
-                            Password = "Comedy"
-                        },
-                        new Account()
-                        {
-                            Username = "Rio Bravo",
-                            Password = "Western"
-                        });
-                    context.SaveChanges();
-                }
-            }
-        }
+        // private void SeedData(IApplicationBuilder app)
+        // {
+        //     using (var scope = app.ApplicationServices.CreateScope())
+        //     {
+        //         var services = scope.ServiceProvider;
+        //         var context = services.GetRequiredService<HotelReservationWebsiteContext>();
+        //         context.Database.EnsureCreated();
+        //         if (!context.Account.Any())
+        //         {
+        //             context.Account.AddRange(
+        //                 new Account()
+        //                 {
+        //                     Username = "When Harry met Sally",
+        //                     Password = "Romantic Comedy"
+        //                 },
+        //                 new Account()
+        //                 {
+        //                     Username = "Ghostbusters",
+        //                     Password = "Comedy"
+        //                 },
+        //                 new Account()
+        //                 {
+        //                     Username = "Ghostbusters 2",
+        //                     Password = "Comedy"
+        //                 },
+        //                 new Account()
+        //                 {
+        //                     Username = "Rio Bravo",
+        //                     Password = "Western"
+        //                 });
+        //             context.SaveChanges();
+        //         }
+        //     }
+        // }
     }
 }

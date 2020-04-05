@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -10,53 +11,50 @@ namespace HotelReservationWebsiteAPI.Controller
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class AccountController : ControllerBase
+    public class RoleController : ControllerBase
     {
-        private readonly HotelReservationWebsiteContext _context;
-        public AccountController(HotelReservationWebsiteContext context)
+        public readonly HotelReservationWebsiteContext _context;
+        public RoleController(HotelReservationWebsiteContext context)
         {
             _context = context;
         }
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Account>>> GetAll()
+        public async Task<ActionResult<IEnumerable<Role>>> GetAll()
         {
-            return await _context.Accounts.ToListAsync();
+            return await _context.Roles.ToListAsync();
         }
         [HttpGet("{id}")]
-        public async Task<ActionResult<Account>> GetBy(int id)
+        public async Task<ActionResult<Role>> GetBy(int id)
         {
-            var findAccount = await _context.Accounts.FindAsync(id);
-
-            if (findAccount == null)
+            var findRole = await _context.Roles.FindAsync(id);
+            if (findRole == null)
             {
                 return NotFound();
             }
-
-            return Ok(findAccount);
+            return findRole;
         }
         [HttpPost]
-        public async Task<ActionResult<Account>> Create(Account account)
+        public async Task<IActionResult> Create(Role role)
         {
-            _context.Accounts.Add(account);
+            _context.Roles.Add(role);
             await _context.SaveChangesAsync();
-            return account;
+            return NoContent();
         }
         [HttpPut("{id}")]
-        public async Task<IActionResult> Update(int id, Account account)
+        public async Task<IActionResult> Update(int id, Role role)
         {
-            if (id != account.AccountID)
+            if (id != role.RoleID)
             {
                 return BadRequest();
             }
-
             try
             {
-                _context.Accounts.Update(account);
+                _context.Roles.Update(role);
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!AccountExists(id))
+                if (!RoleExists(id))
                 {
                     return NotFound();
                 }
@@ -67,24 +65,23 @@ namespace HotelReservationWebsiteAPI.Controller
             }
             return NoContent();
         }
-        private bool AccountExists(int id)
-        {
-            return _context.Accounts.Any(m => m.AccountID == id);
-        }
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
-            var findAccount = await _context.Accounts.FindAsync(id);
-            if (findAccount == null)
+            var findRole = await _context.Roles.FindAsync(id);
+            if (findRole == null)
             {
                 return NotFound();
             }
-            _context.Accounts.Remove(findAccount);
+
+            _context.Roles.Remove(findRole);
             await _context.SaveChangesAsync();
+
             return NoContent();
         }
-
-
+        private bool RoleExists(int id)
+        {
+            return _context.Roles.Any(m => m.RoleID == id);
+        }
     }
-
 }

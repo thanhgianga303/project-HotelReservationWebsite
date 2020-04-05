@@ -8,6 +8,17 @@ namespace HotelReservationWebsiteAPI.Data
         {
 
         }
-        public DbSet<Account> Account { get; set; }
+        public DbSet<Account> Accounts { get; set; }
+        public DbSet<Address> Addresses { get; set; }
+        public DbSet<BookingDetail> BookingDetails { get; set; }
+        public DbSet<City> Cities { get; set; }
+        public DbSet<Customer> Customers { get; set; }
+        public DbSet<Employee> Employees { get; set; }
+        public DbSet<Hotel> Hotels { get; set; }
+        public DbSet<Promotion> Promotions { get; set; }
+        public DbSet<Role> Roles { get; set; }
+        public DbSet<Room> Rooms { get; set; }
+        public DbSet<RoomCategory> RoomCategories { get; set; }
+
     }
 }
