@@ -41,7 +41,7 @@
           "dependencies": {
             "IdentityModel": {
               "target": "Package",
-              "version": "[*, )"
+              "version": "[4.2.0, )"
             }
           },
           "imports": [

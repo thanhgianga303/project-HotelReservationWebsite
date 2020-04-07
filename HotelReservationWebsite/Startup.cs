@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Threading.Tasks;
 using HotelReservationWebsite.Services;
@@ -26,7 +27,25 @@ namespace HotelReservationWebsite
             services.AddMvc();
             services.AddHttpClient<IAccountService, AccountService>();
             // services.AddDbContext<MovieContext>(options => options.UseSqlite("Data Source=Movie.db"));
+            JwtSecurityTokenHandler.DefaultMapInboundClaims = false;
 
+            services.AddAuthentication(options =>
+                {
+                    options.DefaultScheme = "Cookies";
+                    options.DefaultChallengeScheme = "oidc";
+                })
+                .AddCookie("Cookies")
+                .AddOpenIdConnect("oidc", options =>
+                {
+                    options.Authority = "http://localhost:5000";
+                    options.RequireHttpsMetadata = false;
+
+                    options.ClientId = "admin";
+                    options.ClientSecret = "secret";
+                    options.ResponseType = "code";
+
+                    options.SaveTokens = true;
+                });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -41,6 +60,7 @@ namespace HotelReservationWebsite
                 app.UseExceptionHandler("/Home/Error");
             }
             app.UseStaticFiles();
+            app.UseAuthentication();
 
             app.UseRouting();
 

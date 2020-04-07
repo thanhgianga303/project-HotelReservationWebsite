@@ -56,6 +56,11 @@ namespace HotelReservationWebsiteAPI
             {
                 endpoints.MapControllers();
             });
+            // app.UseEndpoints(endpoints =>
+            // {
+            //     endpoints.MapDefaultControllerRoute()
+            //         .RequireAuthorization();
+            // });
         }
         // private void SeedData(IApplicationBuilder app)
         // {
