@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using HotelReservationWebsiteAPI.Data;
 using HotelReservationWebsiteAPI.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -10,6 +11,7 @@ namespace HotelReservationWebsiteAPI.Controller
 {
     [ApiController]
     [Route("api/[controller]")]
+    [Authorize]
     public class AccountController : ControllerBase
     {
         private readonly HotelReservationWebsiteContext _context;

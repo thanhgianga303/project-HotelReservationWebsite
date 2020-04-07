@@ -71,3 +71,11 @@ C:\Users\thanh\OneDrive\Documents\project-HotelReservationWebsite\HotelReservati
 C:\Users\thanh\OneDrive\Documents\project-HotelReservationWebsite\HotelReservationWebsiteAPI\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\thanh\OneDrive\Documents\project-HotelReservationWebsite\HotelReservationWebsiteAPI\obj\Debug\netcoreapp3.1\HotelReservationWebsiteAPI.csproj.CopyComplete
 C:\Users\thanh\OneDrive\Documents\project-HotelReservationWebsite\HotelReservationWebsiteAPI\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\thanh\OneDrive\Documents\project-HotelReservationWebsite\HotelReservationWebsiteAPI\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\thanh\OneDrive\Documents\project-HotelReservationWebsite\HotelReservationWebsiteAPI\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\thanh\OneDrive\Documents\project-HotelReservationWebsite\HotelReservationWebsiteAPI\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Logging.dll
+C:\Users\thanh\OneDrive\Documents\project-HotelReservationWebsite\HotelReservationWebsiteAPI\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.dll
+C:\Users\thanh\OneDrive\Documents\project-HotelReservationWebsite\HotelReservationWebsiteAPI\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\thanh\OneDrive\Documents\project-HotelReservationWebsite\HotelReservationWebsiteAPI\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
+C:\Users\thanh\OneDrive\Documents\project-HotelReservationWebsite\HotelReservationWebsiteAPI\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\Users\thanh\OneDrive\Documents\project-HotelReservationWebsite\HotelReservationWebsiteAPI\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll

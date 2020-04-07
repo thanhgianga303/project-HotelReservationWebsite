@@ -29,7 +29,14 @@ namespace HotelReservationWebsiteAPI
         {
             services.AddControllers();
             services.AddDbContext<HotelReservationWebsiteContext>(options => options.UseSqlite("Data Source=HotelReservationWebsite.db"));
+            services.AddAuthentication("Bearer")
+            .AddJwtBearer("Bearer", options =>
+            {
+                options.Authority = "http://localhost:5000";
+                options.RequireHttpsMetadata = false;
 
+                options.Audience = "hotel";
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -40,7 +47,7 @@ namespace HotelReservationWebsiteAPI
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            app.UseAuthentication(); //IdentityAPI
             app.UseRouting();
 
             app.UseAuthorization();
