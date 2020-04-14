@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Xat5zGc76be0lga2BirU6o9jKlm6nQLHIFomkyOk+xwL+3xwxUqcMHQfc7/Oroh0Se7CMx+Ogw9lN4IBdMZ7wQ==",
+  "dgSpecHash": "jaWnuSIwR8qgWqWYDCt8/8dDk2HxodnbU1TQ3u7jFgcc1Ddfti5vbbT0T9D367ZtQA6Il71P+tSpXX1hekbykA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\thanh\\OneDrive\\Documents\\project-HotelReservationWebsite\\Client\\Client.csproj",
+  "projectFilePath": "c:\\Users\\thanh\\OneDrive\\Documents\\project-HotelReservationWebsite\\Client\\Client.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\thanh\\.nuget\\packages\\identitymodel\\4.2.0\\identitymodel.4.2.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\newtonsoft.json\\11.0.2\\newtonsoft.json.11.0.2.nupkg.sha512",

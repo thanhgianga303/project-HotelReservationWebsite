@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.IdentityModel.Tokens;
 
 namespace HotelReservationWebsite
 {
@@ -24,6 +25,8 @@ namespace HotelReservationWebsite
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.Configure<AppSettings>(Configuration);
+            services.AddHttpContextAccessor();
             services.AddMvc();
             services.AddHttpClient<IAccountService, AccountService>();
             // services.AddDbContext<MovieContext>(options => options.UseSqlite("Data Source=Movie.db"));
@@ -32,7 +35,7 @@ namespace HotelReservationWebsite
             services.AddAuthentication(options =>
                 {
                     options.DefaultScheme = "Cookies";
-                    options.DefaultChallengeScheme = "oidc";
+                    options.DefaultChallengeScheme = "oidc"; //Account/User
                 })
                 .AddCookie("Cookies")
                 .AddOpenIdConnect("oidc", options =>
@@ -40,11 +43,19 @@ namespace HotelReservationWebsite
                     options.Authority = "http://localhost:5000";
                     options.RequireHttpsMetadata = false;
 
-                    options.ClientId = "admin";
+                    options.ClientId = "mvc";
                     options.ClientSecret = "secret";
                     options.ResponseType = "code";
 
                     options.SaveTokens = true;
+
+                    options.Scope.Add("admin");
+                    options.Scope.Add("offline_access");
+
+                    options.TokenValidationParameters = new TokenValidationParameters()
+                    {
+                        NameClaimType = "name",
+                    };
                 });
         }
 

@@ -14,13 +14,13 @@ namespace AspNetCore
     using Microsoft.AspNetCore.Mvc.ViewFeatures;
 #nullable restore
 #line 1 "C:\Users\thanh\OneDrive\Documents\project-HotelReservationWebsite\IdentityAPI\Views\_ViewImports.cshtml"
-using IdentityAPI;
+using IdentityServer4.Quickstart.UI;
 
 #line default
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"d4b804845269353674b8cbe23b5a5bdc82f5b353", @"/Views/Grants/Index.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"98969f8c9de7a96371ab58feb93729d0167e27f8", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"ac4c1f8a331756813dc62d0a9e9a6b6778f02506", @"/Views/_ViewImports.cshtml")]
     public class Views_Grants_Index : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<GrantsViewModel>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("asp-action", "Revoke", global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -232,7 +232,7 @@ WriteAttributeValue("", 884, grant.ClientLogoUrl, 884, 20, false);
 #line hidden
 #nullable disable
             WriteLiteral("                </div>\n                <div class=\"col-sm-2\">\n                    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d4b804845269353674b8cbe23b5a5bdc82f5b35310643", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d4b804845269353674b8cbe23b5a5bdc82f5b35310661", async() => {
                 WriteLiteral("\n                        <input type=\"hidden\" name=\"clientId\"");
                 BeginWriteAttribute("value", " value=\"", 2624, "\"", 2647, 1);
 #nullable restore

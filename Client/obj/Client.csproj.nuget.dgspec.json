@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\thanh\\OneDrive\\Documents\\project-HotelReservationWebsite\\Client\\Client.csproj": {}
+    "c:\\Users\\thanh\\OneDrive\\Documents\\project-HotelReservationWebsite\\Client\\Client.csproj": {}
   },
   "projects": {
-    "C:\\Users\\thanh\\OneDrive\\Documents\\project-HotelReservationWebsite\\Client\\Client.csproj": {
+    "c:\\Users\\thanh\\OneDrive\\Documents\\project-HotelReservationWebsite\\Client\\Client.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\thanh\\OneDrive\\Documents\\project-HotelReservationWebsite\\Client\\Client.csproj",
+        "projectUniqueName": "c:\\Users\\thanh\\OneDrive\\Documents\\project-HotelReservationWebsite\\Client\\Client.csproj",
         "projectName": "Client",
-        "projectPath": "C:\\Users\\thanh\\OneDrive\\Documents\\project-HotelReservationWebsite\\Client\\Client.csproj",
+        "projectPath": "c:\\Users\\thanh\\OneDrive\\Documents\\project-HotelReservationWebsite\\Client\\Client.csproj",
         "packagesPath": "C:\\Users\\thanh\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\thanh\\OneDrive\\Documents\\project-HotelReservationWebsite\\Client\\obj\\",
+        "outputPath": "c:\\Users\\thanh\\OneDrive\\Documents\\project-HotelReservationWebsite\\Client\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

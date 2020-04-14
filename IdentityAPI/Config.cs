@@ -11,60 +11,46 @@ namespace IdentityAPI
     public static class Config
     {
         public static IEnumerable<IdentityResource> Ids =>
-            new List<IdentityResource>
+            new IdentityResource[]
             {
                 new IdentityResources.OpenId(),
                 new IdentityResources.Profile(),
             };
 
+
         public static IEnumerable<ApiResource> Apis =>
-            new List<ApiResource>
+            new ApiResource[]
             {
-                new ApiResource("hotel", "HotelAPI")
+                new ApiResource("admin", "My API #1")
             };
 
+
         public static IEnumerable<Client> Clients =>
-            new List<Client>
+            new Client[]
             {
-             new Client
-            {
-                ClientId = "admin",
-                
-
-                // no interactive user, use the clientid/secret for authentication
-                AllowedGrantTypes = GrantTypes.ClientCredentials,
-
-                // secret for authentication
-                ClientSecrets =
+                // client credentials flow client
+                new Client
                 {
-                    new Secret("secret".Sha256())
-                },
+                    ClientId = "mvc",
+                    ClientSecrets = { new Secret("secret".Sha256()) },
 
-                // scopes that client has access to
-                AllowedScopes = { "hotel" } // phạm vi client có thể truy cập vào
-            },
-            new Client
-        {
-            ClientId = "mvc",
-            ClientSecrets = { new Secret("secret".Sha256()) },
+                    AllowedGrantTypes = GrantTypes.Code,
+                    RequireConsent = false,
+                    RequirePkce = true,
+                    AlwaysIncludeUserClaimsInIdToken = true,
 
-            AllowedGrantTypes = GrantTypes.Code,
-            RequireConsent = false,
-            RequirePkce = true,
+                    RedirectUris = { "http://localhost:5100/signin-oidc" },
+                    PostLogoutRedirectUris = { "http://localhost:5100/signout-callback-oidc" },
 
-            // where to redirect to after login
-            RedirectUris = { "http://localhost:5002/signin-oidc" },
+                    AllowedScopes = new List<string>
+                    {
+                        IdentityServerConstants.StandardScopes.OpenId,
+                        IdentityServerConstants.StandardScopes.Profile,
+                        "admin"
+                    },
 
-            // where to redirect to after logout
-            PostLogoutRedirectUris = { "http://localhost:5002/signout-callback-oidc" },
-
-            AllowedScopes = new List<string>
-            {
-                IdentityServerConstants.StandardScopes.OpenId,
-                IdentityServerConstants.StandardScopes.Profile
-            }
-        }
-                };
-
+                    AllowOfflineAccess = true
+                }
+            };
     }
 }
