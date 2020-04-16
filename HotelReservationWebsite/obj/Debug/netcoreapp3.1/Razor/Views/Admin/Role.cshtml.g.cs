@@ -14,7 +14,7 @@ namespace AspNetCore
     using Microsoft.AspNetCore.Mvc.ViewFeatures;
 #nullable restore
 #line 1 "C:\Users\thanh\OneDrive\Documents\project-HotelReservationWebsite\HotelReservationWebsite\Views\_ViewImports.cshtml"
-using HotelReservationWebsite;
+using HotelReservationWebsite.ViewModels;
 
 #line default
 #line hidden
@@ -27,7 +27,7 @@ using HotelReservationWebsite.Models;
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"ae7102049f1ee4b9ba499cc2a6d471945fd31bc7", @"/Views/Admin/Role.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"a7083ea5d0be512b627ab9bce0f34b1d732c974e", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"e75e3e6474a3421664077bae90941165a3f0188b", @"/Views/_ViewImports.cshtml")]
     public class Views_Admin_Role : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         #pragma warning disable 1998

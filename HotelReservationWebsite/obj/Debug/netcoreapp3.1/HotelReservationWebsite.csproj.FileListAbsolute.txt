@@ -152,12 +152,9 @@ C:\Users\thanh\OneDrive\Documents\project-HotelReservationWebsite\HotelReservati
 C:\Users\thanh\OneDrive\Documents\project-HotelReservationWebsite\HotelReservationWebsite\obj\Debug\netcoreapp3.1\HotelReservationWebsite.TagHelpers.input.cache
 C:\Users\thanh\OneDrive\Documents\project-HotelReservationWebsite\HotelReservationWebsite\obj\Debug\netcoreapp3.1\HotelReservationWebsite.TagHelpers.output.cache
 C:\Users\thanh\OneDrive\Documents\project-HotelReservationWebsite\HotelReservationWebsite\obj\Debug\netcoreapp3.1\HotelReservationWebsite.RazorCoreGenerate.cache
-C:\Users\thanh\OneDrive\Documents\project-HotelReservationWebsite\HotelReservationWebsite\obj\Debug\netcoreapp3.1\Razor\Views\Account\Index.cshtml.g.cs
-C:\Users\thanh\OneDrive\Documents\project-HotelReservationWebsite\HotelReservationWebsite\obj\Debug\netcoreapp3.1\Razor\Views\Account\Privacy.cshtml.g.cs
 C:\Users\thanh\OneDrive\Documents\project-HotelReservationWebsite\HotelReservationWebsite\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Account.cshtml.g.cs
 C:\Users\thanh\OneDrive\Documents\project-HotelReservationWebsite\HotelReservationWebsite\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Address.cshtml.g.cs
 C:\Users\thanh\OneDrive\Documents\project-HotelReservationWebsite\HotelReservationWebsite\obj\Debug\netcoreapp3.1\Razor\Views\Admin\BookingDetails.cshtml.g.cs
-C:\Users\thanh\OneDrive\Documents\project-HotelReservationWebsite\HotelReservationWebsite\obj\Debug\netcoreapp3.1\Razor\Views\Admin\City.cshtml.g.cs
 C:\Users\thanh\OneDrive\Documents\project-HotelReservationWebsite\HotelReservationWebsite\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Customer.cshtml.g.cs
 C:\Users\thanh\OneDrive\Documents\project-HotelReservationWebsite\HotelReservationWebsite\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Employee.cshtml.g.cs
 C:\Users\thanh\OneDrive\Documents\project-HotelReservationWebsite\HotelReservationWebsite\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Hotel.cshtml.g.cs
@@ -181,3 +178,7 @@ C:\Users\thanh\OneDrive\Documents\project-HotelReservationWebsite\HotelReservati
 C:\Users\thanh\OneDrive\Documents\project-HotelReservationWebsite\HotelReservationWebsite\obj\Debug\netcoreapp3.1\HotelReservationWebsite.dll
 C:\Users\thanh\OneDrive\Documents\project-HotelReservationWebsite\HotelReservationWebsite\obj\Debug\netcoreapp3.1\HotelReservationWebsite.pdb
 C:\Users\thanh\OneDrive\Documents\project-HotelReservationWebsite\HotelReservationWebsite\obj\Debug\netcoreapp3.1\HotelReservationWebsite.genruntimeconfig.cache
+C:\Users\thanh\OneDrive\Documents\project-HotelReservationWebsite\HotelReservationWebsite\obj\Debug\netcoreapp3.1\Razor\Views\City\Index.cshtml.g.cs
+C:\Users\thanh\OneDrive\Documents\project-HotelReservationWebsite\HotelReservationWebsite\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
+C:\Users\thanh\OneDrive\Documents\project-HotelReservationWebsite\HotelReservationWebsite\obj\Debug\netcoreapp3.1\Razor\Views\Home\Privacy.cshtml.g.cs
+C:\Users\thanh\OneDrive\Documents\project-HotelReservationWebsite\HotelReservationWebsite\obj\Debug\netcoreapp3.1\Razor\Views\City\Details.cshtml.g.cs

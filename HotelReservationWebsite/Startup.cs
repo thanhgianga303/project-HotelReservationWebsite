@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Threading.Tasks;
+using HotelReservationWebsite.Infrastructure;
 using HotelReservationWebsite.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -28,7 +29,8 @@ namespace HotelReservationWebsite
             services.Configure<AppSettings>(Configuration);
             services.AddHttpContextAccessor();
             services.AddMvc();
-            services.AddHttpClient<IAccountService, AccountService>();
+            services.AddHttpClient<IHttpClient, CustomHttpClient>();
+            services.AddScoped<ICityService, CityService>();
             // services.AddDbContext<MovieContext>(options => options.UseSqlite("Data Source=Movie.db"));
             JwtSecurityTokenHandler.DefaultMapInboundClaims = false;
 

@@ -11,7 +11,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using AutoMapper;
 using Microsoft.Extensions.Logging;
+using HotelReservationWebsiteAPI.Mapping;
 
 namespace HotelReservationWebsiteAPI
 {
@@ -28,6 +30,7 @@ namespace HotelReservationWebsiteAPI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddAutoMapper(typeof(MappingProfile));
             services.AddDbContext<HotelReservationWebsiteContext>(options => options.UseSqlite("Data Source=HotelReservationWebsite.db"));
             services.AddAuthentication("Bearer")
             .AddJwtBearer("Bearer", options =>

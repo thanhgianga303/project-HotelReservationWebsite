@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "xYRc3GgoNww3BHqGCIzf7A+jFYMTxgSZPcXGXH8YN7qaQyqjGb2bid0Yaxy09ZLUNoeUctMd9kvYsk63/MHdzA==",
+  "dgSpecHash": "yVAvyIETVm9vT2v00OoNzH+MpQOsOME3AlNE7+JWgprOTbO9qZmPXcTXcePynBsu0vmfchCqaUAMWpG+14qVMg==",
   "success": true,
   "projectFilePath": "C:\\Users\\thanh\\OneDrive\\Documents\\project-HotelReservationWebsite\\HotelReservationWebsiteAPI\\HotelReservationWebsiteAPI.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\thanh\\.nuget\\packages\\automapper\\9.0.0\\automapper.9.0.0.nupkg.sha512",
+    "C:\\Users\\thanh\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\7.0.0\\automapper.extensions.microsoft.dependencyinjection.7.0.0.nupkg.sha512",
     "C:\\Users\\thanh\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\3.1.3\\microsoft.aspnetcore.authentication.jwtbearer.3.1.3.nupkg.sha512",
     "C:\\Users\\thanh\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.0\\microsoft.bcl.asyncinterfaces.1.1.0.nupkg.sha512",
     "C:\\Users\\thanh\\.nuget\\packages\\microsoft.bcl.hashcode\\1.1.0\\microsoft.bcl.hashcode.1.1.0.nupkg.sha512",

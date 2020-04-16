@@ -51,10 +51,6 @@ namespace HotelReservationWebsite.Controllers
         {
             return View();
         }
-        public IActionResult City()
-        {
-            return View();
-        }
         public IActionResult Customer()
         {
             return View();
