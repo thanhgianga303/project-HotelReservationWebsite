@@ -18,9 +18,9 @@ namespace HotelReservationWebsite.Services
             _baseUrl = "http://localhost:5001/api/city";
             _httpClient = httpClient;
         }
-        public async Task<IEnumerable<City>> GetCitys()
+        public async Task<IEnumerable<City>> GetCitys(string searchString)
         {
-            var url = _baseUrl;
+            var url = _baseUrl + $"?searchString={searchString}";
             return await _httpClient.GetListAsync<City>(url);
         }
         public async Task<City> GetCity(int id)

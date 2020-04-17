@@ -7,6 +7,7 @@ namespace HotelReservationWebsite.ViewModels
     public class CityViewModel
     {
         public string SearchString { get; set; }
+        public City City { get; set; }
         public IList<City> Cities { get; set; }
     }
 }

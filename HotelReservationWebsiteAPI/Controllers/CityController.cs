@@ -23,11 +23,18 @@ namespace HotelReservationWebsiteAPI.Controller
             _mapper = mapper;
         }
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<City>>> GetAll()
+        public async Task<ActionResult<IEnumerable<City>>> GetAll(string searchString = null)
         {
+            var cities = from m in _context.Cities
+                         select m;
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                cities = cities.Where(m => m.CityCode.Contains(searchString) || m.CityName.Contains(searchString));
+            }
             // IEnumerable city = _context.Cities.ToList().AsEnumerable();
-            // return await _mapper.Map<IEnumerable<City>, IEnumerable<CityDTO>>(city);
-            return await _context.Cities.ToListAsync();
+            // return await _mapper.Map<List<City>, List<CityDTO>>(cities.ToListAsync());
+            // cities.ToList();
+            return await cities.ToListAsync();
         }
         [HttpGet("{id}")]
         public async Task<ActionResult<CityDTO>> GetBy(int id)

@@ -6,7 +6,7 @@ namespace HotelReservationWebsite.Services
 {
     public interface ICityService
     {
-        Task<IEnumerable<City>> GetCitys();
+        Task<IEnumerable<City>> GetCitys(string searchString);
         // string genre, string searchString1
         Task<City> GetCity(int id);
         Task CreateCity(City City);

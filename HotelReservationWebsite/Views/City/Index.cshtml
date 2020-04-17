@@ -2,18 +2,32 @@
 @{
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
+
 <div class="row">
-    <div class="col-md-12">
-        <div class="overview-wrap">
-            <h2 class="title-1">overview</h2>
-            <button class="au-btn au-btn-icon au-btn--blue">
-                <i class="zmdi zmdi-plus"></i>add item</button>
-        </div>
+    <div class="col-md-8">
+        <form class="form-header" asp-action="Index" method="GET">
+            <input class="au-input au-input--xl" type="text" asp-for="SearchString" placeholder="Search for datas &amp; reports..." />
+            <button class="au-btn--submit" type="submit">
+                <i class="zmdi zmdi-search"></i>
+            </button>
+        </form>
+    </div>
+    <div class="col-md-4">
+        <a asp-controller="City" asp-action="Create" class="au-btn au-btn-icon au-btn--blue">
+                    <i class="zmdi zmdi-plus"></i>add City
+        </a>
     </div>
 </div>
 <div class="row">
+    <div class="col-md-12">
+        <div class="overview-wrap">
+            <h2 class="title-1 m-b-25">City</h2>
+        </div>
+    </div>
+</div>
+<div class="row" style="margin-top: 10px;">
     <div class="col-lg-12">
-        <h2 class="title-1 m-b-25">City</h2>
+        
         <div class="table-responsive table--no-card m-b-40">
             <table class="table table-borderless table-striped table-earning">
                 <thead>
@@ -21,7 +35,7 @@
                         <th>@Html.DisplayNameFor(model => model.Cities[0].CityID)</th>
                         <th>@Html.DisplayNameFor(model => model.Cities[0].CityCode)</th>
                         <th>@Html.DisplayNameFor(model => model.Cities[0].CityName)</th>
-                        <th class="text-right">Thao tác</th>
+                        <th>Thao tác</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -31,9 +45,9 @@
                         <td>@Html.DisplayFor(model => city.CityID)</td>
                         <td>@Html.DisplayFor(model => city.CityCode)</td>
                         <td>@Html.DisplayFor(model => city.CityName)</td>
-                        <td class="text-right">
-                            <a asp-action="Edit" asp-controller="City" class="btn btn-secondary" asp-route-id="@city.CityID">Edit</a> |
-                            <a asp-action="Details" asp-controller="City" class="btn btn-info" asp-route-id="@city.CityID">Details</a> |
+                        <td>
+                            <a asp-action="Edit" asp-controller="City" class="btn btn-secondary" asp-route-id="@city.CityID">Edit</a> 
+                            <a asp-action="Details" asp-controller="City" class="btn btn-info" asp-route-id="@city.CityID">Details</a> 
                             <a asp-action="Delete" asp-controller="City" class="btn btn-danger" asp-route-id="@city.CityID">Delete</a>
                         </td>
                         

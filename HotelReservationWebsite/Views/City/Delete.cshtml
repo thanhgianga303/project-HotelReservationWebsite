@@ -1,0 +1,25 @@
+@model City
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<!-- Medium input -->
+
+<form style="width: 500px;margin-left:250px" asp-action="Delete" method="POST">
+<div class="md-form">
+  <input type="hidden" asp-for="CityID" class="form-control">
+</div>
+<div class="md-form">
+  <label asp-for="CityCode" style="color:black"></label>
+  <input type="text" asp-for="CityCode" class="form-control">
+</div>
+<div class="md-form">
+  <label asp-for="CityName"></label>
+  <input type="text" asp-for="CityName" class="form-control">
+</div>
+<div class="md-form" style="margin-top:20px;">
+  <a asp-action="Index" class="btn btn-dark" style="margin-right:auto !important">Back</a>
+  <button type="submit" class="btn btn-danger" >Delete</button>
+</div>
+</form>
+
+
