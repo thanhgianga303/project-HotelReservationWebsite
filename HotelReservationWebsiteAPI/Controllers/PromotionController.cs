@@ -23,18 +23,26 @@ namespace HotelReservationWebsiteAPI.Controller
             _mapper = mapper;
         }
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Promotion>>> GetAll()
+        public async Task<ActionResult<IEnumerable<PromotionDTO>>> GetAll(string searchString)
         {
-            // IEnumerable city = _context.Cities.ToList().AsEnumerable();
-            // return await _mapper.Map<IEnumerable<City>, IEnumerable<CityDTO>>(city);
-            return await _context.Promotions.ToListAsync();
+            var promotions = from m in _context.Promotions
+                             select m;
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                promotions = promotions.Where(m => m.PromotionCode.Contains(searchString)
+                || m.FormOfPromotion.Contains(searchString)
+                || m.PromotionStatus.ToString().Contains(searchString));
+            }
+            var promotionsDTO = _mapper.Map<IEnumerable<Promotion>, IEnumerable<PromotionDTO>>(await promotions.ToListAsync());
+            return Ok(promotionsDTO);
         }
         [HttpGet("{id}")]
         public async Task<ActionResult<PromotionDTO>> GetBy(int id)
         {
             var promotion = await _context.Promotions.FindAsync(id);
             if (promotion == null) return NotFound();
-            return _mapper.Map<Promotion, PromotionDTO>(promotion);
+            var promotionDTO = _mapper.Map<Promotion, PromotionDTO>(promotion);
+            return Ok(promotionDTO);
         }
         [HttpPost]
         public async Task<ActionResult<Promotion>> Create(PromotionDTO promotionDTO)

@@ -22,9 +22,16 @@ namespace HotelReservationWebsiteAPI.Controller
             _mapper = mapper;
         }
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Address>>> GetAll()
+        public async Task<ActionResult<IEnumerable<AddressDTO>>> GetAll(string searchString)
         {
-            return await _context.Addresses.ToListAsync();
+            var addresses = from m in _context.Addresses
+                            select m;
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                addresses = addresses.Where(m => m.HotelAddress.Contains(searchString));
+            }
+            var addressesDTO = _mapper.Map<IEnumerable<Address>, IEnumerable<AddressDTO>>(await addresses.ToListAsync());
+            return Ok(addressesDTO);
         }
         [HttpGet("{id}")]
         public async Task<ActionResult<AddressDTO>> GetBy(int id)
@@ -34,7 +41,8 @@ namespace HotelReservationWebsiteAPI.Controller
             {
                 return NotFound();
             }
-            return _mapper.Map<Address, AddressDTO>(findAddress);
+            var addressDTO = _mapper.Map<Address, AddressDTO>(findAddress);
+            return Ok(addressDTO);
         }
         [HttpPost]
         public async Task<IActionResult> Create(AddressDTO addressDTO)

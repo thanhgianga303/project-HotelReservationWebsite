@@ -22,16 +22,25 @@ namespace HotelReservationWebsiteAPI.Controller
             _mapper = mapper;
         }
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<RoomCategory>>> GetAll()
+        public async Task<ActionResult<IEnumerable<RoomCategoryDTO>>> GetAll(string searchString = null)
         {
-            return await _context.RoomCategories.ToListAsync();
+            var roomcategories = from m in _context.RoomCategories
+                                 select m;
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                roomcategories = roomcategories.Where(m => m.CategoryName.Contains(searchString)
+                 || m.CategoryCode.Contains(searchString));
+            }
+            var roomcategoriesDTO = _mapper.Map<IEnumerable<RoomCategory>, IEnumerable<RoomCategoryDTO>>(await roomcategories.ToListAsync());
+            return Ok(roomcategoriesDTO);
         }
         [HttpGet("{id}")]
         public async Task<ActionResult<RoomCategoryDTO>> GetBy(int id)
         {
             var roomcategory = await _context.RoomCategories.FindAsync(id);
             if (roomcategory == null) return NotFound();
-            return _mapper.Map<RoomCategory, RoomCategoryDTO>(roomcategory);
+            var roomcategoryDTO = _mapper.Map<RoomCategory, RoomCategoryDTO>(roomcategory);
+            return Ok(roomcategoryDTO);
         }
         [HttpPost]
         public async Task<IActionResult> Create(RoomCategoryDTO roomCategoryDTO)

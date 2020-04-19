@@ -3,11 +3,11 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using HotelReservationWebsite.Infrastructure;
 using HotelReservationWebsite.Models;
-using HotelReservationWebsite.Services;
+using HotelReservationWebsite.Services.IService;
 using Newtonsoft.Json;
 
 
-namespace HotelReservationWebsite.Services
+namespace HotelReservationWebsite.Services.Service
 {
     public class CityService : ICityService
     {
@@ -18,7 +18,7 @@ namespace HotelReservationWebsite.Services
             _baseUrl = "http://localhost:5001/api/city";
             _httpClient = httpClient;
         }
-        public async Task<IEnumerable<City>> GetCitys(string searchString)
+        public async Task<IEnumerable<City>> GetCities(string searchString)
         {
             var url = _baseUrl + $"?searchString={searchString}";
             return await _httpClient.GetListAsync<City>(url);

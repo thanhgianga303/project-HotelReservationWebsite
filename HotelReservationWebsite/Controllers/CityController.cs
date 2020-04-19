@@ -1,7 +1,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using HotelReservationWebsite.Models;
-using HotelReservationWebsite.Services;
+using HotelReservationWebsite.Services.IService;
 using HotelReservationWebsite.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 namespace HotelReservationWebsite.Controllers
@@ -15,7 +15,7 @@ namespace HotelReservationWebsite.Controllers
         }
         public async Task<IActionResult> Index(string searchString)
         {
-            var cities = await _service.GetCitys(searchString);
+            var cities = await _service.GetCities(searchString);
             var cityVM = new CityViewModel
             {
                 SearchString = searchString,

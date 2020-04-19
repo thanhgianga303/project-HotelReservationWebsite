@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+// using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -23,7 +24,7 @@ namespace HotelReservationWebsiteAPI.Controller
             _mapper = mapper;
         }
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<City>>> GetAll(string searchString = null)
+        public async Task<ActionResult<IEnumerable<CityDTO>>> GetAll(string searchString = null)
         {
             var cities = from m in _context.Cities
                          select m;
@@ -31,17 +32,16 @@ namespace HotelReservationWebsiteAPI.Controller
             {
                 cities = cities.Where(m => m.CityCode.Contains(searchString) || m.CityName.Contains(searchString));
             }
-            // IEnumerable city = _context.Cities.ToList().AsEnumerable();
-            // return await _mapper.Map<List<City>, List<CityDTO>>(cities.ToListAsync());
-            // cities.ToList();
-            return await cities.ToListAsync();
+            var citiesDTO = _mapper.Map<IEnumerable<City>, IEnumerable<CityDTO>>(await cities.ToListAsync());
+            return Ok(citiesDTO);
         }
         [HttpGet("{id}")]
         public async Task<ActionResult<CityDTO>> GetBy(int id)
         {
             var city = await _context.Cities.FindAsync(id);
             if (city == null) return NotFound();
-            return _mapper.Map<City, CityDTO>(city);
+            var cityDTO = _mapper.Map<City, CityDTO>(city);
+            return Ok(cityDTO);
         }
         [HttpPost]
         public async Task<ActionResult<Account>> Create(CityDTO cityDTO)

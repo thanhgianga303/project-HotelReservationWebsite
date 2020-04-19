@@ -12,63 +12,61 @@ namespace HotelReservationWebsiteAPI.Controller
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class RoomController : ControllerBase
+    public class BookingDetailController : ControllerBase
     {
         private readonly HotelReservationWebsiteContext _context;
         private readonly IMapper _mapper;
-        public RoomController(HotelReservationWebsiteContext context, IMapper mapper)
+        public BookingDetailController(HotelReservationWebsiteContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;
         }
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<RoomDTO>>> GetAll(string searchString = null)
+        public async Task<ActionResult<IEnumerable<BookingDetailDTO>>> GetAll(string searchString = null)
         {
-            var rooms = from m in _context.Rooms
-                        select m;
+            var bookingdetails = from m in _context.BookingDetails
+                                 select m;
             if (!string.IsNullOrEmpty(searchString))
             {
-                rooms = rooms.Where(m => m.RoomName.Contains(searchString)
-                 || m.RoomNumber.ToString().Contains(searchString)
-                || m.RoomStatus.ToString().Contains(searchString));
+                bookingdetails = bookingdetails.Where(m => m.BookingDetailStatus.ToString().Contains(searchString));
             }
-            var roomsDTO = _mapper.Map<IEnumerable<Room>, IEnumerable<RoomDTO>>(await rooms.ToListAsync());
-            return Ok(roomsDTO);
+            var bookingdetailsDTO = _mapper.Map<IEnumerable<BookingDetail>, IEnumerable<BookingDetailDTO>>(await bookingdetails.ToListAsync());
+            return Ok(bookingdetailsDTO);
         }
         [HttpGet("{id}")]
-        public async Task<ActionResult<RoomDTO>> GetBy(int id)
+        public async Task<ActionResult<BookingDetailDTO>> GetBy(int id)
         {
-            var room = await _context.Rooms.FindAsync(id);
-            if (room == null)
+            var bookingdetail = await _context.BookingDetails.FindAsync(id);
+            if (bookingdetail == null)
             {
                 return NotFound();
             }
-            var roomDTO = _mapper.Map<Room, RoomDTO>(room);
-            return Ok(roomDTO);
+            var bookingdetailDTO = _mapper.Map<BookingDetail, BookingDetailDTO>(bookingdetail);
+            return Ok(bookingdetailDTO);
         }
         [HttpPost]
-        public async Task<IActionResult> Create(RoomDTO roomDTO)
+        public async Task<IActionResult> Create(BookingDetailDTO bookingdetailDTO)
         {
-            var room = _mapper.Map<RoomDTO, Room>(roomDTO);
-            _context.Rooms.Add(room);
+            var bookingdetail = _mapper.Map<BookingDetailDTO, BookingDetail>(bookingdetailDTO);
+            _context.BookingDetails.Add(bookingdetail);
             await _context.SaveChangesAsync();
-            return CreatedAtAction(nameof(GetBy), new { id = room.RoomID }, room);
+            return CreatedAtAction(nameof(GetBy), new { id = bookingdetail.BookingDetailID }, bookingdetail);
         }
         [HttpPut("{id}")]
-        public async Task<IActionResult> Update(int id, RoomDTO roomDTO)
+        public async Task<IActionResult> Update(int id, BookingDetailDTO bookingdetailDTO)
         {
-            if (id != roomDTO.RoomID)
+            if (id != bookingdetailDTO.BookingDetailID)
             {
                 return BadRequest();
             }
             try
             {
-                _context.Rooms.Update(_mapper.Map<RoomDTO, Room>(roomDTO));
+                _context.BookingDetails.Update(_mapper.Map<BookingDetailDTO, BookingDetail>(bookingdetailDTO));
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!RoomExists(id))
+                if (!BookingDetailExists(id))
                 {
                     return NotFound();
                 }
@@ -80,9 +78,9 @@ namespace HotelReservationWebsiteAPI.Controller
             return NoContent();
         }
 
-        private bool RoomExists(int id)
+        private bool BookingDetailExists(int id)
         {
-            return _context.Rooms.Any(m => m.RoomID == id);
+            return _context.BookingDetails.Any(m => m.BookingDetailID == id);
         }
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)

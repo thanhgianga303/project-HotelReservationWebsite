@@ -11,16 +11,33 @@ namespace HotelReservationWebsiteAPI.Mapping
         {
             CreateMap<City, CityDTO>();
             CreateMap<CityDTO, City>();
+
             CreateMap<RoomCategoryDTO, RoomCategory>();
             CreateMap<RoomCategory, RoomCategoryDTO>();
+
             CreateMap<Room, RoomDTO>();
             CreateMap<Room, RoomDTO>();
+
             CreateMap<Promotion, PromotionDTO>();
             CreateMap<Promotion, PromotionDTO>();
+
             CreateMap<Address, AddressDTO>();
             CreateMap<AddressDTO, Address>();
+
             CreateMap<Hotel, HotelDTO>();
             CreateMap<HotelDTO, Hotel>();
+
+            CreateMap<Account, AccountDTO>();
+            CreateMap<AccountDTO, Account>();
+
+            CreateMap<Customer, CustomerDTO>();
+            CreateMap<CustomerDTO, Customer>();
+
+            CreateMap<Employee, EmployeeDTO>();
+            CreateMap<EmployeeDTO, Employee>();
+
+            CreateMap<City, CityDTO>();
+            CreateMap<CityDTO, City>();
         }
     }
 }

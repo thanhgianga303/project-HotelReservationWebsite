@@ -4,12 +4,12 @@ using HotelReservationWebsite.Models;
 
 namespace HotelReservationWebsite.ViewModels
 {
-    public class CityViewModel
+    public class HotelViewModel
     {
         public string SearchString { get; set; }
         public string Genre { get; set; }
         public int pageIndex { get; set; }
-        public City City { get; set; }
-        public IList<City> Cities { get; set; }
+        public Hotel Hotel { get; set; }
+        public IList<Hotel> Hotels { get; set; }
     }
 }
