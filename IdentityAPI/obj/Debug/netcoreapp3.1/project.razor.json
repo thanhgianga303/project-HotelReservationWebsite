@@ -20606,6 +20606,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\thanh\\OneDrive\\Documents\\project-HotelReservationWebsite\\IdentityAPI\\Views\\Account\\Register.cshtml",
+      "TargetPath": "Views\\Account\\Register.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\thanh\\OneDrive\\Documents\\project-HotelReservationWebsite\\IdentityAPI\\Views\\Shared\\Error.cshtml",
       "TargetPath": "Views\\Shared\\Error.cshtml",
       "FileKind": "mvc"

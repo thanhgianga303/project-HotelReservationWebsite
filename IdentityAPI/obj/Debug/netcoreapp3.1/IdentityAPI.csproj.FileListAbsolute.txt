@@ -100,3 +100,4 @@ C:\Users\thanh\OneDrive\Documents\project-HotelReservationWebsite\IdentityAPI\ob
 C:\Users\thanh\OneDrive\Documents\project-HotelReservationWebsite\IdentityAPI\obj\Debug\netcoreapp3.1\IdentityAPI.dll
 C:\Users\thanh\OneDrive\Documents\project-HotelReservationWebsite\IdentityAPI\obj\Debug\netcoreapp3.1\IdentityAPI.pdb
 C:\Users\thanh\OneDrive\Documents\project-HotelReservationWebsite\IdentityAPI\obj\Debug\netcoreapp3.1\IdentityAPI.genruntimeconfig.cache
+C:\Users\thanh\OneDrive\Documents\project-HotelReservationWebsite\IdentityAPI\obj\Debug\netcoreapp3.1\Razor\Views\Account\Register.cshtml.g.cs

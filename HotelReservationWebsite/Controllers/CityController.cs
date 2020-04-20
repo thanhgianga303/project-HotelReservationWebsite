@@ -62,7 +62,7 @@ namespace HotelReservationWebsite.Controllers
             return RedirectToAction(nameof(Index));
         }
         [HttpGet]
-        public IActionResult Create(int id)
+        public IActionResult Create()
         {
             return View();
         }

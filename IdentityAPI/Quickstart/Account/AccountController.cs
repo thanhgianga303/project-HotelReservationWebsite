@@ -17,6 +17,8 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Security.Claims;
+using Serilog;
 
 namespace IdentityServer4.Quickstart.UI
 {
@@ -46,7 +48,59 @@ namespace IdentityServer4.Quickstart.UI
             _schemeProvider = schemeProvider;
             _events = events;
         }
+        [HttpGet]
+        public IActionResult Register()
+        {
+            return View();
+        }
+        [HttpPost]
+        // [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Register(RegisterInputModel _input)
+        {
+            // if (button != "register")
+            // {
+            //     return Redirect(nameof(Login));
+            // }
+            // else
+            // {
 
+            Log.Debug(_input.Name);
+            var user = await _userManager.FindByNameAsync(_input.Username);
+            if (user == null)
+            {
+                Log.Debug(_input.Name);
+                user = new ApplicationUser
+                {
+                    UserName = _input.Username
+                };
+                var result = _userManager.CreateAsync(user, "Pass123$").Result;
+                if (!result.Succeeded)
+                {
+                    throw new Exception(result.Errors.First().Description);
+                }
+                result = _userManager.AddClaimsAsync(user, new Claim[]{
+                        new Claim(JwtClaimTypes.Name, _input.Name),
+                        new Claim(JwtClaimTypes.GivenName, _input.GivenName),
+                        new Claim(JwtClaimTypes.FamilyName, _input.FamilyName),
+                        new Claim(JwtClaimTypes.Email, _input.Email),
+                        new Claim(JwtClaimTypes.EmailVerified, "true", ClaimValueTypes.Boolean),
+                        new Claim(JwtClaimTypes.WebSite, _input.Website),
+                        new Claim(JwtClaimTypes.Address, _input.Address , IdentityServer4.IdentityServerConstants.ClaimValueTypes.Json)
+                    }).Result;
+                if (!result.Succeeded)
+                {
+                    throw new Exception(result.Errors.First().Description);
+                }
+                Log.Debug("user created");
+                //     }
+                //     else
+                //     {
+                //         Log.Debug("user used");
+                //     }
+            }
+
+            return View();
+        }
         /// <summary>
         /// Entry point into the login workflow
         /// </summary>
