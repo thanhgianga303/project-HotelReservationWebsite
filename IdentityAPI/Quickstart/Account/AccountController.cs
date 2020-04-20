@@ -55,51 +55,56 @@ namespace IdentityServer4.Quickstart.UI
         }
         [HttpPost]
         // [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Register(RegisterInputModel _input)
+        public async Task<IActionResult> Register(RegisterInputModel _input, string button)
         {
-            // if (button != "register")
-            // {
-            //     return Redirect(nameof(Login));
-            // }
-            // else
-            // {
-
-            Log.Debug(_input.Name);
-            var user = await _userManager.FindByNameAsync(_input.Username);
-            if (user == null)
+            if (button != "register")
             {
-                Log.Debug(_input.Name);
-                user = new ApplicationUser
+                return Redirect(nameof(Login));
+            }
+            else
+            {
+
+                var user = await _userManager.FindByNameAsync(_input.Username);
+                if (user == null)
                 {
-                    UserName = _input.Username
-                };
-                var result = _userManager.CreateAsync(user, "Pass123$").Result;
-                if (!result.Succeeded)
-                {
-                    throw new Exception(result.Errors.First().Description);
-                }
-                result = _userManager.AddClaimsAsync(user, new Claim[]{
-                        new Claim(JwtClaimTypes.Name, _input.Name),
-                        new Claim(JwtClaimTypes.GivenName, _input.GivenName),
-                        new Claim(JwtClaimTypes.FamilyName, _input.FamilyName),
-                        new Claim(JwtClaimTypes.Email, _input.Email),
+                    Log.Debug(_input.Name);
+                    user = new ApplicationUser
+                    {
+                        UserName = _input.Username
+                    };
+                    var result = _userManager.CreateAsync(user, _input.Password).Result;
+                    if (!result.Succeeded)
+                    {
+                        throw new Exception(result.Errors.First().Description);
+                    }
+                    var name = _input.Name + "";
+                    var givenname = _input.GivenName + "";
+                    var familyname = _input.FamilyName + "";
+                    var email = _input.Email + "";
+                    var website = _input.Website + "";
+                    var address = _input.Address + "";
+                    result = _userManager.AddClaimsAsync(user, new Claim[]{
+                        new Claim(JwtClaimTypes.Name, name),
+                        new Claim(JwtClaimTypes.GivenName, givenname),
+                        new Claim(JwtClaimTypes.FamilyName, familyname),
+                        new Claim(JwtClaimTypes.Email, email),
                         new Claim(JwtClaimTypes.EmailVerified, "true", ClaimValueTypes.Boolean),
-                        new Claim(JwtClaimTypes.WebSite, _input.Website),
-                        new Claim(JwtClaimTypes.Address, _input.Address , IdentityServer4.IdentityServerConstants.ClaimValueTypes.Json)
+                        new Claim(JwtClaimTypes.WebSite, website),
+                        new Claim(JwtClaimTypes.Address, address , IdentityServer4.IdentityServerConstants.ClaimValueTypes.Json)
                     }).Result;
-                if (!result.Succeeded)
-                {
-                    throw new Exception(result.Errors.First().Description);
+                    if (!result.Succeeded)
+                    {
+                        throw new Exception(result.Errors.First().Description);
+                    }
+                    Log.Debug("user created");
                 }
-                Log.Debug("user created");
-                //     }
-                //     else
-                //     {
-                //         Log.Debug("user used");
-                //     }
+                else
+                {
+                    Log.Debug("user used");
+                }
             }
 
-            return View();
+            return Redirect(nameof(Login));
         }
         /// <summary>
         /// Entry point into the login workflow

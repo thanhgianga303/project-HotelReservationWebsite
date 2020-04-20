@@ -51,13 +51,13 @@ namespace IdentityAPI
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
 
-            services.AddCors(options =>
-        {
-            options.AddPolicy("CorsPolicy",
-                builder => builder.AllowAnyOrigin()
-                .AllowAnyMethod()
-                .AllowAnyHeader());
-        });
+            //     services.AddCors(options =>
+            // {
+            //     options.AddPolicy("CorsPolicy",
+            //         builder => builder.AllowAnyOrigin()
+            //         .AllowAnyMethod()
+            //         .AllowAnyHeader());
+            // });
             var builder = services.AddIdentityServer(options =>
                 {
                     options.Events.RaiseErrorEvents = true;
@@ -94,7 +94,7 @@ namespace IdentityAPI
             }
 
             app.UseStaticFiles();
-            app.UseCors("CorsPolicy");
+            // app.UseCors("CorsPolicy");
             app.UseRouting();
             app.UseIdentityServer();
             app.UseAuthorization();
