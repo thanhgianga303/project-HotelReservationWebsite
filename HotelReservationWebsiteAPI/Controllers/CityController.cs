@@ -40,7 +40,7 @@ namespace HotelReservationWebsiteAPI.Controller
             return Ok(cityDTO);
         }
         [HttpPost]
-        public async Task<ActionResult<Account>> Create(CityDTO cityDTO)
+        public async Task<ActionResult<City>> Create(CityDTO cityDTO)
         {
             var city = _mapper.Map<CityDTO, City>(cityDTO);
             await _repository.Add(city);
