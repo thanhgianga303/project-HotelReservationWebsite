@@ -5,6 +5,7 @@ using AutoMapper;
 using HotelReservationWebsiteAPI.Data;
 using HotelReservationWebsiteAPI.DTOs;
 using HotelReservationWebsiteAPI.Models;
+using HotelReservationWebsiteAPI.Models.IRepositories;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -14,30 +15,24 @@ namespace HotelReservationWebsiteAPI.Controller
     [Route("api/[controller]")]
     public class RoomCategoryController : ControllerBase
     {
-        private readonly HotelReservationWebsiteContext _context;
+        private readonly IRoomCategoryRepository _repository;
         private readonly IMapper _mapper;
-        public RoomCategoryController(HotelReservationWebsiteContext context, IMapper mapper)
+        public RoomCategoryController(IMapper mapper, IRoomCategoryRepository repository)
         {
-            _context = context;
+            _repository = repository;
             _mapper = mapper;
         }
         [HttpGet]
         public async Task<ActionResult<IEnumerable<RoomCategoryDTO>>> GetAll(string searchString = null)
         {
-            var roomcategories = from m in _context.RoomCategories
-                                 select m;
-            if (!string.IsNullOrEmpty(searchString))
-            {
-                roomcategories = roomcategories.Where(m => m.CategoryName.Contains(searchString)
-                 || m.CategoryCode.Contains(searchString));
-            }
-            var roomcategoriesDTO = _mapper.Map<IEnumerable<RoomCategory>, IEnumerable<RoomCategoryDTO>>(await roomcategories.ToListAsync());
+            var roomcategories = await _repository.GetRoomCategories(searchString);
+            var roomcategoriesDTO = _mapper.Map<IEnumerable<RoomCategory>, IEnumerable<RoomCategoryDTO>>(roomcategories);
             return Ok(roomcategoriesDTO);
         }
         [HttpGet("{id}")]
         public async Task<ActionResult<RoomCategoryDTO>> GetBy(int id)
         {
-            var roomcategory = await _context.RoomCategories.FindAsync(id);
+            var roomcategory = await _repository.GetBy(id);
             if (roomcategory == null) return NotFound();
             var roomcategoryDTO = _mapper.Map<RoomCategory, RoomCategoryDTO>(roomcategory);
             return Ok(roomcategoryDTO);
@@ -46,8 +41,7 @@ namespace HotelReservationWebsiteAPI.Controller
         public async Task<IActionResult> Create(RoomCategoryDTO roomCategoryDTO)
         {
             var roomcategory = _mapper.Map<RoomCategoryDTO, RoomCategory>(roomCategoryDTO);
-            _context.RoomCategories.Add(roomcategory);
-            await _context.SaveChangesAsync();
+            await _repository.Add(roomcategory);
             return CreatedAtAction(nameof(GetBy), new { id = roomcategory.RoomCategoryID }, roomcategory);
         }
         [HttpPut("{id}")]
@@ -59,12 +53,12 @@ namespace HotelReservationWebsiteAPI.Controller
             }
             try
             {
-                _context.RoomCategories.Update(_mapper.Map<RoomCategoryDTO, RoomCategory>(roomCategoryDTO));
-                await _context.SaveChangesAsync();
+                var roomcategory = _mapper.Map<RoomCategoryDTO, RoomCategory>(roomCategoryDTO);
+                await _repository.Update(id, roomcategory);
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!RoomCategoryExists(id))
+                if (!await RoomCategoryExists(id))
                 {
                     return NotFound();
                 }
@@ -75,20 +69,27 @@ namespace HotelReservationWebsiteAPI.Controller
             }
             return NoContent();
         }
-        private bool RoomCategoryExists(int id)
+        private async Task<bool> RoomCategoryExists(int id)
         {
-            return _context.RoomCategories.Any(m => m.RoomCategoryID == id);
+            var roomcategory = await _repository.GetBy(id);
+            if (roomcategory != null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
-            var findRoomcategory = await _context.RoomCategories.FindAsync(id);
+            var findRoomcategory = await _repository.GetBy(id);
             if (findRoomcategory == null)
             {
                 return NotFound();
             }
-            _context.RoomCategories.Remove(findRoomcategory);
-            await _context.SaveChangesAsync();
+            await _repository.Delete(id);
             return NoContent();
         }
     }

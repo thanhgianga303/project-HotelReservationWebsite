@@ -14,6 +14,8 @@ using Microsoft.Extensions.Hosting;
 using AutoMapper;
 using Microsoft.Extensions.Logging;
 using HotelReservationWebsiteAPI.Mapping;
+using HotelReservationWebsiteAPI.Data.Repositories;
+using HotelReservationWebsiteAPI.Models.IRepositories;
 
 namespace HotelReservationWebsiteAPI
 {
@@ -31,6 +33,7 @@ namespace HotelReservationWebsiteAPI
         {
             services.AddControllers();
             services.AddAutoMapper(typeof(MappingProfile));
+            services.AddScoped<ICityRepository, CityRepository>();
             services.AddDbContext<HotelReservationWebsiteContext>(options => options.UseSqlite("Data Source=HotelReservationWebsite.db"));
             services.AddAuthentication("Bearer")
             .AddJwtBearer("Bearer", options =>

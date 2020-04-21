@@ -5,6 +5,7 @@ using AutoMapper;
 using HotelReservationWebsiteAPI.Data;
 using HotelReservationWebsiteAPI.DTOs;
 using HotelReservationWebsiteAPI.Models;
+using HotelReservationWebsiteAPI.Models.IRepositories;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -14,29 +15,24 @@ namespace HotelReservationWebsiteAPI.Controller
     [Route("api/[controller]")]
     public class AddressController : ControllerBase
     {
-        private readonly HotelReservationWebsiteContext _context;
+        private readonly IAddressRepository _repository;
         private readonly IMapper _mapper;
-        public AddressController(HotelReservationWebsiteContext context, IMapper mapper)
+        public AddressController(IMapper mapper, IAddressRepository repository)
         {
-            _context = context;
+            _repository = repository;
             _mapper = mapper;
         }
         [HttpGet]
         public async Task<ActionResult<IEnumerable<AddressDTO>>> GetAll(string searchString)
         {
-            var addresses = from m in _context.Addresses
-                            select m;
-            if (!string.IsNullOrEmpty(searchString))
-            {
-                addresses = addresses.Where(m => m.HotelAddress.Contains(searchString));
-            }
-            var addressesDTO = _mapper.Map<IEnumerable<Address>, IEnumerable<AddressDTO>>(await addresses.ToListAsync());
+            var addresses = await _repository.GetAddresses(searchString);
+            var addressesDTO = _mapper.Map<IEnumerable<Address>, IEnumerable<AddressDTO>>(addresses);
             return Ok(addressesDTO);
         }
         [HttpGet("{id}")]
         public async Task<ActionResult<AddressDTO>> GetBy(int id)
         {
-            var findAddress = await _context.Addresses.FindAsync(id);
+            var findAddress = await _repository.GetBy(id);
             if (findAddress == null)
             {
                 return NotFound();
@@ -48,8 +44,7 @@ namespace HotelReservationWebsiteAPI.Controller
         public async Task<IActionResult> Create(AddressDTO addressDTO)
         {
             var address = _mapper.Map<AddressDTO, Address>(addressDTO);
-            _context.Addresses.Add(address);
-            await _context.SaveChangesAsync();
+            await _repository.Add(address);
             return CreatedAtAction(nameof(GetBy), new { id = address.AddressID }, address);
         }
         [HttpPut("{id}")]
@@ -61,12 +56,12 @@ namespace HotelReservationWebsiteAPI.Controller
             }
             try
             {
-                _context.Addresses.Update(_mapper.Map<AddressDTO, Address>(addressDTO));
-                await _context.SaveChangesAsync();
+                var address = _mapper.Map<AddressDTO, Address>(addressDTO);
+                await _repository.Update(id, address);
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!AddressExists(id))
+                if (!await AddressExists(id))
                 {
                     return NotFound();
                 }
@@ -78,20 +73,27 @@ namespace HotelReservationWebsiteAPI.Controller
             return NoContent();
         }
 
-        private bool AddressExists(int id)
+        private async Task<bool> AddressExists(int id)
         {
-            return _context.Addresses.Any(m => m.AddressID == id);
+            var address = await _repository.GetBy(id);
+            if (address != null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
-            var findAddress = await _context.Addresses.FindAsync(id);
+            var findAddress = await _repository.GetBy(id);
             if (findAddress == null)
             {
                 return NotFound();
             }
-            _context.Addresses.Remove(findAddress);
-            await _context.SaveChangesAsync();
+            await _repository.Delete(id);
             return NoContent();
         }
 

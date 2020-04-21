@@ -6,6 +6,7 @@ using AutoMapper;
 using HotelReservationWebsiteAPI.Data;
 using HotelReservationWebsiteAPI.DTOs;
 using HotelReservationWebsiteAPI.Models;
+using HotelReservationWebsiteAPI.Models.IRepositories;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -15,31 +16,24 @@ namespace HotelReservationWebsiteAPI.Controller
     [Route("api/[controller]")]
     public class PromotionController : ControllerBase
     {
-        private readonly HotelReservationWebsiteContext _context;
+        private readonly IPromotionRepository _repository;
         private readonly IMapper _mapper;
-        public PromotionController(HotelReservationWebsiteContext context, IMapper mapper)
+        public PromotionController(IMapper mapper, IPromotionRepository repository)
         {
-            _context = context;
+            _repository = repository;
             _mapper = mapper;
         }
         [HttpGet]
         public async Task<ActionResult<IEnumerable<PromotionDTO>>> GetAll(string searchString)
         {
-            var promotions = from m in _context.Promotions
-                             select m;
-            if (!string.IsNullOrEmpty(searchString))
-            {
-                promotions = promotions.Where(m => m.PromotionCode.Contains(searchString)
-                || m.FormOfPromotion.Contains(searchString)
-                || m.PromotionStatus.ToString().Contains(searchString));
-            }
-            var promotionsDTO = _mapper.Map<IEnumerable<Promotion>, IEnumerable<PromotionDTO>>(await promotions.ToListAsync());
+            var promotions = await _repository.GetPromotions(searchString);
+            var promotionsDTO = _mapper.Map<IEnumerable<Promotion>, IEnumerable<PromotionDTO>>(promotions);
             return Ok(promotionsDTO);
         }
         [HttpGet("{id}")]
         public async Task<ActionResult<PromotionDTO>> GetBy(int id)
         {
-            var promotion = await _context.Promotions.FindAsync(id);
+            var promotion = await _repository.GetBy(id);
             if (promotion == null) return NotFound();
             var promotionDTO = _mapper.Map<Promotion, PromotionDTO>(promotion);
             return Ok(promotionDTO);
@@ -48,8 +42,7 @@ namespace HotelReservationWebsiteAPI.Controller
         public async Task<ActionResult<Promotion>> Create(PromotionDTO promotionDTO)
         {
             var promotion = _mapper.Map<PromotionDTO, Promotion>(promotionDTO);
-            _context.Promotions.Add(promotion);
-            await _context.SaveChangesAsync();
+            await _repository.Add(promotion);
             return CreatedAtAction(nameof(GetBy), new { id = promotion.PromotionID }, promotion);
         }
         [HttpPut("{id}")]
@@ -62,12 +55,12 @@ namespace HotelReservationWebsiteAPI.Controller
 
             try
             {
-                _context.Promotions.Update(_mapper.Map<PromotionDTO, Promotion>(promotionDTO));
-                await _context.SaveChangesAsync();
+                var promotion = _mapper.Map<PromotionDTO, Promotion>(promotionDTO);
+                await _repository.Update(id, promotion);
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!PromotionExists(id))
+                if (!await PromotionExists(id))
                 {
                     return NotFound();
                 }
@@ -78,20 +71,27 @@ namespace HotelReservationWebsiteAPI.Controller
             }
             return NoContent();
         }
-        private bool PromotionExists(int id)
+        private async Task<bool> PromotionExists(int id)
         {
-            return _context.Promotions.Any(m => m.PromotionID == id);
+            var promotion = await _repository.GetBy(id);
+            if (promotion != null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
-            var findPromotion = await _context.Promotions.FindAsync(id);
+            var findPromotion = await _repository.GetBy(id);
             if (findPromotion == null)
             {
                 return NotFound();
             }
-            _context.Promotions.Remove(findPromotion);
-            await _context.SaveChangesAsync();
+            await _repository.Delete(id);
             return NoContent();
         }
     }

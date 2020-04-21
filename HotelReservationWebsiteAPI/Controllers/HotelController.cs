@@ -5,6 +5,7 @@ using AutoMapper;
 using HotelReservationWebsiteAPI.Data;
 using HotelReservationWebsiteAPI.DTOs;
 using HotelReservationWebsiteAPI.Models;
+using HotelReservationWebsiteAPI.Models.IRepositories;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -14,29 +15,24 @@ namespace HotelReservationWebsiteAPI.Controller
     [Route("api/[controller]")]
     public class HotelController : ControllerBase
     {
-        private readonly HotelReservationWebsiteContext _context;
         private readonly IMapper _mapper;
-        public HotelController(HotelReservationWebsiteContext context, IMapper mapper)
+        private readonly IHotelRepository _repository;
+        public HotelController(IMapper mapper, IHotelRepository repository)
         {
-            _context = context;
             _mapper = mapper;
+            _repository = repository;
         }
         [HttpGet]
         public async Task<ActionResult<IEnumerable<HotelDTO>>> GetAll(string searchString)
         {
-            var hotels = from m in _context.Hotels
-                         select m;
-            if (!string.IsNullOrEmpty(searchString))
-            {
-                hotels = hotels.Where(m => m.HotelName.Contains(searchString) || m.HotelCode.Contains(searchString) || m.HotelStatus.ToString().Contains(searchString));
-            }
-            var hotelsDTO = _mapper.Map<IEnumerable<Hotel>, IEnumerable<HotelDTO>>(await hotels.ToListAsync());
+            var hotels = await _repository.GetAll();
+            var hotelsDTO = _mapper.Map<IEnumerable<Hotel>, IEnumerable<HotelDTO>>(hotels);
             return Ok(hotelsDTO);
         }
         [HttpGet("{id}")]
         public async Task<ActionResult<HotelDTO>> GetBy(int id)
         {
-            var hotel = await _context.Hotels.FindAsync(id);
+            var hotel = await _repository.GetBy(id);
             if (hotel == null)
             {
                 return NotFound();
@@ -48,9 +44,8 @@ namespace HotelReservationWebsiteAPI.Controller
         public async Task<IActionResult> Create(HotelDTO hotelDTO)
         {
             var hotel = _mapper.Map<HotelDTO, Hotel>(hotelDTO);
-            _context.Hotels.Add(hotel);
-            await _context.SaveChangesAsync();
-            return NoContent();
+            await _repository.Add(hotel);
+            return CreatedAtAction(nameof(GetBy), new { id = hotel.HotelID }, hotel);
         }
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(int id, HotelDTO hotelDTO)
@@ -61,12 +56,12 @@ namespace HotelReservationWebsiteAPI.Controller
             }
             try
             {
-                _context.Hotels.Update(_mapper.Map<HotelDTO, Hotel>(hotelDTO));
-                await _context.SaveChangesAsync();
+                var hotel = _mapper.Map<HotelDTO, Hotel>(hotelDTO);
+                await _repository.Update(id, hotel);
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!HotelExists(id))
+                if (!await HotelExists(id))
                 {
                     return NotFound();
                 }
@@ -77,20 +72,27 @@ namespace HotelReservationWebsiteAPI.Controller
             }
             return NoContent();
         }
-        private bool HotelExists(int id)
+        private async Task<bool> HotelExists(int id)
         {
-            return _context.Hotels.Any(m => m.HotelID == id);
+            var hotel = await _repository.GetBy(id);
+            if (hotel != null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
-            var findHotel = await _context.Hotels.FindAsync(id);
+            var findHotel = await _repository.GetBy(id);
             if (findHotel == null)
             {
                 return NotFound();
             }
-            _context.Hotels.Remove(findHotel);
-            await _context.SaveChangesAsync();
+            await _repository.Delete(id);
             return NoContent();
         }
     }

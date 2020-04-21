@@ -7,6 +7,7 @@ using HotelReservationWebsiteAPI.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using HotelReservationWebsiteAPI.DTOs;
+using HotelReservationWebsiteAPI.Models.IRepositories;
 
 namespace HotelReservationWebsiteAPI.Controller
 {
@@ -14,34 +15,24 @@ namespace HotelReservationWebsiteAPI.Controller
     [Route("api/[controller]")]
     public class CustomerController : ControllerBase
     {
-        private readonly HotelReservationWebsiteContext _context;
+        private readonly ICustomerRepository _repository;
         private readonly IMapper _mapper;
-        public CustomerController(HotelReservationWebsiteContext context, IMapper mapper)
+        public CustomerController(IMapper mapper, ICustomerRepository repository)
         {
-            _context = context;
+            _repository = repository;
             _mapper = mapper;
         }
         [HttpGet]
         public async Task<ActionResult<IEnumerable<CustomerDTO>>> GetAll(string searchString = null)
         {
-            var customers = from m in _context.Customers
-                            select m;
-            if (!string.IsNullOrEmpty(searchString))
-            {
-                customers = customers.Where(m => m.CustomerCode.Contains(searchString)
-                 || m.CustomerName.Contains(searchString)
-                 || m.Email.Contains(searchString)
-                 || m.IdentityCard.Contains(searchString)
-                 || m.Email.Contains(searchString)
-                 || m.Phone.Contains(searchString));
-            }
-            var customersDTO = _mapper.Map<IEnumerable<Customer>, IEnumerable<CustomerDTO>>(await customers.ToListAsync());
+            var customers = await _repository.GetCustomers(searchString);
+            var customersDTO = _mapper.Map<IEnumerable<Customer>, IEnumerable<CustomerDTO>>(customers);
             return Ok(customersDTO);
         }
         [HttpGet("{id}")]
         public async Task<ActionResult<CustomerDTO>> GetBy(int id)
         {
-            var customer = await _context.Customers.FindAsync(id);
+            var customer = await _repository.GetBy(id);
             if (customer == null)
             {
                 return NotFound();
@@ -53,8 +44,7 @@ namespace HotelReservationWebsiteAPI.Controller
         public async Task<IActionResult> Create(CustomerDTO customerDTO)
         {
             var customer = _mapper.Map<CustomerDTO, Customer>(customerDTO);
-            _context.Customers.Add(customer);
-            await _context.SaveChangesAsync();
+            await _repository.Add(customer);
             return CreatedAtAction(nameof(GetBy), new { id = customer.CustomerID }, customer);
         }
         [HttpPut("{id}")]
@@ -66,12 +56,12 @@ namespace HotelReservationWebsiteAPI.Controller
             }
             try
             {
-                _context.Customers.Update(_mapper.Map<CustomerDTO, Customer>(customerDTO));
-                await _context.SaveChangesAsync();
+                var customer = _mapper.Map<CustomerDTO, Customer>(customerDTO);
+                await _repository.Update(id, customer);
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!CustomerExists(id))
+                if (!await CustomerExists(id))
                 {
                     return NotFound();
                 }
@@ -82,20 +72,27 @@ namespace HotelReservationWebsiteAPI.Controller
             }
             return NoContent();
         }
-        private bool CustomerExists(int id)
+        private async Task<bool> CustomerExists(int id)
         {
-            return _context.Customers.Any(m => m.CustomerID == id);
+            var customer = await _repository.GetBy(id);
+            if (customer != null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
-            var findCustomer = await _context.Customers.FindAsync(id);
+            var findCustomer = await _repository.GetBy(id);
             if (findCustomer == null)
             {
                 return NotFound();
             }
-            _context.Customers.Remove(findCustomer);
-            await _context.SaveChangesAsync();
+            await _repository.Delete(id);
             return NoContent();
         }
     }

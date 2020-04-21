@@ -5,6 +5,7 @@ using AutoMapper;
 using HotelReservationWebsiteAPI.Data;
 using HotelReservationWebsiteAPI.DTOs;
 using HotelReservationWebsiteAPI.Models;
+using HotelReservationWebsiteAPI.Models.IRepositories;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -14,31 +15,24 @@ namespace HotelReservationWebsiteAPI.Controller
     [Route("api/[controller]")]
     public class RoomController : ControllerBase
     {
-        private readonly HotelReservationWebsiteContext _context;
+        private readonly IRoomRepository _repository;
         private readonly IMapper _mapper;
-        public RoomController(HotelReservationWebsiteContext context, IMapper mapper)
+        public RoomController(IMapper mapper, IRoomRepository repository)
         {
-            _context = context;
+            _repository = repository;
             _mapper = mapper;
         }
         [HttpGet]
         public async Task<ActionResult<IEnumerable<RoomDTO>>> GetAll(string searchString = null)
         {
-            var rooms = from m in _context.Rooms
-                        select m;
-            if (!string.IsNullOrEmpty(searchString))
-            {
-                rooms = rooms.Where(m => m.RoomName.Contains(searchString)
-                 || m.RoomNumber.ToString().Contains(searchString)
-                || m.RoomStatus.ToString().Contains(searchString));
-            }
-            var roomsDTO = _mapper.Map<IEnumerable<Room>, IEnumerable<RoomDTO>>(await rooms.ToListAsync());
+            var rooms = await _repository.GetRooms(searchString);
+            var roomsDTO = _mapper.Map<IEnumerable<Room>, IEnumerable<RoomDTO>>(rooms);
             return Ok(roomsDTO);
         }
         [HttpGet("{id}")]
         public async Task<ActionResult<RoomDTO>> GetBy(int id)
         {
-            var room = await _context.Rooms.FindAsync(id);
+            var room = await _repository.GetBy(id);
             if (room == null)
             {
                 return NotFound();
@@ -50,8 +44,7 @@ namespace HotelReservationWebsiteAPI.Controller
         public async Task<IActionResult> Create(RoomDTO roomDTO)
         {
             var room = _mapper.Map<RoomDTO, Room>(roomDTO);
-            _context.Rooms.Add(room);
-            await _context.SaveChangesAsync();
+            await _repository.Add(room);
             return CreatedAtAction(nameof(GetBy), new { id = room.RoomID }, room);
         }
         [HttpPut("{id}")]
@@ -63,12 +56,12 @@ namespace HotelReservationWebsiteAPI.Controller
             }
             try
             {
-                _context.Rooms.Update(_mapper.Map<RoomDTO, Room>(roomDTO));
-                await _context.SaveChangesAsync();
+                var room = _mapper.Map<RoomDTO, Room>(roomDTO);
+                await _repository.Update(id, room);
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!RoomExists(id))
+                if (!await RoomExists(id))
                 {
                     return NotFound();
                 }
@@ -80,20 +73,27 @@ namespace HotelReservationWebsiteAPI.Controller
             return NoContent();
         }
 
-        private bool RoomExists(int id)
+        private async Task<bool> RoomExists(int id)
         {
-            return _context.Rooms.Any(m => m.RoomID == id);
+            var room = await _repository.GetBy(id);
+            if (room != null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
-            var findRoom = await _context.Rooms.FindAsync(id);
+            var findRoom = await _repository.GetBy(id);
             if (findRoom == null)
             {
                 return NotFound();
             }
-            _context.Rooms.Remove(findRoom);
-            await _context.SaveChangesAsync();
+            await _repository.Delete(id);
             return NoContent();
         }
 

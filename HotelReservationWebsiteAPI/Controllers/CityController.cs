@@ -7,6 +7,7 @@ using AutoMapper;
 using HotelReservationWebsiteAPI.Data;
 using HotelReservationWebsiteAPI.DTOs;
 using HotelReservationWebsiteAPI.Models;
+using HotelReservationWebsiteAPI.Models.IRepositories;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -16,29 +17,24 @@ namespace HotelReservationWebsiteAPI.Controller
     [Route("api/[controller]")]
     public class CityController : ControllerBase
     {
-        private readonly HotelReservationWebsiteContext _context;
         private readonly IMapper _mapper;
-        public CityController(HotelReservationWebsiteContext context, IMapper mapper)
+        private readonly ICityRepository _repository;
+        public CityController(IMapper mapper, ICityRepository repository)
         {
-            _context = context;
             _mapper = mapper;
+            _repository = repository;
         }
         [HttpGet]
         public async Task<ActionResult<IEnumerable<CityDTO>>> GetAll(string searchString = null)
         {
-            var cities = from m in _context.Cities
-                         select m;
-            if (!string.IsNullOrEmpty(searchString))
-            {
-                cities = cities.Where(m => m.CityCode.Contains(searchString) || m.CityName.Contains(searchString));
-            }
-            var citiesDTO = _mapper.Map<IEnumerable<City>, IEnumerable<CityDTO>>(await cities.ToListAsync());
+            var cities = await _repository.GetCities(searchString);
+            var citiesDTO = _mapper.Map<IEnumerable<City>, IEnumerable<CityDTO>>(cities);
             return Ok(citiesDTO);
         }
         [HttpGet("{id}")]
         public async Task<ActionResult<CityDTO>> GetBy(int id)
         {
-            var city = await _context.Cities.FindAsync(id);
+            var city = await _repository.GetBy(id);
             if (city == null) return NotFound();
             var cityDTO = _mapper.Map<City, CityDTO>(city);
             return Ok(cityDTO);
@@ -47,8 +43,7 @@ namespace HotelReservationWebsiteAPI.Controller
         public async Task<ActionResult<Account>> Create(CityDTO cityDTO)
         {
             var city = _mapper.Map<CityDTO, City>(cityDTO);
-            _context.Cities.Add(city);
-            await _context.SaveChangesAsync();
+            await _repository.Add(city);
             return CreatedAtAction(nameof(GetBy), new { id = city.CityID }, city);
         }
         [HttpPut("{id}")]
@@ -61,12 +56,12 @@ namespace HotelReservationWebsiteAPI.Controller
 
             try
             {
-                _context.Cities.Update(_mapper.Map<CityDTO, City>(cityDTO));
-                await _context.SaveChangesAsync();
+                var city = _mapper.Map<CityDTO, City>(cityDTO);
+                await _repository.Update(id, city);
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!CityExists(id))
+                if (!await CityExists(id))
                 {
                     return NotFound();
                 }
@@ -77,20 +72,27 @@ namespace HotelReservationWebsiteAPI.Controller
             }
             return NoContent();
         }
-        private bool CityExists(int id)
+        private async Task<bool> CityExists(int id)
         {
-            return _context.Cities.Any(m => m.CityID == id);
+            var city = await _repository.GetBy(id);
+            if (city != null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
-            var findCity = await _context.Cities.FindAsync(id);
+            var findCity = await _repository.GetBy(id);
             if (findCity == null)
             {
                 return NotFound();
             }
-            _context.Cities.Remove(findCity);
-            await _context.SaveChangesAsync();
+            await _repository.Delete(findCity.CityID);
             return NoContent();
         }
     }

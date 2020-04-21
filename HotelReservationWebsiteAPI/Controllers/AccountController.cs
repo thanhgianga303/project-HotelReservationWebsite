@@ -5,6 +5,7 @@ using AutoMapper;
 using HotelReservationWebsiteAPI.Data;
 using HotelReservationWebsiteAPI.DTOs;
 using HotelReservationWebsiteAPI.Models;
+using HotelReservationWebsiteAPI.Models.IRepositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -16,30 +17,24 @@ namespace HotelReservationWebsiteAPI.Controller
     [Authorize]
     public class AccountController : ControllerBase
     {
-        private readonly HotelReservationWebsiteContext _context;
+        private readonly IAccountRepository _repository;
         private readonly IMapper _mapper;
-        public AccountController(HotelReservationWebsiteContext context, IMapper mapper)
+        public AccountController(IMapper mapper, IAccountRepository repository)
         {
-            _context = context;
+            _repository = repository;
             _mapper = mapper;
         }
         [HttpGet]
         public async Task<ActionResult<IEnumerable<AccountDTO>>> GetAll(string searchString = null)
         {
-            var accounts = from m in _context.Accounts
-                           select m;
-            if (!string.IsNullOrEmpty(searchString))
-            {
-                accounts = accounts.Where(m => m.Username.Contains(searchString)
-                || m.AccountStatus.ToString().Contains(searchString));
-            }
-            var accountsDTO = _mapper.Map<IEnumerable<Account>, IEnumerable<AccountDTO>>(await accounts.ToListAsync());
+            var accounts = await _repository.GetAccounts(searchString);
+            var accountsDTO = _mapper.Map<IEnumerable<Account>, IEnumerable<AccountDTO>>(accounts);
             return Ok(accountsDTO);
         }
         [HttpGet("{id}")]
         public async Task<ActionResult<AccountDTO>> GetBy(int id)
         {
-            var account = await _context.Accounts.FindAsync(id);
+            var account = await _repository.GetBy(id);
 
             if (account == null)
             {
@@ -52,8 +47,7 @@ namespace HotelReservationWebsiteAPI.Controller
         public async Task<ActionResult<Account>> Create(AccountDTO accountDTO)
         {
             var account = _mapper.Map<AccountDTO, Account>(accountDTO);
-            _context.Accounts.Add(account);
-            await _context.SaveChangesAsync();
+            await _repository.Add(account);
             return CreatedAtAction(nameof(GetBy), new { id = account.AccountID }, account);
         }
         [HttpPut("{id}")]
@@ -66,12 +60,12 @@ namespace HotelReservationWebsiteAPI.Controller
 
             try
             {
-                _context.Accounts.Update(_mapper.Map<AccountDTO, Account>(accountDTO));
-                await _context.SaveChangesAsync();
+                var account = _mapper.Map<AccountDTO, Account>(accountDTO);
+                await _repository.Update(id, account);
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!AccountExists(id))
+                if (!await AccountExists(id))
                 {
                     return NotFound();
                 }
@@ -82,20 +76,27 @@ namespace HotelReservationWebsiteAPI.Controller
             }
             return NoContent();
         }
-        private bool AccountExists(int id)
+        private async Task<bool> AccountExists(int id)
         {
-            return _context.Accounts.Any(m => m.AccountID == id);
+            var account = await _repository.GetBy(id);
+            if (account != null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
-            var findAccount = await _context.Accounts.FindAsync(id);
+            var findAccount = await _repository.GetBy(id);
             if (findAccount == null)
             {
                 return NotFound();
             }
-            _context.Accounts.Remove(findAccount);
-            await _context.SaveChangesAsync();
+            await _repository.Delete(id);
             return NoContent();
         }
 
