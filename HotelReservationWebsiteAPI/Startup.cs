@@ -32,8 +32,20 @@ namespace HotelReservationWebsiteAPI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
             services.AddAutoMapper(typeof(MappingProfile));
+
             services.AddScoped<ICityRepository, CityRepository>();
+            services.AddScoped<IHotelRepository, HotelRepository>();
+            services.AddScoped<IRoomRepository, RoomRepository>();
+            services.AddScoped<IRoomCategoryRepository, RoomCategoryRepository>();
+            services.AddScoped<IAddressRepository, AddressRepository>();
+            services.AddScoped<IPromotionRepository, PromotionRepository>();
+            services.AddScoped<ICustomerRepository, CustomerRepository>();
+            services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+            services.AddScoped<IAccountRepository, AccountRepository>();
+            services.AddScoped<IBookingDetailRepository, BookingDetailRepository>();
+
             services.AddDbContext<HotelReservationWebsiteContext>(options => options.UseSqlite("Data Source=HotelReservationWebsite.db"));
             services.AddAuthentication("Bearer")
             .AddJwtBearer("Bearer", options =>
