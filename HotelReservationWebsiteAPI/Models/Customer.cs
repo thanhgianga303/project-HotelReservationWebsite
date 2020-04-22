@@ -5,7 +5,7 @@ namespace HotelReservationWebsiteAPI.Models
     public class Customer
     {
         public int CustomerID { get; set; }
-        public string CustomerCode { get; set; }
+
         public string CustomerName { get; set; }
         public DateTime DateOfBirth { get; set; }
         public string IdentityCard { get; set; }
@@ -13,7 +13,7 @@ namespace HotelReservationWebsiteAPI.Models
         public string Phone { get; set; }
         public string Address { get; set; }
         public List<BookingDetail> BookingDetails { get; set; }
-        public List<ApplicationUser> ApplicationUsers { get; set; }
+        public ApplicationUser ApplicationUser { get; set; }
 
     }
 

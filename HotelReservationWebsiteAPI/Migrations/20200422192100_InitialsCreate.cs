@@ -41,7 +41,6 @@ namespace HotelReservationWebsiteAPI.Migrations
                 {
                     CustomerID = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    CustomerCode = table.Column<string>(nullable: true),
                     CustomerName = table.Column<string>(nullable: true),
                     DateOfBirth = table.Column<DateTime>(nullable: false),
                     IdentityCard = table.Column<string>(nullable: true),
@@ -60,6 +59,7 @@ namespace HotelReservationWebsiteAPI.Migrations
                 {
                     EmployeeID = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
+                    AccountID = table.Column<int>(nullable: false),
                     EmployeeName = table.Column<string>(nullable: true),
                     DateOfBirth = table.Column<DateTime>(nullable: false),
                     Address = table.Column<string>(nullable: true),
@@ -158,9 +158,8 @@ namespace HotelReservationWebsiteAPI.Migrations
                     LockoutEnd = table.Column<DateTimeOffset>(nullable: true),
                     LockoutEnabled = table.Column<bool>(nullable: false),
                     AccessFailedCount = table.Column<int>(nullable: false),
-                    UserID = table.Column<int>(nullable: false),
-                    EmployeeID = table.Column<int>(nullable: true),
-                    CustomerID = table.Column<int>(nullable: true)
+                    CustomerID = table.Column<int>(nullable: true),
+                    EmployeeID = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -395,12 +394,14 @@ namespace HotelReservationWebsiteAPI.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetUsers_CustomerID",
                 table: "AspNetUsers",
-                column: "CustomerID");
+                column: "CustomerID",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetUsers_EmployeeID",
                 table: "AspNetUsers",
-                column: "EmployeeID");
+                column: "EmployeeID",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "EmailIndex",

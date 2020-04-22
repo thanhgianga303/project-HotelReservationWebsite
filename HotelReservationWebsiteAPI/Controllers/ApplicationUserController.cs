@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using HotelReservationWebsiteAPI.Models;
+using HotelReservationWebsiteAPI.Models.InputModel;
 using HotelReservationWebsiteAPI.Models.IRepositories;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -14,35 +15,47 @@ namespace HotelReservationWebsiteAPI.Controller
     [ApiController]
     public class ApplicationUserController : ControllerBase
     {
-        // private readonly IApplicationUserRepository _repository;
+        private readonly IApplicationUserRepository _repository;
         private readonly UserManager<ApplicationUser> _userManager;
         // private readonly RoleManager<IdentityRole> _roleManager;
-        public ApplicationUserController(UserManager<ApplicationUser> userManager)
-        // IApplicationUserRepository repository
+        public ApplicationUserController(UserManager<ApplicationUser> userManager, IApplicationUserRepository repository)
+
         {
             _userManager = userManager;
-            // _repository = repository;
+            _repository = repository;
         }
+        [HttpGet]
         public async Task<ActionResult<IEnumerable<ApplicationUser>>> GetAll()
         {
-            var applicationUser = await _userManager.Users.ToListAsync();
+            var applicationUsers = await _repository.GetApplicationUsers();
+            return Ok(applicationUsers);
+        }
+        [HttpGet("{id}")]
+        public async Task<ActionResult<ApplicationUser>> GetBy(string id)
+        {
+            var applicationUser = await _repository.GetBy(id);
+            if (applicationUser == null)
+            {
+                return NotFound();
+            }
             return Ok(applicationUser);
         }
         [HttpPost]
-        public IActionResult Create(ApplicationUser _user)
+        public async Task<IActionResult> Create(InputUserModel _input)
         {
-            // var findUser = await _userManager.FindByNameAsync(user.);
-            // if(findUser)
-            var user = new ApplicationUser
-            {
-                UserName = "giangcoi",
-                CustomerID = _user.CustomerID
-            };
-            var result = _userManager.CreateAsync(user, "Pass123$").Result;
-            if (!result.Succeeded)
-            {
-                throw new Exception(result.Errors.First().Description);
-            }
+            await _repository.Create(_input);
+            return NoContent();
+        }
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Update(string id, InputChangeInfoModel _input)
+        {
+            await _repository.Update(id, _input);
+            return NoContent();
+        }
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(string id)
+        {
+            await _repository.Delete(id);
             return NoContent();
         }
     }

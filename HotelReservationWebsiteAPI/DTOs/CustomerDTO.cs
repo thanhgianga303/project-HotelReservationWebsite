@@ -5,7 +5,6 @@ namespace HotelReservationWebsiteAPI.DTOs
     public class CustomerDTO
     {
         public int CustomerID { get; set; }
-        public int AccountID { get; set; }
         public string CustomerCode { get; set; }
         public string CustomerName { get; set; }
         public DateTime DateOfBirth { get; set; }

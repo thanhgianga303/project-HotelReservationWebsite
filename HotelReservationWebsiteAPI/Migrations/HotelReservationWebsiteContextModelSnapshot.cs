@@ -94,18 +94,17 @@ namespace HotelReservationWebsiteAPI.Migrations
                     b.Property<bool>("TwoFactorEnabled")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("UserID")
-                        .HasColumnType("INTEGER");
-
                     b.Property<string>("UserName")
                         .HasColumnType("TEXT")
                         .HasMaxLength(256);
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CustomerID");
+                    b.HasIndex("CustomerID")
+                        .IsUnique();
 
-                    b.HasIndex("EmployeeID");
+                    b.HasIndex("EmployeeID")
+                        .IsUnique();
 
                     b.HasIndex("NormalizedEmail")
                         .HasName("EmailIndex");
@@ -173,9 +172,6 @@ namespace HotelReservationWebsiteAPI.Migrations
                     b.Property<string>("Address")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("CustomerCode")
-                        .HasColumnType("TEXT");
-
                     b.Property<string>("CustomerName")
                         .HasColumnType("TEXT");
 
@@ -200,6 +196,9 @@ namespace HotelReservationWebsiteAPI.Migrations
                 {
                     b.Property<int>("EmployeeID")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("AccountID")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Address")
@@ -469,12 +468,12 @@ namespace HotelReservationWebsiteAPI.Migrations
             modelBuilder.Entity("HotelReservationWebsiteAPI.Models.ApplicationUser", b =>
                 {
                     b.HasOne("HotelReservationWebsiteAPI.Models.Customer", "Customers")
-                        .WithMany("ApplicationUsers")
-                        .HasForeignKey("CustomerID");
+                        .WithOne("ApplicationUser")
+                        .HasForeignKey("HotelReservationWebsiteAPI.Models.ApplicationUser", "CustomerID");
 
                     b.HasOne("HotelReservationWebsiteAPI.Models.Employee", "Employees")
-                        .WithMany("ApplicationUsers")
-                        .HasForeignKey("EmployeeID");
+                        .WithOne("ApplicationUser")
+                        .HasForeignKey("HotelReservationWebsiteAPI.Models.ApplicationUser", "EmployeeID");
                 });
 
             modelBuilder.Entity("HotelReservationWebsiteAPI.Models.BookingDetail", b =>

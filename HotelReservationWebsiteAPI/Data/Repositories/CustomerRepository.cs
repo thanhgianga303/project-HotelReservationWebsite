@@ -20,8 +20,8 @@ namespace HotelReservationWebsiteAPI.Data.Repositories
                             select m;
             if (!string.IsNullOrEmpty(searchString))
             {
-                customers = customers.Where(m => m.CustomerCode.Contains(searchString)
-                 || m.CustomerName.Contains(searchString)
+                customers = customers.Where(m =>
+                m.CustomerName.Contains(searchString)
                  || m.Email.Contains(searchString)
                  || m.IdentityCard.Contains(searchString)
                  || m.Email.Contains(searchString)

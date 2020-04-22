@@ -44,7 +44,7 @@ namespace HotelReservationWebsiteAPI
             services.AddScoped<IPromotionRepository, PromotionRepository>();
             services.AddScoped<ICustomerRepository, CustomerRepository>();
             services.AddScoped<IEmployeeRepository, EmployeeRepository>();
-            // services.AddScoped<IApplicationUserRepository, ApplicationUserRepository>();
+            services.AddScoped<IApplicationUserRepository, ApplicationUserRepository>();
             services.AddScoped<IBookingDetailRepository, BookingDetailRepository>();
 
             services.AddDbContext<HotelReservationWebsiteContext>(options => options.UseSqlite("Data Source=HotelReservationWebsiteContext.db", x => x.MigrationsAssembly("HotelReservationWebsiteAPI")));
