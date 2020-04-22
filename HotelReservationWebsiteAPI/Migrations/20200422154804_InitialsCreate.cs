@@ -159,8 +159,8 @@ namespace HotelReservationWebsiteAPI.Migrations
                     LockoutEnabled = table.Column<bool>(nullable: false),
                     AccessFailedCount = table.Column<int>(nullable: false),
                     UserID = table.Column<int>(nullable: false),
-                    EmployeeID = table.Column<int>(nullable: false),
-                    CustomerID = table.Column<int>(nullable: false)
+                    EmployeeID = table.Column<int>(nullable: true),
+                    CustomerID = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -170,13 +170,13 @@ namespace HotelReservationWebsiteAPI.Migrations
                         column: x => x.CustomerID,
                         principalTable: "Customers",
                         principalColumn: "CustomerID",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_AspNetUsers_Employees_EmployeeID",
                         column: x => x.EmployeeID,
                         principalTable: "Employees",
                         principalColumn: "EmployeeID",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(

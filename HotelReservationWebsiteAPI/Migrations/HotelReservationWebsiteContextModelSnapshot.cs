@@ -52,7 +52,7 @@ namespace HotelReservationWebsiteAPI.Migrations
                         .IsConcurrencyToken()
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("CustomerID")
+                    b.Property<int?>("CustomerID")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Email")
@@ -62,7 +62,7 @@ namespace HotelReservationWebsiteAPI.Migrations
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("EmployeeID")
+                    b.Property<int?>("EmployeeID")
                         .HasColumnType("INTEGER");
 
                     b.Property<bool>("LockoutEnabled")
@@ -470,15 +470,11 @@ namespace HotelReservationWebsiteAPI.Migrations
                 {
                     b.HasOne("HotelReservationWebsiteAPI.Models.Customer", "Customers")
                         .WithMany("ApplicationUsers")
-                        .HasForeignKey("CustomerID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("CustomerID");
 
                     b.HasOne("HotelReservationWebsiteAPI.Models.Employee", "Employees")
                         .WithMany("ApplicationUsers")
-                        .HasForeignKey("EmployeeID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("EmployeeID");
                 });
 
             modelBuilder.Entity("HotelReservationWebsiteAPI.Models.BookingDetail", b =>
