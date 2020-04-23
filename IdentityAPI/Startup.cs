@@ -50,7 +50,9 @@ namespace IdentityAPI
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
-
+            // services.AddAuthorization(options =>
+            // options.AddPolicy("AdminApp",
+            //     policy => policy.RequireClaim("Admin")));
             //     services.AddCors(options =>
             // {
             //     options.AddPolicy("CorsPolicy",

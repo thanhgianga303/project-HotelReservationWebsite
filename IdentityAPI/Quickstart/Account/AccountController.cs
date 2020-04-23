@@ -29,6 +29,7 @@ namespace IdentityServer4.Quickstart.UI
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly IIdentityServerInteractionService _interaction;
+        private readonly RoleManager<IdentityRole> _roleManager;
         private readonly IClientStore _clientStore;
         private readonly IAuthenticationSchemeProvider _schemeProvider;
         private readonly IEventService _events;
@@ -39,7 +40,8 @@ namespace IdentityServer4.Quickstart.UI
             IIdentityServerInteractionService interaction,
             IClientStore clientStore,
             IAuthenticationSchemeProvider schemeProvider,
-            IEventService events)
+            IEventService events,
+            RoleManager<IdentityRole> roleManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;
@@ -47,6 +49,7 @@ namespace IdentityServer4.Quickstart.UI
             _clientStore = clientStore;
             _schemeProvider = schemeProvider;
             _events = events;
+            _roleManager = roleManager;
         }
         [HttpGet]
         public IActionResult Register()
@@ -77,6 +80,7 @@ namespace IdentityServer4.Quickstart.UI
                     {
                         throw new Exception(result.Errors.First().Description);
                     }
+                    await _userManager.AddToRoleAsync(user, "Customer");
                     var name = _input.Name + "";
                     var givenname = _input.GivenName + "";
                     var familyname = _input.FamilyName + "";
@@ -109,6 +113,17 @@ namespace IdentityServer4.Quickstart.UI
         /// <summary>
         /// Entry point into the login workflow
         /// </summary>
+        [HttpGet]
+        public IActionResult CreateRole()
+        {
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> CreateRole(RoleInputModel _input)
+        {
+            await _roleManager.CreateAsync(new IdentityRole(_input.Name));
+            return View();
+        }
         [HttpGet]
         public async Task<IActionResult> Login(string returnUrl)
         {

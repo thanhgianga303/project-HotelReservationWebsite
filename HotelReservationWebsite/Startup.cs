@@ -58,8 +58,15 @@ namespace HotelReservationWebsite
                     options.TokenValidationParameters = new TokenValidationParameters()
                     {
                         NameClaimType = "name",
+                        RoleClaimType = "role"
                     };
+
                 });
+            services.AddAuthorization(options =>
+        options.AddPolicy("AdminApp",
+            policy => policy.RequireUserName("Admin")));
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
