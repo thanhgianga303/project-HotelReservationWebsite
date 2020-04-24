@@ -41,6 +41,9 @@ namespace IdentityAPI
 
                     RedirectUris = { "http://localhost:5100/signin-oidc" },
                     PostLogoutRedirectUris = { "http://localhost:5100/signout-callback-oidc" },
+                    AlwaysSendClientClaims = true,
+                    // AlwaysIncludeUserClaimsInIdToken = true,
+                // AlwaysIncludeUserClaimsInAccessToken = true,
 
                     AllowedScopes = new List<string>
                     {

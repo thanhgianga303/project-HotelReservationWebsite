@@ -64,7 +64,7 @@ namespace HotelReservationWebsite
                 });
             services.AddAuthorization(options =>
         options.AddPolicy("AdminApp",
-            policy => policy.RequireUserName("Admin")));
+            policy => policy.RequireClaim("Admin")));
 
 
         }

@@ -49,11 +49,13 @@ namespace IdentityAPI
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddRoleManager<RoleManager<IdentityRole>>()
                 .AddDefaultTokenProviders();
+
             // services.AddAuthorization(options =>
             // options.AddPolicy("AdminApp",
-            //     policy => policy.RequireClaim("Admin")));
-            //     services.AddCors(options =>
+            //     policy => policy.RequireClaim("role")));
+            // services.AddCors(options =>
             // {
             //     options.AddPolicy("CorsPolicy",
             //         builder => builder.AllowAnyOrigin()
