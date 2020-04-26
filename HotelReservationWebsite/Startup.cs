@@ -62,6 +62,14 @@ namespace HotelReservationWebsite
                     };
 
                 });
+            // services.AddAuthentication("Bearer")
+            // .AddJwtBearer("Bearer", options =>
+            // {
+            //     options.Authority = "http://localhost:5000";
+            //     options.RequireHttpsMetadata = false;
+
+            //     options.Audience = "admin";
+            // });
             services.AddAuthorization(options =>
         options.AddPolicy("AdminApp",
             policy => policy.RequireClaim("Admin")));

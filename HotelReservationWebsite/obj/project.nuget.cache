@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "kdPqVwNato/aHVLseW9vv4F2s31s2gmikcWwxW3rH0L0f3Q62j0bAG3MnOGEfyLzwN1NtbXbjDwUUn9DqpddKA==",
+  "dgSpecHash": "1jNTh48IuzqDaZMuGj9s6P9vDBh5VakuiksjRQ5pvxAfiVA1G9IZWp7m9vyUbnubebXiD7Crz3wFoOANrQtGTA==",
   "success": true,
   "projectFilePath": "C:\\Users\\thanh\\OneDrive\\Documents\\project-HotelReservationWebsite\\HotelReservationWebsite\\HotelReservationWebsite.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\thanh\\.nuget\\packages\\identitymodel\\4.2.0\\identitymodel.4.2.0.nupkg.sha512",
+    "C:\\Users\\thanh\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\3.1.3\\microsoft.aspnetcore.authentication.jwtbearer.3.1.3.nupkg.sha512",
     "C:\\Users\\thanh\\.nuget\\packages\\microsoft.aspnetcore.authentication.openidconnect\\3.1.3\\microsoft.aspnetcore.authentication.openidconnect.3.1.3.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.aspnetcore.razor\\2.2.0\\microsoft.aspnetcore.razor.2.2.0.nupkg.sha512",
