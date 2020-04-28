@@ -8,7 +8,7 @@ namespace HotelReservationWebsite.Controllers
 
     public class AdminController : Controller
     {
-        [Authorize(Policy = "AdminApp")]
+        [Authorize(Roles = "Admin")]
         public IActionResult Index()
         {
             return View();
