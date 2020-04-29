@@ -51,14 +51,14 @@ namespace HotelReservationWebsiteAPI
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<HotelReservationWebsiteContext>()
                 .AddDefaultTokenProviders();
-            // services.AddAuthentication("Bearer")
-            // .AddJwtBearer("Bearer", options =>
-            // {
-            //     options.Authority = "http://localhost:5000";
-            //     options.RequireHttpsMetadata = false;
+            services.AddAuthentication("Bearer")
+            .AddJwtBearer("Bearer", options =>
+            {
+                options.Authority = "http://localhost:5000";
+                options.RequireHttpsMetadata = false;
 
-            //     options.Audience = "admin";
-            // });
+                options.Audience = "admin";
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
