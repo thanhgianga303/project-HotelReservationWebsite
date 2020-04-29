@@ -967,6 +967,15 @@
           "lib/netstandard1.6/NuGet.Frameworks.dll": {}
         }
       },
+      "Polly/7.2.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Polly.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Polly.dll": {}
+        }
+      },
       "runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
         "type": "package",
         "runtimeTargets": {
@@ -4288,6 +4297,29 @@
         "lib/netstandard1.6/NuGet.Frameworks.xml",
         "nuget.frameworks.4.7.0.nupkg.sha512",
         "nuget.frameworks.nuspec"
+      ]
+    },
+    "Polly/7.2.0": {
+      "sha512": "fbtSRyqVSd5AS7O4Pm2Mnw7zKKJk7Z3rOfNnKSTfPkTxM8Z1JJFZzzjqLAOTG6AyUkormSWMO2AhdlygF/384Q==",
+      "type": "package",
+      "path": "polly/7.2.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net461/Polly.dll",
+        "lib/net461/Polly.pdb",
+        "lib/net461/Polly.xml",
+        "lib/net472/Polly.dll",
+        "lib/net472/Polly.pdb",
+        "lib/net472/Polly.xml",
+        "lib/netstandard1.1/Polly.dll",
+        "lib/netstandard1.1/Polly.pdb",
+        "lib/netstandard1.1/Polly.xml",
+        "lib/netstandard2.0/Polly.dll",
+        "lib/netstandard2.0/Polly.pdb",
+        "lib/netstandard2.0/Polly.xml",
+        "polly.7.2.0.nupkg.sha512",
+        "polly.nuspec"
       ]
     },
     "runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
@@ -8764,7 +8796,8 @@
       "Microsoft.EntityFrameworkCore.SqlServer >= 3.1.3",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 3.1.1",
       "Newtonsoft.Json >= 12.0.3",
-      "System.IdentityModel.Tokens.Jwt >= 6.5.0"
+      "System.IdentityModel.Tokens.Jwt >= 6.5.0",
+      "polly >= 7.2.0"
     ]
   },
   "packageFolders": {
@@ -8843,6 +8876,10 @@
           "System.IdentityModel.Tokens.Jwt": {
             "target": "Package",
             "version": "[6.5.0, )"
+          },
+          "polly": {
+            "target": "Package",
+            "version": "[7.2.0, )"
           }
         },
         "imports": [

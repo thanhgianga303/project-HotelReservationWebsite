@@ -76,6 +76,10 @@
             "System.IdentityModel.Tokens.Jwt": {
               "target": "Package",
               "version": "[6.5.0, )"
+            },
+            "polly": {
+              "target": "Package",
+              "version": "[7.2.0, )"
             }
           },
           "imports": [

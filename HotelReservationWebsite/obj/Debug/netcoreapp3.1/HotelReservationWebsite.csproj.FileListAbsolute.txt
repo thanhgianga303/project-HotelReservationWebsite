@@ -186,3 +186,4 @@ C:\Users\thanh\OneDrive\Documents\project-HotelReservationWebsite\HotelReservati
 C:\Users\thanh\OneDrive\Documents\project-HotelReservationWebsite\HotelReservationWebsite\obj\Debug\netcoreapp3.1\Razor\Views\City\Delete.cshtml.g.cs
 C:\Users\thanh\OneDrive\Documents\project-HotelReservationWebsite\HotelReservationWebsite\obj\Debug\netcoreapp3.1\Razor\Views\City\Edit.cshtml.g.cs
 C:\Users\thanh\OneDrive\Documents\project-HotelReservationWebsite\HotelReservationWebsite\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\thanh\OneDrive\Documents\project-HotelReservationWebsite\HotelReservationWebsite\bin\Debug\netcoreapp3.1\Polly.dll

@@ -70,9 +70,9 @@ namespace HotelReservationWebsite
 
             //     options.Audience = "admin";
             // });
-        //     services.AddAuthorization(options =>
-        // options.AddPolicy("AdminApp",
-        //     policy => policy.RequireClaim("Admin")));
+            //     services.AddAuthorization(options =>
+            // options.AddPolicy("AdminApp",
+            //     policy => policy.RequireClaim("Admin")));
 
 
         }
