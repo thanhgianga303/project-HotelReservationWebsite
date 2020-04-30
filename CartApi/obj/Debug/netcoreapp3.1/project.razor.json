@@ -1,5 +1,5 @@
 {
-  "FilePath": "c:\\Desktop\\MovieApp5\\src\\CartApi\\CartApi.csproj",
+  "FilePath": "c:\\Users\\thanh\\OneDrive\\Documents\\project-HotelReservationWebsite\\CartAPI\\CartAPI.csproj",
   "Configuration": {
     "ConfigurationName": "MVC-3.0",
     "LanguageVersion": "3.0",
@@ -20518,7 +20518,7 @@
     ],
     "CSharpLanguageVersion": 800
   },
-  "RootNamespace": "CartApi",
+  "RootNamespace": "CartAPI",
   "Documents": [],
   "SerializationFormat": "0.2"
 }

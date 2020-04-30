@@ -2,9 +2,11 @@
 // Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
 
 
+using IdentityModel;
 using IdentityServer4;
 using IdentityServer4.Models;
 using System.Collections.Generic;
+using System.Security.Claims;
 
 namespace IdentityAPI
 {
@@ -15,6 +17,15 @@ namespace IdentityAPI
             {
                 new IdentityResources.OpenId(),
                 new IdentityResources.Profile(),
+                new IdentityResource{
+                    Name = "roles",
+                    DisplayName = "Roles",
+                    Description = "Allow the service access to your user roles.",
+                    UserClaims = new[] { JwtClaimTypes.Role, ClaimTypes.Role },
+                    ShowInDiscoveryDocument = true,
+                    Required = true,
+                    Emphasize = true
+                }
             };
 
 
@@ -48,7 +59,8 @@ namespace IdentityAPI
                     {
                         IdentityServerConstants.StandardScopes.OpenId,
                         IdentityServerConstants.StandardScopes.Profile,
-                        "admin"
+                        "admin", "roles"
+
                     },
 
                     AllowOfflineAccess = true

@@ -51,10 +51,14 @@ namespace HotelReservationWebsite
                     options.ResponseType = "code";
 
                     options.SaveTokens = true;
+                    // options.Notifications = new AuthorizationCodeReceived()
+                    // {
 
+                    // }
+                    // options.ClaimActions.Add(new RoleClaimAction());
                     options.Scope.Add("admin");
                     options.Scope.Add("offline_access");
-
+                    options.Scope.Add("roles");
                     options.TokenValidationParameters = new TokenValidationParameters()
                     {
                         NameClaimType = "name",
