@@ -46,6 +46,18 @@ namespace HotelReservationWebsiteAPI.Controller
             await _repository.Create(_input);
             return NoContent();
         }
+        [HttpPost]
+        public async Task<IActionResult> CreateCustomer(InputUserModel _input)
+        {
+            await _repository.CreateCustomer(_input);
+            return NoContent();
+        }
+        [HttpPost]
+        public async Task<IActionResult> CreateEmployee(InputUserModel _input)
+        {
+            await _repository.CreateEmployee(_input);
+            return NoContent();
+        }
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(string id, InputChangeInfoModel _input)
         {

@@ -154,3 +154,4 @@ C:\Users\thanh\OneDrive\Documents\project-HotelReservationWebsite\HotelReservati
 C:\Users\thanh\OneDrive\Documents\project-HotelReservationWebsite\HotelReservationWebsiteAPI\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\thanh\OneDrive\Documents\project-HotelReservationWebsite\HotelReservationWebsiteAPI\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\thanh\OneDrive\Documents\project-HotelReservationWebsite\HotelReservationWebsiteAPI\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\thanh\OneDrive\Documents\project-HotelReservationWebsite\HotelReservationWebsiteAPI\bin\Debug\netcoreapp3.1\IdentityModel.dll
