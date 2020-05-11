@@ -1,16 +1,26 @@
+using System.Linq;
 using System.Threading.Tasks;
-using HotelReservationWebsite.Services;
+using HotelReservationWebsite.Services.IService;
+using HotelReservationWebsite.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 namespace HotelReservationWebsite.Controllers
 {
     public class HomeController : Controller
     {
-        public HomeController()
+        private readonly IHotelService _service;
+        public HomeController(IHotelService service)
         {
+            _service = service;
         }
-        public IActionResult Index()
+        public async Task<IActionResult> Index(string searchString)
         {
-            return View();
+            var hotels = await _service.GetHotels(searchString);
+            var hotelVM = new HotelViewModel
+            {
+                SearchString = searchString,
+                Hotels = hotels.ToList()
+            };
+            return View(hotelVM);
         }
         public IActionResult Privacy()
         {

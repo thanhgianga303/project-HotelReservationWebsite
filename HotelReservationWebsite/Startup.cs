@@ -32,6 +32,7 @@ namespace HotelReservationWebsite
             services.AddMvc();
             services.AddHttpClient<IHttpClient, CustomHttpClient>();
             services.AddScoped<ICityService, CityService>();
+            services.AddScoped<IHotelService, HotelService>();
             // services.AddDbContext<MovieContext>(options => options.UseSqlite("Data Source=Movie.db"));
             JwtSecurityTokenHandler.DefaultMapInboundClaims = false;
 

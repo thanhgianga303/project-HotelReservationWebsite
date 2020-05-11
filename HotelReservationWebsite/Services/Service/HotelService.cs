@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using HotelReservationWebsite.Infrastructure;
 using HotelReservationWebsite.Models;
 using HotelReservationWebsite.Services.IService;
 
@@ -7,9 +8,9 @@ namespace HotelReservationWebsite.Services.Service
 {
     public class HotelService : IHotelService
     {
-        private readonly CustomHttpClient _httpClient;
+        private readonly IHttpClient _httpClient;
         private readonly string _baseUrl;
-        public HotelService(CustomHttpClient httpClient)
+        public HotelService(IHttpClient httpClient)
         {
             _httpClient = httpClient;
             _baseUrl = "http://localhost:5001/api/hotel";

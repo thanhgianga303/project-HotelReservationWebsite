@@ -16,12 +16,19 @@ namespace HotelReservationWebsiteAPI.Data.Repositories
         }
         public async Task<IEnumerable<Hotel>> GetHotels(string searchString = null)
         {
-            var hotels = from m in _context.Hotels
-                         select m;
-            if (!string.IsNullOrEmpty(searchString))
-            {
-                hotels = hotels.Where(m => m.HotelName.Contains(searchString) || m.HotelCode.Contains(searchString) || m.HotelStatus.ToString().Contains(searchString));
-            }
+            // var hotels = from m in _context.Hotels
+            //              select m;
+            // if (!string.IsNullOrEmpty(searchString))
+            // {
+            //     hotels = hotels.Where(m => m.HotelName.Contains(searchString)
+            //  || m.HotelCode.Contains(searchString)
+            //  || m.HotelStatus.ToString().Contains(searchString));
+            // }
+            var hotels = _context.Hotels
+                        .Include(m => m.Addresses)
+                        .Where(m => m.HotelName.Contains(searchString)
+                         || m.HotelCode.Contains(searchString)
+                        || m.HotelStatus.ToString().Contains(searchString));
             return await hotels.ToListAsync();
         }
     }

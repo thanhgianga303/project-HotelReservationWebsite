@@ -1,6 +1,32 @@
-﻿
+﻿@model HotelViewModel
+<div class="col-md-1">
+        <form class="form-header" asp-action="Index" method="GET">
+            <input class="au-input au-input--xl" type="text" asp-for="SearchString" placeholder="Search for datas &amp; reports..." />
+            <button class="au-btn--submit" type="submit">
+                <i class="zmdi zmdi-search"></i>
+            </button>
+        </form>
+    </div>
 @{
-    ViewData["Title"] = "List of Movies";
+    foreach (var item in Model.Hotels)
+    {
+        <div class="feature-full-1col">
+            <div class="image" style="background-image: url(../images/hotel_feture_1.jpg);">
+                <div class="descrip text-center">
+                    <p><small>For as low as</small><span>$100/night</span></p>
+                </div>
+            </div>
+            <div class="desc">
+                <h3>@item.HotelName</h3>
+                <p>Address: 
+                    @foreach (var item1 in item.Addresses)
+                    {
+                        @item1.HotelAddress
+                    }
+                   </p>
+                <p>number of rooms left: </p>
+                <p><a href="#" class="btn btn-primary btn-luxe-primary">Book Now <i class="ti-angle-right"></i></a></p>
+            </div>
+        </div>
+    }
 }
-
-<h2>Movie List</h2>
