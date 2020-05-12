@@ -7,22 +7,20 @@ namespace HotelReservationWebsite.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IHotelService _hotelService;
-        private readonly IAddressService _addressService;
-        public HomeController(IHotelService hotelService,IAddressService addressService)
+        private readonly IHotelService _service;
+        public HomeController(IHotelService service)
         {
-            _hotelService = hotelService;
-            _addressService=addressService;
+            _service = service;
         }
         public async Task<IActionResult> Index(string searchString)
         {
             var hotels = await _service.GetHotels(searchString);
-            
+
             var hotelVM = new HotelViewModel
             {
                 SearchString = searchString,
                 Hotels = hotels.ToList(),
-                
+
             };
             return View(hotelVM);
         }
