@@ -25,7 +25,6 @@ namespace HotelReservationWebsiteAPI.Data.Repositories
             //  || m.HotelStatus.ToString().Contains(searchString));
             // }
             var hotels = _context.Hotels
-                        .Include(m => m.Addresses)
                         .Where(m => m.HotelName.Contains(searchString)
                          || m.HotelCode.Contains(searchString)
                         || m.HotelStatus.ToString().Contains(searchString));

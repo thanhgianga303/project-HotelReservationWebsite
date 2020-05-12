@@ -80,6 +80,10 @@
             "Newtonsoft.Json": {
               "target": "Package",
               "version": "[12.0.3, )"
+            },
+            "microsoft.entityframeworkcore.proxies": {
+              "target": "Package",
+              "version": "[3.1.3, )"
             }
           },
           "imports": [
