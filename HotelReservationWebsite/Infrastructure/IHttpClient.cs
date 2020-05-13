@@ -7,8 +7,8 @@ namespace HotelReservationWebsite.Infrastructure
     {
         Task<IEnumerable<T>> GetListAsync<T>(string url) where T : class;
         Task<T> GetAsync<T>(string url) where T : class;
-        Task PostAsync(string url, object entity);
-        Task PutAsync(string url, object entity);
+        Task<T> PostAsync<T>(string url, T entity) where T : class;
+        Task<T> PutAsync<T>(string url, T entity) where T : class;
         Task DeleteAsync(string url);
     }
 }

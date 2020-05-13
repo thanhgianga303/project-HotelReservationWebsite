@@ -3,11 +3,12 @@ namespace HotelReservationWebsite.Models
     public class CartItem
     {
         public string Id { get; set; }
-        public string ProductId { get; set; }
-        public string ProductName { get; set; }
-        public decimal UnitPrice { get; set; }
-        public decimal OldUnitPrice { get; set; }
-        public int Quantity { get; set; }
-        public string PictureUri { get; set; }
+        public string HotelId { get; set; }
+        public string HotelName { get; set; }
+        public string ImageUrl { get; set; }
+        // public int AddressId { get; set; }
+        // public string HotelAddress { get; set; }
+        // public int CityId { get; set; }
+        // public string CityName { get; set; }
     }
 }

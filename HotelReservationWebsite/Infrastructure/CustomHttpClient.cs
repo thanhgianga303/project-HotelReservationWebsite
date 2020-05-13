@@ -37,7 +37,7 @@ namespace HotelReservationWebsite
 
             return JsonConvert.DeserializeObject<T>(responseString);
         }
-        public async Task PostAsync(string uri, object entity)
+        public async Task<T> PostAsync<T>(string uri, T entity) where T : class
         {
             var content = new StringContent(JsonConvert.SerializeObject(entity), Encoding.UTF8, "application/json");
 
@@ -51,9 +51,11 @@ namespace HotelReservationWebsite
             }
 
             response.EnsureSuccessStatusCode();
+            var responseString = await response.Content.ReadAsStringAsync();
+            return JsonConvert.DeserializeObject<T>(responseString);
         }
 
-        public async Task PutAsync(string uri, object entity)
+        public async Task<T> PutAsync<T>(string uri, T entity) where T : class
         {
             var content = new StringContent(JsonConvert.SerializeObject(entity), Encoding.UTF8, "application/json");
 
@@ -67,6 +69,8 @@ namespace HotelReservationWebsite
             }
 
             response.EnsureSuccessStatusCode();
+            var responseString = await response.Content.ReadAsStringAsync();
+            return JsonConvert.DeserializeObject<T>(responseString);
         }
 
         public async Task DeleteAsync(string uri)

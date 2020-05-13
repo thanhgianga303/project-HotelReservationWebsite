@@ -1,3 +1,5 @@
+using HotelReservationWebsiteAPI.Models;
+
 namespace HotelReservationWebsiteAPI.DTOs
 {
     public class AddressDTO
@@ -6,6 +8,7 @@ namespace HotelReservationWebsiteAPI.DTOs
         public int CityID { get; set; }
         public int HotelID { get; set; }
         public string HotelAddress { get; set; }
+        public City City { get; set; }
     }
 
 }

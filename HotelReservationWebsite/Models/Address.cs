@@ -6,6 +6,7 @@ namespace HotelReservationWebsite.Models
         public int CityID { get; set; }
         public int HotelID { get; set; }
         public string HotelAddress { get; set; }
+        public City City { get; set; }
     }
 
 }

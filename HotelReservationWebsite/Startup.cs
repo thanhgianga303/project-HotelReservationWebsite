@@ -4,6 +4,8 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Threading.Tasks;
 using HotelReservationWebsite.Infrastructure;
+using HotelReservationWebsite.IServices;
+using HotelReservationWebsite.Models;
 using HotelReservationWebsite.Services.IService;
 using HotelReservationWebsite.Services.Service;
 using Microsoft.AspNetCore.Builder;
@@ -29,11 +31,13 @@ namespace HotelReservationWebsite
         {
             services.Configure<AppSettings>(Configuration);
             services.AddHttpContextAccessor();
-            services.AddMvc();
+            services.AddControllersWithViews();
             services.AddHttpClient<IHttpClient, CustomHttpClient>();
             services.AddScoped<ICityService, CityService>();
             services.AddScoped<IHotelService, HotelService>();
-            // services.AddDbContext<MovieContext>(options => options.UseSqlite("Data Source=Movie.db"));
+            services.AddScoped<ICartService, CartService>();
+            // services.AddScoped<IOrderService, OrderService>();
+            services.AddScoped<IIdentityService<Buyer>, IdentityService>();
             JwtSecurityTokenHandler.DefaultMapInboundClaims = false;
 
             services.AddAuthentication(options =>
@@ -102,9 +106,8 @@ namespace HotelReservationWebsite
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapDefaultControllerRoute()
+                    .RequireAuthorization();
             });
         }
     }

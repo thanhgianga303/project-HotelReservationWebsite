@@ -8,7 +8,7 @@ namespace HotelReservationWebsite.Services.IService
     {
         Task<Cart> GetCart(Buyer buyer);
         Task AddItemToCart(Buyer buyer, CartItem cartItem);
-        Task<Cart> SetQuantities(Buyer user, Dictionary<string, int> quantities);
+        // Task<Cart> SetQuantities(Buyer user, Dictionary<string, int> quantities);
         Task<Cart> UpdateCart(Cart cart);
     }
 }

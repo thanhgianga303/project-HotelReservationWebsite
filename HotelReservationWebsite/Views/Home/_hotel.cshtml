@@ -1,22 +1,29 @@
 @model Hotel
-
+            <form method="POST" asp-controller="Cart" asp-action="AddToCart">
             <div class="image" style="background-image: url(@Model.ImageUrl);">
                 <div class="descrip text-center">
                     <p><small>For as low as</small><span>$100/night</span></p>
                 </div>
                
             </div>
+
             <div class="desc">
                 <h3>@Model.HotelName</h3>
+                <h3>@Model.HotelID</h3>
                 <p>Address: 
                     @foreach (var item1 in Model.Addresses)
                     {
-                        <p>@item1.HotelAddress</p>
+                        <p>@item1.HotelAddress ,@item1.City.CityName</p>
                     }
                    </p>
                 <p>number of rooms left: </p>
                  <p>
                     @Model.ImageUrl
                 </p>
-                <p><a href="#" class="btn btn-primary btn-luxe-primary">Book Now <i class="ti-angle-right"></i></a></p>
+                <input class="esh-catalog-button" type="submit" value="[ ADD TO CART ]" />
+            
             </div>
+            <input type="hidden" asp-for="@Model.HotelID"/>
+            <input type="hidden" asp-for="@Model.HotelName"/>
+            <input type="hidden" asp-for="@Model.ImageUrl"/>
+    </form>            
