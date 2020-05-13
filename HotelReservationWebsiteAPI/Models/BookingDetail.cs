@@ -9,8 +9,8 @@ namespace HotelReservationWebsiteAPI.Models
         public DateTime CheckInTime { get; set; }
         public DateTime CheckOutTime { get; set; }
         public int BookingDetailStatus { get; set; }
-        public Room Room { get; set; }
-        public Customer Customer { get; set; }
+        public virtual Room Room { get; set; }
+        public virtual Customer Customer { get; set; }
     }
 
 }

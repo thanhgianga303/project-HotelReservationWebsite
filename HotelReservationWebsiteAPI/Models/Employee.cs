@@ -12,7 +12,7 @@ namespace HotelReservationWebsiteAPI.Models
         public string Address { get; set; }
         public string Phone { get; set; }
         public string Email { get; set; }
-        public ApplicationUser ApplicationUser { get; set; }
+        public virtual ApplicationUser ApplicationUser { get; set; }
 
     }
 

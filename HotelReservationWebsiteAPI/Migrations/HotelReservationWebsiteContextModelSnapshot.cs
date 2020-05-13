@@ -236,6 +236,9 @@ namespace HotelReservationWebsiteAPI.Migrations
                     b.Property<int>("HotelStatus")
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("ImageUrl")
+                        .HasColumnType("TEXT");
+
                     b.HasKey("HotelID");
 
                     b.ToTable("Hotels");
@@ -290,6 +293,9 @@ namespace HotelReservationWebsiteAPI.Migrations
 
                     b.Property<int>("RoomStatus")
                         .HasColumnType("INTEGER");
+
+                    b.Property<decimal>("UnitPrice")
+                        .HasColumnType("TEXT");
 
                     b.HasKey("RoomID");
 

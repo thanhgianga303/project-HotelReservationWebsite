@@ -9,11 +9,13 @@ namespace HotelReservationWebsiteAPI.Models
         public int RoomCategoryID { get; set; }
         public int RoomNumber { get; set; }
         public string RoomName { get; set; }
+        public decimal UnitPrice { get; set; }
         public int RoomStatus { get; set; }
-        public List<BookingDetail> BookingDetails { get; set; }
-        public Hotel Hotel { get; set; }
-        public Promotion Promotion { get; set; }
-        public RoomCategory RoomCategory { get; set; }
+
+        public virtual List<BookingDetail> BookingDetails { get; set; }
+        public virtual Hotel Hotel { get; set; }
+        public virtual Promotion Promotion { get; set; }
+        public virtual RoomCategory RoomCategory { get; set; }
     }
 
 }

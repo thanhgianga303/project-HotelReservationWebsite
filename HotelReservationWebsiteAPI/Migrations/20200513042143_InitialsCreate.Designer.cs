@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HotelReservationWebsiteAPI.Migrations
 {
     [DbContext(typeof(HotelReservationWebsiteContext))]
-    [Migration("20200422192100_InitialsCreate")]
+    [Migration("20200513042143_InitialsCreate")]
     partial class InitialsCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -238,6 +238,9 @@ namespace HotelReservationWebsiteAPI.Migrations
                     b.Property<int>("HotelStatus")
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("ImageUrl")
+                        .HasColumnType("TEXT");
+
                     b.HasKey("HotelID");
 
                     b.ToTable("Hotels");
@@ -292,6 +295,9 @@ namespace HotelReservationWebsiteAPI.Migrations
 
                     b.Property<int>("RoomStatus")
                         .HasColumnType("INTEGER");
+
+                    b.Property<decimal>("UnitPrice")
+                        .HasColumnType("TEXT");
 
                     b.HasKey("RoomID");
 

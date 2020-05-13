@@ -19,8 +19,7 @@ namespace HotelReservationWebsite.Controllers
             var hotelVM = new HotelViewModel
             {
                 SearchString = searchString,
-                Hotels = hotels.ToList(),
-
+                Hotels = hotels.ToList()
             };
             return View(hotelVM);
         }

@@ -79,6 +79,7 @@ namespace HotelReservationWebsiteAPI.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     HotelCode = table.Column<string>(nullable: true),
                     HotelName = table.Column<string>(nullable: true),
+                    ImageUrl = table.Column<string>(nullable: true),
                     HotelStatus = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
@@ -216,6 +217,7 @@ namespace HotelReservationWebsiteAPI.Migrations
                     RoomCategoryID = table.Column<int>(nullable: false),
                     RoomNumber = table.Column<int>(nullable: false),
                     RoomName = table.Column<string>(nullable: true),
+                    UnitPrice = table.Column<decimal>(nullable: false),
                     RoomStatus = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
