@@ -6,27 +6,18 @@
                 <i class="zmdi zmdi-search"></i>
             </button>
         </form>
-    </div>
-@{
-    foreach (var item in Model.Hotels)
-    {
+</div>
+@if (Model.Hotels.Count() > 0)
+{
+
+    @foreach (var hotel in Model.Hotels)
+        {
         <div class="feature-full-1col">
-            <div class="image" style="background-image: url(../images/hotel_feture_1.jpg);">
-                <div class="descrip text-center">
-                    <p><small>For as low as</small><span>$100/night</span></p>
-                </div>
-            </div>
-            <div class="desc">
-                <h3>@item.HotelName</h3>
-                <p>Address: 
-                    @foreach (var item1 in item.Addresses)
-                    {
-                        @item1.HotelAddress
-                    }
-                   </p>
-                <p>number of rooms left: </p>
-                <p><a href="#" class="btn btn-primary btn-luxe-primary">Book Now <i class="ti-angle-right"></i></a></p>
-            </div>
+            <partial name="_hotel" model="hotel" />
         </div>
+        }
+}   
+    else
+    {
+        <h1>THERE ARE NO RESULTS THAT MATCH YOUR SEARCH</h1>
     }
-}

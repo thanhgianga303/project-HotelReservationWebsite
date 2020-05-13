@@ -1,0 +1,22 @@
+@model Hotel
+
+            <div class="image" style="background-image: url(@Model.ImageUrl);">
+                <div class="descrip text-center">
+                    <p><small>For as low as</small><span>$100/night</span></p>
+                </div>
+               
+            </div>
+            <div class="desc">
+                <h3>@Model.HotelName</h3>
+                <p>Address: 
+                    @foreach (var item1 in Model.Addresses)
+                    {
+                        <p>@item1.HotelAddress</p>
+                    }
+                   </p>
+                <p>number of rooms left: </p>
+                 <p>
+                    @Model.ImageUrl
+                </p>
+                <p><a href="#" class="btn btn-primary btn-luxe-primary">Book Now <i class="ti-angle-right"></i></a></p>
+            </div>

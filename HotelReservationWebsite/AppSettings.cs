@@ -2,7 +2,7 @@ namespace HotelReservationWebsite
 {
     public class AppSettings
     {
-        public string MovieUrl { get; set; }
+        public string AccountUrl { get; set; }
         public string IdentityUrl { get; set; }
         public string CartUrl { get; set; }
         public string ExternalCatalogBaseUrl { get; set; }
