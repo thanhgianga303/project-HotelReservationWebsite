@@ -32,12 +32,12 @@ namespace HotelReservationWebsite.Services.Service
         }
         public async Task UpdateHotel(int id, Hotel hotel)
         {
-            var url = _baseUrl + $"{id}";
+            var url = _baseUrl + $"/{id}";
             await _httpClient.PutAsync(url, hotel);
         }
         public async Task DeleteHotel(int id)
         {
-            var url = _baseUrl + $"{id}";
+            var url = _baseUrl + $"/{id}";
             await _httpClient.DeleteAsync(url);
         }
     }
