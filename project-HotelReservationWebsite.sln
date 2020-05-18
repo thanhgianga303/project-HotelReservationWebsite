@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client", "Client\Client.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CartAPI", "CartAPI\CartAPI.csproj", "{C189D110-949D-4ABB-9502-F586E5C09AC2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderAPI", "OrderAPI\OrderAPI.csproj", "{1B0464BF-C43A-495E-A4D4-94D1DB7D935D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -86,5 +88,17 @@ Global
 		{C189D110-949D-4ABB-9502-F586E5C09AC2}.Release|x64.Build.0 = Release|Any CPU
 		{C189D110-949D-4ABB-9502-F586E5C09AC2}.Release|x86.ActiveCfg = Release|Any CPU
 		{C189D110-949D-4ABB-9502-F586E5C09AC2}.Release|x86.Build.0 = Release|Any CPU
+		{1B0464BF-C43A-495E-A4D4-94D1DB7D935D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B0464BF-C43A-495E-A4D4-94D1DB7D935D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B0464BF-C43A-495E-A4D4-94D1DB7D935D}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{1B0464BF-C43A-495E-A4D4-94D1DB7D935D}.Debug|x64.Build.0 = Debug|Any CPU
+		{1B0464BF-C43A-495E-A4D4-94D1DB7D935D}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{1B0464BF-C43A-495E-A4D4-94D1DB7D935D}.Debug|x86.Build.0 = Debug|Any CPU
+		{1B0464BF-C43A-495E-A4D4-94D1DB7D935D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B0464BF-C43A-495E-A4D4-94D1DB7D935D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B0464BF-C43A-495E-A4D4-94D1DB7D935D}.Release|x64.ActiveCfg = Release|Any CPU
+		{1B0464BF-C43A-495E-A4D4-94D1DB7D935D}.Release|x64.Build.0 = Release|Any CPU
+		{1B0464BF-C43A-495E-A4D4-94D1DB7D935D}.Release|x86.ActiveCfg = Release|Any CPU
+		{1B0464BF-C43A-495E-A4D4-94D1DB7D935D}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
