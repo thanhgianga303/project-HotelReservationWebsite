@@ -5,10 +5,10 @@ using Microsoft.AspNetCore.Mvc;
 namespace HotelReservationWebsite.Controllers
 {
 
-
+    [Authorize]
     public class AdminController : Controller
     {
-        [Authorize(Roles = "Admin")]
+        // [Authorize(Roles = "Admin")]
         public IActionResult Index()
         {
             return View();
@@ -22,7 +22,7 @@ namespace HotelReservationWebsite.Controllers
         {
             return SignOut("Cookies", "oidc");
         }
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Customer")]
         public IActionResult Hotel()
         {
             return View();
