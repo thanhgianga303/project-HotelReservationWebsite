@@ -4,7 +4,7 @@
 }
 <!-- Medium input -->
 
-<form style="width: 500px;margin-left:250px"  method="POST">
+<form style="width: 500px;margin-left:250px" method="POST" enctype="multipart/form-data"  >
 <div class="md-form">
   <input type="hidden" asp-for="HotelID" class="form-control">
 </div>
@@ -18,7 +18,7 @@
 </div>
 <div class="md-form">
   <label asp-for="ImageUrl"></label>
-  <input type="text" asp-for="ImageUrl" class="form-control" size="100px !important ">
+  <input type="file" asp-for="ImageUrl" class="form-control" size="100px !important ">
 </div>
 <div class="md-form" style="margin-top:20px;">
   <a asp-action="Index" class="btn btn-primary mb-2" >Back</a>

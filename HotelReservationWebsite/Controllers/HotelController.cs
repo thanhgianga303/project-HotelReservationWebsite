@@ -1,10 +1,13 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using HotelReservationWebsite.Models;
 using HotelReservationWebsite.Services.IService;
 using HotelReservationWebsite.ViewModels;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 
@@ -14,10 +17,12 @@ namespace HotelReservationWebsite.Controllers
     {
         private readonly IHotelService _hotelService;
         private readonly AppSettings _settings;
-        public HotelController(IHotelService hotelService, IOptions<AppSettings> settings)
+        public readonly IWebHostEnvironment _webHost;
+        public HotelController(IHotelService hotelService, IOptions<AppSettings> settings, IWebHostEnvironment webHost)
         {
             _hotelService = hotelService;
             _settings = settings.Value;
+            _webHost = webHost;
         }
         public async Task<IActionResult> Index(string searchString)
         {
@@ -34,9 +39,12 @@ namespace HotelReservationWebsite.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> Create(Hotel hotel)
+        public async Task<IActionResult> Create(Hotel hotel, IFormFile ImageUrl)
         {
+            hotel.ImageUrl = ImageUrl.FileName;
+            Console.WriteLine("giangcoi123" + hotel.ImageUrl);
             await _hotelService.CreateHotel(hotel);
+            await UploadFileImg(ImageUrl);
             return RedirectToAction(nameof(Index));
         }
         [HttpGet]
@@ -65,6 +73,23 @@ namespace HotelReservationWebsite.Controllers
             });
 
             return hotels;
+        }
+        private async Task UploadFileImg(IFormFile imgFile)
+        {
+            var saveImg = Path.Combine(_webHost.WebRootPath, "images", imgFile.FileName);
+            string imgExt = Path.GetExtension(imgFile.FileName);
+            if (imgExt == ".jpg" || imgExt == ".png")
+            {
+                using (var upLoading = new FileStream(saveImg, FileMode.Create))
+                {
+                    await imgFile.CopyToAsync(upLoading);
+                    ViewData["Message"] = "The Selected File" + imgFile.FileName + "Is Save Successfully";
+                }
+            }
+            else
+            {
+                ViewData["Message"] = "Only The Image File Types .jpg & .png are allowed";
+            }
         }
     }
 }
