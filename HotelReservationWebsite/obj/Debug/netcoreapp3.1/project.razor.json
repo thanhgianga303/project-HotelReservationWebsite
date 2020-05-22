@@ -20531,11 +20531,6 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\thanh\\OneDrive\\Documents\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\Img\\Index.cshtml",
-      "TargetPath": "Views\\Img\\Index.cshtml",
-      "FileKind": "mvc"
-    },
-    {
       "FilePath": "c:\\Users\\thanh\\OneDrive\\Documents\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\Admin\\Address.cshtml",
       "TargetPath": "Views\\Admin\\Address.cshtml",
       "FileKind": "mvc"

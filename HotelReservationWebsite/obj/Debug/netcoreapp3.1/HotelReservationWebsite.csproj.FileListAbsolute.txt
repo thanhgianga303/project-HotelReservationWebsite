@@ -191,4 +191,3 @@ C:\Users\thanh\OneDrive\Documents\project-HotelReservationWebsite\HotelReservati
 C:\Users\thanh\OneDrive\Documents\project-HotelReservationWebsite\HotelReservationWebsite\obj\Debug\netcoreapp3.1\Razor\Views\Hotel\Index.cshtml.g.cs
 C:\Users\thanh\OneDrive\Documents\project-HotelReservationWebsite\HotelReservationWebsite\obj\Debug\netcoreapp3.1\Razor\Views\Hotel\Create.cshtml.g.cs
 C:\Users\thanh\OneDrive\Documents\project-HotelReservationWebsite\HotelReservationWebsite\obj\Debug\netcoreapp3.1\Razor\Views\Hotel\Delete.cshtml.g.cs
-C:\Users\thanh\OneDrive\Documents\project-HotelReservationWebsite\HotelReservationWebsite\obj\Debug\netcoreapp3.1\Razor\Views\Img\Index.cshtml.g.cs
