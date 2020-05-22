@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HotelReservationWebsiteAPI.Migrations
 {
     [DbContext(typeof(HotelReservationWebsiteContext))]
-    [Migration("20200513042143_InitialsCreate")]
+    [Migration("20200522163306_InitialsCreate")]
     partial class InitialsCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -17,30 +17,6 @@ namespace HotelReservationWebsiteAPI.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.3");
-
-            modelBuilder.Entity("HotelReservationWebsiteAPI.Models.Address", b =>
-                {
-                    b.Property<int>("AddressID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("CityID")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("HotelAddress")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("HotelID")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("AddressID");
-
-                    b.HasIndex("CityID");
-
-                    b.HasIndex("HotelID");
-
-                    b.ToTable("Addresses");
-                });
 
             modelBuilder.Entity("HotelReservationWebsiteAPI.Models.ApplicationUser", b =>
                 {
@@ -229,6 +205,12 @@ namespace HotelReservationWebsiteAPI.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("Address")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("CityID")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("HotelCode")
                         .HasColumnType("TEXT");
 
@@ -243,33 +225,9 @@ namespace HotelReservationWebsiteAPI.Migrations
 
                     b.HasKey("HotelID");
 
+                    b.HasIndex("CityID");
+
                     b.ToTable("Hotels");
-                });
-
-            modelBuilder.Entity("HotelReservationWebsiteAPI.Models.Promotion", b =>
-                {
-                    b.Property<int>("PromotionID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("FormOfPromotion")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("PromotionCode")
-                        .HasColumnType("TEXT");
-
-                    b.Property<DateTime>("PromotionFinishTime")
-                        .HasColumnType("TEXT");
-
-                    b.Property<DateTime>("PromotionStartTime")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("PromotionStatus")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("PromotionID");
-
-                    b.ToTable("Promotions");
                 });
 
             modelBuilder.Entity("HotelReservationWebsiteAPI.Models.Room", b =>
@@ -281,8 +239,8 @@ namespace HotelReservationWebsiteAPI.Migrations
                     b.Property<int>("HotelID")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("PromotionID")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("ImageUrl")
+                        .HasColumnType("TEXT");
 
                     b.Property<int>("RoomCategoryID")
                         .HasColumnType("INTEGER");
@@ -303,8 +261,6 @@ namespace HotelReservationWebsiteAPI.Migrations
 
                     b.HasIndex("HotelID");
 
-                    b.HasIndex("PromotionID");
-
                     b.HasIndex("RoomCategoryID");
 
                     b.ToTable("Rooms");
@@ -321,9 +277,6 @@ namespace HotelReservationWebsiteAPI.Migrations
 
                     b.Property<string>("CategoryName")
                         .HasColumnType("TEXT");
-
-                    b.Property<double>("UnitPrice")
-                        .HasColumnType("REAL");
 
                     b.HasKey("RoomCategoryID");
 
@@ -458,21 +411,6 @@ namespace HotelReservationWebsiteAPI.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("HotelReservationWebsiteAPI.Models.Address", b =>
-                {
-                    b.HasOne("HotelReservationWebsiteAPI.Models.City", "City")
-                        .WithMany("Addresses")
-                        .HasForeignKey("CityID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("HotelReservationWebsiteAPI.Models.Hotel", "Hotel")
-                        .WithMany("Addresses")
-                        .HasForeignKey("HotelID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("HotelReservationWebsiteAPI.Models.ApplicationUser", b =>
                 {
                     b.HasOne("HotelReservationWebsiteAPI.Models.Customer", "Customers")
@@ -499,17 +437,20 @@ namespace HotelReservationWebsiteAPI.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("HotelReservationWebsiteAPI.Models.Hotel", b =>
+                {
+                    b.HasOne("HotelReservationWebsiteAPI.Models.City", "City")
+                        .WithMany("Hotels")
+                        .HasForeignKey("CityID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("HotelReservationWebsiteAPI.Models.Room", b =>
                 {
                     b.HasOne("HotelReservationWebsiteAPI.Models.Hotel", "Hotel")
                         .WithMany("Rooms")
                         .HasForeignKey("HotelID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("HotelReservationWebsiteAPI.Models.Promotion", "Promotion")
-                        .WithMany("Rooms")
-                        .HasForeignKey("PromotionID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

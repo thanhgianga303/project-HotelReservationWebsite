@@ -9,13 +9,11 @@ namespace HotelReservationWebsiteAPI.Data
         {
 
         }
-        public DbSet<Address> Addresses { get; set; }
         public DbSet<BookingDetail> BookingDetails { get; set; }
         public DbSet<City> Cities { get; set; }
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Employee> Employees { get; set; }
         public DbSet<Hotel> Hotels { get; set; }
-        public DbSet<Promotion> Promotions { get; set; }
         public DbSet<Room> Rooms { get; set; }
         public DbSet<RoomCategory> RoomCategories { get; set; }
         protected override void OnModelCreating(ModelBuilder builder)

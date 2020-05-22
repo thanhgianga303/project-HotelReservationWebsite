@@ -8,12 +8,7 @@
             <div class="desc col-md-5">
                 <h3>@Model.HotelName</h3>
                 <h3>@Model.HotelID</h3>
-                <p>Address: 
-                    @foreach (var item1 in Model.Addresses)
-                    {
-                        <p>@item1.HotelAddress ,@item1.City.CityName</p>
-                    }
-                   </p>
+                <p>Address: @Model.Address, @Model.City.CityName
                 <input class="esh-catalog-button" type="submit" value="See Room List" />
             
             </div>

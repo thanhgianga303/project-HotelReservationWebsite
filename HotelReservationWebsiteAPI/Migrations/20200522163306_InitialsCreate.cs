@@ -72,47 +72,13 @@ namespace HotelReservationWebsiteAPI.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Hotels",
-                columns: table => new
-                {
-                    HotelID = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    HotelCode = table.Column<string>(nullable: true),
-                    HotelName = table.Column<string>(nullable: true),
-                    ImageUrl = table.Column<string>(nullable: true),
-                    HotelStatus = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Hotels", x => x.HotelID);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Promotions",
-                columns: table => new
-                {
-                    PromotionID = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    PromotionCode = table.Column<string>(nullable: true),
-                    PromotionStartTime = table.Column<DateTime>(nullable: false),
-                    PromotionFinishTime = table.Column<DateTime>(nullable: false),
-                    FormOfPromotion = table.Column<string>(nullable: true),
-                    PromotionStatus = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Promotions", x => x.PromotionID);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "RoomCategories",
                 columns: table => new
                 {
                     RoomCategoryID = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     CategoryCode = table.Column<string>(nullable: true),
-                    CategoryName = table.Column<string>(nullable: true),
-                    UnitPrice = table.Column<double>(nullable: false)
+                    CategoryName = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -137,6 +103,30 @@ namespace HotelReservationWebsiteAPI.Migrations
                         column: x => x.RoleId,
                         principalTable: "AspNetRoles",
                         principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Hotels",
+                columns: table => new
+                {
+                    HotelID = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    CityID = table.Column<int>(nullable: false),
+                    HotelCode = table.Column<string>(nullable: true),
+                    HotelName = table.Column<string>(nullable: true),
+                    Address = table.Column<string>(nullable: true),
+                    ImageUrl = table.Column<string>(nullable: true),
+                    HotelStatus = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Hotels", x => x.HotelID);
+                    table.ForeignKey(
+                        name: "FK_Hotels_Cities_CityID",
+                        column: x => x.CityID,
+                        principalTable: "Cities",
+                        principalColumn: "CityID",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -180,43 +170,16 @@ namespace HotelReservationWebsiteAPI.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Addresses",
-                columns: table => new
-                {
-                    AddressID = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    CityID = table.Column<int>(nullable: false),
-                    HotelID = table.Column<int>(nullable: false),
-                    HotelAddress = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Addresses", x => x.AddressID);
-                    table.ForeignKey(
-                        name: "FK_Addresses_Cities_CityID",
-                        column: x => x.CityID,
-                        principalTable: "Cities",
-                        principalColumn: "CityID",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Addresses_Hotels_HotelID",
-                        column: x => x.HotelID,
-                        principalTable: "Hotels",
-                        principalColumn: "HotelID",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Rooms",
                 columns: table => new
                 {
                     RoomID = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     HotelID = table.Column<int>(nullable: false),
-                    PromotionID = table.Column<int>(nullable: false),
                     RoomCategoryID = table.Column<int>(nullable: false),
                     RoomNumber = table.Column<int>(nullable: false),
                     RoomName = table.Column<string>(nullable: true),
+                    ImageUrl = table.Column<string>(nullable: true),
                     UnitPrice = table.Column<decimal>(nullable: false),
                     RoomStatus = table.Column<int>(nullable: false)
                 },
@@ -228,12 +191,6 @@ namespace HotelReservationWebsiteAPI.Migrations
                         column: x => x.HotelID,
                         principalTable: "Hotels",
                         principalColumn: "HotelID",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Rooms_Promotions_PromotionID",
-                        column: x => x.PromotionID,
-                        principalTable: "Promotions",
-                        principalColumn: "PromotionID",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Rooms_RoomCategories_RoomCategoryID",
@@ -358,16 +315,6 @@ namespace HotelReservationWebsiteAPI.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Addresses_CityID",
-                table: "Addresses",
-                column: "CityID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Addresses_HotelID",
-                table: "Addresses",
-                column: "HotelID");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
                 column: "RoleId");
@@ -427,14 +374,14 @@ namespace HotelReservationWebsiteAPI.Migrations
                 column: "RoomID");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Hotels_CityID",
+                table: "Hotels",
+                column: "CityID");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Rooms_HotelID",
                 table: "Rooms",
                 column: "HotelID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Rooms_PromotionID",
-                table: "Rooms",
-                column: "PromotionID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Rooms_RoomCategoryID",
@@ -444,9 +391,6 @@ namespace HotelReservationWebsiteAPI.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
-                name: "Addresses");
-
             migrationBuilder.DropTable(
                 name: "AspNetRoleClaims");
 
@@ -464,9 +408,6 @@ namespace HotelReservationWebsiteAPI.Migrations
 
             migrationBuilder.DropTable(
                 name: "BookingDetails");
-
-            migrationBuilder.DropTable(
-                name: "Cities");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
@@ -487,10 +428,10 @@ namespace HotelReservationWebsiteAPI.Migrations
                 name: "Hotels");
 
             migrationBuilder.DropTable(
-                name: "Promotions");
+                name: "RoomCategories");
 
             migrationBuilder.DropTable(
-                name: "RoomCategories");
+                name: "Cities");
         }
     }
 }

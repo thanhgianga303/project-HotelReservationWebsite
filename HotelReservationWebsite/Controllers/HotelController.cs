@@ -16,11 +16,16 @@ namespace HotelReservationWebsite.Controllers
     public class HotelController : Controller
     {
         private readonly IHotelService _hotelService;
+        private readonly ICityService _cityService;
         private readonly AppSettings _settings;
         public readonly IWebHostEnvironment _webHost;
-        public HotelController(IHotelService hotelService, IOptions<AppSettings> settings, IWebHostEnvironment webHost)
+        public HotelController(IHotelService hotelService,
+                            ICityService cityService,
+                            IOptions<AppSettings> settings,
+                            IWebHostEnvironment webHost)
         {
             _hotelService = hotelService;
+            _cityService = cityService;
             _settings = settings.Value;
             _webHost = webHost;
         }
@@ -34,17 +39,31 @@ namespace HotelReservationWebsite.Controllers
             return View(hotelsVM);
         }
         [HttpGet]
-        public IActionResult Create()
+        public async Task<IActionResult> SeeRoomList(string searchString)
         {
-            return View();
+            var hotels = await _hotelService.GetHotels(searchString);
+            var hotelsVM = new HotelViewModel
+            {
+                Hotels = ChangeUriPlaceholder(hotels.ToList())
+            };
+            return View(hotelsVM);
+        }
+        [HttpGet]
+        public async Task<IActionResult> Create(string searchString)
+        {
+            var cities = await _cityService.GetCities(searchString);
+            var hotelsVM = new HotelViewModel
+            {
+                Cities = cities.ToList()
+            };
+            return View(hotelsVM);
         }
         [HttpPost]
-        public async Task<IActionResult> Create(Hotel hotel, IFormFile ImageUrl)
+        public async Task<IActionResult> Create(HotelViewModel hotelVM)
         {
-            hotel.ImageUrl = ImageUrl.FileName;
-            Console.WriteLine("giangcoi123" + hotel.ImageUrl);
-            await _hotelService.CreateHotel(hotel);
-            await UploadFileImg(ImageUrl);
+            hotelVM.Hotel.ImageUrl = hotelVM.ImageUrl.FileName;
+            await _hotelService.CreateHotel(hotelVM.Hotel);
+            await UploadFileImg(hotelVM.ImageUrl);
             return RedirectToAction(nameof(Index));
         }
         [HttpGet]

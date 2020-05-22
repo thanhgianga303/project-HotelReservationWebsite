@@ -1,4 +1,4 @@
-@model Hotel
+@model HotelViewModel
 @{
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
@@ -6,19 +6,29 @@
 
 <form style="width: 500px;margin-left:250px" method="POST" enctype="multipart/form-data"  >
 <div class="md-form">
-  <input type="hidden" asp-for="HotelID" class="form-control">
+  <input type="hidden" asp-for="@Model.Hotel.HotelID" class="form-control">
 </div>
 <div class="md-form">
-  <label asp-for="HotelCode" style="color:black,font-size:30px !important"></label>
-  <input type="text" asp-for="HotelCode" class="form-control" size="100px !important">
+  <label>Thành phố:</label>
+    <select asp-for="@Model.Hotel.CityID">
+      @foreach (var item in Model.Cities)
+      {
+        <option value="@item.CityID">@item.CityName</option>  
+      }
+          
+    </select>
 </div>
 <div class="md-form">
-  <label asp-for="HotelName"></label>
-  <input type="text" asp-for="HotelName" class="form-control" size="100px !important ">
+  <label asp-for="@Model.Hotel.HotelCode" style="color:black,font-size:30px !important"></label>
+  <input type="text" asp-for="@Model.Hotel.HotelCode" class="form-control" size="100px !important">
 </div>
 <div class="md-form">
-  <label asp-for="ImageUrl"></label>
-  <input type="file" asp-for="ImageUrl" class="form-control" size="100px !important ">
+  <label asp-for="@Model.Hotel.HotelName"></label>
+  <input type="text" asp-for="@Model.Hotel.HotelName" class="form-control" size="100px !important ">
+</div>
+<div class="md-form">
+  <label asp-for="@Model.ImageUrl"></label>
+  <input type="file" asp-for="@Model.ImageUrl" class="form-control" size="100px !important ">
 </div>
 <div class="md-form" style="margin-top:20px;">
   <a asp-action="Index" class="btn btn-primary mb-2" >Back</a>

@@ -20541,6 +20541,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\thanh\\OneDrive\\Documents\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\Hotel\\SeeRoomList.cshtml",
+      "TargetPath": "Views\\Hotel\\SeeRoomList.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\thanh\\OneDrive\\Documents\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\City\\Edit.cshtml",
       "TargetPath": "Views\\City\\Edit.cshtml",
       "FileKind": "mvc"
@@ -20628,11 +20633,6 @@
     {
       "FilePath": "c:\\Users\\thanh\\OneDrive\\Documents\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\Shared\\_Layout.cshtml",
       "TargetPath": "Views\\Shared\\_Layout.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\thanh\\OneDrive\\Documents\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\Test\\Index.cshtml",
-      "TargetPath": "Views\\Test\\Index.cshtml",
       "FileKind": "mvc"
     },
     {

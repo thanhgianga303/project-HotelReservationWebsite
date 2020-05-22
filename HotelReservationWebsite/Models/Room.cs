@@ -7,6 +7,7 @@ namespace HotelReservationWebsite.Models
         public int HotelID { get; set; }
         public int PromotionID { get; set; }
         public int RoomCategoryID { get; set; }
+        public string ImageUrl { get; set; }
         public int RoomNumber { get; set; }
         public string RoomName { get; set; }
         public int RoomStatus { get; set; }

@@ -6,7 +6,6 @@ namespace HotelReservationWebsiteAPI.Models
         public int RoomCategoryID { get; set; }
         public string CategoryCode { get; set; }
         public string CategoryName { get; set; }
-        public double UnitPrice { get; set; }
         public virtual List<Room> Rooms { get; set; }
     }
 
