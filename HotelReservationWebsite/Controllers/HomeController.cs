@@ -6,6 +6,7 @@ using HotelReservationWebsite.Services.IService;
 using HotelReservationWebsite.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
+using Microsoft.AspNetCore.Authorization;
 
 namespace HotelReservationWebsite.Controllers
 {
@@ -18,6 +19,7 @@ namespace HotelReservationWebsite.Controllers
             _service = service;
             _settings = settings.Value;
         }
+        [AllowAnonymous]
         public async Task<IActionResult> Index(string searchString)
         {
             var hotels = await _service.GetHotels(searchString);

@@ -1,18 +1,21 @@
 ﻿@model HotelViewModel
-<div class="col-md-12">
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@* <div class="col-md-12">
         <form class="form-header" asp-action="Index" method="GET">
             <input class="au-input au-input--xl" type="text" asp-for="SearchString" placeholder="Search for datas &amp; reports..." />
             <button class="au-btn--submit" type="submit">
                 <i class="zmdi zmdi-search"></i>
             </button>
         </form>
-</div>
+</div> *@
 @if (Model.Hotels.Count() > 0)
 {
 
     @foreach (var hotel in Model.Hotels)
         {
-        <div class="feature-full-1col">
+        <div class="col-md-12">
             <partial name="_hotel" model="hotel" />
         </div>
         }

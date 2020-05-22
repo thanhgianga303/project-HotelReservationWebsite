@@ -1,13 +1,11 @@
 @model Hotel
             <form method="POST" asp-controller="Cart" asp-action="AddToCart">
-            <div class="image" style="background-image: url(@Model.ImageUrl);">
-                <div class="descrip text-center">
-                    <p><small>For as low as</small><span>$100/night</span></p>
-                </div>
-               
+            <div class="col-md-7">
+                <img src="@Model.ImageUrl"/>
             </div>
+            
 
-            <div class="desc">
+            <div class="desc col-md-5">
                 <h3>@Model.HotelName</h3>
                 <h3>@Model.HotelID</h3>
                 <p>Address: 
@@ -16,11 +14,7 @@
                         <p>@item1.HotelAddress ,@item1.City.CityName</p>
                     }
                    </p>
-                <p>number of rooms left: </p>
-                 <p>
-                    @Model.ImageUrl
-                </p>
-                <input class="esh-catalog-button" type="submit" value="[ ADD TO CART ]" />
+                <input class="esh-catalog-button" type="submit" value="See Room List" />
             
             </div>
             <input type="hidden" asp-for="@Model.HotelID"/>

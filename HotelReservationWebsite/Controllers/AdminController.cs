@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace HotelReservationWebsite.Controllers
 {
 
-    [Authorize]
+    // [Authorize]
     public class AdminController : Controller
     {
         // [Authorize(Roles = "Admin")]
@@ -22,7 +22,8 @@ namespace HotelReservationWebsite.Controllers
         {
             return SignOut("Cookies", "oidc");
         }
-        [Authorize(Roles = "Customer")]
+        // [Authorize(Roles = "Customer")]
+        [Authorize]
         public IActionResult Hotel()
         {
             return View();
