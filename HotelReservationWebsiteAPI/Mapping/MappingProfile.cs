@@ -16,13 +16,10 @@ namespace HotelReservationWebsiteAPI.Mapping
             CreateMap<RoomCategory, RoomCategoryDTO>();
 
             CreateMap<Room, RoomDTO>();
-            CreateMap<Room, RoomDTO>();
+            CreateMap<RoomDTO, Room>();
 
             CreateMap<Hotel, HotelDTO>();
             CreateMap<HotelDTO, Hotel>();
-
-            // CreateMap<Account, AccountDTO>();
-            // CreateMap<AccountDTO, Account>();
 
             CreateMap<Customer, CustomerDTO>();
             CreateMap<CustomerDTO, Customer>();

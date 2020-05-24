@@ -26,5 +26,6 @@ namespace HotelReservationWebsiteAPI.Data.Repositories
             }
             return await rooms.ToListAsync();
         }
+
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -46,6 +47,7 @@ namespace HotelReservationWebsiteAPI.Controller
             var room = await _repository.GetRoom(roomID, hotelID);
             if (room == null)
             {
+                Console.WriteLine("test 11");
                 return NotFound();
             }
             var roomDTO = _mapper.Map<Room, RoomDTO>(room);
@@ -57,6 +59,13 @@ namespace HotelReservationWebsiteAPI.Controller
             var hotel = _mapper.Map<HotelDTO, Hotel>(hotelDTO);
             await _repository.Add(hotel);
             return CreatedAtAction(nameof(GetBy), new { id = hotel.HotelID }, hotel);
+        }
+        [HttpPost]
+        public async Task<IActionResult> CreateRoom(RoomDTO roomDTO)
+        {
+            var room = _mapper.Map<RoomDTO, Room>(roomDTO);
+            await _repository.AddRoom(room);
+            return CreatedAtAction(nameof(GetRoom), new { roomID = room.RoomID, hotelID = room.HotelID }, room);
         }
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(int id, HotelDTO hotelDTO)
@@ -83,9 +92,46 @@ namespace HotelReservationWebsiteAPI.Controller
             }
             return NoContent();
         }
+        [HttpPut("roomid={roomID}&hotelid={hotelID}")]
+        public async Task<IActionResult> UpdateRoom(int roomId, int hotelId, RoomDTO roomDTO)
+        {
+            if (roomId != roomDTO.RoomID && hotelId != roomDTO.HotelID)
+            {
+                return NotFound();
+            }
+            try
+            {
+                var room = _mapper.Map<RoomDTO, Room>(roomDTO);
+                await _repository.UpdateRoom(room);
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!await RoomExists(roomId, hotelId))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+            return NoContent();
+        }
         private async Task<bool> HotelExists(int id)
         {
             var hotel = await _repository.GetBy(id);
+            if (hotel != null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        private async Task<bool> RoomExists(int roomId, int hotelId)
+        {
+            var hotel = await _repository.GetRoom(roomId, hotelId);
             if (hotel != null)
             {
                 return true;
@@ -104,6 +150,18 @@ namespace HotelReservationWebsiteAPI.Controller
                 return NotFound();
             }
             await _repository.Delete(id);
+            return NoContent();
+        }
+        [HttpDelete("roomid={roomID}&hotelid={hotelID}")]
+        public async Task<IActionResult> DeleteRoom(int roomId, int hotelId)
+        {
+            var findRoom = await _repository.GetRoom(roomId, hotelId);
+            if (findRoom == null)
+            {
+                Console.WriteLine("test");
+                return NotFound();
+            }
+            await _repository.DeleteRoom(findRoom);
             return NoContent();
         }
     }

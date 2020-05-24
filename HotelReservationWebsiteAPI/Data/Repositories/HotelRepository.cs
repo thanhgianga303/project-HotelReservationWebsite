@@ -26,10 +26,25 @@ namespace HotelReservationWebsiteAPI.Data.Repositories
             }
             return await hotels.ToListAsync();
         }
-        public async Task<Room> GetRoom(int hotelID, int roomID)
+        public async Task<Room> GetRoom(int roomID, int hotelID)
         {
             var room = _context.Rooms.Where(r => r.HotelID == hotelID && r.RoomID == roomID);
             return await room.FirstOrDefaultAsync();
+        }
+        public async Task AddRoom(Room room)
+        {
+            await _context.AddAsync(room);
+            await _context.SaveChangesAsync();
+        }
+        public async Task UpdateRoom(Room room)
+        {
+            _context.Update(room);
+            await _context.SaveChangesAsync();
+        }
+        public async Task DeleteRoom(Room room)
+        {
+            _context.Remove(room);
+            await _context.SaveChangesAsync();
         }
     }
 }

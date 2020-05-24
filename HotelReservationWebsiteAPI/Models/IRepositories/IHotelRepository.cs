@@ -9,5 +9,8 @@ namespace HotelReservationWebsiteAPI.Models.IRepositories
         Task<IEnumerable<Hotel>> GetHotels(string searchString = null);
         Task<Room> GetRoom(int hotelID, int roomID);
         // Task<Room> CreateRoom(int hotelID, int roomID);
+        Task AddRoom(Room room);
+        Task UpdateRoom(Room room);
+        Task DeleteRoom(Room room);
     }
 }

@@ -8,5 +8,6 @@ namespace HotelReservationWebsiteAPI.Models.IRepositories
     {
         Task<IEnumerable<Room>> GetRooms(string searchString = null);
         // Task<Room> DeleteRoom(int roomId, int hotelId);
+
     }
 }
