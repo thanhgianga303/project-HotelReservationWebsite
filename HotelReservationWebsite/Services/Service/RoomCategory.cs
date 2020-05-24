@@ -18,9 +18,9 @@ namespace HotelReservationWebsite.Services.Service
             _baseUrl = "http://localhost:5001/api/roomcategory";
             _httpClient = httpClient;
         }
-        public async Task<IEnumerable<RoomCategory>> GetRoomCategories(string searchString)
+        public async Task<IEnumerable<RoomCategory>> GetRoomCategories()
         {
-            var url = _baseUrl + $"?searchString={searchString}";
+            var url = _baseUrl;
             return await _httpClient.GetListAsync<RoomCategory>(url);
         }
         public async Task<RoomCategory> GetRoomCategory(int id)

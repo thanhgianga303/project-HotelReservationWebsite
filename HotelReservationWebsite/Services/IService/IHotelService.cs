@@ -9,6 +9,9 @@ namespace HotelReservationWebsite.Services.IService
         Task<IEnumerable<Hotel>> GetHotels(string searchString);
         Task<Hotel> GetHotel(int id);
         Task<Room> GetRoom(int roomId, int hotelId);
+        Task CreateRoom(Room room);
+        Task UpdateRoom(int roomId, int hotelId, Room room);
+        Task DeleteRoom(int roomId, int hotelId);
         Task CreateHotel(Hotel Hotel);
         Task UpdateHotel(int id, Hotel Hotel);
         Task DeleteHotel(int id);

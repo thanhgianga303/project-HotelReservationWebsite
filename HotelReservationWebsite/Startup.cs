@@ -35,6 +35,7 @@ namespace HotelReservationWebsite
             services.AddHttpClient<IHttpClient, CustomHttpClient>();
             services.AddScoped<ICityService, CityService>();
             services.AddScoped<IHotelService, HotelService>();
+            services.AddScoped<IRoomCategoryService, RoomCategoryService>();
             services.AddScoped<ICartService, CartService>();
             // services.AddScoped<IOrderService, OrderService>();
             services.AddScoped<IIdentityService<Buyer>, IdentityService>();

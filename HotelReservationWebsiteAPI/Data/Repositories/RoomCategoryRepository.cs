@@ -14,15 +14,15 @@ namespace HotelReservationWebsiteAPI.Data.Repositories
         {
             _context = context;
         }
-        public async Task<IEnumerable<RoomCategory>> GetRoomCategories(string searchString = null)
+        public async Task<IEnumerable<RoomCategory>> GetRoomCategories()
         {
             var roomcategories = from m in _context.RoomCategories
                                  select m;
-            if (!string.IsNullOrEmpty(searchString))
-            {
-                roomcategories = roomcategories.Where(m => m.CategoryName.Contains(searchString)
-                 || m.CategoryCode.Contains(searchString));
-            }
+            // if (!string.IsNullOrEmpty(searchString))
+            // {
+            //     roomcategories = roomcategories.Where(m => m.CategoryName.Contains(searchString)
+            //      || m.CategoryCode.Contains(searchString));
+            // }
             return await roomcategories.ToListAsync();
         }
     }

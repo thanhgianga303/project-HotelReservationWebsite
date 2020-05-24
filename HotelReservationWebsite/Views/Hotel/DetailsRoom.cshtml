@@ -23,7 +23,9 @@
         </div>
         <div class="row">
            <div class="col-md-7">Room Category:</div> 
-            <div class="col-md-5">@Model.RoomCategory.CategoryName</div>
+            <div class="col-md-5">
+                @Model.RoomCategory.CategoryName
+            </div>
         </div>
         <div class="row">
            <div class="col-md-7">Room Status:</div> 
@@ -43,7 +45,7 @@
             <div class="col-md-7">@Model.UnitPrice</div>
         </div>
         <div class="row">
-           <a asp-action="SeeRoomList" asp-controller="Hotel" class="btn btn-danger" asp-route-id="@Model.HotelID">B</a>
+           <a asp-action="SeeRoomList" asp-controller="Hotel" class="btn btn-danger" asp-route-id="@Model.HotelID">Back</a>
         </div>
     </div>
 </div>

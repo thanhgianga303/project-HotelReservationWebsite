@@ -6,6 +6,6 @@ namespace HotelReservationWebsiteAPI.Models.IRepositories
 {
     public interface IRoomCategoryRepository : IRepository<RoomCategory>
     {
-        Task<IEnumerable<RoomCategory>> GetRoomCategories(string searchString = null);
+        Task<IEnumerable<RoomCategory>> GetRoomCategories();
     }
 }

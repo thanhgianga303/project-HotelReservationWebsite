@@ -6,8 +6,7 @@ namespace HotelReservationWebsite.Services.IService
 {
     public interface IRoomCategoryService
     {
-        Task<IEnumerable<RoomCategory>> GetRoomCategories(string searchString);
-        // string genre, string searchString1
+        Task<IEnumerable<RoomCategory>> GetRoomCategories();
         Task<RoomCategory> GetRoomCategory(int id);
         Task CreateRoomCategory(RoomCategory RoomCategory);
         Task UpdateRoomCategory(int id, RoomCategory RoomCategory);

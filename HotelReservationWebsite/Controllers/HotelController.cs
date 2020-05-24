@@ -17,11 +17,12 @@ namespace HotelReservationWebsite.Controllers
     {
         private readonly IHotelService _hotelService;
         private readonly ICityService _cityService;
-        // private readonly IRoomService _roomService;
+        private readonly IRoomCategoryService _categoryService;
         private readonly AppSettings _settings;
         public readonly IWebHostEnvironment _webHost;
         public HotelController(IHotelService hotelService,
                             ICityService cityService,
+                            IRoomCategoryService categoryService,
                             IOptions<AppSettings> settings,
                             IWebHostEnvironment webHost)
         {
@@ -29,6 +30,7 @@ namespace HotelReservationWebsite.Controllers
             _cityService = cityService;
             _settings = settings.Value;
             _webHost = webHost;
+            _categoryService = categoryService;
         }
         public async Task<IActionResult> Index(string searchString)
         {
@@ -84,10 +86,51 @@ namespace HotelReservationWebsite.Controllers
         [HttpPost, ActionName("Delete")]
         public async Task<IActionResult> DeleteConfirm(int id)
         {
-            Console.WriteLine("giangcoi" + id);
+            // Console.WriteLine("giangcoi" + id);
             await _hotelService.DeleteHotel(id);
             return RedirectToAction(nameof(Index));
         }
+        [HttpGet]
+        public async Task<IActionResult> EditRoom(int roomId, int hotelId)
+        {
+            var room = await _hotelService.GetRoom(roomId, hotelId);
+            var categories = await _categoryService.GetRoomCategories();
+            var roomVM = new RoomViewModel
+            {
+                ImageUrlDisPlay = room.ImageUrl,
+                RoomCategories = categories.ToList(),
+                Room = ChangeUriPlaceholderRoom(room)
+            };
+            return View(roomVM);
+        }
+        [HttpPost]
+        public async Task<IActionResult> EditRoom(RoomViewModel roomVM)
+        {
+            if (roomVM.ImageUrl == null)
+            {
+                roomVM.Room.ImageUrl = roomVM.ImageUrlDisPlay;
+                await _hotelService.UpdateRoom(roomVM.Room.RoomID, roomVM.Room.HotelID, roomVM.Room);
+            }
+            else
+            {
+                roomVM.Room.ImageUrl = roomVM.ImageUrl.FileName;
+                await _hotelService.UpdateRoom(roomVM.Room.RoomID, roomVM.Room.HotelID, roomVM.Room);
+                await UploadFileImg(roomVM.ImageUrl);
+            }
+            return RedirectToAction("EditRoom", new { roomId = roomVM.Room.RoomID, hotelId = roomVM.Room.HotelID });
+        }
+        [HttpGet]
+        public async Task<IActionResult> DeleteRoom(int roomId, int hotelId)
+        {
+            var room = await _hotelService.GetRoom(roomId, hotelId);
+            var roomVM = new RoomViewModel
+            {
+                Room = ChangeUriPlaceholderRoom(room)
+            };
+            return View(roomVM);
+        }
+        [HttpPost]
+
         private IList<Hotel> ChangeUriPlaceholderHotels(List<Hotel> hotels)
         {
             var baseUri = _settings.ExternalCatalogBaseUrl;

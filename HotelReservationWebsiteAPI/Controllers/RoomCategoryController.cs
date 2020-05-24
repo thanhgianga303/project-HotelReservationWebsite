@@ -23,9 +23,9 @@ namespace HotelReservationWebsiteAPI.Controller
             _mapper = mapper;
         }
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<RoomCategoryDTO>>> GetAll(string searchString = null)
+        public async Task<ActionResult<IEnumerable<RoomCategoryDTO>>> GetAll()
         {
-            var roomcategories = await _repository.GetRoomCategories(searchString);
+            var roomcategories = await _repository.GetRoomCategories();
             var roomcategoriesDTO = _mapper.Map<IEnumerable<RoomCategory>, IEnumerable<RoomCategoryDTO>>(roomcategories);
             return Ok(roomcategoriesDTO);
         }
