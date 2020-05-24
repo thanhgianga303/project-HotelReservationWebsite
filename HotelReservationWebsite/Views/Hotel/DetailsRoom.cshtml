@@ -1,0 +1,49 @@
+@model Room
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+
+}
+<div class="row" style="margin-top:40px">
+    <div class="col-md-12">
+        <h1>Chi tiết phòng của khách sạn @Html.DisplayFor(model => model.Hotel.HotelName)</h1>
+     </div>
+</div>
+    <div class="row" style="margin-top:40px">
+    <div class="col-md-5">
+        <img src="@Model.ImageUrl"/>
+     </div>
+    <div class="col-md-7">
+        <div class="row">
+            <div class="col-md-7">Room Name:</div>
+            <div class="col-md-5">@Model.RoomName</div>
+        </div>
+        <div class="row">
+            <div class="col-md-7">Room Number:</div>
+            <div class="col-md-5">@Model.RoomNumber</div>
+        </div>
+        <div class="row">
+           <div class="col-md-7">Room Category:</div> 
+            <div class="col-md-5">@Model.RoomCategory.CategoryName</div>
+        </div>
+        <div class="row">
+           <div class="col-md-7">Room Status:</div> 
+            <div class="col-md-5">
+                @if(Model.RoomStatus == 1)
+                {
+                    <p>Can Put</p>
+                }
+                else
+                {
+                   <p>Reserved</p> 
+                }
+            </div>
+        </div>
+        <div class="row">
+           <div class="col-md-5">Unit Price:</div> 
+            <div class="col-md-7">@Model.UnitPrice</div>
+        </div>
+        <div class="row">
+           <a asp-action="SeeRoomList" asp-controller="Hotel" class="btn btn-danger" asp-route-id="@Model.HotelID">B</a>
+        </div>
+    </div>
+</div>

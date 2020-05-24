@@ -17,6 +17,7 @@ namespace HotelReservationWebsite.Controllers
     {
         private readonly IHotelService _hotelService;
         private readonly ICityService _cityService;
+        // private readonly IRoomService _roomService;
         private readonly AppSettings _settings;
         public readonly IWebHostEnvironment _webHost;
         public HotelController(IHotelService hotelService,
@@ -34,19 +35,27 @@ namespace HotelReservationWebsite.Controllers
             var hotels = await _hotelService.GetHotels(searchString);
             var hotelsVM = new HotelViewModel
             {
-                Hotels = ChangeUriPlaceholder(hotels.ToList())
+                Hotels = ChangeUriPlaceholderHotels(hotels.ToList())
             };
             return View(hotelsVM);
         }
         [HttpGet]
-        public async Task<IActionResult> SeeRoomList(string searchString)
+        public async Task<IActionResult> SeeRoomList(int id)
         {
-            var hotels = await _hotelService.GetHotels(searchString);
-            var hotelsVM = new HotelViewModel
+            var hotel = await _hotelService.GetHotel(id);
+            var roomVM = new RoomViewModel
             {
-                Hotels = ChangeUriPlaceholder(hotels.ToList())
+                // Hotels = ChangeUriPlaceholder(hotels.ToList())
+                Rooms = ChangeUriPlaceholderRooms(hotel.Rooms)
             };
-            return View(hotelsVM);
+            return View(roomVM);
+        }
+        [HttpGet]
+        public async Task<IActionResult> DetailsRoom(int roomID, int hotelID)
+        {
+            var room = await _hotelService.GetRoom(roomID, hotelID);
+            var roomChange = ChangeUriPlaceholderRoom(room);
+            return View(roomChange);
         }
         [HttpGet]
         public async Task<IActionResult> Create(string searchString)
@@ -79,7 +88,7 @@ namespace HotelReservationWebsite.Controllers
             await _hotelService.DeleteHotel(id);
             return RedirectToAction(nameof(Index));
         }
-        private IList<Hotel> ChangeUriPlaceholder(List<Hotel> hotels)
+        private IList<Hotel> ChangeUriPlaceholderHotels(List<Hotel> hotels)
         {
             var baseUri = _settings.ExternalCatalogBaseUrl;
             // var imageUrl = "";
@@ -92,6 +101,25 @@ namespace HotelReservationWebsite.Controllers
             });
 
             return hotels;
+        }
+        private Room ChangeUriPlaceholderRoom(Room room)
+        {
+            var baseUri = _settings.ExternalCatalogBaseUrl;
+            // var imageUrl = "";
+            room.ImageUrl = baseUri + "/images/" + room.ImageUrl;
+            return room;
+        }
+        private IList<Room> ChangeUriPlaceholderRooms(List<Room> rooms)
+        {
+            var baseUri = _settings.ExternalCatalogBaseUrl;
+            rooms.ForEach(x =>
+            {
+
+                x.ImageUrl = baseUri + "/images/" + x.ImageUrl;
+
+            });
+
+            return rooms;
         }
         private async Task UploadFileImg(IFormFile imgFile)
         {

@@ -24,11 +24,12 @@ namespace HotelReservationWebsiteAPI.Data.Repositories
              || m.HotelCode.Contains(searchString)
              || m.HotelStatus.ToString().Contains(searchString));
             }
-            // var hotels = _context.Hotels
-            //             .Where(m => m.HotelName.Contains(searchString)
-            //              || m.HotelCode.Contains(searchString)
-            //             || m.HotelStatus.ToString().Contains(searchString));
             return await hotels.ToListAsync();
+        }
+        public async Task<Room> GetRoom(int hotelID, int roomID)
+        {
+            var room = _context.Rooms.Where(r => r.HotelID == hotelID && r.RoomID == roomID);
+            return await room.FirstOrDefaultAsync();
         }
     }
 }

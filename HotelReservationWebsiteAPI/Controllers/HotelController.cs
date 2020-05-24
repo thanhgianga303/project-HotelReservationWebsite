@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore;
 namespace HotelReservationWebsiteAPI.Controller
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     public class HotelController : ControllerBase
     {
         private readonly IMapper _mapper;
@@ -25,7 +25,7 @@ namespace HotelReservationWebsiteAPI.Controller
         [HttpGet]
         public async Task<ActionResult<IEnumerable<HotelDTO>>> GetAll(string searchString)
         {
-            var hotels = await _repository.GetAll();
+            var hotels = await _repository.GetHotels(searchString);
             var hotelsDTO = _mapper.Map<IEnumerable<Hotel>, IEnumerable<HotelDTO>>(hotels);
             return Ok(hotelsDTO);
         }
@@ -39,6 +39,17 @@ namespace HotelReservationWebsiteAPI.Controller
             }
             var hotelDTO = _mapper.Map<Hotel, HotelDTO>(hotel);
             return Ok(hotelDTO);
+        }
+        [HttpGet("roomid={roomID}&hotelid={hotelID}")]
+        public async Task<ActionResult<RoomDTO>> GetRoom(int roomID, int hotelID)
+        {
+            var room = await _repository.GetRoom(roomID, hotelID);
+            if (room == null)
+            {
+                return NotFound();
+            }
+            var roomDTO = _mapper.Map<Room, RoomDTO>(room);
+            return Ok(roomDTO);
         }
         [HttpPost]
         public async Task<IActionResult> Create(HotelDTO hotelDTO)

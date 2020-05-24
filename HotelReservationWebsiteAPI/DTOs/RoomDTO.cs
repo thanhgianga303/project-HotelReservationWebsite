@@ -12,6 +12,7 @@ namespace HotelReservationWebsiteAPI.DTOs
         public string RoomName { get; set; }
         public string ImageUrl { get; set; }
         public int RoomStatus { get; set; }
+        public decimal UnitPrice { get; set; }
         public List<BookingDetail> BookingDetails { get; set; }
         public Hotel Hotel { get; set; }
         public RoomCategory RoomCategory { get; set; }
