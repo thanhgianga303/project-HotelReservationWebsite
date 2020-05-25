@@ -10,6 +10,7 @@ namespace HotelReservationWebsite.ViewModels
         public string SearchString { get; set; }
         public string Genre { get; set; }
         public int pageIndex { get; set; }
+        public string ImageUrlDisplay { get; set; }
         public IFormFile ImageUrl { get; set; }
         public List<City> Cities { get; set; }
         public Hotel Hotel { get; set; }

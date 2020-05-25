@@ -47,6 +47,7 @@ namespace HotelReservationWebsite.Controllers
             var hotel = await _hotelService.GetHotel(id);
             var roomVM = new RoomViewModel
             {
+                HotelId = id,
                 // Hotels = ChangeUriPlaceholder(hotels.ToList())
                 Rooms = ChangeUriPlaceholderRooms(hotel.Rooms)
             };
@@ -90,6 +91,35 @@ namespace HotelReservationWebsite.Controllers
             await _hotelService.DeleteHotel(id);
             return RedirectToAction(nameof(Index));
         }
+        [HttpPost]
+        public async Task<IActionResult> Edit(HotelViewModel hotelVM)
+        {
+            if (hotelVM.ImageUrl == null)
+            {
+                hotelVM.Hotel.ImageUrl = hotelVM.ImageUrlDisplay;
+                await _hotelService.UpdateHotel(hotelVM.Hotel.HotelID, hotelVM.Hotel);
+            }
+            else
+            {
+                hotelVM.Hotel.ImageUrl = hotelVM.ImageUrl.FileName;
+                await _hotelService.UpdateHotel(hotelVM.Hotel.HotelID, hotelVM.Hotel);
+                await UploadFileImg(hotelVM.ImageUrl);
+            }
+            return RedirectToAction("Index");
+        }
+        [HttpGet]
+        public async Task<IActionResult> Edit(int id, string searchString)
+        {
+            var hotel = await _hotelService.GetHotel(id);
+            var cities = await _cityService.GetCities(searchString);
+            var hotelVM = new HotelViewModel
+            {
+                ImageUrlDisplay = hotel.ImageUrl,
+                Cities = cities.ToList(),
+                Hotel = ChangeUriPlaceholderHotel(hotel)
+            };
+            return View(hotelVM);
+        }
         [HttpGet]
         public async Task<IActionResult> EditRoom(int roomId, int hotelId)
         {
@@ -129,18 +159,42 @@ namespace HotelReservationWebsite.Controllers
             };
             return View(roomVM);
         }
+        [HttpGet]
+        public async Task<IActionResult> CreateRoom(int id)
+        {
+            Console.WriteLine("idd" + id);
+            var categories = await _categoryService.GetRoomCategories();
+            // var hotel = await _hotelService.GetHotel(hotelId);
+            var roomVM = new RoomViewModel
+            {
+                RoomCategories = categories.ToList(),
+                HotelId = id
+            };
+            return View(roomVM);
+        }
         [HttpPost]
-
+        public async Task<IActionResult> CreateRoom(RoomViewModel roomVM)
+        {
+            roomVM.Room.HotelID = roomVM.HotelId;
+            roomVM.Room.ImageUrl = roomVM.ImageUrl.FileName;
+            roomVM.Room.RoomStatus = 1;
+            await _hotelService.CreateRoom(roomVM.Room);
+            await UploadFileImg(roomVM.ImageUrl);
+            return RedirectToAction("SeeRoomList", new { id = roomVM.Room.HotelID });
+        }
+        [HttpPost, ActionName("DeleteRoom")]
+        public async Task<IActionResult> DeleteRoomConfirm(int roomId, int hotelId)
+        {
+            await _hotelService.DeleteRoom(roomId, hotelId);
+            return RedirectToAction("SeeRoomList", new { id = hotelId });
+        }
         private IList<Hotel> ChangeUriPlaceholderHotels(List<Hotel> hotels)
         {
             var baseUri = _settings.ExternalCatalogBaseUrl;
             // var imageUrl = "";
             hotels.ForEach(x =>
             {
-
-                // imageUrl = x.ImageUrl;
                 x.ImageUrl = baseUri + "/images/" + x.ImageUrl;
-
             });
 
             return hotels;
@@ -148,9 +202,14 @@ namespace HotelReservationWebsite.Controllers
         private Room ChangeUriPlaceholderRoom(Room room)
         {
             var baseUri = _settings.ExternalCatalogBaseUrl;
-            // var imageUrl = "";
             room.ImageUrl = baseUri + "/images/" + room.ImageUrl;
             return room;
+        }
+        private Hotel ChangeUriPlaceholderHotel(Hotel hotel)
+        {
+            var baseUri = _settings.ExternalCatalogBaseUrl;
+            hotel.ImageUrl = baseUri + "/images/" + hotel.ImageUrl;
+            return hotel;
         }
         private IList<Room> ChangeUriPlaceholderRooms(List<Room> rooms)
         {

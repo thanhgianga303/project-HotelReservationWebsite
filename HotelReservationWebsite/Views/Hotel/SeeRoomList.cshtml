@@ -12,11 +12,13 @@
         </form>
     </div>
     <div class="col-md-4">
-        <a asp-controller="City" asp-action="Create" class="au-btn au-btn-icon au-btn--blue">
-                    <i class="zmdi zmdi-plus"></i>add Room
+        <a asp-controller="Hotel" asp-action="CreateRoom" asp-route-id="@Model.HotelId" class="au-btn au-btn-icon au-btn--blue">
+                    <i class="zmdi zmdi-plus"></i>Add Room
         </a>
     </div>
 </div>
+@if(@Model.Rooms != null)
+{
 <div class="row" style="margin-top:40px">
     <div class="col-md-12">
         <h1>Danh sách phòng của khách sạn @Html.DisplayFor(model => model.Rooms[0].Hotel.HotelName)</h1>
@@ -62,11 +64,21 @@
             @* <input type="hidden" asp-for="@room.HotelID"> *@
            <a asp-action="EditRoom" asp-controller="Hotel" class="btn btn-secondary" asp-route-hotelID="@room.HotelID" asp-route-roomID="@room.RoomID">Edit</a> 
            <a asp-action="DetailsRoom" asp-controller="Hotel" class="btn btn-info" asp-route-hotelID="@room.HotelID" asp-route-roomID="@room.RoomID">Details</a> 
-           <a asp-action="Delete" asp-controller="Hotel" class="btn btn-danger" asp-route-id="@room.RoomID">Delete</a>
+           <a asp-action="DeleteRoom" asp-controller="Hotel" class="btn btn-danger" asp-route-hotelID="@room.HotelID" asp-route-roomID="@room.RoomID">Delete</a>
         </div>
     </div>
-</div>    
-}
+</div>
+
 <div class="row">
     <div class="col-md-12"><hr></div>
-</div>
+</div>    
+}
+}
+else
+{
+    <div class="row" style="margin-top:40px">
+    <div class="col-md-12" style="text-align: center;">
+        <h1>No Data</h1>
+     </div> 
+    </div>    
+}

@@ -20526,6 +20526,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\thanh\\OneDrive\\Documents\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\Hotel\\Edit.cshtml",
+      "TargetPath": "Views\\Hotel\\Edit.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\thanh\\OneDrive\\Documents\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\Shared\\_LayoutAdmin.cshtml",
       "TargetPath": "Views\\Shared\\_LayoutAdmin.cshtml",
       "FileKind": "mvc"
@@ -20586,6 +20591,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\thanh\\OneDrive\\Documents\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\Hotel\\DeleteRoom.cshtml",
+      "TargetPath": "Views\\Hotel\\DeleteRoom.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\thanh\\OneDrive\\Documents\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
       "TargetPath": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
       "FileKind": "mvc"
@@ -20608,6 +20618,11 @@
     {
       "FilePath": "c:\\Users\\thanh\\OneDrive\\Documents\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\Admin\\BookingDetails.cshtml",
       "TargetPath": "Views\\Admin\\BookingDetails.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\thanh\\OneDrive\\Documents\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\Hotel\\CreateRoom.cshtml",
+      "TargetPath": "Views\\Hotel\\CreateRoom.cshtml",
       "FileKind": "mvc"
     },
     {

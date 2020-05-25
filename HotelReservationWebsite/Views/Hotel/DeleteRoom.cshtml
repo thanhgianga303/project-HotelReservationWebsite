@@ -1,36 +1,42 @@
-@model Room
+@model RoomViewModel
 @{
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 
 }
+@if(@Model.Room!= null)
+{
+    <form method="POST">
 <div class="row" style="margin-top:40px">
     <div class="col-md-12">
-        <h1>Chi tiết phòng của khách sạn @Html.DisplayFor(model => model.Hotel.HotelName)</h1>
+        <h1>Chi tiết phòng của khách sạn @Html.DisplayFor(model => model.Room.Hotel.HotelName)</h1>
      </div>
 </div>
+    <input type="hidden" asp-for="@Model.Room.RoomID">
+    <input type="hidden" asp-for="@Model.Room.HotelID">
+
     <div class="row" style="margin-top:40px">
     <div class="col-md-5">
-        <img src="@Model.ImageUrl"/>
+        <img src="@Model.Room.ImageUrl"/>
      </div>
     <div class="col-md-7">
         <div class="row">
             <div class="col-md-7">Room Name:</div>
-            <div class="col-md-5">@Model.RoomName</div>
+            <div class="col-md-5">@Model.Room.RoomName</div>
         </div>
         <div class="row">
             <div class="col-md-7">Room Number:</div>
-            <div class="col-md-5">@Model.RoomNumber</div>
+            <div class="col-md-5">@Model.Room.RoomNumber</div>
         </div>
         <div class="row">
            <div class="col-md-7">Room Category:</div> 
             <div class="col-md-5">
-                @Model.RoomCategory.CategoryName
+                @Model.Room.RoomCategory.CategoryName
             </div>
         </div>
         <div class="row">
            <div class="col-md-7">Room Status:</div> 
             <div class="col-md-5">
-                @if(Model.RoomStatus == 1)
+                @if(Model.Room.RoomStatus == 1)
                 {
                     <a class="btn btn-danger">Can put</a>
                 }
@@ -42,10 +48,21 @@
         </div>
         <div class="row">
            <div class="col-md-5">Unit Price:</div> 
-            <div class="col-md-7">@Model.UnitPrice</div>
+            <div class="col-md-7">@Model.Room.UnitPrice</div>
         </div>
         <div class="row">
-           <a asp-action="SeeRoomList" asp-controller="Hotel" class="btn btn-danger" asp-route-id="@Model.HotelID">Back</a>
+           <a asp-action="SeeRoomList" asp-controller="Hotel" class="btn btn-danger" asp-route-id="@Model.Room.HotelID">Back</a>
+           <button type="submit" class="btn btn-danger">Delete</button>
         </div>
     </div>
 </div>
+</form>
+}
+else
+{
+    <div class="row" style="margin-top:40px">
+    <div class="col-md-12">
+        <h1>No Data</h1>
+     </div> 
+    </div>    
+}

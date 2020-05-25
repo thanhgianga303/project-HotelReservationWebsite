@@ -11,6 +11,7 @@ namespace HotelReservationWebsite.ViewModels
         public string Genre { get; set; }
         public int pageIndex { get; set; }
         public IFormFile ImageUrl { get; set; }
+        public int HotelId { get; set; }
         public string ImageUrlDisPlay { get; set; }
         public Room Room { get; set; }
         public List<RoomCategory> RoomCategories { get; set; }

@@ -35,6 +35,8 @@
                         <th>@Html.DisplayNameFor(model => model.Hotels[0].HotelID)</th>
                         <th>@Html.DisplayNameFor(model => model.Hotels[0].HotelCode)</th>
                         <th>@Html.DisplayNameFor(model => model.Hotels[0].HotelName)</th>
+                        <th>@Html.DisplayNameFor(model => model.Hotels[0].Address)</th>
+                        <th>@Html.DisplayNameFor(model => model.Hotels[0].City.CityName)</th>
                         <th>@Html.DisplayNameFor(model => model.Hotels[0].ImageUrl)</th>
                         <th>Thao tác</th>
                     </tr>
@@ -46,6 +48,8 @@
                         <td>@Html.DisplayFor(model => hotel.HotelID)</td>
                         <td>@Html.DisplayFor(model => hotel.HotelCode)</td>
                         <td>@Html.DisplayFor(model => hotel.HotelName)</td>
+                        <td>@Html.DisplayFor(model => hotel.Address)</td>
+                        <td>@Html.DisplayFor(model => hotel.City.CityName)</td>
                         <td><img src="@hotel.ImageUrl" /></td>
                         <td>
                             <a asp-action="SeeRoomList" asp-controller="Hotel" class="btn btn-secondary" asp-route-id="@hotel.HotelID">See room list</a>

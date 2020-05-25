@@ -1,22 +1,18 @@
 @model RoomViewModel
 @{
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
-
 }
 <div class="row" style="margin-top:40px">
     <div class="col-md-12">
-        <h1>Chi tiết phòng của khách sạn @Html.DisplayFor(model => model.Room.HotelID)</h1>
+        <h1>Create room</h1>
      </div>
 </div>
 <form method="POST" enctype="multipart/form-data">
     <input type="hidden" asp-for="@Model.Room.HotelID">
     <input type="hidden" asp-for="@Model.Room.RoomID">
-    <input type="hidden" asp-for="@Model.ImageUrlDisPlay">
+    <input type="hidden" asp-for="@Model.HotelId">
     <div class="row" style="margin-top:40px">
-    <div class="col-md-5">
-        <img src="@Model.Room.ImageUrl"/>
-     </div>
-    <div class="col-md-7">
+    <div class="col-md-12">
         <div class="row">
             <div class="col-md-7">Room Name:</div>
             <div class="col-md-5">
@@ -35,42 +31,21 @@
             <select asp-for="@Model.Room.RoomCategoryID">
                     @foreach (var item in Model.RoomCategories)
                     {
-                        @if(item.CategoryName == @Model.Room.RoomCategory.CategoryName )
-                        {
-                            <option value="@item.RoomCategoryID" selected="selected">@item.CategoryName</option>  
-                        }
-                        else
-                        {
-                            <option value="@item.RoomCategoryID">@item.CategoryName</option>
-                        }
+                            <option value="@item.RoomCategoryID">@item.CategoryName</option>  
                     }
             </select>
             </div>
         </div>
         <div class="row">
-           <div class="col-md-7">Room Status:</div> 
+           <div class="col-md-7">Unit Price:</div> 
             <div class="col-md-5">
-                <input type="hidden" asp-for="@Model.Room.RoomStatus">
-                @if(Model.Room.RoomStatus == 1)
-                {
-                    <a class="btn btn-danger">Can put</a>
-                }
-                else
-                {
-                   <a class="btn btn-info">Reserved</a> 
-                }
-            </div>
-        </div>
-        <div class="row">
-           <div class="col-md-5">Unit Price:</div> 
-            <div class="col-md-7">
                 <input type="text" class="form-control" asp-for="@Model.Room.UnitPrice">
             </div>
          </div>
         <div class="row">
             <div class="col-md-12">
-                <a asp-action="SeeRoomList" asp-controller="Hotel" class="btn btn-danger" asp-route-id="@Model.Room.HotelID">Back</a>
-                <button type="submit" class="btn btn-danger" >Edit</button>
+                <a asp-action="SeeRoomList" asp-controller="Hotel" class="btn btn-danger" asp-route-id="@Model.HotelId">Back</a>
+                <button type="submit" class="btn btn-danger" >Create</button>
             </div>
         </div>
         
@@ -79,7 +54,7 @@
 </div>
 <div class="row">
             <div class="col-md-12">
-                 <h2>Change image</h2>
+                 <h2>Upload image</h2>
             </div>
 </div>
 <div class="row">
