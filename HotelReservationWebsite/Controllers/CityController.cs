@@ -1,9 +1,14 @@
+using System;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using HotelReservationWebsite.Models;
 using HotelReservationWebsite.Services.IService;
 using HotelReservationWebsite.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using RabbitMQ.Client;
+
 namespace HotelReservationWebsite.Controllers
 {
     public class CityController : Controller
@@ -70,7 +75,35 @@ namespace HotelReservationWebsite.Controllers
         public async Task<IActionResult> Create(City city)
         {
             await _service.CreateCity(city);
+            send(city);
             return RedirectToAction(nameof(Index));
+        }
+        public void send(City city)
+        {
+            var factory = new ConnectionFactory() { HostName = "localhost" };
+            using (var connection = factory.CreateConnection())
+            using (var channel = connection.CreateModel())
+            {
+                channel.QueueDeclare(queue: "hello",
+                                     durable: false,
+                                     exclusive: false,
+                                     autoDelete: false,
+                                     arguments: null);
+                // var a = new User("12312344", "123");
+                var message = JsonConvert.SerializeObject(city); //Chuyển a thành chuỗi json
+                // var message = "Hello World!";
+                // var body = Encoding.UTF8.GetBytes(message);
+                var body = Encoding.UTF8.GetBytes(message);
+
+                channel.BasicPublish(exchange: "",
+                                     routingKey: "hello",
+                                     basicProperties: null,
+                                     body: body);
+                Console.WriteLine(" [x] Sent {0}", message);
+            }
+
+            // Console.WriteLine(" Press [enter] to exit.");
+            // Console.ReadLine();
         }
 
 

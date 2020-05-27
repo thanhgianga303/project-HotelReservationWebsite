@@ -9,8 +9,6 @@ namespace HotelReservationWebsiteAPI.Models.IRepositories
     {
         Task<IEnumerable<ApplicationUser>> GetApplicationUsers();
         Task Create(InputUserModel input);
-        Task CreateCustomer(InputUserModel input);
-        Task CreateEmployee(InputUserModel input);
         Task Update(string id, InputChangeInfoModel input);
         Task Delete(string id);
         Task<ApplicationUser> GetBy(string id);

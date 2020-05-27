@@ -17,7 +17,7 @@ namespace HotelReservationWebsiteAPI.Controller
     {
         private readonly IApplicationUserRepository _repository;
         private readonly UserManager<ApplicationUser> _userManager;
-        // private readonly RoleManager<IdentityRole> _roleManager;
+        private readonly RoleManager<IdentityRole> _roleManager;
         public ApplicationUserController(UserManager<ApplicationUser> userManager, IApplicationUserRepository repository)
 
         {
@@ -44,18 +44,6 @@ namespace HotelReservationWebsiteAPI.Controller
         public async Task<IActionResult> Create(InputUserModel _input)
         {
             await _repository.Create(_input);
-            return NoContent();
-        }
-        [HttpPost]
-        public async Task<IActionResult> CreateCustomer(InputUserModel _input)
-        {
-            await _repository.CreateCustomer(_input);
-            return NoContent();
-        }
-        [HttpPost]
-        public async Task<IActionResult> CreateEmployee(InputUserModel _input)
-        {
-            await _repository.CreateEmployee(_input);
             return NoContent();
         }
         [HttpPut("{id}")]

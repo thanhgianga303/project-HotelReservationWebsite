@@ -39,10 +39,7 @@ namespace HotelReservationWebsiteAPI
 
             services.AddScoped<ICityRepository, CityRepository>();
             services.AddScoped<IHotelRepository, HotelRepository>();
-            services.AddScoped<IRoomRepository, RoomRepository>();
             services.AddScoped<IRoomCategoryRepository, RoomCategoryRepository>();
-            services.AddScoped<ICustomerRepository, CustomerRepository>();
-            services.AddScoped<IEmployeeRepository, EmployeeRepository>();
             services.AddScoped<IApplicationUserRepository, ApplicationUserRepository>();
             services.AddScoped<IBookingDetailRepository, BookingDetailRepository>();
 

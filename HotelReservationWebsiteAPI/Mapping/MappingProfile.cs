@@ -21,11 +21,8 @@ namespace HotelReservationWebsiteAPI.Mapping
             CreateMap<Hotel, HotelDTO>();
             CreateMap<HotelDTO, Hotel>();
 
-            CreateMap<Customer, CustomerDTO>();
-            CreateMap<CustomerDTO, Customer>();
-
-            CreateMap<Employee, EmployeeDTO>();
-            CreateMap<EmployeeDTO, Employee>();
+            // CreateMap<ApplicationUser, ApplicationUserDTO>();
+            // CreateMap<ApplicationUserDTO, ApplicationUser>();
 
             CreateMap<City, CityDTO>();
             CreateMap<CityDTO, City>();

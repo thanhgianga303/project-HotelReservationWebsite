@@ -16,18 +16,12 @@ namespace HotelReservationWebsiteAPI.Data.Repositories
 {
     public class ApplicationUserRepository : IApplicationUserRepository
     {
-        private readonly ICustomerRepository _repositoryCustomer;
-        private readonly IEmployeeRepository _repositoryEmployee;
         private readonly HotelReservationWebsiteContext _context;
         private readonly UserManager<ApplicationUser> _userManager;
         public ApplicationUserRepository(UserManager<ApplicationUser> userManager
-                                    , ICustomerRepository repositoryCustomer
-                                    , IEmployeeRepository repositoryEmployee
                                     , HotelReservationWebsiteContext context)
         {
             _userManager = userManager;
-            _repositoryCustomer = repositoryCustomer;
-            _repositoryEmployee = repositoryEmployee;
             _context = context;
         }
         public async Task<IEnumerable<ApplicationUser>> GetApplicationUsers()
@@ -72,71 +66,71 @@ namespace HotelReservationWebsiteAPI.Data.Repositories
                 }
             }
         }
-        public async Task CreateCustomer(InputUserModel _input)
-        {
-            var user = await _userManager.FindByNameAsync(_input.Username);
-            if (user == null)
-            {
-                var customer = new Customer
-                {
-                    CustomerName = _input.FullName,
-                    DateOfBirth = Convert.ToDateTime(_input.DateOfBirth),
-                    IdentityCard = _input.IdentityCard,
-                    Email = _input.Email,
-                    Phone = _input.Phone,
-                    Address = _input.Address
-                };
-                await _repositoryCustomer.Add(customer);
-                var findCustomer = _context.Customers.Where(m => m.Email.Contains(_input.Email)
-                                    && m.Phone.Contains(_input.Phone)
-                                    && m.IdentityCard.Contains(_input.IdentityCard));
-                var id = findCustomer.FirstOrDefault();
-                user = new ApplicationUser
-                {
-                    CustomerID = id.CustomerID,
-                    UserName = _input.Username,
-                    Email = _input.Email,
-                    PhoneNumber = _input.Phone
-                };
-                var result = _userManager.CreateAsync(user, _input.Password).Result;
-                if (!result.Succeeded)
-                {
-                    throw new Exception(result.Errors.First().Description);
-                }
-            }
-        }
+        // public async Task CreateCustomer(InputUserModel _input)
+        // {
+        //     var user = await _userManager.FindByNameAsync(_input.Username);
+        //     if (user == null)
+        //     {
+        //         var customer = new Customer
+        //         {
+        //             CustomerName = _input.FullName,
+        //             DateOfBirth = Convert.ToDateTime(_input.DateOfBirth),
+        //             IdentityCard = _input.IdentityCard,
+        //             Email = _input.Email,
+        //             Phone = _input.Phone,
+        //             Address = _input.Address
+        //         };
+        //         await _repositoryCustomer.Add(customer);
+        //         var findCustomer = _context.Customers.Where(m => m.Email.Contains(_input.Email)
+        //                             && m.Phone.Contains(_input.Phone)
+        //                             && m.IdentityCard.Contains(_input.IdentityCard));
+        //         var id = findCustomer.FirstOrDefault();
+        //         user = new ApplicationUser
+        //         {
+        //             CustomerID = id.CustomerID,
+        //             UserName = _input.Username,
+        //             Email = _input.Email,
+        //             PhoneNumber = _input.Phone
+        //         };
+        //         var result = _userManager.CreateAsync(user, _input.Password).Result;
+        //         if (!result.Succeeded)
+        //         {
+        //             throw new Exception(result.Errors.First().Description);
+        //         }
+        //     }
+        // }
 
-        public async Task CreateEmployee(InputUserModel _input)
-        {
-            var user = await _userManager.FindByNameAsync(_input.Username);
-            if (user == null)
-            {
-                var employee = new Employee
-                {
-                    EmployeeName = _input.FullName,
-                    DateOfBirth = Convert.ToDateTime(_input.DateOfBirth),
-                    Email = _input.Email,
-                    Phone = _input.Phone,
-                    Address = _input.Address
-                };
-                await _repositoryEmployee.Add(employee);
-                var findEmployee = _context.Employees.Where(m => m.Email.Contains(_input.Email)
-                                    && m.Phone.Contains(_input.Phone));
-                var id = findEmployee.FirstOrDefault();
-                user = new ApplicationUser
-                {
-                    EmployeeID = id.EmployeeID,
-                    UserName = _input.Username,
-                    Email = _input.Email,
-                    PhoneNumber = _input.Phone
-                };
-                var result = _userManager.CreateAsync(user, _input.Password).Result;
-                if (!result.Succeeded)
-                {
-                    throw new Exception(result.Errors.First().Description);
-                }
-            }
-        }
+        // public async Task CreateEmployee(InputUserModel _input)
+        // {
+        //     var user = await _userManager.FindByNameAsync(_input.Username);
+        //     if (user == null)
+        //     {
+        //         var employee = new Employee
+        //         {
+        //             EmployeeName = _input.FullName,
+        //             DateOfBirth = Convert.ToDateTime(_input.DateOfBirth),
+        //             Email = _input.Email,
+        //             Phone = _input.Phone,
+        //             Address = _input.Address
+        //         };
+        //         await _repositoryEmployee.Add(employee);
+        //         var findEmployee = _context.Employees.Where(m => m.Email.Contains(_input.Email)
+        //                             && m.Phone.Contains(_input.Phone));
+        //         var id = findEmployee.FirstOrDefault();
+        //         user = new ApplicationUser
+        //         {
+        //             EmployeeID = id.EmployeeID,
+        //             UserName = _input.Username,
+        //             Email = _input.Email,
+        //             PhoneNumber = _input.Phone
+        //         };
+        //         var result = _userManager.CreateAsync(user, _input.Password).Result;
+        //         if (!result.Succeeded)
+        //         {
+        //             throw new Exception(result.Errors.First().Description);
+        //         }
+        //     }
+        // }
         public async Task<ApplicationUser> GetBy(string id)
         {
             var user = await _userManager.FindByIdAsync(id);
