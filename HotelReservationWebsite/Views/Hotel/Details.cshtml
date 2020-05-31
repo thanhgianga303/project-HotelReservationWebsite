@@ -1,0 +1,70 @@
+@model Hotel
+@inject IAuthorizationService AuthorizationService
+
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+
+}
+<div class="row" style="margin-top:40px">
+    <div class="col-md-12">
+        <h1>Thông tin chi tiết của khách sạn @Html.DisplayFor(model => model.HotelName)</h1>
+     </div>
+</div>
+    <div class="row" style="margin-top:40px">
+    <div class="col-md-5">
+        <img src="@Model.ImageUrl"/>
+     </div>
+    <div class="col-md-7">
+        <div class="row">
+            <div class="col-md-7"><h1>Hotel Name:</h1></div>
+            <div class="col-md-5">
+                @Model.HotelName       
+            </div>
+        </div>
+        <div class="row">
+           <div class="col-md-7"><h1>Address:</h1></div> 
+            <div class="col-md-5">
+                @Model.Address
+            </div>
+        </div>
+        <div class="row">
+           <div class="col-md-7"><h1>City:</h1></div> 
+            <div class="col-md-5">
+            @Model.City.CityName
+            </div>
+        </div>
+        <div class="row">
+           <div class="col-md-7"><h1>Status:</h1></div> 
+            <div class="col-md-5">
+            @Model.HotelStatus
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                <a asp-action="Index" asp-controller="Hotel" class="btn btn-secondary">Back</a>
+            </div>
+            <div class="col-md-3">  
+                @if((await AuthorizationService.AuthorizeAsync(User,Model,HotelOperations.Approve)).Succeeded)
+                {
+                    
+                    <form asp-action="Approve" method="POST" style="display: inline;">
+                    <input type="hidden" asp-for="@Model.HotelID">
+                    <button type="submit" class="btn btn-info" >Approve</button>
+                    </form>
+                }
+            </div>
+            <div class="col-md-2">
+                @if((await AuthorizationService.AuthorizeAsync(User,Model,HotelOperations.Reject)).Succeeded)
+                {
+                    <form asp-action="Reject" method="POST">
+                    <input type="text" asp-for="@Model.HotelID">
+                    <button type="submit" class="btn btn-danger" >Reject</button>
+                    </form>
+                }
+            </div>
+            <div class="col-md-5"></div>
+        </div>
+        
+    </div>
+
+</div>

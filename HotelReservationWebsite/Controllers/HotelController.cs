@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
+using Newtonsoft.Json;
 
 namespace HotelReservationWebsite.Controllers
 {
@@ -99,6 +100,43 @@ namespace HotelReservationWebsite.Controllers
                 await UploadFileImg(hotelVM.ImageUrl);
             }
 
+            return RedirectToAction(nameof(Index));
+        }
+        [HttpGet]
+        public async Task<IActionResult> Details(int id)
+        {
+            var hotel = await _hotelService.GetHotel(id);
+            hotel = ChangeUriPlaceholderHotel(hotel);
+            return View(hotel);
+        }
+        [HttpPost]
+        public async Task<IActionResult> Approve(Hotel _hotel)
+        {
+
+            var id = _hotel.HotelID;
+            var hotel = await _hotelService.GetHotel(_hotel.HotelID);
+            var isAuthorize = await _authorizationService.AuthorizeAsync(User, hotel, HotelOperations.Approve);
+            if (!isAuthorize.Succeeded)
+            {
+                return Forbid();
+            }
+            hotel.HotelStatus = HotelStatus.Approved;
+            // Console.WriteLine("status11" + JsonConvert.SerializeObject(hotel));
+            await _hotelService.UpdateHotel(id, hotel);
+            return RedirectToAction(nameof(Index));
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Reject(int id)
+        {
+            var hotel = await _hotelService.GetHotel(id);
+            var isAuthorize = await _authorizationService.AuthorizeAsync(User, hotel, HotelOperations.Reject);
+            if (!isAuthorize.Succeeded)
+            {
+                return Forbid();
+            }
+            hotel.HotelStatus = HotelStatus.Rejected;
+            await _hotelService.UpdateHotel(id, hotel);
             return RedirectToAction(nameof(Index));
         }
         [HttpGet]
