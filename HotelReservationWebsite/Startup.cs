@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Threading.Tasks;
+using HotelReservationWebsite.Authorization.Handlers;
 using HotelReservationWebsite.Infrastructure;
-using HotelReservationWebsite.IServices;
 using HotelReservationWebsite.Models;
 using HotelReservationWebsite.Services.IService;
 using HotelReservationWebsite.Services.Service;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -72,6 +73,10 @@ namespace HotelReservationWebsite
                     };
 
                 });
+
+            services.AddScoped<IAuthorizationHandler, OwnerAuthorizationHandler>();
+            services.AddScoped<IAuthorizationHandler, ManagersAuthorizationHandler>();
+            services.AddScoped<IAuthorizationHandler, AdministratorsAuthorizationHandler>();
             // services.AddAuthentication("Bearer")
             // .AddJwtBearer("Bearer", options =>
             // {

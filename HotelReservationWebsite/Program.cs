@@ -16,7 +16,7 @@ namespace HotelReservationWebsite
         {
 
             CreateHostBuilder(args).Build().Run();
-            Received();
+            // Received();
         }
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
@@ -25,38 +25,38 @@ namespace HotelReservationWebsite
                     webBuilder.UseStartup<Startup>();
 
                 });
-        public static void Received()
-        {
-            var factory = new ConnectionFactory() { HostName = "localhost" };
-            using (var connection = factory.CreateConnection())
-            using (var channel = connection.CreateModel())
-            {
-                channel.QueueDeclare(queue: "hello",
-                                     durable: false,
-                                     exclusive: false,
-                                     autoDelete: false,
-                                     arguments: null);
+        // public static void Received()
+        // {
+        //     var factory = new ConnectionFactory() { HostName = "localhost" };
+        //     using (var connection = factory.CreateConnection())
+        //     using (var channel = connection.CreateModel())
+        //     {
+        //         channel.QueueDeclare(queue: "hello",
+        //                              durable: false,
+        //                              exclusive: false,
+        //                              autoDelete: false,
+        //                              arguments: null);
 
-                var consumer = new EventingBasicConsumer(channel);
-                consumer.Received += (model, ea) =>
-                {
-                    var body = ea.Body;
-                    var message = Encoding.UTF8.GetString(body.ToArray());
-                    // var x = "dd";
-                    // var test = JsonConvert.DeserializeObject<User>(message);
-                    Console.WriteLine(" [x] Received {0}", message);
-                    // _serviceAPIIdentity.Create(message)
-                };
+        //         var consumer = new EventingBasicConsumer(channel);
+        //         consumer.Received += (model, ea) =>
+        //         {
+        //             var body = ea.Body;
+        //             var message = Encoding.UTF8.GetString(body.ToArray());
+        //             // var x = "dd";
+        //             // var test = JsonConvert.DeserializeObject<User>(message);
+        //             Console.WriteLine(" [x] Received {0}", message);
+        //             // _serviceAPIIdentity.Create(message)
+        //         };
 
-                channel.BasicConsume(queue: "hello",
-                                     autoAck: true,
-                                     consumer: consumer);
+        //         channel.BasicConsume(queue: "hello",
+        //                              autoAck: true,
+        //                              consumer: consumer);
 
-                Console.WriteLine(" Press [enter] to exit.");
-                Console.ReadLine();
-            }
+        //         Console.WriteLine(" Press [enter] to exit.");
+        //         Console.ReadLine();
+        //     }
 
 
-        }
+        // }
     }
 }

@@ -21,7 +21,6 @@ namespace HotelReservationWebsiteAPI.Data.Repositories
             if (!string.IsNullOrEmpty(searchString))
             {
                 hotels = hotels.Where(m => m.HotelName.Contains(searchString)
-             || m.HotelCode.Contains(searchString)
              || m.HotelStatus.ToString().Contains(searchString));
             }
             return await hotels.ToListAsync();

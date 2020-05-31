@@ -18,11 +18,6 @@ namespace HotelReservationWebsiteAPI.Data.Repositories
         {
             var roomcategories = from m in _context.RoomCategories
                                  select m;
-            // if (!string.IsNullOrEmpty(searchString))
-            // {
-            //     roomcategories = roomcategories.Where(m => m.CategoryName.Contains(searchString)
-            //      || m.CategoryCode.Contains(searchString));
-            // }
             return await roomcategories.ToListAsync();
         }
     }

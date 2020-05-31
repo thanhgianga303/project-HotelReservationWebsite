@@ -1,6 +1,6 @@
 using System.Security.Claims;
 
-namespace HotelReservationWebsite.IServices
+namespace HotelReservationWebsite.Services.IService
 {
     public interface IIdentityService<T> where T : class
     {

@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using HotelReservationWebsite.Authorization;
 using HotelReservationWebsite.Models;
 using HotelReservationWebsite.Services.IService;
 using HotelReservationWebsite.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -13,32 +15,48 @@ using Microsoft.Extensions.Options;
 
 namespace HotelReservationWebsite.Controllers
 {
+
+    [Authorize]
     public class HotelController : Controller
     {
         private readonly IHotelService _hotelService;
         private readonly ICityService _cityService;
         private readonly IRoomCategoryService _categoryService;
+        private readonly IIdentityService<Buyer> _identityService;
+        private readonly IAuthorizationService _authorizationService;
         private readonly AppSettings _settings;
         public readonly IWebHostEnvironment _webHost;
         public HotelController(IHotelService hotelService,
                             ICityService cityService,
                             IRoomCategoryService categoryService,
                             IOptions<AppSettings> settings,
-                            IWebHostEnvironment webHost)
+                            IWebHostEnvironment webHost,
+                            IIdentityService<Buyer> identityService,
+                            IAuthorizationService authorizationService)
         {
             _hotelService = hotelService;
             _cityService = cityService;
             _settings = settings.Value;
             _webHost = webHost;
             _categoryService = categoryService;
+            _identityService = identityService;
+            _authorizationService = authorizationService;
         }
         public async Task<IActionResult> Index(string searchString)
         {
             var hotels = await _hotelService.GetHotels(searchString);
+            var isAuthorized = User.IsInRole(Constants.AdministratorsRole) ||
+                                User.IsInRole(Constants.ManagersRole);
+            if (!isAuthorized)
+            {
+                var userId = _identityService.Get(User).Id;
+                hotels = hotels.Where(h => h.OwnerID == userId).ToList();
+            }
             var hotelsVM = new HotelViewModel
             {
                 Hotels = ChangeUriPlaceholderHotels(hotels.ToList())
             };
+
             return View(hotelsVM);
         }
         [HttpGet]
@@ -73,9 +91,14 @@ namespace HotelReservationWebsite.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(HotelViewModel hotelVM)
         {
-            hotelVM.Hotel.ImageUrl = hotelVM.ImageUrl.FileName;
-            await _hotelService.CreateHotel(hotelVM.Hotel);
-            await UploadFileImg(hotelVM.ImageUrl);
+            if (!ModelState.IsValid)
+            {
+                hotelVM.Hotel.OwnerID = _identityService.Get(User).Id;
+                hotelVM.Hotel.ImageUrl = hotelVM.ImageUrl.FileName;
+                await _hotelService.CreateHotel(hotelVM.Hotel);
+                await UploadFileImg(hotelVM.ImageUrl);
+            }
+
             return RedirectToAction(nameof(Index));
         }
         [HttpGet]
@@ -88,6 +111,13 @@ namespace HotelReservationWebsite.Controllers
         public async Task<IActionResult> DeleteConfirm(int id)
         {
             // Console.WriteLine("giangcoi" + id);
+            var hotel = await _hotelService.GetHotel(id);
+
+            var isAuthorize = await _authorizationService.AuthorizeAsync(User, hotel, HotelOperations.Delete);
+            if (!isAuthorize.Succeeded)
+            {
+                return Forbid();
+            }
             await _hotelService.DeleteHotel(id);
             return RedirectToAction(nameof(Index));
         }

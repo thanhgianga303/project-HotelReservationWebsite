@@ -17,11 +17,11 @@
         </a>
     </div>
 </div>
-@if(@Model.Rooms != null)
+@if(@Model.Rooms.Count >0)
 {
 <div class="row" style="margin-top:40px">
     <div class="col-md-12">
-        <h1>Danh sách phòng của khách sạn @Html.DisplayFor(model => model.Rooms[0].Hotel.HotelName)</h1>
+        <h1>hotel room list </h1>
      </div>
 </div>
 @foreach (var room in Model.Rooms)

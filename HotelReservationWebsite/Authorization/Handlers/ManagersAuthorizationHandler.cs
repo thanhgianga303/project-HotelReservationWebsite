@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Authorization.Infrastructure;
 using HotelReservationWebsite.Models;
 
-namespace HotelReservationWebsite.Authorization
+namespace HotelReservationWebsite.Authorization.Handlers
 {
     public class ManagersAuthorizationHandler : AuthorizationHandler<OperationAuthorizationRequirement, Hotel>
     {

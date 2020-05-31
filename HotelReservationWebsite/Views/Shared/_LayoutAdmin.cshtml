@@ -74,7 +74,7 @@
                                 </li>
                             </ul>
                         </li>
-                        @if(User.IsInRole("Admin"))
+                        @if(User.IsInRole("Managers") || User.IsInRole("Administrators"))
                        {     
                          <li>
                             <a asp-controller="Admin" asp-action="Hotel">
@@ -119,7 +119,7 @@
                        }
                        else
                        {
-                           if(User.IsInRole("Customer"))
+                           if(User.IsInRole("Lessors"))
                            {
                                <li>
                             <a asp-controller="Hotel" asp-action="Hotel">
@@ -206,7 +206,7 @@
                             <a class="js-arrow" asp-controller="Admin" asp-action="Index">
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                         </li>
-                        @if(User.IsInRole("Admin"))
+                        @if(User.IsInRole("Managers") || User.IsInRole("Administrators"))
                        { 
                         <li>
                             <a asp-controller="Admin" asp-action="Index">
@@ -251,7 +251,7 @@
                        }
                        else
                        {
-                           if(User.IsInRole("Customer"))
+                           if(User.IsInRole("Lessors"))
                             {
                                 <li>
                                     <a asp-controller="Hotel" asp-action="Index">

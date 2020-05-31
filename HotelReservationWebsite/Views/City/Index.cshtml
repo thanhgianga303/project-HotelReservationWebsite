@@ -33,7 +33,6 @@
                 <thead>
                     <tr>
                         <th>@Html.DisplayNameFor(model => model.Cities[0].CityID)</th>
-                        <th>@Html.DisplayNameFor(model => model.Cities[0].CityCode)</th>
                         <th>@Html.DisplayNameFor(model => model.Cities[0].CityName)</th>
                         <th>Thao tác</th>
                     </tr>
@@ -43,7 +42,6 @@
                      {
                     <tr>
                         <td>@Html.DisplayFor(model => city.CityID)</td>
-                        <td>@Html.DisplayFor(model => city.CityCode)</td>
                         <td>@Html.DisplayFor(model => city.CityName)</td>
                         <td>
                             <a asp-action="Edit" asp-controller="City" class="btn btn-secondary" asp-route-id="@city.CityID">Edit</a> 
@@ -57,5 +55,4 @@
             </table>
         </div>
     </div>
-    
 </div>

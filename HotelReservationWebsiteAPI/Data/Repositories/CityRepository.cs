@@ -20,7 +20,7 @@ namespace HotelReservationWebsiteAPI.Data.Repositories
                          select m;
             if (!string.IsNullOrEmpty(searchString))
             {
-                cities = cities.Where(m => m.CityCode.Contains(searchString) || m.CityName.Contains(searchString));
+                cities = cities.Where(m => m.CityName.Contains(searchString));
             }
             return await cities.ToListAsync();
         }

@@ -1,6 +1,6 @@
 using System.Security.Claims;
-using HotelReservationWebsite.IServices;
 using HotelReservationWebsite.Models;
+using HotelReservationWebsite.Services.IService;
 
 namespace HotelReservationWebsite.Services.Service
 {

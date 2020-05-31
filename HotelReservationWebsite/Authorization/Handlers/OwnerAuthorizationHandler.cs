@@ -2,10 +2,10 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Authorization.Infrastructure;
 using HotelReservationWebsite.Models;
-using HotelReservationWebsite.Services;
-using HotelReservationWebsite.IServices;
+using HotelReservationWebsite.Services.IService;
+using System;
 
-namespace HotelReservationWebsite.Authorization
+namespace HotelReservationWebsite.Authorization.Handlers
 {
     public class OwnerAuthorizationHandler : AuthorizationHandler<OperationAuthorizationRequirement, Hotel>
     {
@@ -31,10 +31,11 @@ namespace HotelReservationWebsite.Authorization
             {
                 return Task.CompletedTask;
             }
-
             var user = _identityService.Get(context.User);
+            // Console.WriteLine("test" + user.Id + " and " + resource.OwnerID);
             if (user.Id == resource.OwnerID)
             {
+
                 context.Succeed(requirement);
             }
 

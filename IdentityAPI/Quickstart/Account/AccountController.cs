@@ -80,12 +80,11 @@ namespace IdentityServer4.Quickstart.UI
                     {
                         throw new Exception(result.Errors.First().Description);
                     }
-                    await _userManager.AddToRoleAsync(user, "Customer");
+                    await _userManager.AddToRoleAsync(user, "Administrators");
                     var name = _input.Name + "";
                     var givenname = _input.GivenName + "";
                     var familyname = _input.FamilyName + "";
                     var email = _input.Email + "";
-                    var website = _input.Website + "";
                     var address = _input.Address + "";
                     result = _userManager.AddClaimsAsync(user, new Claim[]{
                         new Claim(JwtClaimTypes.Name, name),
@@ -93,7 +92,6 @@ namespace IdentityServer4.Quickstart.UI
                         new Claim(JwtClaimTypes.FamilyName, familyname),
                         new Claim(JwtClaimTypes.Email, email),
                         new Claim(JwtClaimTypes.EmailVerified, "true", ClaimValueTypes.Boolean),
-                        new Claim(JwtClaimTypes.WebSite, website),
                         new Claim(JwtClaimTypes.Address, address , IdentityServer4.IdentityServerConstants.ClaimValueTypes.Json)
                     }).Result;
                     if (!result.Succeeded)

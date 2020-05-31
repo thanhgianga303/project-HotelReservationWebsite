@@ -22,6 +22,7 @@ namespace HotelReservationWebsite.Authorization
         public static readonly string ApproveOperationName = "Approve";
         public static readonly string RejectOperationName = "Reject";
 
+        public static readonly string LessorsRole = "Lessors";
         public static readonly string ManagersRole = "Managers";
         public static readonly string AdministratorsRole = "Administrators";
     }
