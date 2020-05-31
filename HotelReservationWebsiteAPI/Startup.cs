@@ -40,8 +40,8 @@ namespace HotelReservationWebsiteAPI
             services.AddScoped<ICityRepository, CityRepository>();
             services.AddScoped<IHotelRepository, HotelRepository>();
             services.AddScoped<IRoomCategoryRepository, RoomCategoryRepository>();
-            services.AddScoped<IApplicationUserRepository, ApplicationUserRepository>();
-            services.AddScoped<IBookingDetailRepository, BookingDetailRepository>();
+            // services.AddScoped<IApplicationUserRepository, ApplicationUserRepository>();
+            // services.AddScoped<IBookingDetailRepository, BookingDetailRepository>();
 
             services.AddDbContext<HotelReservationWebsiteContext>(options =>
             {
@@ -52,9 +52,9 @@ namespace HotelReservationWebsiteAPI
             });
 
 
-            services.AddIdentity<ApplicationUser, IdentityRole>()
-                .AddEntityFrameworkStores<HotelReservationWebsiteContext>()
-                .AddDefaultTokenProviders();
+            // services.AddIdentity<ApplicationUser, IdentityRole>()
+            //     .AddEntityFrameworkStores<HotelReservationWebsiteContext>()
+            //     .AddDefaultTokenProviders();
             services.AddAuthentication("Bearer")
             .AddJwtBearer("Bearer", options =>
             {

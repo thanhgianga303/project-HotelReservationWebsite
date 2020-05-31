@@ -23,9 +23,6 @@ namespace HotelReservationWebsiteAPI.Mapping
 
             // CreateMap<ApplicationUser, ApplicationUserDTO>();
             // CreateMap<ApplicationUserDTO, ApplicationUser>();
-
-            CreateMap<City, CityDTO>();
-            CreateMap<CityDTO, City>();
         }
     }
 }
