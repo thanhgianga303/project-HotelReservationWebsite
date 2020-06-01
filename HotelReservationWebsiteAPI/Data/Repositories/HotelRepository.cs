@@ -20,8 +20,10 @@ namespace HotelReservationWebsiteAPI.Data.Repositories
                          select m;
             if (!string.IsNullOrEmpty(searchString))
             {
-                hotels = hotels.Where(m => m.HotelName.Contains(searchString)
-             || m.HotelStatus.ToString().Contains(searchString));
+                hotels = hotels.Where(m => m.HotelName.ToLower().Contains(searchString.ToLower())
+                || m.Address.ToLower().Contains(searchString.ToLower())
+                || m.City.CityName.ToLower().Contains(searchString.ToLower())
+             );
             }
             return await hotels.ToListAsync();
         }

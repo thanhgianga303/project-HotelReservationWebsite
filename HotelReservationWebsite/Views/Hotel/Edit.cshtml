@@ -11,6 +11,7 @@
 <form method="POST" enctype="multipart/form-data">
     <input type="hidden" asp-for="@Model.Hotel.HotelID">
     <input type="hidden" asp-for="@Model.ImageUrlDisplay">
+    <input type="hidden" asp-for="@Model.Hotel.OwnerID">
     <div class="row" style="margin-top:40px">
     <div class="col-md-5">
         <img src="@Model.Hotel.ImageUrl"/>

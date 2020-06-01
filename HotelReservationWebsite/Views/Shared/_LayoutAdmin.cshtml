@@ -77,44 +77,16 @@
                         @if(User.IsInRole("Managers") || User.IsInRole("Administrators"))
                        {     
                          <li>
-                            <a asp-controller="Admin" asp-action="Hotel">
+                            <a asp-controller="Hotel" asp-action="Index">
                                 <i class="fas fa-chart-bar"></i>Hotel</a>
                         </li>
                         <li>
-                            <a asp-controller="Admin" asp-action="Room">
-                                <i class="fas fa-table"></i>Promotion</a>
-                        </li>
-                        <li>
-                            <a asp-controller="Admin" asp-action="BookingDetails">
-                                <i class="far fa-check-square"></i>Booking Details</a>
-                        </li>
-                        <li>
-                            <a asp-controller="Admin" asp-action="RoomCagotery">
+                            <a asp-controller="RoomCagotery" asp-action="Index">
                                 <i class="far fa-check-square"></i>Room Cagotery</a>
-                        </li>
-                        <li>
-                            <a asp-controller="Admin" asp-action="Account">
-                                <i class="fas fa-table"></i>Account</a>
-                        </li>
-                        <li>
-                            <a asp-controller="Admin" asp-action="Role">
-                                <i class="fas fa-table"></i>Role</a>
-                        </li>
-                        <li>
-                            <a asp-controller="Admin" asp-action="Address">
-                                <i class="fas fa-table"></i>Address</a>
                         </li>
                         <li>
                             <a asp-controller="City" asp-action="Index">
                                 <i class="fas fa-table"></i>City</a>
-                        </li>
-                        <li>
-                            <a asp-controller="Admin" asp-action="Customer">
-                                <i class="fas fa-calendar-alt"></i>Customer</a>
-                        </li>
-                        <li>
-                            <a asp-controller="Admin" asp-action="Employee">
-                                <i class="fas fa-map-marker-alt"></i>Employee</a>
                         </li>
                        }
                        else
@@ -125,10 +97,6 @@
                             <a asp-controller="Hotel" asp-action="Hotel">
                                 <i class="fas fa-chart-bar"></i>Hotel</a>
                             </li>
-                            <li>
-                            <a asp-controller="Admin" asp-action="Room">
-                                <i class="fas fa-chart-bar"></i>Room</a>
-                        </li>
                            }
                            
                        }
@@ -209,44 +177,16 @@
                         @if(User.IsInRole("Managers") || User.IsInRole("Administrators"))
                        { 
                         <li>
-                            <a asp-controller="Admin" asp-action="Index">
+                            <a asp-controller="Hotel" asp-action="Index">
                                 <i class="fas fa-chart-bar"></i>Hotel</a>
                         </li>
                         <li>
-                            <a asp-controller="Admin" asp-action="Promotion">
-                                <i class="fas fa-table"></i>Promotion</a>
-                        </li>
-                       <li>
-                            <a asp-controller="Admin" asp-action="BookingDetails">
-                                <i class="far fa-check-square"></i>Booking Details</a>
-                        </li>
-                        <li>
-                            <a asp-controller="Admin" asp-action="RoomCagotery">
+                            <a asp-controller="RoomCagotery" asp-action="Index">
                                 <i class="far fa-check-square"></i>Room Cagotery</a>
                         </li>
                         <li>
-                            <a asp-controller="Admin" asp-action="Account">
-                                <i class="fas fa-table"></i>Account</a>
-                        </li>
-                        <li>
-                            <a asp-controller="Admin" asp-action="Role">
-                                <i class="fas fa-table"></i>Role</a>
-                        </li>
-                        <li>
-                            <a asp-controller="Admin" asp-action="Address">
-                                <i class="fas fa-table"></i>Address</a>
-                        </li>
-                        <li>
-                            <a asp-controller="Admin" asp-action="City">
+                            <a asp-controller="City" asp-action="Index">
                                 <i class="fas fa-table"></i>City</a>
-                        </li>
-                        <li>
-                            <a asp-controller="Admin" asp-action="Customer">
-                                <i class="fas fa-calendar-alt"></i>Customer</a>
-                        </li>
-                        <li>
-                            <a asp-controller="Admin" asp-action="Employee">
-                                <i class="fas fa-map-marker-alt"></i>Employee</a>
                         </li>
                        }
                        else
@@ -256,10 +196,6 @@
                                 <li>
                                     <a asp-controller="Hotel" asp-action="Index">
                                         <i class="fas fa-map-marker-alt"></i>Hotels</a>
-                                </li>
-                                <li>
-                                    <a asp-controller="Admin" asp-action="Room">
-                                        <i class="fas fa-map-marker-alt"></i>Rooms</a>
                                 </li>    
                             }
                        }

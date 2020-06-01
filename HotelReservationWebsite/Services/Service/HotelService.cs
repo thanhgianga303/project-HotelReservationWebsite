@@ -26,7 +26,6 @@ namespace HotelReservationWebsite.Services.Service
             var url = _baseUrl + $"/getby/{id}";
             return await _httpClient.GetAsync<Hotel>(url);
         }
-        // public async Task<Hotel> Get
         public async Task CreateHotel(Hotel hotel)
         {
             var url = _baseUrl + "/create";

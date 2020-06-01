@@ -1,18 +1,43 @@
 @model Hotel
-            <form method="POST" asp-controller="Cart" asp-action="AddToCart">
-            <div class="col-md-7">
-                <img src="@Model.ImageUrl"/>
+            @* <div class="col-md-7">
+                <img src="@Model.ImageUrl" style="width: 500px;height:600px"/>
             </div>
-            
-
             <div class="desc col-md-5">
-                <h3>@Model.HotelName</h3>
-                <h3>@Model.HotelID</h3>
-                <p>Address: @Model.Address, @Model.City.CityName
-                <input class="esh-catalog-button" type="submit" value="See Room List" />
-            
-            </div>
-            <input type="hidden" asp-for="@Model.HotelID"/>
-            <input type="hidden" asp-for="@Model.HotelName"/>
-            <input type="hidden" asp-for="@Model.ImageUrl"/>
-    </form>            
+                <div class="row">
+                    <div class="col-md-5">
+                        <h3>Name:</h3>
+                    </div>
+                    <div class="col-md-7">
+                        @Model.HotelName
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-5">
+                        <h3>Address:</h3>        
+                    </div>
+                    <div class="col-md-7">
+                        @Model.Address, @Model.City.CityName
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-5">
+                        <h3>Number of Rooms:</h3>        
+                    </div>
+                    <div class="col-md-7">
+                        @Model.Rooms.Count
+                    </div>
+                </div>
+                <a class="esh-catalog-button" asp-controller="Home" asp-action="SeeRoomList" asp-route-id="@Model.HotelID">See Room List</a>
+            </div> *@
+            <div class="col-md-4">
+					<div class="hotel-content">
+						<div class="hotel-grid" style="background-image: url(@Model.ImageUrl);">
+							<div class="price"><small>For as low as</small><span>$100/night</span></div>
+							<a class="book-now text-center" href="#"><i class="ti-calendar"></i> Book Now</a>
+						</div>
+						<div class="desc">
+							<h3><a href="#">Hotel Name</a></h3>
+							<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+						</div>
+					</div>
+				</div>

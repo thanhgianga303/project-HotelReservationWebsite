@@ -15,11 +15,4 @@ namespace HotelReservationWebsiteAPI.DTOs
         public List<Room> Rooms { get; set; }
         public City City { get; set; }
     }
-    public enum HotelStatus
-    {
-        Submitted = 0,
-        Approved = 1,
-        Rejected = 2
-    }
-
 }

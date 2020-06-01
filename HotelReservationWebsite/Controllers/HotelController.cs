@@ -43,15 +43,16 @@ namespace HotelReservationWebsite.Controllers
             _identityService = identityService;
             _authorizationService = authorizationService;
         }
-        public async Task<IActionResult> Index(string searchString)
+        public async Task<IActionResult> Index(string SearchString)
         {
-            var hotels = await _hotelService.GetHotels(searchString);
+            Console.WriteLine("search" + SearchString);
+            var hotels = await _hotelService.GetHotels(SearchString);
             var isAuthorized = User.IsInRole(Constants.AdministratorsRole) ||
                                 User.IsInRole(Constants.ManagersRole);
             if (!isAuthorized)
             {
                 var userId = _identityService.Get(User).Id;
-                hotels = hotels.Where(h => h.OwnerID == userId).ToList();
+                hotels = hotels.Where(h => h.OwnerID == userId && h.HotelStatus == HotelStatus.Approved).ToList();
             }
             var hotelsVM = new HotelViewModel
             {
@@ -106,37 +107,39 @@ namespace HotelReservationWebsite.Controllers
         public async Task<IActionResult> Details(int id)
         {
             var hotel = await _hotelService.GetHotel(id);
-            hotel = ChangeUriPlaceholderHotel(hotel);
-            return View(hotel);
+            var hotelVM = new HotelViewModel()
+            {
+                ImageUrlDisplay = hotel.ImageUrl,
+                Hotel = ChangeUriPlaceholderHotel(hotel)
+            };
+
+            return View(hotelVM);
         }
         [HttpPost]
-        public async Task<IActionResult> Approve(Hotel _hotel)
+        public async Task<IActionResult> Approve(HotelViewModel hotelVM)
         {
-
-            var id = _hotel.HotelID;
-            var hotel = await _hotelService.GetHotel(_hotel.HotelID);
-            var isAuthorize = await _authorizationService.AuthorizeAsync(User, hotel, HotelOperations.Approve);
+            var isAuthorize = await _authorizationService.AuthorizeAsync(User, hotelVM.Hotel, HotelOperations.Approve);
             if (!isAuthorize.Succeeded)
             {
                 return Forbid();
             }
-            hotel.HotelStatus = HotelStatus.Approved;
-            // Console.WriteLine("status11" + JsonConvert.SerializeObject(hotel));
-            await _hotelService.UpdateHotel(id, hotel);
+            hotelVM.Hotel.HotelStatus = HotelStatus.Approved;
+            hotelVM.Hotel.ImageUrl = hotelVM.ImageUrlDisplay;
+            await _hotelService.UpdateHotel(hotelVM.Hotel.HotelID, hotelVM.Hotel);
             return RedirectToAction(nameof(Index));
         }
 
         [HttpPost]
-        public async Task<IActionResult> Reject(int id)
+        public async Task<IActionResult> Reject(HotelViewModel hotelVM)
         {
-            var hotel = await _hotelService.GetHotel(id);
-            var isAuthorize = await _authorizationService.AuthorizeAsync(User, hotel, HotelOperations.Reject);
+            var isAuthorize = await _authorizationService.AuthorizeAsync(User, hotelVM.Hotel, HotelOperations.Reject);
             if (!isAuthorize.Succeeded)
             {
                 return Forbid();
             }
-            hotel.HotelStatus = HotelStatus.Rejected;
-            await _hotelService.UpdateHotel(id, hotel);
+            hotelVM.Hotel.HotelStatus = HotelStatus.Rejected;
+            hotelVM.Hotel.ImageUrl = hotelVM.ImageUrlDisplay;
+            await _hotelService.UpdateHotel(hotelVM.Hotel.HotelID, hotelVM.Hotel);
             return RedirectToAction(nameof(Index));
         }
         [HttpGet]

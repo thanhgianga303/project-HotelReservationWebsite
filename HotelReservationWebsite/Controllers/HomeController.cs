@@ -23,7 +23,7 @@ namespace HotelReservationWebsite.Controllers
         public async Task<IActionResult> Index(string searchString)
         {
             var hotels = await _service.GetHotels(searchString);
-
+            hotels = hotels.Where(h => h.HotelStatus == HotelStatus.Approved);
             var hotelVM = new HotelViewModel
             {
                 SearchString = searchString,
@@ -44,10 +44,6 @@ namespace HotelReservationWebsite.Controllers
             });
 
             return hotels;
-        }
-        public IActionResult Privacy()
-        {
-            return View();
         }
     }
 }
