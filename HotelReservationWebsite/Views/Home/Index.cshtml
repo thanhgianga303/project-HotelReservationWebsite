@@ -2,6 +2,7 @@
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<div class="col-md-12">
 @* <div class="col-md-12">
         <form class="form-header" asp-action="Index" method="GET">
             <input class="au-input au-input--xl" type="text" asp-for="SearchString" placeholder="Search for datas &amp; reports..." />
@@ -10,15 +11,23 @@
             </button>
         </form>
 </div> *@
-@if (Model.Hotels.Count() > 0)
-{
-
-    @foreach (var hotel in Model.Hotels)
-        {
-            <partial name="_hotel" model="hotel" />
-        }
-}   
+    @if (Model.Hotels.Count() > 0)
+    {
+       <div class="row">
+            <div class="col-md-3"><hr style="height:1px;border:none;color:#333;background-color:#333;"/></div>
+            <div class="col-md-6" style="text-align: center;"><h1>List of hotels</h1></div>
+            <div class="col-md-3"><hr style="height:1px;border:none;color:#333;background-color:#333;"/></div>
+        </div>
+        <div class="row">
+            @foreach (var hotel in Model.Hotels)
+                {
+                    <partial name="_hotel" model="hotel" />
+                }
+                    
+        </div>
+    }   
     else
     {
         <h1>THERE ARE NO RESULTS THAT MATCH YOUR SEARCH</h1>
     }
+</div>

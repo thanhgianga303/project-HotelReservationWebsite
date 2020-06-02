@@ -184,7 +184,6 @@ C:\Users\thanh\OneDrive\Documents\project-HotelReservationWebsite\HotelReservati
 C:\Users\thanh\OneDrive\Documents\project-HotelReservationWebsite\HotelReservationWebsite\obj\Debug\netcoreapp3.1\Razor\Views\City\Details.cshtml.g.cs
 C:\Users\thanh\OneDrive\Documents\project-HotelReservationWebsite\HotelReservationWebsite\obj\Debug\netcoreapp3.1\Razor\Views\City\Create.cshtml.g.cs
 C:\Users\thanh\OneDrive\Documents\project-HotelReservationWebsite\HotelReservationWebsite\obj\Debug\netcoreapp3.1\Razor\Views\City\Delete.cshtml.g.cs
-C:\Users\thanh\OneDrive\Documents\project-HotelReservationWebsite\HotelReservationWebsite\obj\Debug\netcoreapp3.1\Razor\Views\City\Edit.cshtml.g.cs
 C:\Users\thanh\OneDrive\Documents\project-HotelReservationWebsite\HotelReservationWebsite\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Users\thanh\OneDrive\Documents\project-HotelReservationWebsite\HotelReservationWebsite\bin\Debug\netcoreapp3.1\Polly.dll
 C:\Users\thanh\OneDrive\Documents\project-HotelReservationWebsite\HotelReservationWebsite\obj\Debug\netcoreapp3.1\Razor\Views\Home\_hotel.cshtml.g.cs
@@ -199,3 +198,14 @@ C:\Users\thanh\OneDrive\Documents\project-HotelReservationWebsite\HotelReservati
 C:\Users\thanh\OneDrive\Documents\project-HotelReservationWebsite\HotelReservationWebsite\obj\Debug\netcoreapp3.1\Razor\Views\Hotel\Edit.cshtml.g.cs
 C:\Users\thanh\OneDrive\Documents\project-HotelReservationWebsite\HotelReservationWebsite\bin\Debug\netcoreapp3.1\RabbitMQ.Client.dll
 C:\Users\thanh\OneDrive\Documents\project-HotelReservationWebsite\HotelReservationWebsite\obj\Debug\netcoreapp3.1\Razor\Views\Hotel\Details.cshtml.g.cs
+C:\Users\thanh\OneDrive\Documents\project-HotelReservationWebsite\HotelReservationWebsite\obj\Debug\netcoreapp3.1\Razor\Views\City\Edit.cshtml.g.cs
+C:\Users\thanh\OneDrive\Documents\project-HotelReservationWebsite\HotelReservationWebsite\obj\Debug\netcoreapp3.1\Razor\Views\Home\Details.cshtml.g.cs
+C:\Users\thanh\OneDrive\Documents\project-HotelReservationWebsite\HotelReservationWebsite\obj\Debug\netcoreapp3.1\Razor\Views\Home\_room.cshtml.g.cs
+C:\Users\thanh\OneDrive\Documents\project-HotelReservationWebsite\HotelReservationWebsite\obj\Debug\netcoreapp3.1\Razor\Views\RoomCategory\Create.cshtml.g.cs
+C:\Users\thanh\OneDrive\Documents\project-HotelReservationWebsite\HotelReservationWebsite\obj\Debug\netcoreapp3.1\Razor\Views\RoomCategory\Delete.cshtml.g.cs
+C:\Users\thanh\OneDrive\Documents\project-HotelReservationWebsite\HotelReservationWebsite\obj\Debug\netcoreapp3.1\Razor\Views\RoomCategory\Details.cshtml.g.cs
+C:\Users\thanh\OneDrive\Documents\project-HotelReservationWebsite\HotelReservationWebsite\obj\Debug\netcoreapp3.1\Razor\Views\RoomCategory\Edit.cshtml.g.cs
+C:\Users\thanh\OneDrive\Documents\project-HotelReservationWebsite\HotelReservationWebsite\obj\Debug\netcoreapp3.1\Razor\Views\RoomCategory\Index.cshtml.g.cs
+C:\Users\thanh\OneDrive\Documents\project-HotelReservationWebsite\HotelReservationWebsite\obj\Debug\netcoreapp3.1\Razor\Views\Cart\Index.cshtml.g.cs
+C:\Users\thanh\OneDrive\Documents\project-HotelReservationWebsite\HotelReservationWebsite\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Components\BasketList\Default.cshtml.g.cs
+C:\Users\thanh\OneDrive\Documents\project-HotelReservationWebsite\HotelReservationWebsite\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Components\Basket\Default.cshtml.g.cs

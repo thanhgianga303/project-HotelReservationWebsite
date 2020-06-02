@@ -1,0 +1,13 @@
+@inject IIdentityService<Buyer> identityService
+
+@{
+    ViewData["Title"] = "My Cart";
+}
+
+<form method="POST">
+
+    <div class="esh-basket">
+        @await Component.InvokeAsync("BasketList", new { user = identityService.Get(User) })
+    </div>
+
+</form>

@@ -1,0 +1,20 @@
+@model RoomCategory
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<!-- Medium input -->
+
+<form style="width: 500px;margin-left:250px">
+<div class="md-form">
+  <input type="hidden" asp-for="RoomCategoryID" class="form-control">
+</div>
+<div class="md-form">
+  <label asp-for="CategoryName"></label>
+  <input type="text" asp-for="CategoryName" class="form-control" size="100px !important ">
+</div>
+<div class="md-form" style="margin-top:20px;">
+  <a asp-action="Index" class="btn btn-primary mb-2" >Back</a>
+</div>
+</form>
+
+

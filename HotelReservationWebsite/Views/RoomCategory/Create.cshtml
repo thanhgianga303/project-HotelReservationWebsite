@@ -1,0 +1,22 @@
+@model RoomCategory
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<!-- Medium input -->
+
+<form style="width: 500px;margin-left:250px" asp-controller="RoomCategory" asp-action="Create" method="POST">
+<div asp-validation-summary="ModelOnly" class="text-danger">
+  <span>Please correct the following errors</span>
+</div>
+  <input type="hidden" asp-for="RoomCategoryID" class="form-control">
+<div class="md-form">
+  <label asp-for="CategoryName"></label>
+  <input type="text" asp-for="CategoryName" class="form-control" size="100px !important ">
+  <span asp-validation-for="CategoryName" class="text-danger"></span>
+</div>
+<div class="md-form" style="margin-top:20px;">
+  <a asp-action="Index" class="btn btn-primary mb-2" >Back</a>
+  <button type="submit" class="btn btn-danger" >Create</button>
+</div>
+</form>
+

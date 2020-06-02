@@ -1,0 +1,27 @@
+@model Room
+	<form asp-controller="Cart" asp-action="AddToCart">
+            <div class="col-md-4">
+					<div class="hotel-content">
+						<div class="hotel-grid" style="background-image: url(@Model.ImageUrl);">
+							<div class="price"><small>Unit price: </small><span>@Model.UnitPrice USD</span></div>
+							@* <a class="book-now text-center" asp-controller="Cart" asp-action="AddToCart" asp-route-id="@Model.HotelID"><i class="ti-calendar"></i>Select</a> *@
+								<input class="book-now text-center" @((!User.Identity.IsAuthenticated) ?"is-disabled":"") type="submit" value="Select" >			
+						</div>
+						<div class="desc">
+							<h3>@Model.RoomName</h3>
+							<p>Room number: @Model.RoomNumber</p>
+                            <p>Category: @Model.RoomCategory.CategoryName</p>
+						</div>
+					</div>
+				</div>
+	<input type="hidden" asp-for="@Model.HotelID">
+	<input type="hidden" asp-for="@Model.RoomID">
+	<input type="hidden" asp-for="@Model.Hotel.HotelName">
+	<input type="hidden" asp-for="@Model.RoomName">
+	<input type="hidden" asp-for="@Model.RoomNumber">
+	<input type="hidden" asp-for="@Model.UnitPrice">
+	<input type="hidden" asp-for="@Model.RoomCategory.CategoryName">
+	<input type="hidden" asp-for="@Model.Hotel.Address">
+	<input type="hidden" asp-for="@Model.Hotel.City.CityName">
+	<input type="hidden" asp-for="@Model.ImageUrl">
+	</form>

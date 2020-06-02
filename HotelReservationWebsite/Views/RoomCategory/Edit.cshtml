@@ -1,0 +1,23 @@
+@model RoomCategory
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<!-- Medium input -->
+
+<form style="width: 500px;margin-left:250px" asp-controller="RoomCategory" asp-action="Edit" method="POST">
+<div class="md-form">
+  <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+  <input type="hidden" asp-for="RoomCategoryID" class="form-control">
+</div>
+<div class="md-form">
+  <label asp-for="CategoryName"></label>
+  <input type="text" asp-for="CategoryName" class="form-control" size="100px !important ">
+  <span asp-validation-for="CategoryName" class="text-danger"></span>
+</div>
+<div class="md-form" style="margin-top:20px;">
+  <a asp-action="Index" class="btn btn-primary mb-2" >Back</a>
+  <button type="submit" class="btn btn-danger" >Edit</button>
+</div>
+</form>
+
+

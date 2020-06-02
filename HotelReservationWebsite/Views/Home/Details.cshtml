@@ -1,0 +1,22 @@
+@model RoomViewModel
+<div class="col-md-12">
+@if (Model.Rooms.Count() > 0)
+{
+    
+    <div class="row">
+        <div class="col-md-3"><hr style="height:1px;border:none;color:#333;background-color:#333;"/></div>
+        <div class="col-md-6" style="text-align: center;"><h1>@Model.Rooms[0].Hotel.HotelName hotel room list</h1></div>
+        <div class="col-md-3"><hr style="height:1px;border:none;color:#333;background-color:#333;"/></div>
+    </div>
+    <div class="row">
+    @foreach (var room in Model.Rooms)
+        {
+            <partial name="_room" model="room" />
+        }
+    </div>
+}   
+    else
+    {
+        <h1>Updating...</h1>
+    }
+    </div>

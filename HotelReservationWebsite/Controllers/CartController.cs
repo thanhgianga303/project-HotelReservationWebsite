@@ -20,22 +20,29 @@ namespace HotelReservationWebsite.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> AddToCart(Hotel hotel)
+        public async Task<IActionResult> AddToCart(Room room)
         {
-            Console.WriteLine("adasd1" + hotel.HotelID);
+            // Console.WriteLine("adasd1" + hotel.HotelID);
             var newCartItem = new CartItem
             {
                 Id = Guid.NewGuid().ToString(),
-                HotelId = hotel.HotelID.ToString(),
-                HotelName = hotel.HotelName,
-                ImageUrl = hotel.ImageUrl
+                HotelId = room.HotelID.ToString(),
+                RoomId = room.RoomID.ToString(),
+                RoomName = room.RoomName,
+                RoomNumber = room.RoomNumber.ToString(),
+                CategoryName = room.RoomCategory.CategoryName,
+                HotelName = room.Hotel.HotelName,
+                Address = room.Hotel.Address,
+                City = room.Hotel.City.CityName,
+                UnitPrice = room.UnitPrice,
+                ImageUrl = room.ImageUrl,
             };
             var buyer = _identityService.Get(User);
             // System.Diagnostics.Debug.WriteLine(newCartItem);
+            // Console.WriteLine()
             await _cartService.AddItemToCart(buyer, newCartItem);
 
             return RedirectToAction("Index", "Home");
-            // return View();
         }
     }
 }

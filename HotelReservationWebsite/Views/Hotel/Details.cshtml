@@ -47,11 +47,11 @@
                     @if((await AuthorizationService.AuthorizeAsync(User,Model.Hotel,HotelOperations.Approve)).Succeeded)
                     {
                         
-                        <form asp-action="Approve" method="POST" style="display: inline;">
+                        <form asp-action="Approve" asp-controller="Hotel" method="POST" style="display: inline;">
                         <input type="hidden" asp-for="@Model.Hotel.HotelID">
                         <input type="hidden" asp-for="@Model.Hotel.HotelName">
                         <input type="hidden" asp-for="@Model.Hotel.Address">
-                        <input type="hidden" asp-for="@Model.Hotel.City.CityID">
+                        <input type="hidden" asp-for="@Model.Hotel.CityID">
                         <input type="hidden" asp-for="@Model.Hotel.HotelStatus">
                         <input type="hidden" asp-for="@Model.Hotel.OwnerID">
                         <input type="hidden" asp-for="@Model.ImageUrlDisplay">
@@ -62,11 +62,11 @@
             <div class="col-md-2">
                     @if((await AuthorizationService.AuthorizeAsync(User,Model.Hotel,HotelOperations.Reject)).Succeeded)
                     {
-                        <form asp-action="Reject" method="POST">
+                        <form asp-action="Reject" asp-controller="Hotel" method="POST">
                         <input type="hidden" asp-for="@Model.Hotel.HotelID">
                         <input type="hidden" asp-for="@Model.Hotel.HotelName">
                         <input type="hidden" asp-for="@Model.Hotel.Address">
-                        <input type="hidden" asp-for="@Model.Hotel.City.CityID">
+                        <input type="hidden" asp-for="@Model.Hotel.CityID">
                         <input type="hidden" asp-for="@Model.Hotel.HotelStatus">
                         <input type="hidden" asp-for="@Model.Hotel.OwnerID">
                         <input type="hidden" asp-for="@Model.ImageUrlDisplay">

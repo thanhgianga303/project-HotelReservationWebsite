@@ -12,6 +12,7 @@
     <input type="hidden" asp-for="@Model.Hotel.HotelID">
     <input type="hidden" asp-for="@Model.ImageUrlDisplay">
     <input type="hidden" asp-for="@Model.Hotel.OwnerID">
+    <input type="hidden" asp-for="@Model.Hotel.HotelStatus">
     <div class="row" style="margin-top:40px">
     <div class="col-md-5">
         <img src="@Model.Hotel.ImageUrl"/>
@@ -26,7 +27,7 @@
         <div class="row">
            <div class="col-md-7">Address:</div> 
             <div class="col-md-5">
-                <input type="text" asp-for="@Model.Hotel.Address">
+                <input type="text" class="form-control" asp-for="@Model.Hotel.Address">
             </div>
         </div>
         <div class="row">

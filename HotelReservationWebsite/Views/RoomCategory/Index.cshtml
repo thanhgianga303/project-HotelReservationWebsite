@@ -1,0 +1,52 @@
+@model RoomCategoryViewModel
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-8">
+    </div>
+    <div class="col-md-4">
+        <a asp-controller="RoomCategory" asp-action="Create" class="au-btn au-btn-icon au-btn--blue">
+                    <i class="zmdi zmdi-plus"></i>Add room category
+        </a>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="overview-wrap">
+            <h2 class="title-1 m-b-25">Room Category</h2>
+        </div>
+    </div>
+</div>
+<div class="row" style="margin-top: 10px;">
+    <div class="col-lg-12">
+        
+        <div class="table-responsive table--no-card m-b-40">
+            <table class="table table-borderless table-striped table-earning">
+                <thead>
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.RoomCategories[0].RoomCategoryID)</th>
+                        <th>@Html.DisplayNameFor(model => model.RoomCategories[0].CategoryName)</th>
+                        <th>Thao tác</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var roomCategory in Model.RoomCategories)
+                     {
+                    <tr>
+                        <td>@Html.DisplayFor(model => roomCategory.RoomCategoryID)</td>
+                        <td>@Html.DisplayFor(model => roomCategory.CategoryName)</td>
+                        <td>
+                            <a asp-action="Edit" asp-controller="RoomCategory" class="btn btn-secondary" asp-route-id="@roomCategory.RoomCategoryID">Edit</a> 
+                            <a asp-action="Details" asp-controller="RoomCategory" class="btn btn-info" asp-route-id="@roomCategory.RoomCategoryID">Details</a> 
+                            <a asp-action="Delete" asp-controller="RoomCategory" class="btn btn-danger" asp-route-id="@roomCategory.RoomCategoryID">Delete</a>
+                        </td>
+                        
+                    </tr>
+                     }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

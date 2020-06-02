@@ -74,9 +74,13 @@ namespace HotelReservationWebsite.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(City city)
         {
-            await _service.CreateCity(city);
-            return RedirectToAction(nameof(Index));
+            if (ModelState.IsValid)
+            {
+                await _service.CreateCity(city);
+                return RedirectToAction(nameof(Index));
+            }
+            return View();
         }
-        
+
     }
 }
