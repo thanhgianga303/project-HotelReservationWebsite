@@ -22,7 +22,6 @@ namespace HotelReservationWebsite.Controllers
         [HttpPost]
         public async Task<IActionResult> AddToCart(Room room)
         {
-            // Console.WriteLine("adasd1" + hotel.HotelID);
             var newCartItem = new CartItem
             {
                 Id = Guid.NewGuid().ToString(),
@@ -37,9 +36,8 @@ namespace HotelReservationWebsite.Controllers
                 UnitPrice = room.UnitPrice,
                 ImageUrl = room.ImageUrl,
             };
+            Console.WriteLine("test"+newCartItem.Id);
             var buyer = _identityService.Get(User);
-            // System.Diagnostics.Debug.WriteLine(newCartItem);
-            // Console.WriteLine()
             await _cartService.AddItemToCart(buyer, newCartItem);
 
             return RedirectToAction("Index", "Home");

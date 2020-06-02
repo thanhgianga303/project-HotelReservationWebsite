@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@inject IIdentityService<Buyer> identityService
+<!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
@@ -52,7 +53,10 @@
 	<!-- CS Select -->
 	<link rel="stylesheet" href="~/css/cs-select.css">
 	<link rel="stylesheet" href="~/css/cs-skin-border.css">
-
+	<link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/catalog.css" />
+	<link rel="stylesheet" href="~/css/basket.css" />
+    <link rel="stylesheet" href="~/css/order.css" />
 	<!-- Themify Icons -->
 	<link rel="stylesheet" href="~/css/themify-icons.css">
 	<!-- Flat Icon -->
@@ -87,7 +91,7 @@
 							<li><a asp-controller="Home" asp-action="Index">Home</a></li>
 							<li><a >Login</a></li>
 							<li><a >Register</a></li>
-							<li><a >Room list selected - 1</a></li>
+							<li>@await Component.InvokeAsync("Basket", new { user = identityService.Get(User) })</li>
 						</ul>
 					</nav>
 				</div>

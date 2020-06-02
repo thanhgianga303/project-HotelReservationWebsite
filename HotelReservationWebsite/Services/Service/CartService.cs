@@ -39,19 +39,13 @@ namespace HotelReservationWebsite.Services.Service
             var dem = 0;
             var cart = await GetCart(user);
 
-            var itemFound = cart.Items.Find(x => x.HotelId == item.HotelId);
+            var itemFound = cart.Items.Find(x => x.HotelId == item.HotelId && x.RoomId == item.RoomId);
 
             if (itemFound == null)
             {
                 cart.Items.Add(item);
                 dem++;
             }
-            Console.WriteLine("demso" + dem);
-            // else
-            // {
-            //     itemFound.Quantity++;
-            // }
-
             await UpdateCart(cart);
         }
 

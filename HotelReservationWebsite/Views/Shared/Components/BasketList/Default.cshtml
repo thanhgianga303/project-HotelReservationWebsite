@@ -1,57 +1,19 @@
 @model Cart
 
 <div class="container">
-    <article class="esh-basket-titles row">
-        <table style="width: 80%;">
-            <thead>
-                <tr>
-                    <th>Product</th>
-                    <th></th>
-                    <th style="width: 10rem;text-align:center">Price</th>
-                    <th style="text-align: center;">Quantity</th>
-                    <th style="text-align: right;">Cost</th>
-                </tr>
-            </thead>
-            <tbody>
             @for (int i = 0; i < Model.Items.Count; i++)
             {
-                var item = Model.Items[i];
-                
-                <tr>
-                    <td><img class="esh-basket-image" src="@item.ImageUrl"/></td>
-                    <td>@item.HotelName</td>
-                    <td style="text-align:center">$ @item.UnitPrice.ToString("N2")</td>
-                    @* <td style="text-align: center;">
-                        <input type="hidden" name="@("quantities[" + i +"].Key")" value="@item.Id" />
-                        <input style="width: 6rem;" min="1" asp-for="@item.Quantity"/>
-                    </td> *@
-                    @* <td style="text-align: right;">$ @Math.Round(item.UnitPrice * item.Quantity, 2).ToString("N2")</td> *@
-                </tr>
-            }
-                <tr>
-                    <td colspan="4"></td>
-                    <td style="text-align: right;">TOTAL</td>
-                </tr>
-                <tr>
-                    <td colspan="4"></td>
-                    @* <td style="text-align: right;"><section class="esh-basket-item esh-basket-item--mark">$ @Model.Total()</section></td> *@
-                </tr>
-                <tr>
-                    <article class="esh-basket-items row">
-                    <td colspan="3"></td>
-                    <td style="text-align: center;">
-                        <section class="esh-basket-item">
-                            <button class="btn esh-basket-checkout" name="name" value="" type="submit">[ Update ]</button>
-                        </section>
-                    </td>
-                    <td style="text-align: right;">
-                        <section class="esh-basket-item">
-                            <input type="submit" class="btn esh-basket-checkout" value="[ Checkout ]" name="action" />
-                        </section>
-                    </td>
-                    </article>
-                </tr>
-            </tbody>
-        </table>
-    </article>
+                <div class="row" style="margin-top:20px;">
+                    <div class="col-md-4">
+                        <img src="@Model.Items[i].ImageUrl" width="266.6px" height="300px"/>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="row">
+                            <div class="col-md-6"><h3>Room Name:</h3></div>
+                            <div class="col-md-6">@Model.Items[i].HotelName</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">Delete</div>
+                </div>
+            }                
 </div>

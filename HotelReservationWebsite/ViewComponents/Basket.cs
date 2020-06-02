@@ -5,6 +5,7 @@ using HotelReservationWebsite.Models;
 using HotelReservationWebsite.Services.IService;
 using HotelReservationWebsite.ViewModels;
 using Polly.CircuitBreaker;
+using System;
 
 namespace HotelReservationWebsite.ViewComponents
 {
@@ -31,6 +32,7 @@ namespace HotelReservationWebsite.ViewComponents
             {
                 ViewBag.IsCartInoperative = true;
             }
+            Console.WriteLine("number" + vm.ItemsInCart);
 
             return View(vm);
         }
