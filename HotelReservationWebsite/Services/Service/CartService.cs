@@ -36,7 +36,6 @@ namespace HotelReservationWebsite.Services.Service
 
         public async Task AddItemToCart(Buyer user, CartItem item)
         {
-            var dem = 0;
             var cart = await GetCart(user);
 
             var itemFound = cart.Items.Find(x => x.HotelId == item.HotelId && x.RoomId == item.RoomId);
@@ -44,7 +43,17 @@ namespace HotelReservationWebsite.Services.Service
             if (itemFound == null)
             {
                 cart.Items.Add(item);
-                dem++;
+            }
+            await UpdateCart(cart);
+        }
+        public async Task DeleteItem(Buyer user, string id)
+        {
+            var cart = await GetCart(user);
+            Console.WriteLine("12333" + id);
+            var itemFound = cart.Items.Find(x => x.Id == id);
+            if (itemFound != null)
+            {
+                cart.Items.Remove(itemFound);
             }
             await UpdateCart(cart);
         }

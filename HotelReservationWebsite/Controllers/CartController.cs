@@ -36,11 +36,18 @@ namespace HotelReservationWebsite.Controllers
                 UnitPrice = room.UnitPrice,
                 ImageUrl = room.ImageUrl,
             };
-            Console.WriteLine("test"+newCartItem.Id);
-            var buyer = _identityService.Get(User);
-            await _cartService.AddItemToCart(buyer, newCartItem);
+            var renter = _identityService.Get(User);
+            await _cartService.AddItemToCart(renter, newCartItem);
 
             return RedirectToAction("Index", "Home");
+        }
+        [HttpPost]
+        public async Task<IActionResult> DeleteItem(CartItem cartItem)
+        {
+            Console.WriteLine("daaaass");
+            var renter = _identityService.Get(User);
+            await _cartService.DeleteItem(renter, cartItem.Id);
+            return RedirectToAction("Index", "Cart");
         }
     }
 }
