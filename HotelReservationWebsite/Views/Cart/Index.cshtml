@@ -4,10 +4,11 @@
     ViewData["Title"] = "My Cart";
 }
 
-@* <form method="POST"> *@
-
-    <div class="esh-basket">
-        @await Component.InvokeAsync("BasketList", new { user = identityService.Get(User) })
-    </div>
-
-@* </form> *@
+<div class="row">
+            <div class="col-md-3"><hr style="height:1px;border:none;color:#333;background-color:#333;"/></div>
+            <div class="col-md-6" style="text-align: center;"><h1>Room list selected</h1></div>
+            <div class="col-md-3"><hr style="height:1px;border:none;color:#333;background-color:#333;"/></div>
+</div>
+<div class="esh-basket">
+    @await Component.InvokeAsync("BasketList", new { user = identityService.Get(User) })
+</div>

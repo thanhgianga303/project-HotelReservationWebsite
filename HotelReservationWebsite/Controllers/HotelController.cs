@@ -17,7 +17,7 @@ using Newtonsoft.Json;
 namespace HotelReservationWebsite.Controllers
 {
 
-    [Authorize]
+    [Authorize(Roles = "Lessors,Managers,Administrators")]
     public class HotelController : Controller
     {
         private readonly IHotelService _hotelService;

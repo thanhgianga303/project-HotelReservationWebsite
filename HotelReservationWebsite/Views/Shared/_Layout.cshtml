@@ -88,10 +88,22 @@
 					<h1 id="fh5co-logo"><a asp-controller="Home" asp-action="Index">Hotel reservation website</a></h1>
 					<nav id="fh5co-menu-wrap" role="navigation">
 						<ul class="sf-menu" id="fh5co-primary-menu">
-							<li><a asp-controller="Home" asp-action="Index">Home</a></li>
-							<li><a >Login</a></li>
-							<li><a >Register</a></li>
-							<li>@await Component.InvokeAsync("Basket", new { user = identityService.Get(User) })</li>
+							@if (User.Identity.IsAuthenticated)
+							{
+								<li><a asp-controller="Home" asp-action="Index">Home</a></li>
+								<li>
+									<a>@User.Identity.Name</a>
+										<ul class="fh5co-sub-menu">
+											<li><a asp-controller="Home" asp-action="Logout">Logout</a></li>
+										</ul>
+								</li>
+								<li>@await Component.InvokeAsync("Basket", new { user = identityService.Get(User) })</li>
+							}
+							else
+							{
+								<li><a asp-controller="Home" asp-action="Index">Home</a></li>
+								<li><a asp-controller="Home" asp-action="Login">Login</a></li>
+							}
 						</ul>
 					</nav>
 				</div>

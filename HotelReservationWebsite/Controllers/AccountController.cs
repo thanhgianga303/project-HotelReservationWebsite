@@ -4,14 +4,15 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace HotelReservationWebsite.Controllers
 {
-
-    [Authorize(Roles = "Lessors,Managers,Administrators")]
-    public class AdminController : Controller
+    public class AccountController : Controller
     {
-        // [Authorize(Roles = "Admin")]
-        public IActionResult Index()
+        public IActionResult AccessDenied()
         {
             return View();
+        }
+        public IActionResult Logout()
+        {
+            return SignOut("Cookies", "oidc");
         }
     }
 }

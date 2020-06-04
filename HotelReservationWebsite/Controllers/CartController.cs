@@ -20,8 +20,21 @@ namespace HotelReservationWebsite.Controllers
             return View();
         }
         [HttpPost]
+        public IActionResult Index(Cart cart, string action)
+        {
+            if (action == "Delete All")
+            {
+
+            }
+            if (action == "Checkout")
+            {
+                RedirectToAction("Create", "Order");
+            }
+            return RedirectToAction(nameof(Index));
+        }
         public async Task<IActionResult> AddToCart(Room room)
         {
+            Console.WriteLine("con mua" + room.RoomName);
             var newCartItem = new CartItem
             {
                 Id = Guid.NewGuid().ToString(),

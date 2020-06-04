@@ -10,7 +10,6 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace HotelReservationWebsite.Controllers
 {
-    [AllowAnonymous]
     public class HomeController : Controller
     {
         private readonly AppSettings _settings;
@@ -21,6 +20,7 @@ namespace HotelReservationWebsite.Controllers
             _settings = settings.Value;
         }
 
+        [AllowAnonymous]
         public async Task<IActionResult> Index(string searchString)
         {
             var hotels = await _service.GetHotels(searchString);
@@ -32,6 +32,8 @@ namespace HotelReservationWebsite.Controllers
             };
             return View(hotelVM);
         }
+
+        [AllowAnonymous]
         [HttpGet]
         public async Task<IActionResult> Details(int id)
         {
@@ -41,6 +43,15 @@ namespace HotelReservationWebsite.Controllers
                 Rooms = ChangeUriPlaceholderRooms(hotel.Rooms)
             };
             return View(roomVM);
+        }
+        [Authorize]
+        public IActionResult Login()
+        {
+            return RedirectToAction(nameof(Index));
+        }
+        public IActionResult Logout()
+        {
+            return SignOut("Cookies", "oidc");
         }
         private IList<Hotel> ChangeUriPlaceholder(List<Hotel> hotels)
         {
