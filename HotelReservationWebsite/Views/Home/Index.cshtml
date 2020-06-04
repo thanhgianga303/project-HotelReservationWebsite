@@ -16,15 +16,57 @@
             <div class="col-md-6" style="text-align: center;"><h1>List of hotels</h1></div>
             <div class="col-md-3"><hr style="height:1px;border:none;color:#333;background-color:#333;"/></div>
         </div>
+        <form method="POST" asp-action="Index">
+        <div class="row" style="margin-top:20px">
+            <div class="col-md-4">
+                <input class="form-control" asp-for="SearchString" type="text" placeholder="Search" aria-label="Search">
+            </div>
+            <div class="col-md-3">
+                <div class="row">
+                    <div class="col-md-3">
+                        <h3>Check In</h3>
+                    </div>
+                    <div class="col-md-9">
+                        <input type="date" asp-for="CheckIn" class="form-control"/>
+                    </div>
+                </div>
+		    </div>
+            <div class="col-md-3">
+                <div class="row">
+                    <div class="col-md-3">
+                        <h3>Check out</h3>
+                    </div>
+                    <div class="col-md-9">
+                        <input type="date" asp-for="CheckOut" class="form-control"/>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <input type="submit" value="Search"/>
+            </div>
+	    </div>
+        </form>
     @if (Model.Hotels.Count() > 0)
     {
         <div class="row">
             @foreach (var hotel in Model.Hotels)
-                {
-                    <partial name="_hotel" model="hotel" />
+                {         
+                    <div class="col-md-4">
+                            <div class="hotel-content">
+                                <div class="hotel-grid" style="background-image: url(@hotel.ImageUrl);">
+                                    <div class="price"><small>Number of rooms:</small><span>@hotel.Rooms.Count</span></div>
+                                    <a class="book-now text-center" asp-controller="Home" asp-action="Details" asp-route-id="@hotel.HotelID"><i class="ti-calendar"></i> See room list</a>
+                                </div>
+                                <div class="desc">
+                                    <h3>@hotel.HotelName</h3>
+                                    <p>@hotel.Address, @hotel.City.CityName</p>
+                                </div>
+                        </div>
+                    </div>
                 }
                     
         </div>
+        
     }   
     else
     {

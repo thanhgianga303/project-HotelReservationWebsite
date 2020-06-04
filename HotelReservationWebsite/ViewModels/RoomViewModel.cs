@@ -2,13 +2,15 @@ using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using HotelReservationWebsite.Models;
 using Microsoft.AspNetCore.Http;
+using System;
 
 namespace HotelReservationWebsite.ViewModels
 {
     public class RoomViewModel
     {
         public string SearchString { get; set; }
-        public string Genre { get; set; }
+        public DateTime CheckIn { get; set; }
+        public DateTime CheckOut { get; set; }
         public int pageIndex { get; set; }
         public IFormFile ImageUrl { get; set; }
         public int HotelId { get; set; }
