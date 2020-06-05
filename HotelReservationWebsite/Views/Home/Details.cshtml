@@ -1,4 +1,7 @@
 @model RoomViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
 <div class="col-md-12">
 @if (Model.Rooms.Count() > 0)
 {
@@ -8,15 +11,58 @@
         <div class="col-md-6" style="text-align: center;"><h1>@Model.Rooms[0].Hotel.HotelName hotel room list</h1></div>
         <div class="col-md-3"><hr style="height:1px;border:none;color:#333;background-color:#333;"/></div>
     </div>
+        <div class="row" style="margin-top:20px">
+            <div class="col-md-2">
+                <a asp-action="Index" asp-controller="Home" class="btn btn-secondary">Back</a> 
+            </div>
+            <div class="col-md-4">
+                <div class="row">
+                    <div class="col-md-3">
+                        <h3>Check In</h3>
+                    </div>
+                    <div class="col-md-9">
+                        <input type="text" disabled asp-for="CheckIn" class="form-control"/>
+                    </div>
+                </div>
+		    </div>
+            <div class="col-md-4">
+                <div class="row">
+                    <div class="col-md-3">
+                        <h3>Check out</h3>
+                    </div>
+                    <div class="col-md-9">
+                        <input type="text" disabled asp-for="CheckOut" class="form-control"/>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+            </div>
+	    </div>
+        <div class="row">
+        @foreach (var room in Model.Rooms)
+            {
+               <form method="POST" asp-controller="Cart" asp-action="AddToCart">
+                    <input type="hidden" asp-for="CheckIn">
+                    <input type="hidden" asp-for="CheckOut"> 
+                    <partial name="_room" model="room" />
+                </form>
+            }
+        </div>
     <div class="row">
-    @foreach (var room in Model.Rooms)
-        {
-            <partial name="_room" model="room" />
-        }
+        <div class="col-md-12">
+            <a asp-action="Index" asp-controller="Home" class="btn btn-secondary">Back</a>
+        </div>
     </div>
 }   
     else
     {
-        <h1>Updating...</h1>
+        
+    
+    <div class="row">
+        <div class="col-md-12">
+         <h1>Updating...</h1>
+        </div>
+    </div>
+        
     }
     </div>

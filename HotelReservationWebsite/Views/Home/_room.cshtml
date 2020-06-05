@@ -1,5 +1,5 @@
 @model Room
-	<form asp-controller="Cart" asp-action="AddToCart">
+	
             <div class="col-md-4">
 					<div class="hotel-content">
 						<div class="hotel-grid" style="background-image: url(@Model.ImageUrl);">
@@ -31,4 +31,3 @@
 	<input type="hidden" asp-for="@Model.Hotel.Address">
 	<input type="hidden" asp-for="@Model.Hotel.City.CityName">
 	<input type="hidden" asp-for="@Model.ImageUrl">
-	</form>

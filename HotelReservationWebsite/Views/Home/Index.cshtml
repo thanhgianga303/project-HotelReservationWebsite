@@ -3,14 +3,6 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div class="col-md-12">
-@* <div class="col-md-12">
-        <form class="form-header" asp-action="Index" method="GET">
-            <input class="au-input au-input--xl" type="text" asp-for="SearchString" placeholder="Search for datas &amp; reports..." />
-            <button class="au-btn--submit" type="submit">
-                <i class="zmdi zmdi-search"></i>
-            </button>
-        </form>
-</div> *@
         <div class="row">
             <div class="col-md-3"><hr style="height:1px;border:none;color:#333;background-color:#333;"/></div>
             <div class="col-md-6" style="text-align: center;"><h1>List of hotels</h1></div>
@@ -48,21 +40,16 @@
         </form>
     @if (Model.Hotels.Count() > 0)
     {
+        
         <div class="row">
             @foreach (var hotel in Model.Hotels)
-                {         
-                    <div class="col-md-4">
-                            <div class="hotel-content">
-                                <div class="hotel-grid" style="background-image: url(@hotel.ImageUrl);">
-                                    <div class="price"><small>Number of rooms:</small><span>@hotel.Rooms.Count</span></div>
-                                    <a class="book-now text-center" asp-controller="Home" asp-action="Details" asp-route-id="@hotel.HotelID"><i class="ti-calendar"></i> See room list</a>
-                                </div>
-                                <div class="desc">
-                                    <h3>@hotel.HotelName</h3>
-                                    <p>@hotel.Address, @hotel.City.CityName</p>
-                                </div>
-                        </div>
-                    </div>
+                {
+                    <form method="POST" asp-action="Details">
+                        <input type="hidden" asp-for="SearchString"/>
+                        <input type="hidden" asp-for="CheckIn"/>
+                        <input type="hidden" asp-for="CheckOut"/>         
+                        <partial name="_hotel" model="hotel" />
+                    </form>
                 }
                     
         </div>

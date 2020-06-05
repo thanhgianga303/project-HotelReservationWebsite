@@ -2,6 +2,7 @@ using System;
 using System.Threading.Tasks;
 using HotelReservationWebsite.Models;
 using HotelReservationWebsite.Services.IService;
+using HotelReservationWebsite.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 // using Polly.CircuitBreaker;
 namespace HotelReservationWebsite.Controllers
@@ -32,9 +33,9 @@ namespace HotelReservationWebsite.Controllers
             }
             return RedirectToAction(nameof(Index));
         }
-        public async Task<IActionResult> AddToCart(Room room)
+        [HttpPost]
+        public async Task<IActionResult> AddToCart(RoomViewModel roomVM, Room room)
         {
-            Console.WriteLine("con mua" + room.RoomName);
             var newCartItem = new CartItem
             {
                 Id = Guid.NewGuid().ToString(),
@@ -48,6 +49,8 @@ namespace HotelReservationWebsite.Controllers
                 City = room.Hotel.City.CityName,
                 UnitPrice = room.UnitPrice,
                 ImageUrl = room.ImageUrl,
+                CheckIn = roomVM.CheckIn,
+                CheckOut = roomVM.CheckOut
             };
             var renter = _identityService.Get(User);
             await _cartService.AddItemToCart(renter, newCartItem);

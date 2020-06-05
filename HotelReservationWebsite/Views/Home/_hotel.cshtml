@@ -1,0 +1,15 @@
+@model Hotel
+<div class="col-md-4">
+        <div class="hotel-content">
+            <div class="hotel-grid" style="background-image: url(@Model.ImageUrl);">
+                <div class="price"><small>Number of rooms:</small><span>@Model.Rooms.Count</span></div>
+                @* <a class="book-now text-center" asp-controller="Home" asp-action="Details" asp-route-id="@Model.HotelID"><i class="ti-calendar"></i> See room list</a> *@
+                    <input type="hidden" asp-for="@Model.HotelID"/>
+                    <input type="submit" class="book-now text-center" value="See room list" />
+            </div>
+            <div class="desc">
+                <h3>@Model.HotelName</h3>
+                <p>@Model.Address, @Model.City.CityName</p>
+            </div>
+    </div>
+</div>

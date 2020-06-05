@@ -1,3 +1,5 @@
+using System;
+
 namespace CartApi.Models
 {
     public class CartItem
@@ -13,5 +15,7 @@ namespace CartApi.Models
         public string City { get; set; }
         public string CategoryName { get; set; }
         public decimal UnitPrice { get; set; }
+        public DateTime CheckIn { get; set; }
+        public DateTime CheckOut { get; set; }
     }
 }

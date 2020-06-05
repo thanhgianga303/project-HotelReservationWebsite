@@ -43,6 +43,7 @@ namespace HotelReservationWebsite.Services.Service
             if (itemFound == null)
             {
                 cart.Items.Add(item);
+                Console.WriteLine("giang dep trai");
             }
             await UpdateCart(cart);
         }

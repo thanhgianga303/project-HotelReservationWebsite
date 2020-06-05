@@ -15,9 +15,6 @@ namespace HotelReservationWebsite.Controllers
     {
         private readonly AppSettings _settings;
         private readonly IHotelService _service;
-        string searchstring;
-        DateTime checkin;
-        public DateTime checkout;
         public HomeController(IHotelService service, IOptions<AppSettings> settings)
         {
             _service = service;
@@ -29,8 +26,8 @@ namespace HotelReservationWebsite.Controllers
         {
             var hotels = await _service.GetHotels(searchString);
             hotels = hotels.Where(h => h.HotelStatus == HotelStatus.Approved);
-            DateTime dayCheckIn = DateTime.Now;
-            DateTime dayCheckOut = DateTime.Now.AddDays(1);
+            DateTime dayCheckIn = DateTime.Today.AddDays(1);
+            DateTime dayCheckOut = DateTime.Today.AddDays(2);
             var hotelVM = new HotelViewModel
             {
                 CheckIn = dayCheckIn,
@@ -38,14 +35,6 @@ namespace HotelReservationWebsite.Controllers
                 SearchString = searchString,
                 Hotels = ChangeUriPlaceholder(hotels.ToList())
             };
-
-            searchstring = searchString;
-            checkin = dayCheckIn;
-            checkout = dayCheckOut;
-
-            Console.WriteLine("searchGianga" + searchstring);
-            Console.WriteLine("checkIna" + checkin);
-            Console.WriteLine("checkOuta" + checkout);
             return View(hotelVM);
         }
         [AllowAnonymous]
@@ -53,6 +42,7 @@ namespace HotelReservationWebsite.Controllers
         public async Task<IActionResult> Index(HotelViewModel hotelVM)
         {
             var hotels = await _service.GetHotels(hotelVM.SearchString);
+            hotels = hotels.Where(h => h.HotelStatus == HotelStatus.Approved);
             var newhotelVM = new HotelViewModel
             {
                 CheckIn = hotelVM.CheckIn,
@@ -60,11 +50,6 @@ namespace HotelReservationWebsite.Controllers
                 SearchString = hotelVM.SearchString,
                 Hotels = ChangeUriPlaceholder(hotels.ToList())
             };
-
-            searchstring = hotelVM.SearchString;
-            checkin = hotelVM.CheckIn;
-            checkout = hotelVM.CheckOut;
-
             return View(newhotelVM);
         }
         public void checkBooking(DateTime checkIn, DateTime checkOut)
@@ -74,17 +59,19 @@ namespace HotelReservationWebsite.Controllers
             //
         }
         [AllowAnonymous]
-        [HttpGet]
-        public async Task<IActionResult> Details(int id)
+        [HttpPost]
+        public async Task<IActionResult> Details(HotelViewModel hotelViewModel, Hotel hotel)
         {
-            var hotel = await _service.GetHotel(id);
-            Console.WriteLine("searchGiangxx" + searchstring);
-            Console.WriteLine("checkInx" + checkin);
-            Console.WriteLine("checkOutx" + checkout);
+            var findHotel = await _service.GetHotel(hotel.HotelID);
             var roomVM = new RoomViewModel()
             {
-                Rooms = ChangeUriPlaceholderRooms(hotel.Rooms)
+                CheckIn = hotelViewModel.CheckIn,
+                CheckOut = hotelViewModel.CheckOut,
+                SearchString = hotelViewModel.SearchString,
+                Rooms = ChangeUriPlaceholderRooms(findHotel.Rooms)
             };
+            Console.WriteLine("mama" + roomVM.CheckIn);
+            Console.WriteLine("meme" + hotelViewModel.CheckIn);
             return View(roomVM);
         }
         [Authorize]
