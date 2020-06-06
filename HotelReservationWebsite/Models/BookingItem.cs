@@ -1,9 +1,8 @@
 using System;
-using BookingAPI.Models;
 
-namespace BookingAPI.DTOs
+namespace HotelReservationWebsite.Models
 {
-    public class BookingItemDTO
+    public class BookingItem
     {
         public string HotelId { get; set; }
         public string RoomId { get; set; }

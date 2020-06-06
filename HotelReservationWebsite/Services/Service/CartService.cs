@@ -59,25 +59,33 @@ namespace HotelReservationWebsite.Services.Service
             await UpdateCart(cart);
         }
 
-        // public Order MapCartToOrder(Cart cart)
-        // {
-        //     var order = new Order();
+        public Booking MapCartToBooking(Cart cart)
+        {
+            var booking = new Booking();
 
-        //     foreach (var item in cart.Items)
-        //     {
-        //         order.Items.Add(new OrderItem
-        //         {
-        //             ProductId = int.Parse(item.ProductId),
-        //             ProductName = item.ProductName,
-        //             UnitPrice = item.UnitPrice,
-        //             PictureUri = item.PictureUri,
-        //             Units = item.Quantity
-        //         });
-        //         order.Total += item.Quantity * item.UnitPrice;
-        //     }
+            foreach (var item in cart.Items)
+            {
+                booking.Items.Add(new BookingItem
+                {
+                    HotelId = item.HotelId,
+                    HotelName = item.HotelName,
+                    RoomId = item.RoomId,
+                    RoomName = item.RoomName,
+                    RoomNumber = item.RoomNumber,
+                    ImageUri = item.ImageUrl,
+                    Address = item.Address,
+                    City = item.City,
+                    CategoryName = item.CategoryName,
+                    UnitPrice = item.UnitPrice,
+                    CheckIn = item.CheckIn,
+                    CheckOut = item.CheckOut,
+                    DayNumber = item.dayNumber().Days,
+                    Cost = item.cost()
+                });
+            }
 
-        //     return order;
-        // }
+            return booking;
+        }
 
         public async Task ClearCart(Buyer buyer)
         {

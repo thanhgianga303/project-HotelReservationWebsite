@@ -5,6 +5,7 @@ namespace HotelReservationWebsite
         public string AccountUrl { get; set; }
         public string IdentityUrl { get; set; }
         public string CartUrl { get; set; }
+        public string BookingUrl { get; set; }
         public string ExternalCatalogBaseUrl { get; set; }
         public ClientCredentials ClientCredentials { get; set; }
     }
