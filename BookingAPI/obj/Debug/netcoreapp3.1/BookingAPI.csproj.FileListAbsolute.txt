@@ -65,3 +65,7 @@ C:\Users\thanh\OneDrive\Documents\project-HotelReservationWebsite\BookingAPI\obj
 C:\Users\thanh\OneDrive\Documents\project-HotelReservationWebsite\BookingAPI\obj\Debug\netcoreapp3.1\BookingAPI.pdb
 C:\Users\thanh\OneDrive\Documents\project-HotelReservationWebsite\BookingAPI\obj\Debug\netcoreapp3.1\BookingAPI.genruntimeconfig.cache
 C:\Users\thanh\OneDrive\Documents\project-HotelReservationWebsite\BookingAPI\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\thanh\OneDrive\Documents\project-HotelReservationWebsite\BookingAPI\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\thanh\OneDrive\Documents\project-HotelReservationWebsite\BookingAPI\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+C:\Users\thanh\OneDrive\Documents\project-HotelReservationWebsite\BookingAPI\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\Users\thanh\OneDrive\Documents\project-HotelReservationWebsite\BookingAPI\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll

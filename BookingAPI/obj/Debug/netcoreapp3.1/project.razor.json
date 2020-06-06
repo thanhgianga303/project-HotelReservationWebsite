@@ -1,5 +1,5 @@
 {
-  "FilePath": "c:\\Desktop\\MovieApp8\\src\\OrderApi\\OrderApi.csproj",
+  "FilePath": "c:\\Users\\thanh\\OneDrive\\Documents\\project-HotelReservationWebsite\\BookingAPI\\BookingAPI.csproj",
   "Configuration": {
     "ConfigurationName": "MVC-3.0",
     "LanguageVersion": "3.0",
@@ -20518,7 +20518,7 @@
     ],
     "CSharpLanguageVersion": 800
   },
-  "RootNamespace": "OrderApi",
+  "RootNamespace": "BookingAPI",
   "Documents": [],
   "SerializationFormat": "0.2"
 }

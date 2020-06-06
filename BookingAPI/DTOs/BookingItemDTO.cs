@@ -22,6 +22,6 @@ namespace BookingAPI.DTOs
         public DateTime CheckOut { get; set; }
         public int DayNumber { get; set; }
         public decimal Cost { get; set; }
-        public virtual Booking Booking { get; set; }
+        public Booking Booking { get; set; }
     }
 }
