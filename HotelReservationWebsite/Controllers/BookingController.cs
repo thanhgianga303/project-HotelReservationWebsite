@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using HotelReservationWebsite.Models;
 using HotelReservationWebsite.Services.IService;
@@ -35,6 +38,7 @@ namespace HotelReservationWebsite.Controllers
             var user = _identitySvc.Get(User);
             var cart = await _cartSvc.GetCart(user);
             var booking = _cartSvc.MapCartToBooking(cart);
+            booking.Total = cart.Total();
             return View(booking);
         }
 
@@ -47,9 +51,9 @@ namespace HotelReservationWebsite.Controllers
             }
 
             var user = _identitySvc.Get(User);
-            var booking = frmBooking;
+            var booking = ChangeUriSaveBooking(frmBooking);
+            // Console.WriteLine(")
             booking.BuyerId = user.Id;
-
             // var chargeSvc = new ChargeService();
             // var charge = chargeSvc.Create(new ChargeCreateOptions
             // {
@@ -79,11 +83,31 @@ namespace HotelReservationWebsite.Controllers
             return View(id);
         }
 
-        public async Task<ActionResult<Booking>> Details(int bookingId)
+        public async Task<ActionResult<Booking>> Details(int id)
         {
-            var booking = await _bookingSvc.GetBooking(bookingId);
-
-            return View(booking);
+            var booking = await _bookingSvc.GetBooking(id);
+            var bookingView = ChangeUriPlaceholderBooking(booking);
+            return View(bookingView);
+        }
+        private Booking ChangeUriPlaceholderBooking(Booking booking)
+        {
+            var baseUri = _settings.ExternalCatalogBaseUrl;
+            List<BookingItem> items = booking.Items.ToList();
+            items.ForEach(x =>
+            {
+                x.ImageUri = baseUri + "/images/" + x.ImageUri;
+            });
+            return booking;
+        }
+        private Booking ChangeUriSaveBooking(Booking booking)
+        {
+            var baseUri = _settings.ExternalCatalogBaseUrl;
+            List<BookingItem> items = booking.Items.ToList();
+            items.ForEach(x =>
+            {
+                x.ImageUri = x.ImageUri.Replace(baseUri + "/images/", "");
+            });
+            return booking;
         }
     }
 }

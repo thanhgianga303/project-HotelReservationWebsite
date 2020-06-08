@@ -23,13 +23,15 @@ namespace HotelReservationWebsite.Controllers
         [HttpPost]
         public IActionResult Index(Cart cart, string action)
         {
-            if (action == "Delete All")
-            {
+            // if (action == "Delete All")
+            // {
 
-            }
+            // }
+
             if (action == "Checkout")
             {
-                RedirectToAction("Create", "Order");
+                Console.WriteLine("name" + action);
+                return RedirectToAction("Create", "Booking");
             }
             return RedirectToAction(nameof(Index));
         }

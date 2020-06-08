@@ -211,3 +211,8 @@ C:\Users\thanh\OneDrive\Documents\project-HotelReservationWebsite\HotelReservati
 C:\Users\thanh\OneDrive\Documents\project-HotelReservationWebsite\HotelReservationWebsite\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Components\Basket\Default.cshtml.g.cs
 C:\Users\thanh\OneDrive\Documents\project-HotelReservationWebsite\HotelReservationWebsite\obj\Debug\netcoreapp3.1\Razor\Views\Cart\_item.cshtml.g.cs
 C:\Users\thanh\OneDrive\Documents\project-HotelReservationWebsite\HotelReservationWebsite\obj\Debug\netcoreapp3.1\Razor\Views\Account\AccessDenied.cshtml.g.cs
+C:\Users\thanh\OneDrive\Documents\project-HotelReservationWebsite\HotelReservationWebsite\obj\Debug\netcoreapp3.1\Razor\Views\Booking\Complete.cshtml.g.cs
+C:\Users\thanh\OneDrive\Documents\project-HotelReservationWebsite\HotelReservationWebsite\obj\Debug\netcoreapp3.1\Razor\Views\Booking\Create.cshtml.g.cs
+C:\Users\thanh\OneDrive\Documents\project-HotelReservationWebsite\HotelReservationWebsite\obj\Debug\netcoreapp3.1\Razor\Views\Booking\Index.cshtml.g.cs
+C:\Users\thanh\OneDrive\Documents\project-HotelReservationWebsite\HotelReservationWebsite\obj\Debug\netcoreapp3.1\Razor\Views\Booking\_bookingitem.cshtml.g.cs
+C:\Users\thanh\OneDrive\Documents\project-HotelReservationWebsite\HotelReservationWebsite\obj\Debug\netcoreapp3.1\Razor\Views\Booking\Details.cshtml.g.cs

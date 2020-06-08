@@ -1,0 +1,60 @@
+@model IEnumerable<Booking>
+
+
+<div class="col-md-12">
+        <div class="row">
+            <div class="col-md-3"><hr style="height:1px;border:none;color:#333;background-color:#333;"/></div>
+            <div class="col-md-6" style="text-align: center;"><h1>List of bookings</h1></div>
+            <div class="col-md-3"><hr style="height:1px;border:none;color:#333;background-color:#333;"/></div>
+        </div>
+        
+    @if (Model.Count() > 0)
+    {
+        var i=1;   
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table table-dark">
+                    <thead>
+                        <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Booking ID</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Phone</th>
+                        <th scope="col">Identity Card</th>
+                        <th scope="col">Booking Date</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Total cost</th>
+                        <th scope="col">Operation</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                       {
+                        <tr>
+                        <th scope="row">@i</th>
+                        @{
+                            i=i+1;
+                        }
+                        <td>@item.BookingId</td>
+                        <td>@item.Name</td>
+                        <td>@item.Phone</td>
+                        <td>@item.IdentityCard</td>
+                        <td>@item.BookingDate</td>
+                        <td>@item.Status</td>
+                        <td>@item.Total</td>
+                        
+                        <td><a asp-action="Details" asp-controller="Booking" asp-route-id="@item.BookingId" >Details</a></td>
+                        </tr>
+                       }
+                    </tbody>
+                    </table>
+            </div>
+        </div>
+        
+        
+    }   
+    else
+    {
+        <h1>THERE ARE NO RESULTS THAT MATCH YOUR SEARCH</h1>
+    }
+</div>

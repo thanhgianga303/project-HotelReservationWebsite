@@ -80,7 +80,7 @@ namespace HotelReservationWebsite.Services.Service
                     CheckIn = item.CheckIn,
                     CheckOut = item.CheckOut,
                     DayNumber = item.dayNumber().Days,
-                    Cost = item.cost()
+                    Cost = item.cost(),
                 });
             }
 
@@ -93,20 +93,5 @@ namespace HotelReservationWebsite.Services.Service
 
             await _httpClient.DeleteAsync(uri);
         }
-
-        // public async Task<Cart> SetQuantities(Buyer user, Dictionary<string, int> quantities)
-        // {
-        //     var basket = await GetCart(user);
-
-        //     basket.Items.ForEach(x =>
-        //     {
-        //         if (quantities.TryGetValue(x.Id, out var quantity))
-        //         {
-        //             x.Quantity = quantity;
-        //         }
-        //     });
-
-        //     return basket;
-        // }
     }
 }

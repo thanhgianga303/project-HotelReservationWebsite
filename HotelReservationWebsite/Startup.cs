@@ -38,7 +38,7 @@ namespace HotelReservationWebsite
             services.AddScoped<IHotelService, HotelService>();
             services.AddScoped<IRoomCategoryService, RoomCategoryService>();
             services.AddScoped<ICartService, CartService>();
-            // services.AddScoped<IOrderService, OrderService>();
+            services.AddScoped<IBookingService, BookingService>();
             services.AddScoped<IIdentityService<Buyer>, IdentityService>();
             JwtSecurityTokenHandler.DefaultMapInboundClaims = false;
 

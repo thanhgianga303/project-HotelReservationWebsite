@@ -1,0 +1,33 @@
+@model Booking
+<form asp-action="Create" asp-controller="Booking" method="POST">
+    <section class="esh-orders_new-section">
+        <h4 class="esh-orders_new-title">Check-in information</h4>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="@Model.Name" class="esh-orders_new-title">Name:</label>
+                    <input asp-for="@Model.Name" class="form-control form-input" type="text" placeholder="Name" />
+                    <span asp-validation-for="@Model.Name" class="alert-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="@Model.Phone" class="esh-orders_new-title">Phone:</label>
+                    <input asp-for="@Model.Phone" class="form-control form-input" type="text" placeholder="Phone" />
+                    <span asp-validation-for="@Model.Phone" class="alert-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="@Model.IdentityCard" class="esh-orders_new-title">IdentityCard</label>
+                    <input asp-for="@Model.IdentityCard" class="form-control form-input" type="text" placeholder="IdentityCard" />
+                    <span asp-validation-for="@Model.IdentityCard" class="alert-danger"></span>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    @await Html.PartialAsync("_bookingItem")
+
+    <input type="submit" value="[ Booking ]" />
+</form>

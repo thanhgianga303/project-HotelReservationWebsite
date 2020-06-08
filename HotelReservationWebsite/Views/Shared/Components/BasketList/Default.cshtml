@@ -11,7 +11,7 @@
 @if(@Model.Items.Count > 0)
 {
     <div class="col-md-8">
-    <form method="POST" asp-controller="Cart" asp-action="Index">
+    <form method="POST">
         <div class="row">
            <div class="col-md-3">
                 <input type="hidden" asp-for="@Model.Id">
