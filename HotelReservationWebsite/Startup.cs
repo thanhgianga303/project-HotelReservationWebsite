@@ -15,6 +15,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
+using Stripe;
 
 namespace HotelReservationWebsite
 {
@@ -33,7 +34,7 @@ namespace HotelReservationWebsite
             services.Configure<AppSettings>(Configuration);
             services.AddHttpContextAccessor();
             services.AddControllersWithViews();
-            services.AddHttpClient<IHttpClient, CustomHttpClient>();
+            services.AddHttpClient<HotelReservationWebsite.Infrastructure.IHttpClient, CustomHttpClient>();
             services.AddScoped<ICityService, CityService>();
             services.AddScoped<IHotelService, HotelService>();
             services.AddScoped<IRoomCategoryService, RoomCategoryService>();
@@ -77,6 +78,7 @@ namespace HotelReservationWebsite
             services.AddScoped<IAuthorizationHandler, OwnerAuthorizationHandler>();
             services.AddScoped<IAuthorizationHandler, ManagersAuthorizationHandler>();
             services.AddScoped<IAuthorizationHandler, AdministratorsAuthorizationHandler>();
+            services.Configure<StripeSettings>(Configuration.GetSection("Stripe"));
             // services.AddAuthentication("Bearer")
             // .AddJwtBearer("Bearer", options =>
             // {
@@ -95,6 +97,7 @@ namespace HotelReservationWebsite
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            StripeConfiguration.ApiKey = Configuration.GetSection("Stripe")["SecretKey"];
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -112,6 +115,10 @@ namespace HotelReservationWebsite
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapAreaControllerRoute(
+                name: "AreaAdmin",
+                areaName: "Admin",
+                pattern: "Admin/{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapDefaultControllerRoute()
                     .RequireAuthorization();
             });

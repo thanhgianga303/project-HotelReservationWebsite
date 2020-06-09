@@ -20639,6 +20639,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\thanh\\OneDrive\\Documents\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\BookingManager\\Index.cshtml",
+      "TargetPath": "Views\\BookingManager\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\thanh\\OneDrive\\Documents\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\Admin\\Address.cshtml",
       "TargetPath": "Views\\Admin\\Address.cshtml",
       "FileKind": "mvc"
@@ -20769,8 +20774,8 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\thanh\\OneDrive\\Documents\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\Booking\\_bookingitem.cshtml",
-      "TargetPath": "Views\\Booking\\_bookingitem.cshtml",
+      "FilePath": "c:\\Users\\thanh\\OneDrive\\Documents\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\Booking\\_bookingItem.cshtml",
+      "TargetPath": "Views\\Booking\\_bookingItem.cshtml",
       "FileKind": "mvc"
     },
     {

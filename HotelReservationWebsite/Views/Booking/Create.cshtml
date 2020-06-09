@@ -1,5 +1,21 @@
 @model Booking
+@* @section stripe
+{
+<script src="https://js.stripe.com/v3/"></script>  
+
+} *@
+
 <form asp-action="Create" asp-controller="Booking" method="POST">
+    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                data-key="pk_test_060p6yTriZzNuEtVb0StlhOu00hhKMl55T"
+                data-amount="@ViewBag.PaymentAmount"
+                data-name="[My Company Name]"
+                data-description="10 rubberducks for 1$ each"
+                data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+                data-locale="en"
+                data-zip-code="true"
+                data-label="Pay 10$">
+        </script>
     <section class="esh-orders_new-section">
         <h4 class="esh-orders_new-title">Check-in information</h4>
         <div class="row">

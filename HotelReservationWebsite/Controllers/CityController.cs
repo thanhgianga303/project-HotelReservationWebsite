@@ -11,8 +11,10 @@ using RabbitMQ.Client;
 
 namespace HotelReservationWebsite.Controllers
 {
+    [Area("Admin")]
     public class CityController : Controller
     {
+
         private readonly ICityService _service;
         public CityController(ICityService service)
         {

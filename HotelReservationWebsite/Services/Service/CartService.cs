@@ -43,14 +43,12 @@ namespace HotelReservationWebsite.Services.Service
             if (itemFound == null)
             {
                 cart.Items.Add(item);
-                Console.WriteLine("giang dep trai");
             }
             await UpdateCart(cart);
         }
         public async Task DeleteItem(Buyer user, string id)
         {
             var cart = await GetCart(user);
-            Console.WriteLine("12333" + id);
             var itemFound = cart.Items.Find(x => x.Id == id);
             if (itemFound != null)
             {

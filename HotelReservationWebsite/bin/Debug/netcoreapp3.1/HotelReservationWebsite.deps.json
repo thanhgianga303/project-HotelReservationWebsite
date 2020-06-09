@@ -33,6 +33,7 @@
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "3.1.1",
           "Newtonsoft.Json": "12.0.3",
           "RabbitMQ.Client": "6.0.0",
+          "Stripe.net": "37.8.0",
           "System.IdentityModel.Tokens.Jwt": "6.5.0",
           "Polly": "7.2.0",
           "Microsoft.AspNetCore.Antiforgery": "3.1.0.0",
@@ -1496,6 +1497,22 @@
           "lib/netstandard2.0/SQLitePCLRaw.provider.dynamic_cdecl.dll": {}
         }
       },
+      "Stripe.net/37.8.0": {
+        "dependencies": {
+          "Microsoft.Bcl.AsyncInterfaces": "1.1.0",
+          "Newtonsoft.Json": "12.0.3",
+          "System.Configuration.ConfigurationManager": "4.5.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Stripe.net.dll": {
+            "assemblyVersion": "37.8.0.0",
+            "fileVersion": "37.8.0.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/Stripe.net.dll": {}
+        }
+      },
       "System.AppContext/4.3.0": {
         "dependencies": {
           "System.Runtime": "4.3.0"
@@ -1726,6 +1743,9 @@
             "assemblyVersion": "4.0.1.0",
             "fileVersion": "4.6.26515.6"
           }
+        },
+        "compile": {
+          "ref/netstandard2.0/System.Configuration.ConfigurationManager.dll": {}
         }
       },
       "System.Console/4.3.0": {
@@ -4669,6 +4689,13 @@
       "sha512": "sha512-ZSwacbKJUsxJEZxwT23uZVrGbaIvXcADZDz5Sr66fikO5eehdcceDncjzwzTzWfW13di8gpTpstx3WJSt/Ci5Q==",
       "path": "sqlitepclraw.provider.dynamic_cdecl/2.0.2",
       "hashPath": "sqlitepclraw.provider.dynamic_cdecl.2.0.2.nupkg.sha512"
+    },
+    "Stripe.net/37.8.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-xjq6kmBe9ixU1TNe18lwOHehJKW5TZTqZZaWHFGko+/llMs4M4XeyEo0PQcg6WYbamabHurus1hPmUiSdKkByQ==",
+      "path": "stripe.net/37.8.0",
+      "hashPath": "stripe.net.37.8.0.nupkg.sha512"
     },
     "System.AppContext/4.3.0": {
       "type": "package",
