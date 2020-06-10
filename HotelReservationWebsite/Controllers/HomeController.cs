@@ -15,9 +15,11 @@ namespace HotelReservationWebsite.Controllers
     {
         private readonly AppSettings _settings;
         private readonly IHotelService _service;
-        public HomeController(IHotelService service, IOptions<AppSettings> settings)
+        private readonly IBookingService _bookingService;
+        public HomeController(IHotelService service, IBookingService bookingService, IOptions<AppSettings> settings)
         {
             _service = service;
+            _bookingService = bookingService;
             _settings = settings.Value;
         }
 
@@ -28,6 +30,33 @@ namespace HotelReservationWebsite.Controllers
             hotels = hotels.Where(h => h.HotelStatus == HotelStatus.Approved);
             DateTime dayCheckIn = DateTime.Today.AddDays(1);
             DateTime dayCheckOut = DateTime.Today.AddDays(2);
+
+            var bookings = await _bookingService.GetBookings();
+
+            foreach (var booking in bookings)
+            {
+                booking.Items = booking.Items.Where(i => (dayCheckIn >= i.CheckIn && dayCheckOut <= i.CheckOut)
+                || (dayCheckIn < i.CheckIn && dayCheckOut > i.CheckIn)
+                || (dayCheckIn < i.CheckOut && dayCheckOut > i.CheckOut)).ToList();
+
+                foreach (var item in booking.Items)
+                {
+                    foreach (var hotel in hotels)
+                    {
+                        hotel.Rooms = hotel.Rooms.Where(a => (a.HotelID != Int32.Parse(item.HotelId))
+                         || (a.RoomID != Int32.Parse(item.RoomId))).ToList();
+                        foreach (var room in hotel.Rooms)
+                        {
+                            Console.WriteLine("hotelIdx: " + room.HotelID + "--RoomIdx: " + room.RoomID);
+                        }
+                    }
+                }
+            }
+
+
+
+
+
             var hotelVM = new HotelViewModel
             {
                 CheckIn = dayCheckIn,
@@ -43,6 +72,27 @@ namespace HotelReservationWebsite.Controllers
         {
             var hotels = await _service.GetHotels(hotelVM.SearchString);
             hotels = hotels.Where(h => h.HotelStatus == HotelStatus.Approved);
+
+            var bookings = await _bookingService.GetBookings();
+            Console.WriteLine("CheckInff: " + hotelVM.CheckIn);
+            Console.WriteLine("CheckOutff: " + hotelVM.CheckOut);
+            foreach (var booking in bookings)
+            {
+                booking.Items = booking.Items.Where(i => (hotelVM.CheckIn >= i.CheckIn && hotelVM.CheckOut <= i.CheckOut)
+                || (hotelVM.CheckIn < i.CheckIn && hotelVM.CheckOut > i.CheckIn)
+                || (hotelVM.CheckIn < i.CheckOut && hotelVM.CheckOut > i.CheckOut)).ToList();
+
+                foreach (var item in booking.Items)
+                {
+                    Console.WriteLine("hotelIdSearch: " + item.HotelId + "--RoomIdSearch: " + item.RoomId + "--and: " + item.Booking.BookingId + "---and: " + item.CheckIn + "---and: " + item.CheckOut);
+                    foreach (var hotel in hotels)
+                    {
+                        hotel.Rooms = hotel.Rooms.Where(a => (a.HotelID != Int32.Parse(item.HotelId))
+                         || (a.RoomID != Int32.Parse(item.RoomId))).ToList();
+                    }
+                }
+            }
+
             var newhotelVM = new HotelViewModel
             {
                 CheckIn = hotelVM.CheckIn,
@@ -52,17 +102,26 @@ namespace HotelReservationWebsite.Controllers
             };
             return View(newhotelVM);
         }
-        public void checkBooking(DateTime checkIn, DateTime checkOut)
-        {
-            //var bookingList=_serviceBooking.GetBookings()
-            //for(var item in bookingList )
-            //
-        }
         [AllowAnonymous]
         [HttpPost]
         public async Task<IActionResult> Details(HotelViewModel hotelViewModel, Hotel hotel)
         {
             var findHotel = await _service.GetHotel(hotel.HotelID);
+
+            var bookings = await _bookingService.GetBookings();
+
+            foreach (var booking in bookings)
+            {
+                booking.Items = booking.Items.Where(i => (hotelViewModel.CheckIn >= i.CheckIn && hotelViewModel.CheckOut <= i.CheckOut)
+                 || (hotelViewModel.CheckIn < i.CheckIn && hotelViewModel.CheckOut > i.CheckIn)
+                 || (hotelViewModel.CheckIn < i.CheckOut && hotelViewModel.CheckOut > i.CheckOut)).ToList();
+
+                foreach (var item in booking.Items)
+                {
+                    findHotel.Rooms = findHotel.Rooms.Where(a => (a.HotelID != Int32.Parse(item.HotelId))
+                     || (a.RoomID != Int32.Parse(item.RoomId))).ToList();
+                }
+            }
             var roomVM = new RoomViewModel()
             {
                 CheckIn = hotelViewModel.CheckIn,
@@ -70,8 +129,6 @@ namespace HotelReservationWebsite.Controllers
                 SearchString = hotelViewModel.SearchString,
                 Rooms = ChangeUriPlaceholderRooms(findHotel.Rooms)
             };
-            Console.WriteLine("mama" + roomVM.CheckIn);
-            Console.WriteLine("meme" + hotelViewModel.CheckIn);
             return View(roomVM);
         }
         [Authorize]

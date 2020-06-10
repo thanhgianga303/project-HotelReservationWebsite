@@ -18,5 +18,6 @@ namespace HotelReservationWebsite.Models
         public DateTime CheckOut { get; set; }
         public int DayNumber { get; set; }
         public decimal Cost { get; set; }
+        public Booking Booking { get; set; }
     }
 }

@@ -151,7 +151,6 @@ namespace HotelReservationWebsite.Controllers
         [HttpPost, ActionName("Delete")]
         public async Task<IActionResult> DeleteConfirm(int id)
         {
-            // Console.WriteLine("giangcoi" + id);
             var hotel = await _hotelService.GetHotel(id);
 
             var isAuthorize = await _authorizationService.AuthorizeAsync(User, hotel, HotelOperations.Delete);
@@ -235,7 +234,6 @@ namespace HotelReservationWebsite.Controllers
         {
             Console.WriteLine("idd" + id);
             var categories = await _categoryService.GetRoomCategories();
-            // var hotel = await _hotelService.GetHotel(hotelId);
             var roomVM = new RoomViewModel
             {
                 RoomCategories = categories.ToList(),
@@ -262,7 +260,6 @@ namespace HotelReservationWebsite.Controllers
         private IList<Hotel> ChangeUriPlaceholderHotels(List<Hotel> hotels)
         {
             var baseUri = _settings.ExternalCatalogBaseUrl;
-            // var imageUrl = "";
             hotels.ForEach(x =>
             {
                 x.ImageUrl = baseUri + "/images/" + x.ImageUrl;

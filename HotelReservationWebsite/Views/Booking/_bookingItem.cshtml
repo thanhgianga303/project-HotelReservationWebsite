@@ -11,11 +11,13 @@
                         <div class="row">
                             <div class="col-md-6"><h3>Hotel name:</h3></div>
                             <div class="col-md-6">@item.HotelName</div>
+                            <input type="hidden" value="@item.HotelId" name=@("items[" + i + "].HotelId") />
                             <input type="hidden" value="@item.HotelName" name=@("items[" + i + "].HotelName") />
                         </div>
                         <div class="row">
                             <div class="col-md-6"><h3>Room name:</h3></div>
                             <div class="col-md-6">@item.RoomName</div>
+                            <input type="hidden" value="@item.RoomId" name=@("items[" + i + "].RoomId") />
                             <input type="hidden" value="@item.RoomName" name=@("items[" + i + "].RoomName") />
                         </div>
                         <div class="row">

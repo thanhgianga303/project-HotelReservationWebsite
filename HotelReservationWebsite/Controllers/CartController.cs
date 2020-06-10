@@ -21,12 +21,13 @@ namespace HotelReservationWebsite.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult Index(Cart cart, string action)
+        public async Task<IActionResult> Index(Cart cart, string action)
         {
-            // if (action == "Delete All")
-            // {
-
-            // }
+            var user = _identityService.Get(User);
+            if (action == "Delete All")
+            {
+                await _cartService.ClearCart(user);
+            }
 
             if (action == "Checkout")
             {
