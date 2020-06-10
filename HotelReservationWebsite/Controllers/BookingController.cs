@@ -59,10 +59,10 @@ namespace HotelReservationWebsite.Controllers
             var chargeSvc = new ChargeService();
             var charge = chargeSvc.Create(new ChargeCreateOptions
             {
-                Amount = 500,
+                Amount = (int)(booking.Total * 100),
                 Currency = "usd",
-                Description = $"Order Payment Giang",
-                ReceiptEmail = "thanhgianga303@gmail.com",
+                Description = $"Order Payment {frmBooking.Name}",
+                ReceiptEmail = stripeEmail,
                 Source = stripeToken
             });
 
