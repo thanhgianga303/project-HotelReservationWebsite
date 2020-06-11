@@ -2,9 +2,12 @@
 // Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
 
 
+using IdentityAPI.Mapping;
 using IdentityApi.Infrastructure;
 using IdentityAPI.Data;
+using IdentityAPI.Data.Repositories;
 using IdentityAPI.Models;
+using IdentityAPI.Models.IRepositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
@@ -12,6 +15,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using AutoMapper;
 
 namespace IdentityAPI
 {
@@ -29,7 +33,8 @@ namespace IdentityAPI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-
+            services.AddAutoMapper(typeof(MappingProfile));
+            services.AddScoped<IApplicationUserRepository, ApplicationUserRepository>();
             // configures IIS out-of-proc settings (see https://github.com/aspnet/AspNetCore/issues/14882)
             services.Configure<IISOptions>(iis =>
             {

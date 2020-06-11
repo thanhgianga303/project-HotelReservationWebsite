@@ -9,24 +9,29 @@
                         <form  method="POST">
                             <fieldset>
                                 <div class="form-group">
-                                    <label asp-for="Username"></label>
-                                    <input class="form-control" placeholder="Username" asp-for="Username" autofocus>
+                                    <label asp-for="UserName"></label>
+                                    <input class="form-control" placeholder="UserName" asp-for="UserName" autofocus>
                                 </div>
                                 <div class="form-group">
                                     <label asp-for="Password"></label>
                                     <input type="password" class="form-control" placeholder="Password" asp-for="Password" autocomplete="off">
                                 </div>
                                <div class="form-group">
-                                    <label asp-for="Name"></label>
-                                    <input class="form-control" placeholder="Name" asp-for="Name" autofocus>
-                                </div>
-                               <div class="form-group">
-                                    <label asp-for="GivenName"></label>
-                                    <input class="form-control" placeholder="GivenName" asp-for="GivenName" autofocus>
+                                    <label asp-for="FullName"></label>
+                                    <input class="form-control" placeholder="FullName" asp-for="FullName" autofocus>
                                 </div>
                                 <div class="form-group">
-                                    <label asp-for="FamilyName"></label>
-                                    <input class="form-control" placeholder="FamilyName" asp-for="FamilyName" autofocus>
+                                    <label asp-for="DateOfBirth"></label>
+                                    <input class="form-control" type="date" asp-for="DateOfBirth" autofocus />
+                                </div>
+                                
+                               <div class="form-group">
+                                    <label asp-for="IdentityCard"></label>
+                                    <input class="form-control" placeholder="IdentityCard" asp-for="IdentityCard" autofocus>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="PhoneNumber"></label>
+                                    <input class="form-control" placeholder="PhoneNumber" asp-for="PhoneNumber" autofocus>
                                 </div>
                                 <div class="form-group">
                                     <label asp-for="Email"></label>

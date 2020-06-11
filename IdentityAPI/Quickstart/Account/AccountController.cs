@@ -67,37 +67,45 @@ namespace IdentityServer4.Quickstart.UI
             else
             {
 
-                var user = await _userManager.FindByNameAsync(_input.Username);
+                var user = await _userManager.FindByNameAsync(_input.UserName);
                 if (user == null)
                 {
-                    Log.Debug(_input.Name);
+                    _input.Gender = Gender.Male;
                     user = new ApplicationUser
                     {
-                        UserName = _input.Username
+                        UserName = _input.UserName,
+                        Email = _input.Email,
+                        PhoneNumber = _input.PhoneNumber,
+                        FullName = _input.FullName,
+                        IdentityCard = _input.IdentityCard,
+                        DateOfBirth = _input.DateOfBirth,
+                        Address = _input.Address,
+                        Gender = _input.Gender,
                     };
+
                     var result = _userManager.CreateAsync(user, _input.Password).Result;
                     if (!result.Succeeded)
                     {
                         throw new Exception(result.Errors.First().Description);
                     }
                     await _userManager.AddToRoleAsync(user, "Administrators");
-                    var name = _input.Name + "";
-                    var givenname = _input.GivenName + "";
-                    var familyname = _input.FamilyName + "";
-                    var email = _input.Email + "";
-                    var address = _input.Address + "";
-                    result = _userManager.AddClaimsAsync(user, new Claim[]{
-                        new Claim(JwtClaimTypes.Name, name),
-                        new Claim(JwtClaimTypes.GivenName, givenname),
-                        new Claim(JwtClaimTypes.FamilyName, familyname),
-                        new Claim(JwtClaimTypes.Email, email),
-                        new Claim(JwtClaimTypes.EmailVerified, "true", ClaimValueTypes.Boolean),
-                        new Claim(JwtClaimTypes.Address, address , IdentityServer4.IdentityServerConstants.ClaimValueTypes.Json)
-                    }).Result;
-                    if (!result.Succeeded)
-                    {
-                        throw new Exception(result.Errors.First().Description);
-                    }
+                    // var name = _input.Name + "";
+                    // var givenname = _input.GivenName + "";
+                    // var familyname = _input.FamilyName + "";
+                    // var email = _input.Email + "";
+                    // var address = _input.Address + "";
+                    // result = _userManager.AddClaimsAsync(user, new Claim[]{
+                    //     new Claim(JwtClaimTypes.Name, name),
+                    //     new Claim(JwtClaimTypes.GivenName, givenname),
+                    //     new Claim(JwtClaimTypes.FamilyName, familyname),
+                    //     new Claim(JwtClaimTypes.Email, email),
+                    //     new Claim(JwtClaimTypes.EmailVerified, "true", ClaimValueTypes.Boolean),
+                    //     new Claim(JwtClaimTypes.Address, address , IdentityServer4.IdentityServerConstants.ClaimValueTypes.Json)
+                    // }).Result;
+                    // if (!result.Succeeded)
+                    // {
+                    //     throw new Exception(result.Errors.First().Description);
+                    // }
                     Log.Debug("user created");
                 }
                 else
