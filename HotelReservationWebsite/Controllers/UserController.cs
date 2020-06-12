@@ -11,61 +11,55 @@ using RabbitMQ.Client;
 
 namespace HotelReservationWebsite.Controllers
 {
-
-    public class CityController : Controller
+    public class UserController : Controller
     {
 
-        private readonly ICityService _service;
-        public CityController(ICityService service)
+        private readonly IUserService _service;
+        public UserController(IUserService service)
         {
             _service = service;
         }
         public async Task<IActionResult> Index(string searchString)
         {
-            var cities = await _service.GetCities(searchString);
-            var cityVM = new CityViewModel
-            {
-                SearchString = searchString,
-                Cities = cities.ToList()
-            };
-            return View(cityVM);
+            var users = await _service.GetUsers();
+            return View(users);
         }
         [HttpGet]
-        public async Task<IActionResult> Details(int id)
+        public async Task<IActionResult> Details(string id)
         {
-            var city = await _service.GetCity(id);
-            return View(city);
+            var user = await _service.GetUser(id);
+            return View(user);
         }
         [HttpGet]
-        public async Task<IActionResult> Edit(int id)
+        public async Task<IActionResult> Edit(string id)
         {
-            var city = await _service.GetCity(id);
-            return View(city);
+            var user = await _service.GetUser(id);
+            return View(user);
         }
         [HttpPost]
-        public async Task<IActionResult> Edit(int id, City city)
+        public async Task<IActionResult> Edit(string id, User user)
         {
-            if (id != city.CityID)
+            if (id != user.Id)
             {
                 return NotFound();
             }
             if (ModelState.IsValid)
             {
-                await _service.UpdateCity(id, city);
+                await _service.UpdateUser(id, user);
                 return RedirectToAction(nameof(Index));
             }
             return View();
         }
         [HttpGet]
-        public async Task<IActionResult> Delete(int id)
+        public async Task<IActionResult> Delete(string id)
         {
-            var city = await _service.GetCity(id);
-            return View(city);
+            var user = await _service.GetUser(id);
+            return View(user);
         }
         [HttpPost, ActionName("Delete")]
-        public async Task<IActionResult> DeleteConfirm(int id)
+        public async Task<IActionResult> DeleteConfirm(string id)
         {
-            await _service.DeleteCity(id);
+            await _service.DeleteUser(id);
             return RedirectToAction(nameof(Index));
         }
         [HttpGet]
@@ -74,11 +68,11 @@ namespace HotelReservationWebsite.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> Create(City city)
+        public async Task<IActionResult> Create(User user)
         {
             if (ModelState.IsValid)
             {
-                await _service.CreateCity(city);
+                await _service.CreateUser(user);
                 return RedirectToAction(nameof(Index));
             }
             return View();

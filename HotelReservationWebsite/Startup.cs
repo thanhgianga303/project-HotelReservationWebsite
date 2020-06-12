@@ -115,10 +115,10 @@ namespace HotelReservationWebsite
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapAreaControllerRoute(
-                name: "AreaAdmin",
-                areaName: "Admin",
-                pattern: "Admin/{controller=Home}/{action=Index}/{id?}");
+                // endpoints.MapAreaControllerRoute(
+                // name: "AreaAdmin",
+                // areaName: "Admin",
+                // pattern: "Admin/{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapDefaultControllerRoute()
                     .RequireAuthorization();
             });
