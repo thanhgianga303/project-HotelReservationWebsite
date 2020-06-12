@@ -6,6 +6,7 @@ namespace IdentityAPI.DTOs
     // Add profile data for application users by adding properties to the ApplicationUser class
     public class ApplicationUserDTO
     {
+        public string Id { get; set; }
         public string UserName { get; set; }
         public string PasswordHash { get; set; }
         public string Email { get; set; }

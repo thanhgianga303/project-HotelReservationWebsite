@@ -21,6 +21,8 @@ namespace IdentityServer4.Quickstart.UI
         public string IdentityCard { get; set; }
         public DateTime DateOfBirth { get; set; }
         public Gender Gender { get; set; }
+        public string Role { get; set; }
+        public string selectGender { get; set; }
 
     }
 }

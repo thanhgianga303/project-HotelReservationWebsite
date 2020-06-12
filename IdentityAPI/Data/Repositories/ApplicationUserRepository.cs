@@ -45,25 +45,7 @@ namespace IdentityAPI.Data.Repositories
                 {
                     throw new Exception(result.Errors.First().Description);
                 }
-                // await _userManager.AddToRoleAsync(user, "Customer");
-                // var customerName = _user.FullName + "";
-                // var dateOfBirth = Convert.ToDateTime(_user.DateOfBirth) + "";
-                // var identityCard = _user.IdentityCard + "";
-                // var email = _user.Email + "";
-                // var phone = _user.PhoneNumber + "";
-                // var address = _user.Address + "";
-                // result = _userManager.AddClaimsAsync(user, new Claim[]{
-                //         new Claim(JwtClaimTypes.Name, customerName),
-                //         new Claim(JwtClaimTypes.BirthDate, dateOfBirth),
-                //         new Claim("IdentityCard", identityCard),
-                //         new Claim(JwtClaimTypes.Email, email),
-                //         new Claim(JwtClaimTypes.PhoneNumber, phone),
-                //         new Claim(JwtClaimTypes.Address, address)
-                //       }).Result;
-                // if (!result.Succeeded)
-                // {
-                //     throw new Exception(result.Errors.First().Description);
-                // }
+                await _userManager.AddToRoleAsync(user, "Renters");
             }
         }
         public async Task<ApplicationUser> GetBy(string id)
@@ -81,16 +63,18 @@ namespace IdentityAPI.Data.Repositories
                 user.PasswordHash = _user.PasswordHash;
                 user.Email = _user.Email;
                 user.PhoneNumber = _user.PhoneNumber;
+                user.FullName = _user.FullName;
+                user.IdentityCard = _user.IdentityCard;
+                user.DateOfBirth = _user.DateOfBirth;
+                user.Address = _user.Address;
+                user.Gender = _user.Gender;
                 await _userManager.UpdateAsync(user);
             }
         }
         public async Task Delete(string id)
         {
             var user = await _userManager.FindByIdAsync(id);
-            if (user != null)
-            {
-                await _userManager.DeleteAsync(user);
-            }
+            await _userManager.DeleteAsync(user);
         }
 
     }

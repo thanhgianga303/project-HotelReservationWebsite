@@ -48,20 +48,57 @@ namespace IdentityAPI.Controller
         {
             var user = _mapper.Map<ApplicationUserDTO, ApplicationUser>(applicationDto);
             await _repository.Create(user);
-            return NoContent();
+            return CreatedAtAction(nameof(GetBy), new { id = user.Id }, user);
         }
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(string id, ApplicationUserDTO applicationDto)
         {
-            var user = _mapper.Map<ApplicationUserDTO, ApplicationUser>(applicationDto);
-            await _repository.Update(id, user);
+            if (id != applicationDto.Id)
+            {
+                return BadRequest();
+            }
+            try
+            {
+                var user = _mapper.Map<ApplicationUserDTO, ApplicationUser>(applicationDto);
+                await _repository.Update(id, user);
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!await UserExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
             return NoContent();
+        }
+        private async Task<bool> UserExists(string id)
+        {
+            var user = await _repository.GetBy(id);
+            if (user != null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(string id)
         {
+            var user = await _repository.GetBy(id);
+            if (user == null)
+            {
+                return NotFound();
+            }
             await _repository.Delete(id);
             return NoContent();
+
         }
     }
 }

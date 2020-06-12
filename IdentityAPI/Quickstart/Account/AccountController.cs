@@ -70,7 +70,16 @@ namespace IdentityServer4.Quickstart.UI
                 var user = await _userManager.FindByNameAsync(_input.UserName);
                 if (user == null)
                 {
-                    _input.Gender = Gender.Male;
+                    if (_input.selectGender == "Male")
+                    {
+                        _input.Gender = Gender.Male;
+                    }
+                    else
+                    if (_input.selectGender == "Female")
+                    {
+                        _input.Gender = Gender.Female;
+                    }
+
                     user = new ApplicationUser
                     {
                         UserName = _input.UserName,
@@ -88,7 +97,16 @@ namespace IdentityServer4.Quickstart.UI
                     {
                         throw new Exception(result.Errors.First().Description);
                     }
-                    await _userManager.AddToRoleAsync(user, "Administrators");
+                    if (_input.Role == "Renters")
+                    {
+                        await _userManager.AddToRoleAsync(user, "Renters");
+                    }
+                    else
+                    if (_input.Role == "Lessors")
+                    {
+                        await _userManager.AddToRoleAsync(user, "Lessors");
+                    }
+
                     // var name = _input.Name + "";
                     // var givenname = _input.GivenName + "";
                     // var familyname = _input.FamilyName + "";
