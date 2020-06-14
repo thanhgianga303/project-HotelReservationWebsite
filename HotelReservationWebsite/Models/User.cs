@@ -1,4 +1,5 @@
 using System;
+using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Identity;
 
 namespace HotelReservationWebsite.Models
@@ -8,6 +9,7 @@ namespace HotelReservationWebsite.Models
     {
         public string Id { get; set; }
         public string UserName { get; set; }
+        [Required]
         public string PasswordHash { get; set; }
         public string Email { get; set; }
         public string PhoneNumber { get; set; }
@@ -16,6 +18,7 @@ namespace HotelReservationWebsite.Models
         public DateTime DateOfBirth { get; set; }
         public Gender Gender { get; set; }
         public String Address { get; set; }
+        public String Role { get; set; }
 
     }
     public enum Gender

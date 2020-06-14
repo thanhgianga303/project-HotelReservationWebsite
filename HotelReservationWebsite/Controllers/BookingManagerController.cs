@@ -25,28 +25,30 @@ namespace HotelReservationWebsite.Controllers
             _bookingSvc = bookingService;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int id)
         {
             var user = _identitySvc.Get(User);
             var bookings = await _bookingSvc.GetBookings();
-
+            foreach (var booking in bookings)
+            {
+                booking.Items = ChangeUriPlaceholderBooking(booking.Items.Where(i => i.HotelId == id.ToString()).ToList());
+            }
             return View(bookings);
         }
-        public async Task<ActionResult<Booking>> Details(int id)
-        {
-            var booking = await _bookingSvc.GetBooking(id);
-            var bookingView = ChangeUriPlaceholderBooking(booking);
-            return View(bookingView);
-        }
-        private Booking ChangeUriPlaceholderBooking(Booking booking)
+        // public async Task<ActionResult<Booking>> Details(int id)
+        // {
+        //     var booking = await _bookingSvc.GetBooking(id);
+        //     var bookingView = ChangeUriPlaceholderBooking(booking);
+        //     return View(bookingView);
+        // }
+        private List<BookingItem> ChangeUriPlaceholderBooking(List<BookingItem> items)
         {
             var baseUri = _settings.ExternalCatalogBaseUrl;
-            List<BookingItem> items = booking.Items.ToList();
             items.ForEach(x =>
             {
                 x.ImageUri = baseUri + "/images/" + x.ImageUri;
             });
-            return booking;
+            return items;
         }
         private Booking ChangeUriSaveBooking(Booking booking)
         {

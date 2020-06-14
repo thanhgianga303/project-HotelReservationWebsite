@@ -90,6 +90,7 @@ namespace IdentityServer4.Quickstart.UI
                         DateOfBirth = _input.DateOfBirth,
                         Address = _input.Address,
                         Gender = _input.Gender,
+                        Role = _input.Role
                     };
 
                     var result = _userManager.CreateAsync(user, _input.Password).Result;
@@ -97,15 +98,9 @@ namespace IdentityServer4.Quickstart.UI
                     {
                         throw new Exception(result.Errors.First().Description);
                     }
-                    if (_input.Role == "Renters")
-                    {
-                        await _userManager.AddToRoleAsync(user, "Renters");
-                    }
-                    else
-                    if (_input.Role == "Lessors")
-                    {
-                        await _userManager.AddToRoleAsync(user, "Lessors");
-                    }
+                    await _userManager.AddToRoleAsync(user, _input.Role);
+
+
 
                     // var name = _input.Name + "";
                     // var givenname = _input.GivenName + "";

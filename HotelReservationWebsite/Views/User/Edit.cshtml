@@ -1,0 +1,66 @@
+@model User
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<form style="width: 500px;margin-left:250px"  method="POST">
+<div class="md-form">
+  <input type="hidden" asp-for="Id" class="form-control">
+</div>
+<div class="md-form">
+  <label asp-for="UserName"></label>
+  <input type="text" asp-for="UserName" class="form-control"  size="100px !important ">
+</div>
+
+<div class="md-form">
+  <label asp-for="PasswordHash"></label>
+  <input type="text" asp-for="PasswordHash" class="form-control"  size="100px !important ">
+</div>
+
+<div class="md-form">
+  <label asp-for="FullName"></label>
+  <input type="text" asp-for="FullName" class="form-control"  size="100px !important ">
+</div>
+
+<div class="md-form">
+  <label asp-for="DateOfBirth"></label>
+  <input type="date" asp-for="DateOfBirth" class="form-control"  size="100px !important ">
+</div>
+<div class="md-form">
+  <label asp-for="Gender"></label>
+  <label class="radio-inline"><input type="radio" asp-for="Gender" value="Male" checked>Male</label>
+  <label class="radio-inline"><input type="radio" asp-for="Gender" value="Female">Female</label>
+</div>
+<div class="md-form">
+  <label asp-for="IdentityCard"></label>
+  <input type="text" asp-for="IdentityCard" class="form-control"  size="100px !important ">
+</div>
+
+<div class="md-form">
+  <label asp-for="Email"></label>
+  <input type="text" asp-for="Email" class="form-control"  size="100px !important ">
+</div>
+
+<div class="md-form">
+  <label asp-for="Address"></label>
+  <input type="text" asp-for="Address" class="form-control"   size="100px !important ">
+</div>
+
+<div class="md-form">
+  <label asp-for="PhoneNumber"></label>
+  <input type="text" asp-for="PhoneNumber" class="form-control"  size="100px !important ">
+</div>
+<div class="md-form">
+  <label asp-for="Gender"></label>
+  <label class="radio-inline"><input type="radio" asp-for="Role" value="Renters" checked>Renters</label>
+  <label class="radio-inline"><input type="radio" asp-for="Role" value="Lessors">Lessors</label>
+  <label class="radio-inline"><input type="radio" asp-for="Role" value="Managers">Managers</label>
+  <label class="radio-inline"><input type="radio" asp-for="Role" value="Administrators">Administrators</label>
+</div>
+<div class="md-form" style="margin-top:20px;">
+  <a asp-action="Index" class="btn btn-primary mb-2" >Back</a>
+  <button type="submit" class="btn btn-danger" >Edit</button>
+</div>
+</form>
+
+

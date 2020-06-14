@@ -20619,6 +20619,11 @@
   "RootNamespace": "HotelReservationWebsite",
   "Documents": [
     {
+      "FilePath": "d:\\github-project\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\User\\Edit.cshtml",
+      "TargetPath": "Views\\User\\Edit.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "d:\\github-project\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\Home\\Index.cshtml",
       "TargetPath": "Views\\Home\\Index.cshtml",
       "FileKind": "mvc"
@@ -20839,8 +20844,18 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "d:\\github-project\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\BookingManager\\_bookingItemIsHotel.cshtml",
+      "TargetPath": "Views\\BookingManager\\_bookingItemIsHotel.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "d:\\github-project\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\Shared\\Components\\BasketList\\Default.cshtml",
       "TargetPath": "Views\\Shared\\Components\\BasketList\\Default.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\github-project\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\User\\Create.cshtml",
+      "TargetPath": "Views\\User\\Create.cshtml",
       "FileKind": "mvc"
     },
     {

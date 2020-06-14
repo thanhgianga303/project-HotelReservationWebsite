@@ -16,6 +16,7 @@ namespace IdentityAPI.DTOs
         public DateTime DateOfBirth { get; set; }
         public Gender Gender { get; set; }
         public String Address { get; set; }
+        public String Role { get; set; }
 
     }
     public enum Gender

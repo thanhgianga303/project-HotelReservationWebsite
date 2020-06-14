@@ -76,6 +76,17 @@ namespace HotelReservationWebsite.Controllers
         {
             if (ModelState.IsValid)
             {
+                if (user.Gender.ToString() == "Male")
+                {
+                    user.Gender = Gender.Male;
+                }
+                else
+                {
+                    if (user.Gender.ToString() == "Female")
+                    {
+                        user.Gender = Gender.Female;
+                    }
+                }
                 await _service.CreateUser(user);
                 return RedirectToAction(nameof(Index));
             }

@@ -38,14 +38,15 @@ namespace IdentityAPI.Data.Repositories
                     IdentityCard = _user.IdentityCard,
                     DateOfBirth = _user.DateOfBirth,
                     Address = _user.Address,
-                    Gender = _user.Gender
+                    Gender = _user.Gender,
+                    Role = _user.Role
                 };
                 var result = _userManager.CreateAsync(user, _user.PasswordHash).Result;
                 if (!result.Succeeded)
                 {
                     throw new Exception(result.Errors.First().Description);
                 }
-                await _userManager.AddToRoleAsync(user, "Renters");
+                await _userManager.AddToRoleAsync(user, _user.Role);
             }
         }
         public async Task<ApplicationUser> GetBy(string id)
@@ -59,8 +60,13 @@ namespace IdentityAPI.Data.Repositories
             var user = await _userManager.FindByIdAsync(id);
             if (user != null)
             {
+                if (user.PasswordHash != _user.PasswordHash)
+                {
+                    await _userManager.RemovePasswordAsync(user);
+                    await _userManager.AddPasswordAsync(user, _user.PasswordHash);
+                }
+                // Convert.ToBase64String
                 user.UserName = _user.UserName;
-                user.PasswordHash = _user.PasswordHash;
                 user.Email = _user.Email;
                 user.PhoneNumber = _user.PhoneNumber;
                 user.FullName = _user.FullName;
@@ -68,7 +74,15 @@ namespace IdentityAPI.Data.Repositories
                 user.DateOfBirth = _user.DateOfBirth;
                 user.Address = _user.Address;
                 user.Gender = _user.Gender;
+                if (user.Role != _user.Role)
+                {
+                    await _userManager.RemoveFromRoleAsync(user, user.Role);
+                    await _userManager.AddToRoleAsync(user, _user.Role);
+                }
+                user.Role = _user.Role;
+
                 await _userManager.UpdateAsync(user);
+
             }
         }
         public async Task Delete(string id)

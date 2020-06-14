@@ -440,3 +440,7 @@ D:\github-project\project-HotelReservationWebsite\HotelReservationWebsite\obj\De
 D:\github-project\project-HotelReservationWebsite\HotelReservationWebsite\obj\Debug\netcoreapp3.1\HotelReservationWebsite.genruntimeconfig.cache
 D:\github-project\project-HotelReservationWebsite\HotelReservationWebsite\obj\Debug\netcoreapp3.1\Razor\Views\User\Index.cshtml.g.cs
 D:\github-project\project-HotelReservationWebsite\HotelReservationWebsite\obj\Debug\netcoreapp3.1\Razor\Views\User\Details.cshtml.g.cs
+D:\github-project\project-HotelReservationWebsite\HotelReservationWebsite\obj\Debug\netcoreapp3.1\Razor\Views\User\Delete.cshtml.g.cs
+D:\github-project\project-HotelReservationWebsite\HotelReservationWebsite\obj\Debug\netcoreapp3.1\Razor\Views\User\Create.cshtml.g.cs
+D:\github-project\project-HotelReservationWebsite\HotelReservationWebsite\obj\Debug\netcoreapp3.1\Razor\Views\User\Edit.cshtml.g.cs
+D:\github-project\project-HotelReservationWebsite\HotelReservationWebsite\obj\Debug\netcoreapp3.1\Razor\Views\BookingManager\_bookingItemIsHotel.cshtml.g.cs

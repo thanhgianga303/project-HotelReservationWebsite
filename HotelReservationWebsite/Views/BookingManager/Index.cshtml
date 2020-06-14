@@ -1,9 +1,9 @@
-@* @model Booking
+@model IEnumerable<Booking>
 @{
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<div class="row">
+@* <div class="row">
     <div class="col-md-8">
         <form class="form-header" asp-action="Index" method="GET">
             <input class="au-input au-input--xl" type="text" asp-for="SearchString" placeholder="Search for datas &amp; reports..." />
@@ -13,15 +13,12 @@
         </form>
     </div>
     <div class="col-md-4">
-        <a asp-controller="City" asp-action="Create" class="au-btn au-btn-icon au-btn--blue">
-                    <i class="zmdi zmdi-plus"></i>add City
-        </a>
     </div>
-</div>
+</div> *@
 <div class="row">
     <div class="col-md-12">
         <div class="overview-wrap">
-            <h2 class="title-1 m-b-25">City</h2>
+            <h2 class="title-1 m-b-25">Hotel reservation list</h2>
         </div>
     </div>
 </div>
@@ -32,27 +29,54 @@
             <table class="table table-borderless table-striped table-earning">
                 <thead>
                     <tr>
-                        <th>@Html.DisplayNameFor(model => model.Cities[0].CityID)</th>
-                        <th>@Html.DisplayNameFor(model => model.Cities[0].CityName)</th>
+                        <th>STT</th>
+                        <th>ImageUri</th>
+                        <th>HotelName</th>
+                        <th>RoomName</th>
+                        <th>RoomNumber</th>
+                        <th>Address</th>
+                        <th>CategoryName</th>
+                        <th>UnitPrice</th>
+                        <th>CheckIn</th>
+                        <th>CheckOut</th>
+                        <th>DayNumber</th>
+                        <th>Cost</th>
                         <th>Thao tác</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var city in Model.Cities)
+                    @{
+                       var i=1;  
+                    }
+                    
+                    @foreach (var booking in Model)
                      {
-                    <tr>
-                        <td>@Html.DisplayFor(model => city.CityID)</td>
-                        <td>@Html.DisplayFor(model => city.CityName)</td>
-                        <td>
-                            <a asp-action="Edit" asp-controller="City" class="btn btn-secondary" asp-route-id="@city.CityID">Edit</a> 
-                            <a asp-action="Details" asp-controller="City" class="btn btn-info" asp-route-id="@city.CityID">Details</a> 
-                            <a asp-action="Delete" asp-controller="City" class="btn btn-danger" asp-route-id="@city.CityID">Delete</a>
-                        </td>
-                        
-                    </tr>
+                         foreach(var item in booking.Items)
+                            {
+                                
+                            <tr style="font-size:20px;text-align:center">
+                                <th>@i</th>
+                                <th><img src="@item.ImageUri" /></th>
+                                <th>@item.HotelName</th>
+                                <th>@item.RoomName</th>
+                                <th>@item.RoomNumber</th>
+                                <th>@item.Address</th>
+                                <th>@item.CategoryName</th>
+                                <th>@item.UnitPrice</th>
+                                <th>@item.CheckIn</th>
+                                <th>@item.CheckOut</th>
+                                <th>@item.DayNumber</th>
+                                <th>@item.Cost</th>
+                                <td>
+                                    <a asp-action="Details" asp-controller="City" class="btn btn-info" >Details</a> 
+                                </td>
+                            </tr>
+                                i++;
+                                
+                            }
                      }
                 </tbody>
             </table>
         </div>
     </div>
-</div> *@
+</div>

@@ -57,6 +57,7 @@
                         <td>
                             <a asp-action="SeeRoomList" asp-controller="Hotel" class="btn btn-secondary" asp-route-id="@hotel.HotelID">See room list</a>
                             <a asp-action="Details" asp-controller="Hotel" class="btn btn-info" asp-route-id="@hotel.HotelID">Details</a> 
+                            <a asp-action="Index" asp-controller="BookingManager" class="btn btn-info" asp-route-id="@hotel.HotelID">Details</a>
                             @if((await AuthorizationService.AuthorizeAsync(User,hotel,HotelOperations.Delete)).Succeeded)
                                 {
                             <a asp-action="Edit" asp-controller="Hotel" class="btn btn-secondary" asp-route-id="@hotel.HotelID">Edit</a> 
