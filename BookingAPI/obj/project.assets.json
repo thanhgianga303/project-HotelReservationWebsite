@@ -6584,11 +6584,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\thanh\\OneDrive\\Documents\\project-HotelReservationWebsite\\BookingAPI\\BookingAPI.csproj",
+      "projectUniqueName": "D:\\github-project\\project-HotelReservationWebsite\\BookingAPI\\BookingAPI.csproj",
       "projectName": "BookingAPI",
-      "projectPath": "C:\\Users\\thanh\\OneDrive\\Documents\\project-HotelReservationWebsite\\BookingAPI\\BookingAPI.csproj",
+      "projectPath": "D:\\github-project\\project-HotelReservationWebsite\\BookingAPI\\BookingAPI.csproj",
       "packagesPath": "C:\\Users\\thanh\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\thanh\\OneDrive\\Documents\\project-HotelReservationWebsite\\BookingAPI\\obj\\",
+      "outputPath": "D:\\github-project\\project-HotelReservationWebsite\\BookingAPI\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

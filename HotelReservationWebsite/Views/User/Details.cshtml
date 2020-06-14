@@ -1,0 +1,55 @@
+@model User
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<!-- Medium input -->
+
+<form style="width: 500px;margin-left:250px">
+<div class="md-form">
+  <input type="hidden" asp-for="Id" class="form-control">
+</div>
+<div class="md-form">
+  <label asp-for="UserName"></label>
+  <input type="text" asp-for="UserName" class="form-control" disabled size="100px !important ">
+</div>
+
+<div class="md-form">
+  <label asp-for="PasswordHash"></label>
+  <input type="text" asp-for="PasswordHash" class="form-control" disabled size="100px !important ">
+</div>
+
+<div class="md-form">
+  <label asp-for="FullName"></label>
+  <input type="text" asp-for="FullName" class="form-control" disabled size="100px !important ">
+</div>
+
+<div class="md-form">
+  <label asp-for="DateOfBirth"></label>
+  <input type="text" asp-for="DateOfBirth" class="form-control" disabled size="100px !important ">
+</div>
+
+<div class="md-form">
+  <label asp-for="IdentityCard"></label>
+  <input type="text" asp-for="IdentityCard" class="form-control" disabled size="100px !important ">
+</div>
+
+<div class="md-form">
+  <label asp-for="Email"></label>
+  <input type="text" asp-for="Email" class="form-control" disabled size="100px !important ">
+</div>
+
+<div class="md-form">
+  <label asp-for="Address"></label>
+  <input type="text" asp-for="Address" class="form-control"  disabled size="100px !important ">
+</div>
+
+<div class="md-form">
+  <label asp-for="PhoneNumber"></label>
+  <input type="text" asp-for="PhoneNumber" class="form-control" disabled size="100px !important ">
+</div>
+<div class="md-form" style="margin-top:20px;">
+  <a asp-action="Index" class="btn btn-primary mb-2" >Back</a>
+</div>
+</form>
+
+

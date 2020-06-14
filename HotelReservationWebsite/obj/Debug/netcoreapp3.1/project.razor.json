@@ -1,5 +1,5 @@
 {
-  "FilePath": "c:\\Users\\thanh\\OneDrive\\Documents\\project-HotelReservationWebsite\\HotelReservationWebsite\\HotelReservationWebsite.csproj",
+  "FilePath": "d:\\github-project\\project-HotelReservationWebsite\\HotelReservationWebsite\\HotelReservationWebsite.csproj",
   "Configuration": {
     "ConfigurationName": "MVC-3.0",
     "LanguageVersion": "3.0",
@@ -20619,268 +20619,283 @@
   "RootNamespace": "HotelReservationWebsite",
   "Documents": [
     {
-      "FilePath": "c:\\Users\\thanh\\OneDrive\\Documents\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\Home\\Index.cshtml",
+      "FilePath": "d:\\github-project\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\Home\\Index.cshtml",
       "TargetPath": "Views\\Home\\Index.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\thanh\\OneDrive\\Documents\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\Hotel\\Edit.cshtml",
-      "TargetPath": "Views\\Hotel\\Edit.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\thanh\\OneDrive\\Documents\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\Booking\\Complete.cshtml",
-      "TargetPath": "Views\\Booking\\Complete.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\thanh\\OneDrive\\Documents\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\Shared\\_LayoutAdmin.cshtml",
-      "TargetPath": "Views\\Shared\\_LayoutAdmin.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\thanh\\OneDrive\\Documents\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\BookingManager\\Index.cshtml",
-      "TargetPath": "Views\\BookingManager\\Index.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\thanh\\OneDrive\\Documents\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\Admin\\Address.cshtml",
-      "TargetPath": "Views\\Admin\\Address.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\thanh\\OneDrive\\Documents\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\Booking\\Details.cshtml",
-      "TargetPath": "Views\\Booking\\Details.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\thanh\\OneDrive\\Documents\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\Home\\_hotel.cshtml",
-      "TargetPath": "Views\\Home\\_hotel.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\thanh\\OneDrive\\Documents\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\Hotel\\SeeRoomList.cshtml",
-      "TargetPath": "Views\\Hotel\\SeeRoomList.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\thanh\\OneDrive\\Documents\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\City\\Edit.cshtml",
-      "TargetPath": "Views\\City\\Edit.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\thanh\\OneDrive\\Documents\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\Booking\\Create.cshtml",
-      "TargetPath": "Views\\Booking\\Create.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\thanh\\OneDrive\\Documents\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\Home\\Details.cshtml",
-      "TargetPath": "Views\\Home\\Details.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\thanh\\OneDrive\\Documents\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\Hotel\\Delete.cshtml",
-      "TargetPath": "Views\\Hotel\\Delete.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\thanh\\OneDrive\\Documents\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\Home\\_room.cshtml",
-      "TargetPath": "Views\\Home\\_room.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\thanh\\OneDrive\\Documents\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\City\\Create.cshtml",
-      "TargetPath": "Views\\City\\Create.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\thanh\\OneDrive\\Documents\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\Hotel\\EditRoom.cshtml",
-      "TargetPath": "Views\\Hotel\\EditRoom.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\thanh\\OneDrive\\Documents\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\Admin\\Promotion.cshtml",
-      "TargetPath": "Views\\Admin\\Promotion.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\thanh\\OneDrive\\Documents\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\Admin\\Role.cshtml",
-      "TargetPath": "Views\\Admin\\Role.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\thanh\\OneDrive\\Documents\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\Shared\\Components\\Basket\\Default.cshtml",
-      "TargetPath": "Views\\Shared\\Components\\Basket\\Default.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\thanh\\OneDrive\\Documents\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\Admin\\Login.cshtml",
-      "TargetPath": "Views\\Admin\\Login.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\thanh\\OneDrive\\Documents\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\Hotel\\Index.cshtml",
-      "TargetPath": "Views\\Hotel\\Index.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\thanh\\OneDrive\\Documents\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\Hotel\\DeleteRoom.cshtml",
-      "TargetPath": "Views\\Hotel\\DeleteRoom.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\thanh\\OneDrive\\Documents\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
-      "TargetPath": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\thanh\\OneDrive\\Documents\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\RoomCategory\\Index.cshtml",
-      "TargetPath": "Views\\RoomCategory\\Index.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\thanh\\OneDrive\\Documents\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\Admin\\Customer.cshtml",
-      "TargetPath": "Views\\Admin\\Customer.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\thanh\\OneDrive\\Documents\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\City\\Details.cshtml",
-      "TargetPath": "Views\\City\\Details.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\thanh\\OneDrive\\Documents\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\_ViewStart.cshtml",
-      "TargetPath": "Views\\_ViewStart.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\thanh\\OneDrive\\Documents\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\Cart\\Index.cshtml",
-      "TargetPath": "Views\\Cart\\Index.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\thanh\\OneDrive\\Documents\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\Account\\AccessDenied.cshtml",
-      "TargetPath": "Views\\Account\\AccessDenied.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\thanh\\OneDrive\\Documents\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\Admin\\BookingDetails.cshtml",
+      "FilePath": "d:\\github-project\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\Admin\\BookingDetails.cshtml",
       "TargetPath": "Views\\Admin\\BookingDetails.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\thanh\\OneDrive\\Documents\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\Hotel\\CreateRoom.cshtml",
-      "TargetPath": "Views\\Hotel\\CreateRoom.cshtml",
+      "FilePath": "d:\\github-project\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\Booking\\Create.cshtml",
+      "TargetPath": "Views\\Booking\\Create.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\thanh\\OneDrive\\Documents\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\Booking\\_bookingItem.cshtml",
-      "TargetPath": "Views\\Booking\\_bookingItem.cshtml",
+      "FilePath": "d:\\github-project\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\RoomCategory\\Index.cshtml",
+      "TargetPath": "Views\\RoomCategory\\Index.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\thanh\\OneDrive\\Documents\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\Admin\\Index.cshtml",
-      "TargetPath": "Views\\Admin\\Index.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\thanh\\OneDrive\\Documents\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\Admin\\Hotel.cshtml",
-      "TargetPath": "Views\\Admin\\Hotel.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\thanh\\OneDrive\\Documents\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\RoomCategory\\Create.cshtml",
-      "TargetPath": "Views\\RoomCategory\\Create.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\thanh\\OneDrive\\Documents\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\Hotel\\Create.cshtml",
-      "TargetPath": "Views\\Hotel\\Create.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\thanh\\OneDrive\\Documents\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\City\\Delete.cshtml",
-      "TargetPath": "Views\\City\\Delete.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\thanh\\OneDrive\\Documents\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\Shared\\_LayoutForm.cshtml",
-      "TargetPath": "Views\\Shared\\_LayoutForm.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\thanh\\OneDrive\\Documents\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\Shared\\_Layout.cshtml",
-      "TargetPath": "Views\\Shared\\_Layout.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\thanh\\OneDrive\\Documents\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\Hotel\\DetailsRoom.cshtml",
-      "TargetPath": "Views\\Hotel\\DetailsRoom.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\thanh\\OneDrive\\Documents\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\Hotel\\Details.cshtml",
-      "TargetPath": "Views\\Hotel\\Details.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\thanh\\OneDrive\\Documents\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\Shared\\Components\\BasketList\\Default.cshtml",
-      "TargetPath": "Views\\Shared\\Components\\BasketList\\Default.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\thanh\\OneDrive\\Documents\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\_ViewImports.cshtml",
-      "TargetPath": "Views\\_ViewImports.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\thanh\\OneDrive\\Documents\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\Admin\\RoomCagotery.cshtml",
-      "TargetPath": "Views\\Admin\\RoomCagotery.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\thanh\\OneDrive\\Documents\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\Admin\\Account.cshtml",
-      "TargetPath": "Views\\Admin\\Account.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\thanh\\OneDrive\\Documents\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\RoomCategory\\Details.cshtml",
+      "FilePath": "d:\\github-project\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\RoomCategory\\Details.cshtml",
       "TargetPath": "Views\\RoomCategory\\Details.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\thanh\\OneDrive\\Documents\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\Admin\\Employee.cshtml",
-      "TargetPath": "Views\\Admin\\Employee.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\thanh\\OneDrive\\Documents\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\Home\\Privacy.cshtml",
+      "FilePath": "d:\\github-project\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\Home\\Privacy.cshtml",
       "TargetPath": "Views\\Home\\Privacy.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\thanh\\OneDrive\\Documents\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\RoomCategory\\Delete.cshtml",
-      "TargetPath": "Views\\RoomCategory\\Delete.cshtml",
+      "FilePath": "d:\\github-project\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\BookingManager\\Index.cshtml",
+      "TargetPath": "Views\\BookingManager\\Index.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\thanh\\OneDrive\\Documents\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\Cart\\_item.cshtml",
-      "TargetPath": "Views\\Cart\\_item.cshtml",
+      "FilePath": "d:\\github-project\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\Admin\\Account.cshtml",
+      "TargetPath": "Views\\Admin\\Account.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\thanh\\OneDrive\\Documents\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\Booking\\Index.cshtml",
-      "TargetPath": "Views\\Booking\\Index.cshtml",
+      "FilePath": "d:\\github-project\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\Booking\\Complete.cshtml",
+      "TargetPath": "Views\\Booking\\Complete.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\thanh\\OneDrive\\Documents\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\RoomCategory\\Edit.cshtml",
+      "FilePath": "d:\\github-project\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\City\\Index.cshtml",
+      "TargetPath": "Views\\City\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\github-project\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\Admin\\Index.cshtml",
+      "TargetPath": "Views\\Admin\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\github-project\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\City\\Delete.cshtml",
+      "TargetPath": "Views\\City\\Delete.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\github-project\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\RoomCategory\\Edit.cshtml",
       "TargetPath": "Views\\RoomCategory\\Edit.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\thanh\\OneDrive\\Documents\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\City\\Index.cshtml",
-      "TargetPath": "Views\\City\\Index.cshtml",
+      "FilePath": "d:\\github-project\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\User\\Delete.cshtml",
+      "TargetPath": "Views\\User\\Delete.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\github-project\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\Hotel\\Create.cshtml",
+      "TargetPath": "Views\\Hotel\\Create.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\github-project\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\Home\\Details.cshtml",
+      "TargetPath": "Views\\Home\\Details.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\github-project\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\Hotel\\EditRoom.cshtml",
+      "TargetPath": "Views\\Hotel\\EditRoom.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\github-project\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\City\\Edit.cshtml",
+      "TargetPath": "Views\\City\\Edit.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\github-project\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\Admin\\Role.cshtml",
+      "TargetPath": "Views\\Admin\\Role.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\github-project\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\RoomCategory\\Create.cshtml",
+      "TargetPath": "Views\\RoomCategory\\Create.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\github-project\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\_ViewStart.cshtml",
+      "TargetPath": "Views\\_ViewStart.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\github-project\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\Hotel\\Details.cshtml",
+      "TargetPath": "Views\\Hotel\\Details.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\github-project\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\RoomCategory\\Delete.cshtml",
+      "TargetPath": "Views\\RoomCategory\\Delete.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\github-project\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\Admin\\Employee.cshtml",
+      "TargetPath": "Views\\Admin\\Employee.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\github-project\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\Hotel\\DetailsRoom.cshtml",
+      "TargetPath": "Views\\Hotel\\DetailsRoom.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\github-project\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\Cart\\_item.cshtml",
+      "TargetPath": "Views\\Cart\\_item.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\github-project\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\Booking\\_bookingItem.cshtml",
+      "TargetPath": "Views\\Booking\\_bookingItem.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\github-project\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\City\\Create.cshtml",
+      "TargetPath": "Views\\City\\Create.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\github-project\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\Hotel\\Edit.cshtml",
+      "TargetPath": "Views\\Hotel\\Edit.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\github-project\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\Hotel\\Delete.cshtml",
+      "TargetPath": "Views\\Hotel\\Delete.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\github-project\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\Hotel\\Index.cshtml",
+      "TargetPath": "Views\\Hotel\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\github-project\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\Home\\_room.cshtml",
+      "TargetPath": "Views\\Home\\_room.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\github-project\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\Hotel\\CreateRoom.cshtml",
+      "TargetPath": "Views\\Hotel\\CreateRoom.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\github-project\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\Hotel\\DeleteRoom.cshtml",
+      "TargetPath": "Views\\Hotel\\DeleteRoom.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\github-project\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\Shared\\_Layout.cshtml",
+      "TargetPath": "Views\\Shared\\_Layout.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\github-project\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\City\\Details.cshtml",
+      "TargetPath": "Views\\City\\Details.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\github-project\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\Booking\\Index.cshtml",
+      "TargetPath": "Views\\Booking\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\github-project\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\Account\\AccessDenied.cshtml",
+      "TargetPath": "Views\\Account\\AccessDenied.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\github-project\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
+      "TargetPath": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\github-project\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\Admin\\RoomCagotery.cshtml",
+      "TargetPath": "Views\\Admin\\RoomCagotery.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\github-project\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\User\\Index.cshtml",
+      "TargetPath": "Views\\User\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\github-project\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\_ViewImports.cshtml",
+      "TargetPath": "Views\\_ViewImports.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\github-project\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\User\\Details.cshtml",
+      "TargetPath": "Views\\User\\Details.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\github-project\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\Hotel\\SeeRoomList.cshtml",
+      "TargetPath": "Views\\Hotel\\SeeRoomList.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\github-project\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\Shared\\Components\\BasketList\\Default.cshtml",
+      "TargetPath": "Views\\Shared\\Components\\BasketList\\Default.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\github-project\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\Admin\\Login.cshtml",
+      "TargetPath": "Views\\Admin\\Login.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\github-project\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\Admin\\Hotel.cshtml",
+      "TargetPath": "Views\\Admin\\Hotel.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\github-project\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\Shared\\_LayoutAdmin.cshtml",
+      "TargetPath": "Views\\Shared\\_LayoutAdmin.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\github-project\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\Home\\_hotel.cshtml",
+      "TargetPath": "Views\\Home\\_hotel.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\github-project\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\Admin\\Promotion.cshtml",
+      "TargetPath": "Views\\Admin\\Promotion.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\github-project\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\Shared\\_LayoutForm.cshtml",
+      "TargetPath": "Views\\Shared\\_LayoutForm.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\github-project\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\Admin\\Customer.cshtml",
+      "TargetPath": "Views\\Admin\\Customer.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\github-project\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\Booking\\Details.cshtml",
+      "TargetPath": "Views\\Booking\\Details.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\github-project\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\Cart\\Index.cshtml",
+      "TargetPath": "Views\\Cart\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\github-project\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\Shared\\Components\\Basket\\Default.cshtml",
+      "TargetPath": "Views\\Shared\\Components\\Basket\\Default.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\github-project\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\Admin\\Address.cshtml",
+      "TargetPath": "Views\\Admin\\Address.cshtml",
       "FileKind": "mvc"
     }
   ],

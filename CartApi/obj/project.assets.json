@@ -882,11 +882,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\thanh\\OneDrive\\Documents\\project-HotelReservationWebsite\\CartApi\\CartApi.csproj",
+      "projectUniqueName": "D:\\github-project\\project-HotelReservationWebsite\\CartApi\\CartApi.csproj",
       "projectName": "CartApi",
-      "projectPath": "C:\\Users\\thanh\\OneDrive\\Documents\\project-HotelReservationWebsite\\CartApi\\CartApi.csproj",
+      "projectPath": "D:\\github-project\\project-HotelReservationWebsite\\CartApi\\CartApi.csproj",
       "packagesPath": "C:\\Users\\thanh\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\thanh\\OneDrive\\Documents\\project-HotelReservationWebsite\\CartApi\\obj\\",
+      "outputPath": "D:\\github-project\\project-HotelReservationWebsite\\CartApi\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

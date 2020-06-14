@@ -9330,11 +9330,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\thanh\\OneDrive\\Documents\\project-HotelReservationWebsite\\HotelReservationWebsiteAPI\\HotelReservationWebsiteAPI.csproj",
+      "projectUniqueName": "D:\\github-project\\project-HotelReservationWebsite\\HotelReservationWebsiteAPI\\HotelReservationWebsiteAPI.csproj",
       "projectName": "HotelReservationWebsiteAPI",
-      "projectPath": "C:\\Users\\thanh\\OneDrive\\Documents\\project-HotelReservationWebsite\\HotelReservationWebsiteAPI\\HotelReservationWebsiteAPI.csproj",
+      "projectPath": "D:\\github-project\\project-HotelReservationWebsite\\HotelReservationWebsiteAPI\\HotelReservationWebsiteAPI.csproj",
       "packagesPath": "C:\\Users\\thanh\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\thanh\\OneDrive\\Documents\\project-HotelReservationWebsite\\HotelReservationWebsiteAPI\\obj\\",
+      "outputPath": "D:\\github-project\\project-HotelReservationWebsite\\HotelReservationWebsiteAPI\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

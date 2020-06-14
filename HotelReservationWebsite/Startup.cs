@@ -40,6 +40,7 @@ namespace HotelReservationWebsite
             services.AddScoped<IRoomCategoryService, RoomCategoryService>();
             services.AddScoped<ICartService, CartService>();
             services.AddScoped<IBookingService, BookingService>();
+            services.AddScoped<IUserService, UserService>();
             services.AddScoped<IIdentityService<Buyer>, IdentityService>();
             JwtSecurityTokenHandler.DefaultMapInboundClaims = false;
 

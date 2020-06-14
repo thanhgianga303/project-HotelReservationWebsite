@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "9CckiWwLY2vSmDQcdF/5dTJRgIdFvLKGhf7phOoDUveJAE2URaYNOPkdfO6PpUqJpteXrBNtJEemahtGt9Tdxw==",
+  "dgSpecHash": "4ORqgeFHZ8zXPRZWYty7XhBHkGDkCwzN5HXVvef1VdxC2prizpKcPGh8hYovZUJNXyyIBW6RFp3d7t4cpkrpfA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\thanh\\OneDrive\\Documents\\project-HotelReservationWebsite\\IdentityAPI\\IdentityAPI.csproj",
+  "projectFilePath": "D:\\github-project\\project-HotelReservationWebsite\\IdentityAPI\\IdentityAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\thanh\\.nuget\\packages\\automapper\\9.0.0\\automapper.9.0.0.nupkg.sha512",
     "C:\\Users\\thanh\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\7.0.0\\automapper.extensions.microsoft.dependencyinjection.7.0.0.nupkg.sha512",

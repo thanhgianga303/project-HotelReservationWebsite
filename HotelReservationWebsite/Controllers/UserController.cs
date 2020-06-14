@@ -22,7 +22,11 @@ namespace HotelReservationWebsite.Controllers
         public async Task<IActionResult> Index(string searchString)
         {
             var users = await _service.GetUsers();
-            return View(users);
+            var userVm = new UserViewModel
+            {
+                Users = users.ToList()
+            };
+            return View(userVm);
         }
         [HttpGet]
         public async Task<IActionResult> Details(string id)
