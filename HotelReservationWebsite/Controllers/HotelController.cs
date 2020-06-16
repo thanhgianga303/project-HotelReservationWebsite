@@ -91,17 +91,18 @@ namespace HotelReservationWebsite.Controllers
             return View(hotelsVM);
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(HotelViewModel hotelVM)
         {
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 hotelVM.Hotel.OwnerID = _identityService.Get(User).Id;
                 hotelVM.Hotel.ImageUrl = hotelVM.ImageUrl.FileName;
                 await _hotelService.CreateHotel(hotelVM.Hotel);
                 await UploadFileImg(hotelVM.ImageUrl);
+                return RedirectToAction(nameof(Index));
             }
-
-            return RedirectToAction(nameof(Index));
+            return View();
         }
         [HttpGet]
         public async Task<IActionResult> Details(int id)
@@ -145,7 +146,7 @@ namespace HotelReservationWebsite.Controllers
         [HttpGet]
         public async Task<IActionResult> Delete(int id)
         {
-            var hotel = await _hotelService.GetHotel(id);
+            var hotel = ChangeUriPlaceholderHotel(await _hotelService.GetHotel(id));
             return View(hotel);
         }
         [HttpPost, ActionName("Delete")]
@@ -164,18 +165,21 @@ namespace HotelReservationWebsite.Controllers
         [HttpPost]
         public async Task<IActionResult> Edit(HotelViewModel hotelVM)
         {
-            if (hotelVM.ImageUrl == null)
+
+            if (hotelVM.ChangeImageUrl == null)
             {
                 hotelVM.Hotel.ImageUrl = hotelVM.ImageUrlDisplay;
                 await _hotelService.UpdateHotel(hotelVM.Hotel.HotelID, hotelVM.Hotel);
+                return RedirectToAction("Index");
             }
             else
             {
-                hotelVM.Hotel.ImageUrl = hotelVM.ImageUrl.FileName;
+                hotelVM.Hotel.ImageUrl = hotelVM.ChangeImageUrl.FileName;
                 await _hotelService.UpdateHotel(hotelVM.Hotel.HotelID, hotelVM.Hotel);
-                await UploadFileImg(hotelVM.ImageUrl);
+                await UploadFileImg(hotelVM.ChangeImageUrl);
+                return RedirectToAction("Index");
             }
-            return RedirectToAction("Index");
+
         }
         [HttpGet]
         public async Task<IActionResult> Edit(int id, string searchString)
@@ -206,16 +210,16 @@ namespace HotelReservationWebsite.Controllers
         [HttpPost]
         public async Task<IActionResult> EditRoom(RoomViewModel roomVM)
         {
-            if (roomVM.ImageUrl == null)
+            if (roomVM.ChangeImageUrl == null)
             {
                 roomVM.Room.ImageUrl = roomVM.ImageUrlDisPlay;
                 await _hotelService.UpdateRoom(roomVM.Room.RoomID, roomVM.Room.HotelID, roomVM.Room);
             }
             else
             {
-                roomVM.Room.ImageUrl = roomVM.ImageUrl.FileName;
+                roomVM.Room.ImageUrl = roomVM.ChangeImageUrl.FileName;
                 await _hotelService.UpdateRoom(roomVM.Room.RoomID, roomVM.Room.HotelID, roomVM.Room);
-                await UploadFileImg(roomVM.ImageUrl);
+                await UploadFileImg(roomVM.ChangeImageUrl);
             }
             return RedirectToAction("EditRoom", new { roomId = roomVM.Room.RoomID, hotelId = roomVM.Room.HotelID });
         }
@@ -232,7 +236,6 @@ namespace HotelReservationWebsite.Controllers
         [HttpGet]
         public async Task<IActionResult> CreateRoom(int id)
         {
-            Console.WriteLine("idd" + id);
             var categories = await _categoryService.GetRoomCategories();
             var roomVM = new RoomViewModel
             {
@@ -245,6 +248,7 @@ namespace HotelReservationWebsite.Controllers
         public async Task<IActionResult> CreateRoom(RoomViewModel roomVM)
         {
             roomVM.Room.HotelID = roomVM.HotelId;
+            roomVM.Room.OwnerId = _identityService.Get(User).Id;
             roomVM.Room.ImageUrl = roomVM.ImageUrl.FileName;
             roomVM.Room.RoomStatus = 1;
             await _hotelService.CreateRoom(roomVM.Room);

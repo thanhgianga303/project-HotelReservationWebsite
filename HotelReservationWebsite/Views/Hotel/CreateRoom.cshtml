@@ -2,32 +2,38 @@
 @{
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
-<div class="row" style="margin-top:40px">
-    <div class="col-md-12">
-        <h1>Create room</h1>
-     </div>
+<div class="row">
+    <div class="col-md-3"><hr/></div>
+    <div class="col-md-6" >
+        <div style="text-align:center">
+            <h1 class="title-1 m-b-25">create room for hotel with id = @Model.HotelId </h1>
+        </div>
+    </div>
+    <div class="col-md-3"><hr/></div>
 </div>
 <form method="POST" enctype="multipart/form-data">
-    <input type="hidden" asp-for="@Model.Room.HotelID">
-    <input type="hidden" asp-for="@Model.Room.RoomID">
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
     <input type="hidden" asp-for="@Model.HotelId">
+    <input type="hidden" asp-for="@Model.Room.HotelID">
     <div class="row" style="margin-top:40px">
     <div class="col-md-12">
         <div class="row">
-            <div class="col-md-7">Room Name:</div>
-            <div class="col-md-5">
-                <input type="text" class="form-control" asp-for="@Model.Room.RoomName">       
+            <div class="col-md-5">Room Name:</div>
+            <div class="col-md-7">
+            <input type="text" class="form-control" asp-for="@Model.Room.RoomName">    
+            <span asp-validation-for="@Model.Room.RoomName" style="font-size:14px" class="text-danger"></span>         
             </div>
         </div>
         <div class="row">
-            <div class="col-md-7">Room Number:</div>
-            <div class="col-md-5">
+            <div class="col-md-5">Room Number:</div>
+            <div class="col-md-7">
                 <input type="text" class="form-control" asp-for="@Model.Room.RoomNumber">
+                 <span asp-validation-for="@Model.Room.RoomNumber" style="font-size:14px" class="text-danger"></span>  
             </div>
         </div>
         <div class="row">
-           <div class="col-md-7">Room Category:</div> 
-            <div class="col-md-5">
+           <div class="col-md-5">Room Category:</div> 
+            <div class="col-md-7">
             <select asp-for="@Model.Room.RoomCategoryID">
                     @foreach (var item in Model.RoomCategories)
                     {
@@ -37,9 +43,24 @@
             </div>
         </div>
         <div class="row">
-           <div class="col-md-7">Unit Price:</div> 
-            <div class="col-md-5">
+            <div class="col-md-5">Room area:</div>
+            <div class="col-md-7">
+                <input type="text" class="form-control" asp-for="@Model.Room.RoomArea">
+                 <span asp-validation-for="@Model.Room.RoomArea" style="font-size:14px" class="text-danger"></span>  
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-5">Number of beds:</div>
+            <div class="col-md-7">
+                <input type="text" class="form-control" asp-for="@Model.Room.NumberOfBeds">
+                 <span asp-validation-for="@Model.Room.NumberOfBeds" style="font-size:14px" class="text-danger"></span>  
+            </div>
+        </div>
+        <div class="row">
+           <div class="col-md-5">Unit Price(USD):</div> 
+            <div class="col-md-7">
                 <input type="text" class="form-control" asp-for="@Model.Room.UnitPrice">
+                 <span asp-validation-for="@Model.Room.UnitPrice" style="font-size:14px" class="text-danger"></span>  
             </div>
          </div>
         <div class="row">
@@ -63,3 +84,6 @@
             </div>
 </div>
 </form>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -12,6 +12,7 @@ namespace HotelReservationWebsiteAPI.DTOs
         public string ImageUrl { get; set; }
         public HotelStatus HotelStatus { get; set; }
         public string OwnerID { get; set; }
+        public int NumberofReservation { get; set; }
         public List<Room> Rooms { get; set; }
         public City City { get; set; }
     }

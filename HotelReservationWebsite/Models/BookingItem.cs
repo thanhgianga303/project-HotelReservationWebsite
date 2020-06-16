@@ -12,6 +12,9 @@ namespace HotelReservationWebsite.Models
         public string ImageUri { get; set; }
         public string Address { get; set; }
         public string City { get; set; }
+        public string RoomArea { get; set; }
+        public string NumberOfBeds { get; set; }
+        public string OwnerId { get; set; }
         public string CategoryName { get; set; }
         public decimal UnitPrice { get; set; }
         public DateTime CheckIn { get; set; }

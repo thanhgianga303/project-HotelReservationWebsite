@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using HotelReservationWebsite.Models;
 using Microsoft.AspNetCore.Http;
 using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace HotelReservationWebsite.ViewModels
 {
@@ -12,6 +13,8 @@ namespace HotelReservationWebsite.ViewModels
         public DateTime CheckIn { get; set; }
         public DateTime CheckOut { get; set; }
         public int pageIndex { get; set; }
+        public IFormFile ChangeImageUrl { get; set; }
+        [Required]
         public IFormFile ImageUrl { get; set; }
         public int HotelId { get; set; }
         public string ImageUrlDisPlay { get; set; }

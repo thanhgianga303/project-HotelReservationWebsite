@@ -31,7 +31,6 @@ namespace HotelReservationWebsite.Controllers
 
             if (action == "Checkout")
             {
-                Console.WriteLine("name" + action);
                 return RedirectToAction("Create", "Booking");
             }
             return RedirectToAction(nameof(Index));
@@ -39,6 +38,7 @@ namespace HotelReservationWebsite.Controllers
         [HttpPost]
         public async Task<IActionResult> AddToCart(RoomViewModel roomVM, Room room)
         {
+            Console.WriteLine("testcccc" + room.Hotel.OwnerID);
             var newCartItem = new CartItem
             {
                 Id = Guid.NewGuid().ToString(),
@@ -50,6 +50,9 @@ namespace HotelReservationWebsite.Controllers
                 HotelName = room.Hotel.HotelName,
                 Address = room.Hotel.Address,
                 City = room.Hotel.City.CityName,
+                RoomArea = room.RoomArea,
+                NumberOfBeds = room.NumberOfBeds,
+                OwnerId = room.Hotel.OwnerID,
                 UnitPrice = room.UnitPrice,
                 ImageUrl = room.ImageUrl,
                 CheckIn = roomVM.CheckIn,
@@ -63,7 +66,6 @@ namespace HotelReservationWebsite.Controllers
         [HttpPost]
         public async Task<IActionResult> DeleteItem(CartItem cartItem)
         {
-            Console.WriteLine("daaaass");
             var renter = _identityService.Get(User);
             await _cartService.DeleteItem(renter, cartItem.Id);
             return RedirectToAction("Index", "Cart");

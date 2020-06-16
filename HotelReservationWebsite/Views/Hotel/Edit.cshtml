@@ -3,10 +3,14 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 
 }
-<div class="row" style="margin-top:40px">
-    <div class="col-md-12">
-        <h1>Thông tin chi tiết của khách sạn @Html.DisplayFor(model => model.Hotel.HotelName)</h1>
-     </div>
+<div class="row">
+    <div class="col-md-3"><hr/></div>
+    <div class="col-md-6" >
+        <div style="text-align:center">
+            <h1 class="title-1 m-b-25">Edit hotel with id = @Model.Hotel.HotelID</h1>
+        </div>
+    </div>
+    <div class="col-md-3"><hr/></div>
 </div>
 <form method="POST" enctype="multipart/form-data">
     <input type="hidden" asp-for="@Model.Hotel.HotelID">
@@ -21,19 +25,21 @@
         <div class="row">
             <div class="col-md-7">Hotel Name:</div>
             <div class="col-md-5">
-                <input type="text" class="form-control" asp-for="@Model.Hotel.HotelName">       
+                <input type="text" class="form-control" asp-for="@Model.Hotel.HotelName">
+                 <span asp-validation-for="@Model.Hotel.HotelName" style="font-size:18px" class="text-danger"></span>       
             </div>
         </div>
         <div class="row">
            <div class="col-md-7">Address:</div> 
             <div class="col-md-5">
                 <input type="text" class="form-control" asp-for="@Model.Hotel.Address">
+                 <span asp-validation-for="@Model.Hotel.Address" style="font-size:18px" class="text-danger"></span>
             </div>
         </div>
         <div class="row">
            <div class="col-md-7">City:</div> 
             <div class="col-md-5">
-            <select asp-for="@Model.Hotel.CityID">
+            <select class="form-control" asp-for="@Model.Hotel.CityID">
                     @foreach (var item in Model.Cities)
                     {
                         @if(item.CityName == @Model.Hotel.City.CityName )
@@ -65,7 +71,10 @@
 </div>
 <div class="row">
             <div class="col-md-12">
-                 <input type="file" asp-for="@Model.ImageUrl">
+                 <input type="file" asp-for="@Model.ChangeImageUrl">
             </div>
 </div>
 </form>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

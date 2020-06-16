@@ -2,24 +2,55 @@
 @{
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
-<!-- Medium input -->
+<div class="row">
+    <div class="col-md-3"><hr/></div>
+    <div class="col-md-6" >
+        <div style="text-align:center">
+            <h1 class="title-1 m-b-25">Hotel details with id = @Model.HotelID</h1>
+        </div>
+    </div>
+    <div class="col-md-3"><hr/></div>
+</div>
+    <div class="row" style="margin-top:40px;font-size:25px">
+    <div class="col-md-5">
+        <img src="@Model.ImageUrl"/>
+     </div>
+    <div class="col-md-7">
+        <div class="row">
+            <div class="col-md-7"><h1>Hotel Name:</h1></div>
+            <div class="col-md-5">
+                @Model.HotelName       
+            </div>
+        </div>
+        <div class="row">
+           <div class="col-md-7"><h1>Address:</h1></div> 
+            <div class="col-md-5">
+                @Model.Address
+            </div>
+        </div>
+        <div class="row">
+           <div class="col-md-7"><h1>City:</h1></div> 
+            <div class="col-md-5">
+            @Model.City.CityName
+            </div>
+        </div>
+        <div class="row">
+           <div class="col-md-7"><h1>Status:</h1></div> 
+            <div class="col-md-5">
+            @Model.HotelStatus
+            </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 md-form" style="margin-top:20px;">
+            <form asp-action="Delete" method="POST">
+              <input type="hidden" asp-for="HotelID"class="form-control">
+              <a asp-action="Index" class="btn btn-dark" style="margin-right:auto !important">Back</a>
+              <button type="submit" class="btn btn-danger" >Delete</button>
+            </form>
+          </div>
+        </div>
+    </div>
+  </div>
 
-<form style="width: 500px;margin-left:250px"  asp-action="Delete" method="POST">
-<div class="md-form">
-  <input type="hidden" asp-for="HotelID"class="form-control">
-</div>
-<div class="md-form">
-  <label asp-for="HotelName"></label>
-  <input type="text" asp-for="HotelName" class="form-control">
-</div>
-<div class="md-form">
-  <label asp-for="ImageUrl"></label>
-  <input type="text" asp-for="ImageUrl" class="form-control">
-</div>
-<div class="md-form" style="margin-top:20px;">
-  <a asp-action="Index" class="btn btn-dark" style="margin-right:auto !important">Back</a>
-  <button type="submit" class="btn btn-danger" >Delete</button>
-</div>
-</form>
 
 

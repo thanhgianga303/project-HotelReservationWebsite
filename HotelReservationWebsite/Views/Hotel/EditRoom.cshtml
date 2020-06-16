@@ -3,14 +3,19 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 
 }
-<div class="row" style="margin-top:40px">
-    <div class="col-md-12">
-        <h1>Chi tiết phòng của khách sạn @Html.DisplayFor(model => model.Room.HotelID)</h1>
-     </div>
+<div class="row">
+    <div class="col-md-3"><hr/></div>
+    <div class="col-md-6" >
+        <div style="text-align:center">
+            <h1 class="title-1 m-b-25">Edit room with id = @Model.Room.RoomID</h1>
+        </div>
+    </div>
+    <div class="col-md-3"><hr/></div>
 </div>
 <form method="POST" enctype="multipart/form-data">
     <input type="hidden" asp-for="@Model.Room.HotelID">
     <input type="hidden" asp-for="@Model.Room.RoomID">
+    <input type="hidden" asp-for="@Model.Room.OwnerId">
     <input type="hidden" asp-for="@Model.ImageUrlDisPlay">
     <div class="row" style="margin-top:40px">
     <div class="col-md-5">
@@ -48,6 +53,20 @@
             </div>
         </div>
         <div class="row">
+            <div class="col-md-7">Room area:</div>
+            <div class="col-md-5">
+                <input type="text" class="form-control" asp-for="@Model.Room.RoomArea">
+                 <span asp-validation-for="@Model.Room.RoomArea" style="font-size:14px" class="text-danger"></span>  
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-7">Number of beds:</div>
+            <div class="col-md-5">
+                <input type="text" class="form-control" asp-for="@Model.Room.NumberOfBeds">
+                 <span asp-validation-for="@Model.Room.NumberOfBeds" style="font-size:14px" class="text-danger"></span>  
+            </div>
+        </div>
+        <div class="row">
            <div class="col-md-7">Room Status:</div> 
             <div class="col-md-5">
                 <input type="hidden" asp-for="@Model.Room.RoomStatus">
@@ -62,8 +81,8 @@
             </div>
         </div>
         <div class="row">
-           <div class="col-md-5">Unit Price:</div> 
-            <div class="col-md-7">
+           <div class="col-md-7">Unit Price:</div> 
+            <div class="col-md-5">
                 <input type="text" class="form-control" asp-for="@Model.Room.UnitPrice">
             </div>
          </div>
@@ -84,7 +103,7 @@
 </div>
 <div class="row">
             <div class="col-md-12">
-                 <input type="file" asp-for="@Model.ImageUrl">
+                 <input type="file" asp-for="@Model.ChangeImageUrl">
             </div>
 </div>
 </form>

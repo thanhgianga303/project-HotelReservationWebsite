@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BookingAPI.Migrations
 {
     [DbContext(typeof(BookingContext))]
-    [Migration("20200605155813_InitialsCreate")]
-    partial class InitialsCreate
+    [Migration("20200616161849_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -90,6 +90,15 @@ namespace BookingAPI.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("ImageUri")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("NumberOfBeds")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("OwnerId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("RoomArea")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("RoomId")

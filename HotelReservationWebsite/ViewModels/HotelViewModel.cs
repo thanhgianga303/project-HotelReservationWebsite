@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using HotelReservationWebsite.Models;
 using Microsoft.AspNetCore.Http;
 using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace HotelReservationWebsite.ViewModels
 {
@@ -13,9 +14,19 @@ namespace HotelReservationWebsite.ViewModels
         public DateTime CheckOut { get; set; }
         public int hotelID { get; set; }
         public string ImageUrlDisplay { get; set; }
+        [Required]
         public IFormFile ImageUrl { get; set; }
+        public IFormFile ChangeImageUrl { get; set; }
         public List<City> Cities { get; set; }
         public Hotel Hotel { get; set; }
         public IList<Hotel> Hotels { get; set; }
+        public enum HotelStatus
+        {
+            Submitted = 0,
+            Approved = 1,
+            Rejected = 2
+        }
     }
+
+
 }

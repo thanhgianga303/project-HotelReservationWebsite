@@ -12,6 +12,8 @@ namespace BookingAPI.Models
                         string roomId, string roomName,
                         string address, string city,
                         string categoryName, DateTime checkIn,
+                        string roomArea, string numberOfBeds,
+                        string ownerId,
                         DateTime checkOut, string roomNumber,
                         int dayNumber, int cost,
                         decimal unitPrice, string imageUri)
@@ -23,6 +25,9 @@ namespace BookingAPI.Models
             RoomNumber = roomNumber;
             Address = address;
             City = city;
+            RoomArea = roomArea;
+            NumberOfBeds = numberOfBeds;
+            OwnerId = ownerId;
             CategoryName = categoryName;
             CheckIn = checkIn;
             CheckOut = checkOut;
@@ -42,6 +47,9 @@ namespace BookingAPI.Models
         public string ImageUri { get; set; }
         public string Address { get; set; }
         public string City { get; set; }
+        public string RoomArea { get; set; }
+        public string NumberOfBeds { get; set; }
+        public string OwnerId { get; set; }
         public string CategoryName { get; set; }
         public decimal UnitPrice { get; set; }
         public DateTime CheckIn { get; set; }

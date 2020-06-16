@@ -90,6 +90,15 @@ namespace BookingAPI.Migrations
                     b.Property<string>("ImageUri")
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("NumberOfBeds")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("OwnerId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("RoomArea")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("RoomId")
                         .HasColumnType("TEXT");
 

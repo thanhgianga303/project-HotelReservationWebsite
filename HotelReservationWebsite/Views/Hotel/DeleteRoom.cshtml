@@ -3,14 +3,18 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 
 }
+<div class="row">
+    <div class="col-md-3"><hr/></div>
+    <div class="col-md-6" >
+        <div style="text-align:center">
+            <h1 class="title-1 m-b-25">Delete room with id = @Model.Room.RoomID</h1>
+        </div>
+    </div>
+    <div class="col-md-3"><hr/></div>
+</div>
 @if(@Model.Room!= null)
 {
     <form method="POST">
-<div class="row" style="margin-top:40px">
-    <div class="col-md-12">
-        <h1>Chi tiết phòng của khách sạn @Html.DisplayFor(model => model.Room.Hotel.HotelName)</h1>
-     </div>
-</div>
     <input type="hidden" asp-for="@Model.Room.RoomID">
     <input type="hidden" asp-for="@Model.Room.HotelID">
 
@@ -46,12 +50,20 @@
                 }
             </div>
         </div>
-        <div class="row">
-           <div class="col-md-5">Unit Price:</div> 
-            <div class="col-md-7">@Model.Room.UnitPrice</div>
+         <div class="row">
+            <div class="col-md-7">Room area:</div>
+            <div class="col-md-5">@Model.Room.RoomArea</div>
         </div>
         <div class="row">
-           <a asp-action="SeeRoomList" asp-controller="Hotel" class="btn btn-danger" asp-route-id="@Model.Room.HotelID">Back</a>
+            <div class="col-md-7">Number of beds:</div>
+            <div class="col-md-5">@Model.Room.NumberOfBeds</div>
+        </div>
+        <div class="row">
+           <div class="col-md-7">Unit Price:</div> 
+            <div class="col-md-5">@Model.Room.UnitPrice</div>
+        </div>
+        <div class="row">
+           <a asp-action="SeeRoomList" asp-controller="Hotel" class="btn btn-secondary" asp-route-id="@Model.Room.HotelID">Back</a>
            <button type="submit" class="btn btn-danger">Delete</button>
         </div>
     </div>

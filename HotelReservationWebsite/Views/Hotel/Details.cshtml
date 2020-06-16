@@ -5,12 +5,16 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 
 }
-<div class="row" style="margin-top:40px">
-    <div class="col-md-12">
-        <h1>Thông tin chi tiết của khách sạn @Html.DisplayFor(model => model.Hotel.HotelName)</h1>
-     </div>
+<div class="row">
+    <div class="col-md-3"><hr/></div>
+    <div class="col-md-6" >
+        <div style="text-align:center">
+            <h1 class="title-1 m-b-25">Hotel details with id = @Model.Hotel.HotelID</h1>
+        </div>
+    </div>
+    <div class="col-md-3"><hr/></div>
 </div>
-    <div class="row" style="margin-top:40px">
+    <div class="row" style="margin-top:40px;font-size:25px">
     <div class="col-md-5">
         <img src="@Model.Hotel.ImageUrl"/>
      </div>
@@ -40,40 +44,86 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-2">
+            <div class="col-md-2" style="text-align:center">
                     <a asp-action="Index" asp-controller="Hotel" class="btn btn-secondary">Back</a>
             </div>
-            <div class="col-md-2"> 
-                    @if((await AuthorizationService.AuthorizeAsync(User,Model.Hotel,HotelOperations.Approve)).Succeeded)
-                    {
-                        
-                        <form asp-action="Approve" asp-controller="Hotel" method="POST" style="display: inline;">
-                        <input type="hidden" asp-for="@Model.Hotel.HotelID">
-                        <input type="hidden" asp-for="@Model.Hotel.HotelName">
-                        <input type="hidden" asp-for="@Model.Hotel.Address">
-                        <input type="hidden" asp-for="@Model.Hotel.CityID">
-                        <input type="hidden" asp-for="@Model.Hotel.HotelStatus">
-                        <input type="hidden" asp-for="@Model.Hotel.OwnerID">
-                        <input type="hidden" asp-for="@Model.ImageUrlDisplay">
-                        <button type="submit" class="btn btn-info" >Approve</button>
-                        </form>
-                    }
-            </div>
-            <div class="col-md-2">
-                    @if((await AuthorizationService.AuthorizeAsync(User,Model.Hotel,HotelOperations.Reject)).Succeeded)
-                    {
-                        <form asp-action="Reject" asp-controller="Hotel" method="POST">
-                        <input type="hidden" asp-for="@Model.Hotel.HotelID">
-                        <input type="hidden" asp-for="@Model.Hotel.HotelName">
-                        <input type="hidden" asp-for="@Model.Hotel.Address">
-                        <input type="hidden" asp-for="@Model.Hotel.CityID">
-                        <input type="hidden" asp-for="@Model.Hotel.HotelStatus">
-                        <input type="hidden" asp-for="@Model.Hotel.OwnerID">
-                        <input type="hidden" asp-for="@Model.ImageUrlDisplay">
-                        <button type="submit" class="btn btn-danger" >Reject</button>
-                        </form>
-                    }
-            </div>
+            
+                   @if(Model.Hotel.HotelStatus== HotelStatus.Rejected)
+                        {    
+                            <div class="col-md-4" style="text-align:center">                     
+                                @if((await AuthorizationService.AuthorizeAsync(User,Model.Hotel,HotelOperations.Approve)).Succeeded)
+                                {
+                                    <form asp-action="Approve" asp-controller="Hotel" method="POST" style="display: inline;">
+                                            <input type="hidden" asp-for="@Model.Hotel.HotelID">
+                                            <input type="hidden" asp-for="@Model.Hotel.HotelName">
+                                            <input type="hidden" asp-for="@Model.Hotel.Address">
+                                            <input type="hidden" asp-for="@Model.Hotel.CityID">
+                                            <input type="hidden" asp-for="@Model.Hotel.HotelStatus">
+                                            <input type="hidden" asp-for="@Model.Hotel.OwnerID">
+                                            <input type="hidden" asp-for="@Model.ImageUrlDisplay">
+                                            <button type="submit" class="btn btn-info" >Approve</button>
+                                        </form>
+                                }
+                             </div>
+                         }
+            
+            
+                 @if(Model.Hotel.HotelStatus== HotelStatus.Approved)
+                        {  
+                            <div class="col-md-4">
+                            @if((await AuthorizationService.AuthorizeAsync(User,Model.Hotel,HotelOperations.Reject)).Succeeded)
+                                {
+                                    <form asp-action="Reject" asp-controller="Hotel" method="POST">
+                                    <input type="hidden" asp-for="@Model.Hotel.HotelID">
+                                    <input type="hidden" asp-for="@Model.Hotel.HotelName">
+                                    <input type="hidden" asp-for="@Model.Hotel.Address">
+                                    <input type="hidden" asp-for="@Model.Hotel.CityID">
+                                    <input type="hidden" asp-for="@Model.Hotel.HotelStatus">
+                                    <input type="hidden" asp-for="@Model.Hotel.OwnerID">
+                                    <input type="hidden" asp-for="@Model.ImageUrlDisplay">
+                                    <button type="submit" class="btn btn-danger" >Reject</button>
+                                    </form>
+                                }
+                            </div>
+                        }
+                        @if(Model.Hotel.HotelStatus== HotelStatus.Submitted)
+                        {
+                            <div class="col-md-4" style="text-align:center"> 
+                                <div class="row">
+                                    <div class="col-md-6">                 
+                                        @if((await AuthorizationService.AuthorizeAsync(User,Model.Hotel,HotelOperations.Approve)).Succeeded)
+                                        {
+                                            <form asp-action="Approve" asp-controller="Hotel" method="POST" style="display: inline;">
+                                                    <input type="hidden" asp-for="@Model.Hotel.HotelID">
+                                                    <input type="hidden" asp-for="@Model.Hotel.HotelName">
+                                                    <input type="hidden" asp-for="@Model.Hotel.Address">
+                                                    <input type="hidden" asp-for="@Model.Hotel.CityID">
+                                                    <input type="hidden" asp-for="@Model.Hotel.HotelStatus">
+                                                    <input type="hidden" asp-for="@Model.Hotel.OwnerID">
+                                                    <input type="hidden" asp-for="@Model.ImageUrlDisplay">
+                                                    <button type="submit" class="btn btn-info" >Approve</button>
+                                                </form>
+                                        }
+                                </div>
+                                <div class="col-md-6">
+                                    @if((await AuthorizationService.AuthorizeAsync(User,Model.Hotel,HotelOperations.Reject)).Succeeded)
+                                        {
+                                            <form asp-action="Reject" asp-controller="Hotel" method="POST">
+                                            <input type="hidden" asp-for="@Model.Hotel.HotelID">
+                                            <input type="hidden" asp-for="@Model.Hotel.HotelName">
+                                            <input type="hidden" asp-for="@Model.Hotel.Address">
+                                            <input type="hidden" asp-for="@Model.Hotel.CityID">
+                                            <input type="hidden" asp-for="@Model.Hotel.HotelStatus">
+                                            <input type="hidden" asp-for="@Model.Hotel.OwnerID">
+                                            <input type="hidden" asp-for="@Model.ImageUrlDisplay">
+                                            <button type="submit" class="btn btn-danger" >Reject</button>
+                                            </form>
+                                        }
+                                </div>
+                            </div>
+                        </div>
+                        }
+            
             <div class="col-md-7"></div>
         </div>
         

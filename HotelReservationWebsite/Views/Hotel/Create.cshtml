@@ -7,40 +7,50 @@
     <div class="col-md-3"><hr/></div>
     <div class="col-md-6" >
         <div style="text-align:center">
-            <h1 class="title-1 m-b-25">Create room category</h1>
+            <h1 class="title-1 m-b-25">Create hotel</h1>
         </div>
     </div>
     <div class="col-md-3"><hr/></div>
 </div>
-<form style="width: 500px;margin-left:250px" method="POST" enctype="multipart/form-data"  >
-<div class="md-form">
-  <input type="hidden" asp-for="@Model.Hotel.HotelID" class="form-control">
-</div>
-<div class="md-form">
-  <label asp-for="@Model.Hotel.HotelName"></label>
-  <input type="text" asp-for="@Model.Hotel.HotelName" class="form-control" size="100px !important ">
-</div>
-<div class="md-form">
-  <label asp-for="@Model.Hotel.Address"></label>
-  <input type="text" asp-for="@Model.Hotel.Address" class="form-control" size="100px !important ">
-</div>
-<div class="md-form">
-  <label>City:</label>
-    <select asp-for="@Model.Hotel.CityID">
-      @foreach (var item in Model.Cities)
-      {
-        <option value="@item.CityID">@item.CityName</option>  
-      }
-    </select>
-</div>
-<div class="md-form">
-  <label asp-for="@Model.ImageUrl"></label>
-  <input type="file" asp-for="@Model.ImageUrl" class="form-control" size="100px !important ">
-</div>
-<div class="md-form" style="margin-top:20px;">
-  <a asp-action="Index" class="btn btn-primary mb-2" >Back</a>
-  <button type="submit" class="btn btn-danger" >Create</button>
-</div>
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+  <form method="POST" enctype="multipart/form-data"  >
+  <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+  <div class="md-form">
+    <label asp-for="@Model.Hotel.HotelName"></label>
+    <input type="text" asp-for="@Model.Hotel.HotelName" class="form-control" size="100px !important ">
+    <span asp-validation-for="@Model.Hotel.HotelName" class="text-danger"></span>
+  </div>
+  <div class="md-form">
+    <label asp-for="@Model.Hotel.Address"></label>
+    <input type="text" asp-for="@Model.Hotel.Address" class="form-control" size="100px !important ">
+    <span asp-validation-for="@Model.Hotel.Address" class="text-danger"></span>
+  </div>
+  <div class="md-form">
+    <label>City:</label>
+      <select class="form-control" asp-for="@Model.Hotel.CityID">
+        @foreach (var item in Model.Cities)
+        {
+          <option value="@item.CityID">@item.CityName</option>  
+        }
+      </select>
+  </div>
+  <div class="md-form">
+    <label asp-for="@Model.ImageUrl"></label>
+    <input type="file" asp-for="@Model.ImageUrl" class="form-control" size="100px !important ">
+    <span asp-validation-for="@Model.ImageUrl" class="text-danger"></span>
+  </div>
+  <div class="md-form" style="margin-top:20px;">
+    <a asp-action="Index" class="btn btn-primary mb-2" >Back</a>
+    <button type="submit" class="btn btn-danger" >Create</button>
+  </div>
 </form>
+</div>
+<div class="col-md-3"></div>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
 
 

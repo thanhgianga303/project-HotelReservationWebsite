@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace BookingAPI.Migrations
 {
-    public partial class InitialsCreate : Migration
+    public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -42,6 +42,9 @@ namespace BookingAPI.Migrations
                     ImageUri = table.Column<string>(nullable: true),
                     Address = table.Column<string>(nullable: true),
                     City = table.Column<string>(nullable: true),
+                    RoomArea = table.Column<string>(nullable: true),
+                    NumberOfBeds = table.Column<string>(nullable: true),
+                    OwnerId = table.Column<string>(nullable: true),
                     CategoryName = table.Column<string>(nullable: true),
                     UnitPrice = table.Column<decimal>(nullable: false),
                     CheckIn = table.Column<DateTime>(nullable: false),
