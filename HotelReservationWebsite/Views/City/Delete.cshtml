@@ -3,7 +3,15 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 <!-- Medium input -->
-
+<div class="row">
+    <div class="col-md-3"><hr/></div>
+    <div class="col-md-6" >
+        <div style="text-align:center">
+            <h1 class="title-1 m-b-25">Delete city with id = @Model.CityID</h1>
+        </div>
+    </div>
+    <div class="col-md-3"><hr/></div>
+</div>
 <form style="width: 500px;margin-left:250px" asp-action="Delete" method="POST">
 <div class="md-form">
   <input type="hidden" asp-for="CityID" class="form-control">

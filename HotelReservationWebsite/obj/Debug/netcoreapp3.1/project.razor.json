@@ -20844,11 +20844,6 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "d:\\github-project\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\BookingManager\\_bookingItemIsHotel.cshtml",
-      "TargetPath": "Views\\BookingManager\\_bookingItemIsHotel.cshtml",
-      "FileKind": "mvc"
-    },
-    {
       "FilePath": "d:\\github-project\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\Shared\\Components\\BasketList\\Default.cshtml",
       "TargetPath": "Views\\Shared\\Components\\BasketList\\Default.cshtml",
       "FileKind": "mvc"

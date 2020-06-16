@@ -43,6 +43,7 @@ namespace HotelReservationWebsite.Controllers
             return View(city);
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, City city)
         {
             if (id != city.CityID)
@@ -74,6 +75,7 @@ namespace HotelReservationWebsite.Controllers
             return View();
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(City city)
         {
             if (ModelState.IsValid)

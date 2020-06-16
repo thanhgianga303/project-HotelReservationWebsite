@@ -2,21 +2,20 @@
 @{
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
-
-<div class="row">
-    <div class="col-md-8">
-    </div>
-    <div class="col-md-4">
-        <a asp-controller="RoomCategory" asp-action="Create" class="au-btn au-btn-icon au-btn--blue">
-                    <i class="zmdi zmdi-plus"></i>Add room category
-        </a>
-    </div>
-</div>
 <div class="row">
     <div class="col-md-12">
         <div class="overview-wrap">
             <h2 class="title-1 m-b-25">Room Category</h2>
         </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-8">
+    </div>
+    <div class="col-md-4" style="text-align:center">
+        <a asp-controller="RoomCategory" asp-action="Create" class="au-btn au-btn-icon au-btn--blue">
+                    <i class="zmdi zmdi-plus"></i>Add
+        </a>
     </div>
 </div>
 <div class="row" style="margin-top: 10px;">
@@ -25,16 +24,16 @@
         <div class="table-responsive table--no-card m-b-40">
             <table class="table table-borderless table-striped table-earning">
                 <thead>
-                    <tr>
+                    <tr style="text-align:center">
                         <th>@Html.DisplayNameFor(model => model.RoomCategories[0].RoomCategoryID)</th>
                         <th>@Html.DisplayNameFor(model => model.RoomCategories[0].CategoryName)</th>
-                        <th>Thao tác</th>
+                        <th>Operation</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach (var roomCategory in Model.RoomCategories)
                      {
-                    <tr>
+                    <tr style="font-size:20px;text-align:center">
                         <td>@Html.DisplayFor(model => roomCategory.RoomCategoryID)</td>
                         <td>@Html.DisplayFor(model => roomCategory.CategoryName)</td>
                         <td>

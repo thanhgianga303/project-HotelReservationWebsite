@@ -11,6 +11,8 @@ namespace HotelReservationWebsiteAPI.Models
         public string ImageUrl { get; set; }
         public decimal UnitPrice { get; set; }
         public int RoomStatus { get; set; }
+        public string RoomArea { get; set; }
+        public string NumberOfBeds { get; set; }
         public virtual Hotel Hotel { get; set; }
         public virtual RoomCategory RoomCategory { get; set; }
     }

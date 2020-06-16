@@ -50,6 +50,9 @@ namespace HotelReservationWebsiteAPI.Migrations
                     b.Property<string>("ImageUrl")
                         .HasColumnType("TEXT");
 
+                    b.Property<int>("NumberofReservation")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("OwnerId")
                         .HasColumnType("TEXT");
 
@@ -70,6 +73,12 @@ namespace HotelReservationWebsiteAPI.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("ImageUrl")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("NumberOfBeds")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("RoomArea")
                         .HasColumnType("TEXT");
 
                     b.Property<int>("RoomCategoryID")

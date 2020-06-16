@@ -3,7 +3,15 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 <!-- Medium input -->
-
+<div class="row">
+    <div class="col-md-3"><hr/></div>
+    <div class="col-md-6" >
+        <div style="text-align:center">
+            <h1 class="title-1 m-b-25">Create room category</h1>
+        </div>
+    </div>
+    <div class="col-md-3"><hr/></div>
+</div>
 <form style="width: 500px;margin-left:250px" method="POST" enctype="multipart/form-data"  >
 <div class="md-form">
   <input type="hidden" asp-for="@Model.Hotel.HotelID" class="form-control">
@@ -23,7 +31,6 @@
       {
         <option value="@item.CityID">@item.CityName</option>  
       }
-          
     </select>
 </div>
 <div class="md-form">

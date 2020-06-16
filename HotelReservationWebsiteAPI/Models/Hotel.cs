@@ -10,6 +10,7 @@ namespace HotelReservationWebsiteAPI.Models
         public string ImageUrl { get; set; }
         public HotelStatus HotelStatus { get; set; }
         public string OwnerId { get; set; }
+        public int NumberofReservation { get; set; }
         public virtual List<Room> Rooms { get; set; }
         public virtual City City { get; set; }
     }

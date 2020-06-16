@@ -2,7 +2,7 @@
 
 namespace HotelReservationWebsiteAPI.Migrations
 {
-    public partial class InitialsCreate : Migration
+    public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -43,7 +43,8 @@ namespace HotelReservationWebsiteAPI.Migrations
                     Address = table.Column<string>(nullable: true),
                     ImageUrl = table.Column<string>(nullable: true),
                     HotelStatus = table.Column<int>(nullable: false),
-                    OwnerId = table.Column<string>(nullable: true)
+                    OwnerId = table.Column<string>(nullable: true),
+                    NumberofReservation = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -68,7 +69,9 @@ namespace HotelReservationWebsiteAPI.Migrations
                     RoomName = table.Column<string>(nullable: true),
                     ImageUrl = table.Column<string>(nullable: true),
                     UnitPrice = table.Column<decimal>(nullable: false),
-                    RoomStatus = table.Column<int>(nullable: false)
+                    RoomStatus = table.Column<int>(nullable: false),
+                    RoomArea = table.Column<string>(nullable: true),
+                    NumberOfBeds = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {

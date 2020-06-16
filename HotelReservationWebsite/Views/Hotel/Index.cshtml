@@ -3,7 +3,13 @@
 @{
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
-
+<div class="row">
+    <div class="col-md-12">
+        <div class="overview-wrap">
+            <h2 class="title-1 m-b-25">Hotel</h2>
+        </div>
+    </div>
+</div>
 <div class="row">
     <div class="col-md-8">
         <form class="form-header" asp-action="Index" method="GET">
@@ -13,17 +19,10 @@
             </button>
         </form>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-4" style="text-align:center">
         <a asp-controller="Hotel" asp-action="Create" class="au-btn au-btn-icon au-btn--blue">
-                    <i class="zmdi zmdi-plus"></i>Add Hotel
+                    <i class="zmdi zmdi-plus"></i>Add
         </a>
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-12">
-        <div class="overview-wrap">
-            <h2 class="title-1 m-b-25">Hotel</h2>
-        </div>
     </div>
 </div>
 <div class="row" style="margin-top: 10px;">
@@ -40,7 +39,7 @@
                         <th>@Html.DisplayNameFor(model => model.Hotels[0].City.CityName)</th>
                         <th>@Html.DisplayNameFor(model => model.Hotels[0].OwnerID)</th>
                         <th>@Html.DisplayNameFor(model => model.Hotels[0].ImageUrl)</th>
-                        <th>Thao tác</th>
+                        <th>Operation</th>
                     </tr>
                 </thead>
                 <tbody>

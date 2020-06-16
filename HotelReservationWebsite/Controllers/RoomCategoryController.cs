@@ -73,16 +73,12 @@ namespace HotelReservationWebsite.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(RoomCategory roomCategory)
         {
-            // if (ModelState.IsValid)
-            // {
-            await _service.CreateRoomCategory(roomCategory);
-            return RedirectToAction(nameof(Index));
-            // }
-            // else
-            // {
-            //     var errors = ModelState.Values.SelectMany(v => v.Errors);
-            // }
-            // return View();
+            if (ModelState.IsValid)
+            {
+                await _service.CreateRoomCategory(roomCategory);
+                return RedirectToAction(nameof(Index));
+            }
+            return View();
         }
 
     }

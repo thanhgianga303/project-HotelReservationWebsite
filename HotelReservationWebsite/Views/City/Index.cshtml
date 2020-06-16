@@ -2,7 +2,13 @@
 @{
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
-
+<div class="row">
+    <div class="col-md-12" >
+        <div class="overview-wrap">
+            <h1 class="title-1 m-b-25">City</h1>
+        </div>
+    </div>
+</div>
 <div class="row">
     <div class="col-md-8">
         <form class="form-header" asp-action="Index" method="GET">
@@ -12,17 +18,10 @@
             </button>
         </form>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-4" style="text-align:center">
         <a asp-controller="City" asp-action="Create" class="au-btn au-btn-icon au-btn--blue">
-                    <i class="zmdi zmdi-plus"></i>add City
+                    <i class="zmdi zmdi-plus"></i>add
         </a>
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-12">
-        <div class="overview-wrap">
-            <h2 class="title-1 m-b-25">City</h2>
-        </div>
     </div>
 </div>
 <div class="row" style="margin-top: 10px;">
@@ -31,16 +30,16 @@
         <div class="table-responsive table--no-card m-b-40">
             <table class="table table-borderless table-striped table-earning">
                 <thead>
-                    <tr>
+                    <tr style="text-align:center">
                         <th>@Html.DisplayNameFor(model => model.Cities[0].CityID)</th>
                         <th>@Html.DisplayNameFor(model => model.Cities[0].CityName)</th>
-                        <th>Thao tác</th>
+                        <th>Operation</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach (var city in Model.Cities)
                      {
-                    <tr>
+                    <tr style="font-size:20px;text-align:center">
                         <td>@Html.DisplayFor(model => city.CityID)</td>
                         <td>@Html.DisplayFor(model => city.CityName)</td>
                         <td>

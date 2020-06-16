@@ -3,19 +3,32 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 <!-- Medium input -->
-
+<div class="row">
+    <div class="col-md-3"><hr/></div>
+    <div class="col-md-6" >
+        <div style="text-align:center">
+            <h1 class="title-1 m-b-25">Edit the city with id = @Model.CityID</h1>
+        </div>
+    </div>
+    <div class="col-md-3"><hr/></div>
+</div>
 <form style="width: 500px;margin-left:250px" asp-controller="City" asp-action="Edit" method="POST">
+  <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 <div class="md-form">
   <input type="hidden" asp-for="CityID" class="form-control">
 </div>
 <div class="md-form">
   <label asp-for="CityName"></label>
   <input type="text" asp-for="CityName" class="form-control" size="100px !important ">
+  <span asp-validation-for="CityName" class="text-danger"></span>
 </div>
 <div class="md-form" style="margin-top:20px;">
   <a asp-action="Index" class="btn btn-primary mb-2" >Back</a>
   <button type="submit" class="btn btn-danger" >Edit</button>
 </div>
 </form>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
 
 

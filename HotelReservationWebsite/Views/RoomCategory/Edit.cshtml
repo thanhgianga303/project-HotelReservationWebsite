@@ -3,7 +3,15 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 <!-- Medium input -->
-
+<div class="row">
+    <div class="col-md-3"><hr/></div>
+    <div class="col-md-6" >
+        <div style="text-align:center">
+            <h1 class="title-1 m-b-25">Edit room category with id = @Model.RoomCategoryID</h1>
+        </div>
+    </div>
+    <div class="col-md-3"><hr/></div>
+</div>
 <form style="width: 500px;margin-left:250px" asp-controller="RoomCategory" asp-action="Edit" method="POST">
 <div class="md-form">
   <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -19,5 +27,8 @@
   <button type="submit" class="btn btn-danger" >Edit</button>
 </div>
 </form>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
 
 
