@@ -37,9 +37,7 @@ namespace HotelReservationWebsiteAPI
 
             services.AddAutoMapper(typeof(MappingProfile));
 
-            services.AddScoped<ICityRepository, CityRepository>();
             services.AddScoped<IHotelRepository, HotelRepository>();
-            services.AddScoped<IRoomCategoryRepository, RoomCategoryRepository>();
             // services.AddScoped<IApplicationUserRepository, ApplicationUserRepository>();
             // services.AddScoped<IBookingDetailRepository, BookingDetailRepository>();
 

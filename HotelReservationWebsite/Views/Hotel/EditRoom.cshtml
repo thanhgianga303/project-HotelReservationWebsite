@@ -37,16 +37,16 @@
         <div class="row">
            <div class="col-md-7">Room Category:</div> 
             <div class="col-md-5">
-            <select asp-for="@Model.Room.RoomCategoryID">
+            <select class="form-control" asp-for="@Model.Room.RoomCategoryName">
                     @foreach (var item in Model.RoomCategories)
                     {
-                        @if(item.CategoryName == @Model.Room.RoomCategory.CategoryName )
+                        @if(item.CategoryName == @Model.Room.RoomCategoryName )
                         {
-                            <option value="@item.RoomCategoryID" selected="selected">@item.CategoryName</option>  
+                            <option value="@item.CategoryName" selected="selected">@item.CategoryName</option>  
                         }
                         else
                         {
-                            <option value="@item.RoomCategoryID">@item.CategoryName</option>
+                            <option value="@item.CategoryName">@item.CategoryName</option>
                         }
                     }
             </select>

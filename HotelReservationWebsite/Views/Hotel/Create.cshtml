@@ -28,13 +28,9 @@
     <span asp-validation-for="@Model.Hotel.Address" class="text-danger"></span>
   </div>
   <div class="md-form">
-    <label>City:</label>
-      <select class="form-control" asp-for="@Model.Hotel.CityID">
-        @foreach (var item in Model.Cities)
-        {
-          <option value="@item.CityID">@item.CityName</option>  
-        }
-      </select>
+    <label asp-for="@Model.Hotel.City"></label>
+    <input type="text" asp-for="@Model.Hotel.City" class="form-control" size="100px !important ">
+    <span asp-validation-for="@Model.Hotel.City" class="text-danger"></span>
   </div>
   <div class="md-form">
     <label asp-for="@Model.ImageUrl"></label>

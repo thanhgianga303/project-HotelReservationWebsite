@@ -17,7 +17,7 @@
 						<div class="desc">
 							<h3>@Model.RoomName</h3>
 							<p>Room number: @Model.RoomNumber</p>
-                            <p>Category: @Model.RoomCategory.CategoryName</p>
+                            <p>Category: @Model.RoomCategoryName</p>
 							<p>Room area: @Model.RoomArea</p>
 							<p>Room area: @Model.NumberOfBeds</p>
 						</div>
@@ -31,8 +31,8 @@
 	<input type="hidden" asp-for="@Model.RoomArea">
 	<input type="hidden" asp-for="@Model.NumberOfBeds">
 	<input type="hidden" asp-for="@Model.UnitPrice">
-	<input type="hidden" asp-for="@Model.RoomCategory.CategoryName">
+	<input type="hidden" asp-for="@Model.RoomCategoryName">
 	<input type="hidden" asp-for="@Model.Hotel.Address">
 	<input type="hidden" asp-for="@Model.Hotel.OwnerID">
-	<input type="hidden" asp-for="@Model.Hotel.City.CityName">
+	<input type="hidden" asp-for="@Model.Hotel.City">
 	<input type="hidden" asp-for="@Model.ImageUrl">

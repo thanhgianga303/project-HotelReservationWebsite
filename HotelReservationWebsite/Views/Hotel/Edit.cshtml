@@ -39,19 +39,8 @@
         <div class="row">
            <div class="col-md-7">City:</div> 
             <div class="col-md-5">
-            <select class="form-control" asp-for="@Model.Hotel.CityID">
-                    @foreach (var item in Model.Cities)
-                    {
-                        @if(item.CityName == @Model.Hotel.City.CityName )
-                        {
-                            <option value="@item.CityID" selected="selected">@item.CityName</option>  
-                        }
-                        else
-                        {
-                            <option value="@item.CityID">@item.CityName</option>
-                        }
-                    }
-            </select>
+                <input type="text" class="form-control" asp-for="@Model.Hotel.City">
+                 <span asp-validation-for="@Model.Hotel.City" style="font-size:18px" class="text-danger"></span>
             </div>
         </div>
         <div class="row">

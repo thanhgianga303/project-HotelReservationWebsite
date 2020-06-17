@@ -17,7 +17,6 @@ namespace HotelReservationWebsite.ViewModels
         [Required]
         public IFormFile ImageUrl { get; set; }
         public IFormFile ChangeImageUrl { get; set; }
-        public List<City> Cities { get; set; }
         public Hotel Hotel { get; set; }
         public IList<Hotel> Hotels { get; set; }
         public enum HotelStatus

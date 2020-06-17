@@ -36,7 +36,7 @@
                         <th>@Html.DisplayNameFor(model => model.Hotels[0].HotelName)</th>
                         <th>@Html.DisplayNameFor(model => model.Hotels[0].HotelStatus)</th>
                         <th>@Html.DisplayNameFor(model => model.Hotels[0].Address)</th>
-                        <th>@Html.DisplayNameFor(model => model.Hotels[0].City.CityName)</th>
+                        <th>@Html.DisplayNameFor(model => model.Hotels[0].City)</th>
                         <th>@Html.DisplayNameFor(model => model.Hotels[0].OwnerID)</th>
                         <th>@Html.DisplayNameFor(model => model.Hotels[0].ImageUrl)</th>
                         <th>Operation</th>
@@ -50,7 +50,7 @@
                         <td>@Html.DisplayFor(model => hotel.HotelName)</td>
                         <td style="color: red;">@Html.DisplayFor(model => hotel.HotelStatus)</td>
                         <td>@Html.DisplayFor(model => hotel.Address)</td>
-                        <td>@Html.DisplayFor(model => hotel.City.CityName)</td>
+                        <td>@Html.DisplayFor(model => hotel.City)</td>
                         <td>@Html.DisplayFor(model => hotel.OwnerID)</td>
                         <td><img src="@hotel.ImageUrl" /></td>
                         <td>
@@ -58,9 +58,12 @@
                             <a asp-action="Details" asp-controller="Hotel" class="btn btn-info" asp-route-id="@hotel.HotelID">Details</a> 
                             <a asp-action="Index" asp-controller="BookingManager" class="btn btn-success" asp-route-id="@hotel.HotelID">Booking list</a>
                             @if((await AuthorizationService.AuthorizeAsync(User,hotel,HotelOperations.Delete)).Succeeded)
-                                {
-                            <a asp-action="Edit" asp-controller="Hotel" class="btn btn-secondary" asp-route-id="@hotel.HotelID">Edit</a> 
-                            <a asp-action="Delete" asp-controller="Hotel" class="btn btn-danger" asp-route-id="@hotel.HotelID">Delete</a>
+                                { 
+                                    <a asp-action="Delete" asp-controller="Hotel" class="btn btn-danger" asp-route-id="@hotel.HotelID">Delete</a>
+                                }
+                            @if((await AuthorizationService.AuthorizeAsync(User,hotel,HotelOperations.Update)).Succeeded)
+                                { 
+                                    <a asp-action="Edit" asp-controller="Hotel" class="btn btn-secondary" asp-route-id="@hotel.HotelID">Edit</a>
                                 }
                         </td>
                         

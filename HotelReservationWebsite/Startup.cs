@@ -35,7 +35,6 @@ namespace HotelReservationWebsite
             services.AddHttpContextAccessor();
             services.AddControllersWithViews();
             services.AddHttpClient<HotelReservationWebsite.Infrastructure.IHttpClient, CustomHttpClient>();
-            services.AddScoped<ICityService, CityService>();
             services.AddScoped<IHotelService, HotelService>();
             services.AddScoped<IRoomCategoryService, RoomCategoryService>();
             services.AddScoped<ICartService, CartService>();
@@ -77,6 +76,7 @@ namespace HotelReservationWebsite
                 });
 
             services.AddScoped<IAuthorizationHandler, OwnerAuthorizationHandler>();
+            services.AddScoped<IAuthorizationHandler, RoomOwnerAuthorizationHandler>();
             services.AddScoped<IAuthorizationHandler, ManagersAuthorizationHandler>();
             services.AddScoped<IAuthorizationHandler, AdministratorsAuthorizationHandler>();
             services.Configure<StripeSettings>(Configuration.GetSection("Stripe"));

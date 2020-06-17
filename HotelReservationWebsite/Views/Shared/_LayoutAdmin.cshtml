@@ -85,10 +85,6 @@
                                 <i class="far fa-check-square"></i>Room Category</a>
                         </li>
                         <li>
-                            <a asp-controller="City" asp-action="Index">
-                                <i class="fas fa-table"></i>City</a>
-                        </li>
-                        <li>
                             <a asp-controller="User" asp-action="Index">
                                 <i class="fas fa-table"></i>User</a>
                         </li>
@@ -98,9 +94,13 @@
                            if(User.IsInRole("Lessors"))
                            {
                                <li>
-                            <a asp-controller="Hotel" asp-action="Hotel">
-                                <i class="fas fa-chart-bar"></i>Hotel</a>
-                            </li>
+                                    <a asp-controller="Hotel" asp-action="Hotel">
+                                        <i class="fas fa-chart-bar"></i>Hotel</a>
+                                </li>
+                                <li>
+                                    <a asp-controller="User" asp-action="Index">
+                                        <i class="fas fa-table"></i>Account information</a>
+                                 </li>
                            }
                            
                        }
@@ -189,10 +189,6 @@
                                 <i class="far fa-check-square"></i>Room Category</a>
                         </li>
                         <li>
-                            <a asp-controller="City" asp-action="Index">
-                                <i class="fas fa-table"></i>City</a>
-                        </li>
-                        <li>
                             <a asp-controller="User" asp-action="Index">
                                 <i class="fas fa-table"></i>User</a>
                         </li>
@@ -204,7 +200,11 @@
                                 <li>
                                     <a asp-controller="Hotel" asp-action="Index">
                                         <i class="fas fa-map-marker-alt"></i>Hotels</a>
-                                </li>    
+                                </li>
+                                <li>
+                                    <a asp-controller="User" asp-action="Index">
+                                        <i class="fas fa-table"></i>Account information</a>
+                                 </li>    
                             }
                        }
                     </ul>

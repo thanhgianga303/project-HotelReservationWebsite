@@ -7,17 +7,17 @@ using System;
 
 namespace HotelReservationWebsite.Authorization.Handlers
 {
-    public class OwnerAuthorizationHandler : AuthorizationHandler<OperationAuthorizationRequirement, Hotel>
+    public class RoomOwnerAuthorizationHandler : AuthorizationHandler<OperationAuthorizationRequirement, Room>
     {
         private readonly IIdentityService<Buyer> _identityService;
 
-        public OwnerAuthorizationHandler(IIdentityService<Buyer> identityService)
+        public RoomOwnerAuthorizationHandler(IIdentityService<Buyer> identityService)
         {
             _identityService = identityService;
         }
 
         protected override Task HandleRequirementAsync(
-            AuthorizationHandlerContext context, OperationAuthorizationRequirement requirement, Hotel resource)
+            AuthorizationHandlerContext context, OperationAuthorizationRequirement requirement, Room resource)
         {
             if (context.User == null || resource == null)
             {
@@ -33,7 +33,7 @@ namespace HotelReservationWebsite.Authorization.Handlers
             }
             var user = _identityService.Get(context.User);
             // Console.WriteLine("test" + user.Id + " and " + resource.OwnerID);
-            if (user.Id == resource.OwnerID)
+            if (user.Id == resource.OwnerId)
             {
 
                 context.Succeed(requirement);
@@ -41,7 +41,6 @@ namespace HotelReservationWebsite.Authorization.Handlers
 
             return Task.CompletedTask;
         }
-
 
     }
 

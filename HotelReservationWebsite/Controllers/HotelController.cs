@@ -21,14 +21,12 @@ namespace HotelReservationWebsite.Controllers
     public class HotelController : Controller
     {
         private readonly IHotelService _hotelService;
-        private readonly ICityService _cityService;
         private readonly IRoomCategoryService _categoryService;
         private readonly IIdentityService<Buyer> _identityService;
         private readonly IAuthorizationService _authorizationService;
         private readonly AppSettings _settings;
         public readonly IWebHostEnvironment _webHost;
         public HotelController(IHotelService hotelService,
-                            ICityService cityService,
                             IRoomCategoryService categoryService,
                             IOptions<AppSettings> settings,
                             IWebHostEnvironment webHost,
@@ -36,7 +34,6 @@ namespace HotelReservationWebsite.Controllers
                             IAuthorizationService authorizationService)
         {
             _hotelService = hotelService;
-            _cityService = cityService;
             _settings = settings.Value;
             _webHost = webHost;
             _categoryService = categoryService;
@@ -45,14 +42,13 @@ namespace HotelReservationWebsite.Controllers
         }
         public async Task<IActionResult> Index(string SearchString)
         {
-            Console.WriteLine("search" + SearchString);
             var hotels = await _hotelService.GetHotels(SearchString);
             var isAuthorized = User.IsInRole(Constants.AdministratorsRole) ||
                                 User.IsInRole(Constants.ManagersRole);
             if (!isAuthorized)
             {
                 var userId = _identityService.Get(User).Id;
-                hotels = hotels.Where(h => h.OwnerID == userId && h.HotelStatus == HotelStatus.Approved).ToList();
+                hotels = hotels.Where(h => h.OwnerID == userId).ToList();
             }
             var hotelsVM = new HotelViewModel
             {
@@ -81,19 +77,19 @@ namespace HotelReservationWebsite.Controllers
             return View(roomChange);
         }
         [HttpGet]
-        public async Task<IActionResult> Create(string searchString)
+        public IActionResult Create()
         {
-            var cities = await _cityService.GetCities(searchString);
-            var hotelsVM = new HotelViewModel
-            {
-                Cities = cities.ToList()
-            };
-            return View(hotelsVM);
+            return View();
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(HotelViewModel hotelVM)
         {
+            var isAuthorize = await _authorizationService.AuthorizeAsync(User, hotelVM.Hotel, HotelOperations.Create);
+            if (!isAuthorize.Succeeded)
+            {
+                return Forbid();
+            }
             if (ModelState.IsValid)
             {
                 hotelVM.Hotel.OwnerID = _identityService.Get(User).Id;
@@ -165,6 +161,11 @@ namespace HotelReservationWebsite.Controllers
         [HttpPost]
         public async Task<IActionResult> Edit(HotelViewModel hotelVM)
         {
+            var isAuthorize = await _authorizationService.AuthorizeAsync(User, hotelVM.Hotel, HotelOperations.Update);
+            if (!isAuthorize.Succeeded)
+            {
+                return Forbid();
+            }
 
             if (hotelVM.ChangeImageUrl == null)
             {
@@ -185,11 +186,9 @@ namespace HotelReservationWebsite.Controllers
         public async Task<IActionResult> Edit(int id, string searchString)
         {
             var hotel = await _hotelService.GetHotel(id);
-            var cities = await _cityService.GetCities(searchString);
             var hotelVM = new HotelViewModel
             {
                 ImageUrlDisplay = hotel.ImageUrl,
-                Cities = cities.ToList(),
                 Hotel = ChangeUriPlaceholderHotel(hotel)
             };
             return View(hotelVM);
@@ -210,6 +209,11 @@ namespace HotelReservationWebsite.Controllers
         [HttpPost]
         public async Task<IActionResult> EditRoom(RoomViewModel roomVM)
         {
+            var isAuthorize = await _authorizationService.AuthorizeAsync(User, roomVM.Room, HotelOperations.Update);
+            if (!isAuthorize.Succeeded)
+            {
+                return Forbid();
+            }
             if (roomVM.ChangeImageUrl == null)
             {
                 roomVM.Room.ImageUrl = roomVM.ImageUrlDisPlay;
@@ -247,8 +251,13 @@ namespace HotelReservationWebsite.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateRoom(RoomViewModel roomVM)
         {
-            roomVM.Room.HotelID = roomVM.HotelId;
             roomVM.Room.OwnerId = _identityService.Get(User).Id;
+            var isAuthorize = await _authorizationService.AuthorizeAsync(User, roomVM.Room, HotelOperations.Create);
+            if (!isAuthorize.Succeeded)
+            {
+                return Forbid();
+            }
+            roomVM.Room.HotelID = roomVM.HotelId;
             roomVM.Room.ImageUrl = roomVM.ImageUrl.FileName;
             roomVM.Room.RoomStatus = 1;
             await _hotelService.CreateRoom(roomVM.Room);
@@ -258,6 +267,12 @@ namespace HotelReservationWebsite.Controllers
         [HttpPost, ActionName("DeleteRoom")]
         public async Task<IActionResult> DeleteRoomConfirm(int roomId, int hotelId)
         {
+            var room = await _hotelService.GetRoom(roomId, hotelId);
+            var isAuthorize = await _authorizationService.AuthorizeAsync(User, room, HotelOperations.Update);
+            if (!isAuthorize.Succeeded)
+            {
+                return Forbid();
+            }
             await _hotelService.DeleteRoom(roomId, hotelId);
             return RedirectToAction("SeeRoomList", new { id = hotelId });
         }

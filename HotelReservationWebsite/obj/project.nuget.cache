@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "1r7XKH7OEoNoHh7vV1YflyyM5R67BhsqzR+jB2cfUIjQEkj+omJx4nrxw56Qe7nnqB2aOyZYq5k3ESeLIDJGsA==",
+  "dgSpecHash": "vs2GhrtblX7Etqkoe7wtPwNOtg6YEEN1N77KcPuAy9ThSK8usTYVq7mCT/wA08guWIAKRYlWlGU5oYI5uNnOUg==",
   "success": true,
-  "projectFilePath": "D:\\github-project\\project-HotelReservationWebsite\\HotelReservationWebsite\\HotelReservationWebsite.csproj",
+  "projectFilePath": "D:\\project-HotelReservationWebsite\\HotelReservationWebsite\\HotelReservationWebsite.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\thanh\\.nuget\\packages\\identitymodel\\4.2.0\\identitymodel.4.2.0.nupkg.sha512",
     "C:\\Users\\thanh\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\3.1.3\\microsoft.aspnetcore.authentication.jwtbearer.3.1.3.nupkg.sha512",

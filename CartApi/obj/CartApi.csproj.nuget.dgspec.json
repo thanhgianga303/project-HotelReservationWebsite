@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\github-project\\project-HotelReservationWebsite\\CartApi\\CartApi.csproj": {}
+    "D:\\project-HotelReservationWebsite\\CartApi\\CartApi.csproj": {}
   },
   "projects": {
-    "D:\\github-project\\project-HotelReservationWebsite\\CartApi\\CartApi.csproj": {
+    "D:\\project-HotelReservationWebsite\\CartApi\\CartApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\github-project\\project-HotelReservationWebsite\\CartApi\\CartApi.csproj",
+        "projectUniqueName": "D:\\project-HotelReservationWebsite\\CartApi\\CartApi.csproj",
         "projectName": "CartApi",
-        "projectPath": "D:\\github-project\\project-HotelReservationWebsite\\CartApi\\CartApi.csproj",
+        "projectPath": "D:\\project-HotelReservationWebsite\\CartApi\\CartApi.csproj",
         "packagesPath": "C:\\Users\\thanh\\.nuget\\packages\\",
-        "outputPath": "D:\\github-project\\project-HotelReservationWebsite\\CartApi\\obj\\",
+        "outputPath": "D:\\project-HotelReservationWebsite\\CartApi\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

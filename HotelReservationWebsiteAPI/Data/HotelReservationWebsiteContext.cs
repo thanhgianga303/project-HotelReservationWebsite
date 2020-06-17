@@ -10,10 +10,8 @@ namespace HotelReservationWebsiteAPI.Data
         {
 
         }
-        public DbSet<City> Cities { get; set; }
         public DbSet<Hotel> Hotels { get; set; }
         public DbSet<Room> Rooms { get; set; }
-        public DbSet<RoomCategory> RoomCategories { get; set; }
         // protected override void OnModelCreating(ModelBuilder builder)
         // {
         // base.OnModelCreating(builder);

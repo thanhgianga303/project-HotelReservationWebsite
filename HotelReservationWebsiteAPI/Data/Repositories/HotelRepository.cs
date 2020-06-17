@@ -22,7 +22,7 @@ namespace HotelReservationWebsiteAPI.Data.Repositories
             {
                 hotels = hotels.Where(m => m.HotelName.ToLower().Contains(searchString.ToLower())
                 || m.Address.ToLower().Contains(searchString.ToLower())
-                || m.City.CityName.ToLower().Contains(searchString.ToLower())
+                || m.City.ToLower().Contains(searchString.ToLower())
              );
             }
             return await hotels.ToListAsync();

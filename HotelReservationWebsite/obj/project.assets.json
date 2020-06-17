@@ -8876,11 +8876,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\github-project\\project-HotelReservationWebsite\\HotelReservationWebsite\\HotelReservationWebsite.csproj",
+      "projectUniqueName": "D:\\project-HotelReservationWebsite\\HotelReservationWebsite\\HotelReservationWebsite.csproj",
       "projectName": "HotelReservationWebsite",
-      "projectPath": "D:\\github-project\\project-HotelReservationWebsite\\HotelReservationWebsite\\HotelReservationWebsite.csproj",
+      "projectPath": "D:\\project-HotelReservationWebsite\\HotelReservationWebsite\\HotelReservationWebsite.csproj",
       "packagesPath": "C:\\Users\\thanh\\.nuget\\packages\\",
-      "outputPath": "D:\\github-project\\project-HotelReservationWebsite\\HotelReservationWebsite\\obj\\",
+      "outputPath": "D:\\project-HotelReservationWebsite\\HotelReservationWebsite\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

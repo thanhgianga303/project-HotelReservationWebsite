@@ -15,7 +15,7 @@ namespace HotelReservationWebsite.Services.Service
         private readonly string _baseUrl;
         public RoomCategoryService(IHttpClient httpClient)
         {
-            _baseUrl = "http://localhost:5001/api/roomcategory";
+            _baseUrl = "http://localhost:5002/api/roomcategory";
             _httpClient = httpClient;
         }
         public async Task<IEnumerable<RoomCategory>> GetRoomCategories()

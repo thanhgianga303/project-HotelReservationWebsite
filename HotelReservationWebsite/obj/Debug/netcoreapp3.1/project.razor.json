@@ -20689,11 +20689,6 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "d:\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\City\\Delete.cshtml",
-      "TargetPath": "Views\\City\\Delete.cshtml",
-      "FileKind": "mvc"
-    },
-    {
       "FilePath": "d:\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\Booking\\Details.cshtml",
       "TargetPath": "Views\\Booking\\Details.cshtml",
       "FileKind": "mvc"
@@ -20701,16 +20696,6 @@
     {
       "FilePath": "d:\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\Home\\Index.cshtml",
       "TargetPath": "Views\\Home\\Index.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "d:\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\City\\Details.cshtml",
-      "TargetPath": "Views\\City\\Details.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "d:\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\City\\Edit.cshtml",
-      "TargetPath": "Views\\City\\Edit.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -20726,11 +20711,6 @@
     {
       "FilePath": "d:\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\Hotel\\DetailsRoom.cshtml",
       "TargetPath": "Views\\Hotel\\DetailsRoom.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "d:\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\City\\Create.cshtml",
-      "TargetPath": "Views\\City\\Create.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -20756,11 +20736,6 @@
     {
       "FilePath": "d:\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\RoomCategory\\Details.cshtml",
       "TargetPath": "Views\\RoomCategory\\Details.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "d:\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\City\\Index.cshtml",
-      "TargetPath": "Views\\City\\Index.cshtml",
       "FileKind": "mvc"
     },
     {

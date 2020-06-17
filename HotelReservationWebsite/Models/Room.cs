@@ -7,7 +7,7 @@ namespace HotelReservationWebsite.Models
     {
         public int RoomID { get; set; }
         public int HotelID { get; set; }
-        public int RoomCategoryID { get; set; }
+        public string RoomCategoryName { get; set; }
         public string ImageUrl { get; set; }
         [Required]
         [RegularExpression(@"^[1-9]{1}[0-9]{0,1}$", ErrorMessage = "Please enter the number")]
