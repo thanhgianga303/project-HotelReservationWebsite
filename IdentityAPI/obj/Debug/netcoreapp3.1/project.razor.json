@@ -1,5 +1,5 @@
 {
-  "FilePath": "d:\\github-project\\project-HotelReservationWebsite\\IdentityAPI\\IdentityAPI.csproj",
+  "FilePath": "d:\\project-HotelReservationWebsite\\IdentityAPI\\IdentityAPI.csproj",
   "Configuration": {
     "ConfigurationName": "MVC-3.0",
     "LanguageVersion": "3.0",
@@ -20521,103 +20521,103 @@
   "RootNamespace": "IdentityAPI",
   "Documents": [
     {
-      "FilePath": "d:\\github-project\\project-HotelReservationWebsite\\IdentityAPI\\Views\\Device\\Success.cshtml",
-      "TargetPath": "Views\\Device\\Success.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "d:\\github-project\\project-HotelReservationWebsite\\IdentityAPI\\Views\\Account\\Logout.cshtml",
-      "TargetPath": "Views\\Account\\Logout.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "d:\\github-project\\project-HotelReservationWebsite\\IdentityAPI\\Views\\Shared\\Redirect.cshtml",
-      "TargetPath": "Views\\Shared\\Redirect.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "d:\\github-project\\project-HotelReservationWebsite\\IdentityAPI\\Views\\Shared\\_Layout.cshtml",
-      "TargetPath": "Views\\Shared\\_Layout.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "d:\\github-project\\project-HotelReservationWebsite\\IdentityAPI\\Views\\Shared\\_ValidationSummary.cshtml",
-      "TargetPath": "Views\\Shared\\_ValidationSummary.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "d:\\github-project\\project-HotelReservationWebsite\\IdentityAPI\\Views\\Consent\\Index.cshtml",
-      "TargetPath": "Views\\Consent\\Index.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "d:\\github-project\\project-HotelReservationWebsite\\IdentityAPI\\Views\\Grants\\Index.cshtml",
-      "TargetPath": "Views\\Grants\\Index.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "d:\\github-project\\project-HotelReservationWebsite\\IdentityAPI\\Views\\Shared\\Error.cshtml",
-      "TargetPath": "Views\\Shared\\Error.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "d:\\github-project\\project-HotelReservationWebsite\\IdentityAPI\\Views\\_ViewImports.cshtml",
-      "TargetPath": "Views\\_ViewImports.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "d:\\github-project\\project-HotelReservationWebsite\\IdentityAPI\\Views\\Home\\Index.cshtml",
-      "TargetPath": "Views\\Home\\Index.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "d:\\github-project\\project-HotelReservationWebsite\\IdentityAPI\\Views\\Account\\Login.cshtml",
-      "TargetPath": "Views\\Account\\Login.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "d:\\github-project\\project-HotelReservationWebsite\\IdentityAPI\\Views\\Account\\AccessDenied.cshtml",
-      "TargetPath": "Views\\Account\\AccessDenied.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "d:\\github-project\\project-HotelReservationWebsite\\IdentityAPI\\Views\\Account\\LoggedOut.cshtml",
+      "FilePath": "d:\\project-HotelReservationWebsite\\IdentityAPI\\Views\\Account\\LoggedOut.cshtml",
       "TargetPath": "Views\\Account\\LoggedOut.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "d:\\github-project\\project-HotelReservationWebsite\\IdentityAPI\\Views\\Device\\UserCodeCapture.cshtml",
-      "TargetPath": "Views\\Device\\UserCodeCapture.cshtml",
+      "FilePath": "d:\\project-HotelReservationWebsite\\IdentityAPI\\Views\\Consent\\Index.cshtml",
+      "TargetPath": "Views\\Consent\\Index.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "d:\\github-project\\project-HotelReservationWebsite\\IdentityAPI\\Views\\Diagnostics\\Index.cshtml",
+      "FilePath": "d:\\project-HotelReservationWebsite\\IdentityAPI\\Views\\_ViewImports.cshtml",
+      "TargetPath": "Views\\_ViewImports.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\project-HotelReservationWebsite\\IdentityAPI\\Views\\Shared\\Redirect.cshtml",
+      "TargetPath": "Views\\Shared\\Redirect.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\project-HotelReservationWebsite\\IdentityAPI\\Views\\Diagnostics\\Index.cshtml",
       "TargetPath": "Views\\Diagnostics\\Index.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "d:\\github-project\\project-HotelReservationWebsite\\IdentityAPI\\Views\\Account\\Register.cshtml",
+      "FilePath": "d:\\project-HotelReservationWebsite\\IdentityAPI\\Views\\Account\\Register.cshtml",
       "TargetPath": "Views\\Account\\Register.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "d:\\github-project\\project-HotelReservationWebsite\\IdentityAPI\\Views\\Account\\CreateRole.cshtml",
-      "TargetPath": "Views\\Account\\CreateRole.cshtml",
+      "FilePath": "d:\\project-HotelReservationWebsite\\IdentityAPI\\Views\\Account\\Login.cshtml",
+      "TargetPath": "Views\\Account\\Login.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "d:\\github-project\\project-HotelReservationWebsite\\IdentityAPI\\Views\\Device\\UserCodeConfirmation.cshtml",
-      "TargetPath": "Views\\Device\\UserCodeConfirmation.cshtml",
+      "FilePath": "d:\\project-HotelReservationWebsite\\IdentityAPI\\Views\\Device\\Success.cshtml",
+      "TargetPath": "Views\\Device\\Success.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "d:\\github-project\\project-HotelReservationWebsite\\IdentityAPI\\Views\\Shared\\_ScopeListItem.cshtml",
+      "FilePath": "d:\\project-HotelReservationWebsite\\IdentityAPI\\Views\\Shared\\Error.cshtml",
+      "TargetPath": "Views\\Shared\\Error.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\project-HotelReservationWebsite\\IdentityAPI\\Views\\_ViewStart.cshtml",
+      "TargetPath": "Views\\_ViewStart.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\project-HotelReservationWebsite\\IdentityAPI\\Views\\Account\\Logout.cshtml",
+      "TargetPath": "Views\\Account\\Logout.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\project-HotelReservationWebsite\\IdentityAPI\\Views\\Shared\\_ValidationSummary.cshtml",
+      "TargetPath": "Views\\Shared\\_ValidationSummary.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\project-HotelReservationWebsite\\IdentityAPI\\Views\\Account\\AccessDenied.cshtml",
+      "TargetPath": "Views\\Account\\AccessDenied.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\project-HotelReservationWebsite\\IdentityAPI\\Views\\Shared\\_ScopeListItem.cshtml",
       "TargetPath": "Views\\Shared\\_ScopeListItem.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "d:\\github-project\\project-HotelReservationWebsite\\IdentityAPI\\Views\\_ViewStart.cshtml",
-      "TargetPath": "Views\\_ViewStart.cshtml",
+      "FilePath": "d:\\project-HotelReservationWebsite\\IdentityAPI\\Views\\Home\\Index.cshtml",
+      "TargetPath": "Views\\Home\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\project-HotelReservationWebsite\\IdentityAPI\\Views\\Device\\UserCodeCapture.cshtml",
+      "TargetPath": "Views\\Device\\UserCodeCapture.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\project-HotelReservationWebsite\\IdentityAPI\\Views\\Account\\CreateRole.cshtml",
+      "TargetPath": "Views\\Account\\CreateRole.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\project-HotelReservationWebsite\\IdentityAPI\\Views\\Device\\UserCodeConfirmation.cshtml",
+      "TargetPath": "Views\\Device\\UserCodeConfirmation.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\project-HotelReservationWebsite\\IdentityAPI\\Views\\Grants\\Index.cshtml",
+      "TargetPath": "Views\\Grants\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\project-HotelReservationWebsite\\IdentityAPI\\Views\\Shared\\_Layout.cshtml",
+      "TargetPath": "Views\\Shared\\_Layout.cshtml",
       "FileKind": "mvc"
     }
   ],

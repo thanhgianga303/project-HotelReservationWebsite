@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\github-project\\project-HotelReservationWebsite\\IdentityAPI\\IdentityAPI.csproj": {}
+    "D:\\project-HotelReservationWebsite\\IdentityAPI\\IdentityAPI.csproj": {}
   },
   "projects": {
-    "D:\\github-project\\project-HotelReservationWebsite\\IdentityAPI\\IdentityAPI.csproj": {
+    "D:\\project-HotelReservationWebsite\\IdentityAPI\\IdentityAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\github-project\\project-HotelReservationWebsite\\IdentityAPI\\IdentityAPI.csproj",
+        "projectUniqueName": "D:\\project-HotelReservationWebsite\\IdentityAPI\\IdentityAPI.csproj",
         "projectName": "IdentityAPI",
-        "projectPath": "D:\\github-project\\project-HotelReservationWebsite\\IdentityAPI\\IdentityAPI.csproj",
+        "projectPath": "D:\\project-HotelReservationWebsite\\IdentityAPI\\IdentityAPI.csproj",
         "packagesPath": "C:\\Users\\thanh\\.nuget\\packages\\",
-        "outputPath": "D:\\github-project\\project-HotelReservationWebsite\\IdentityAPI\\obj\\",
+        "outputPath": "D:\\project-HotelReservationWebsite\\IdentityAPI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

@@ -60,7 +60,6 @@ namespace HotelReservationWebsiteAPI
             {
                 options.Authority = "http://localhost:5000";
                 options.RequireHttpsMetadata = false;
-
                 options.Audience = "admin";
             });
         }

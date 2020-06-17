@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\github-project\\project-HotelReservationWebsite\\HotelReservationWebsiteAPI\\HotelReservationWebsiteAPI.csproj": {}
+    "D:\\project-HotelReservationWebsite\\HotelReservationWebsiteAPI\\HotelReservationWebsiteAPI.csproj": {}
   },
   "projects": {
-    "D:\\github-project\\project-HotelReservationWebsite\\HotelReservationWebsiteAPI\\HotelReservationWebsiteAPI.csproj": {
+    "D:\\project-HotelReservationWebsite\\HotelReservationWebsiteAPI\\HotelReservationWebsiteAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\github-project\\project-HotelReservationWebsite\\HotelReservationWebsiteAPI\\HotelReservationWebsiteAPI.csproj",
+        "projectUniqueName": "D:\\project-HotelReservationWebsite\\HotelReservationWebsiteAPI\\HotelReservationWebsiteAPI.csproj",
         "projectName": "HotelReservationWebsiteAPI",
-        "projectPath": "D:\\github-project\\project-HotelReservationWebsite\\HotelReservationWebsiteAPI\\HotelReservationWebsiteAPI.csproj",
+        "projectPath": "D:\\project-HotelReservationWebsite\\HotelReservationWebsiteAPI\\HotelReservationWebsiteAPI.csproj",
         "packagesPath": "C:\\Users\\thanh\\.nuget\\packages\\",
-        "outputPath": "D:\\github-project\\project-HotelReservationWebsite\\HotelReservationWebsiteAPI\\obj\\",
+        "outputPath": "D:\\project-HotelReservationWebsite\\HotelReservationWebsiteAPI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
