@@ -4,6 +4,8 @@ namespace HotelReservationWebsite.Models
 {
     public class BookingItem
     {
+        public int BookingId { get; set; }
+        public int Id { get; set; }
         public string HotelId { get; set; }
         public string RoomId { get; set; }
         public string HotelName { get; set; }

@@ -602,17 +602,7 @@ D:\project-HotelReservationWebsite\HotelReservationWebsite\obj\Debug\netcoreapp3
 D:\project-HotelReservationWebsite\HotelReservationWebsite\obj\Debug\netcoreapp3.1\HotelReservationWebsite.TagHelpers.output.cache
 D:\project-HotelReservationWebsite\HotelReservationWebsite\obj\Debug\netcoreapp3.1\HotelReservationWebsite.RazorCoreGenerate.cache
 D:\project-HotelReservationWebsite\HotelReservationWebsite\obj\Debug\netcoreapp3.1\Razor\Views\Account\AccessDenied.cshtml.g.cs
-D:\project-HotelReservationWebsite\HotelReservationWebsite\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Account.cshtml.g.cs
-D:\project-HotelReservationWebsite\HotelReservationWebsite\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Address.cshtml.g.cs
-D:\project-HotelReservationWebsite\HotelReservationWebsite\obj\Debug\netcoreapp3.1\Razor\Views\Admin\BookingDetails.cshtml.g.cs
-D:\project-HotelReservationWebsite\HotelReservationWebsite\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Customer.cshtml.g.cs
-D:\project-HotelReservationWebsite\HotelReservationWebsite\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Employee.cshtml.g.cs
-D:\project-HotelReservationWebsite\HotelReservationWebsite\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Hotel.cshtml.g.cs
 D:\project-HotelReservationWebsite\HotelReservationWebsite\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Index.cshtml.g.cs
-D:\project-HotelReservationWebsite\HotelReservationWebsite\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Login.cshtml.g.cs
-D:\project-HotelReservationWebsite\HotelReservationWebsite\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Promotion.cshtml.g.cs
-D:\project-HotelReservationWebsite\HotelReservationWebsite\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Role.cshtml.g.cs
-D:\project-HotelReservationWebsite\HotelReservationWebsite\obj\Debug\netcoreapp3.1\Razor\Views\Admin\RoomCagotery.cshtml.g.cs
 D:\project-HotelReservationWebsite\HotelReservationWebsite\obj\Debug\netcoreapp3.1\Razor\Views\BookingManager\Index.cshtml.g.cs
 D:\project-HotelReservationWebsite\HotelReservationWebsite\obj\Debug\netcoreapp3.1\Razor\Views\Booking\Complete.cshtml.g.cs
 D:\project-HotelReservationWebsite\HotelReservationWebsite\obj\Debug\netcoreapp3.1\Razor\Views\Booking\Create.cshtml.g.cs
@@ -663,3 +653,5 @@ D:\project-HotelReservationWebsite\HotelReservationWebsite\obj\Debug\netcoreapp3
 D:\project-HotelReservationWebsite\HotelReservationWebsite\obj\Debug\netcoreapp3.1\HotelReservationWebsite.dll
 D:\project-HotelReservationWebsite\HotelReservationWebsite\obj\Debug\netcoreapp3.1\HotelReservationWebsite.pdb
 D:\project-HotelReservationWebsite\HotelReservationWebsite\obj\Debug\netcoreapp3.1\HotelReservationWebsite.genruntimeconfig.cache
+D:\project-HotelReservationWebsite\HotelReservationWebsite\obj\Debug\netcoreapp3.1\Razor\Views\BookingManager\Details.cshtml.g.cs
+D:\project-HotelReservationWebsite\HotelReservationWebsite\obj\Debug\netcoreapp3.1\Razor\Views\BookingManager\ViewAllBooking.cshtml.g.cs

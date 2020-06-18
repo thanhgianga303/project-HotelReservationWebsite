@@ -1,0 +1,92 @@
+@model Booking
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+            @foreach (var item in Model.Items)
+            {
+                <div class="row">
+                    <div class="col-md-3"><hr/></div>
+                    <div class="col-md-6" >
+                        <div style="text-align:center">
+                            <h1 class="title-1 m-b-25">Hotel reservation details @item.HotelName</h1>
+                        </div>
+                    </div>
+                    <div class="col-md-3"><hr/></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4"><img src="@item.ImageUri" width="266.6px" height="300px" /></div>
+                    <div class="col-md-8">
+                        <div class="row">
+                            <div class="col-md-6"><h1>Full name:</h1></div>
+                            <div class="col-md-6">@Model.Name</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6"><h1>Phone:</h1></div>
+                            <div class="col-md-6">@Model.Phone</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6"><h1>Identity card:</h1></div>
+                            <div class="col-md-6">@Model.IdentityCard</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6"><h1>Booking date:</h1></div>
+                            <div class="col-md-6">@Model.BookingDate</div>
+                        </div>
+                        
+                    </div>
+                </div>
+
+
+                <div class="row shadow p-3 mb-5 bg-white rounded" style="margin-top:20px">
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-md-7"><h1>Hotel name:</h1></div>
+                            <div class="col-md-5" style="font-size:25px">@item.HotelName</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-7"><h1>Room name:</h1></div>
+                            <div class="col-md-5" style="font-size:25px">@item.RoomName</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-7"><h1>Room number:</h1></div>
+                            <div class="col-md-5" style="font-size:25px">@item.RoomNumber</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-7"><h1>Address:</h1></div>
+                            <div class="col-md-5" style="font-size:25px">@item.Address, @item.City</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-7"><h1>Category name:</h1></div>
+                            <div class="col-md-5" style="font-size:25px">@item.CategoryName</div>
+                        </div>
+                        
+                    </div>
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-md-7"><h1>Check in:</h1></div>
+                            <div class="col-md-5" style="font-size:25px">@item.CheckIn</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-7"><h1>Check out:</h1></div>
+                            <div class="col-md-5" style="font-size:25px">@item.CheckOut</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-7"><h1>Unit price:</h1></div>
+                            <div class="col-md-5" style="font-size:25px">@item.UnitPrice USD</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-7"><h1>Day number:</h1></div>
+                            <div class="col-md-5" style="font-size:25px">@item.DayNumber</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-7"><h1>Cost:</h1></div>
+                            <div class="col-md-5" style="font-size:25px">@item.Cost</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12"><a class="btn btn-secondary" asp-action="Index" asp-controller="BookingManager" asp-route-id="@Int32.Parse(item.HotelId)">Back</a></div>
+                </div>
+            }
+            

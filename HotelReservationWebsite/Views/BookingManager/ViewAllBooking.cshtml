@@ -43,7 +43,7 @@
                         <th>CheckOut</th>
                         <th>DayNumber</th>
                         <th>Cost</th>
-                        <th>Operation</th>
+                        <th>Thao tác</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -58,7 +58,7 @@
                                 
                             <tr style="font-size:20px;text-align:center">
                                 <th>@i</th>
-                                <th><img src="@item.ImageUri" /></th>
+                                <th><img src="@item.ImageUri"/></th>
                                 <th>@item.HotelName</th>
                                 <th>@item.RoomName</th>
                                 <th>@item.RoomNumber</th>
@@ -72,7 +72,7 @@
                                 <th>@item.DayNumber</th>
                                 <th>@item.Cost</th>
                                 <td>
-                                    <a asp-action="Details" asp-controller="BookingManager" asp-route-bookingId="@item.BookingId" asp-route-bookingItemId="@item.Id" class="btn btn-info" >Details</a> 
+                                    <a asp-action="Details" asp-controller="BookingManager" class="btn btn-info" >Details</a> 
                                 </td>
                             </tr>
                                 i++;
@@ -83,7 +83,4 @@
             </table>
         </div>
     </div>
-</div>
-<div class="row">
-    <div class="col-md-12"><a class="btn btn-secondary" asp-action="Index" asp-controller="Hotel">Back</a></div>
 </div>

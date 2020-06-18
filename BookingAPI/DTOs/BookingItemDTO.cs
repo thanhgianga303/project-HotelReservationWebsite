@@ -5,6 +5,8 @@ namespace BookingAPI.DTOs
 {
     public class BookingItemDTO
     {
+        public int Id { get; set; }
+        public int BookingId { get; set; }
         public string HotelId { get; set; }
         public string RoomId { get; set; }
         public string HotelName { get; set; }

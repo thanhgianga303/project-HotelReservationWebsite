@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using HotelReservationWebsite.Authorization;
 using HotelReservationWebsite.Models;
 using HotelReservationWebsite.Services.IService;
 using Microsoft.AspNetCore.Mvc;
@@ -35,12 +36,34 @@ namespace HotelReservationWebsite.Controllers
             }
             return View(bookings);
         }
-        // public async Task<ActionResult<Booking>> Details(int id)
-        // {
-        //     var booking = await _bookingSvc.GetBooking(id);
-        //     var bookingView = ChangeUriPlaceholderBooking(booking);
-        //     return View(bookingView);
-        // }
+        public async Task<IActionResult> ViewAllBooking()
+        {
+            var bookings = await _bookingSvc.GetBookings();
+            var isAuthorized = User.IsInRole(Constants.AdministratorsRole) ||
+                                User.IsInRole(Constants.ManagersRole);
+            if (!isAuthorized)
+            {
+                var userId = _identitySvc.Get(User).Id;
+                foreach (var booking in bookings)
+                {
+                    booking.Items = ChangeUriPlaceholderBooking(booking.Items.Where(i => i.OwnerId == userId).ToList());
+                }
+            }
+            else
+            {
+                foreach (var booking in bookings)
+                {
+                    booking.Items = ChangeUriPlaceholderBooking(booking.Items.ToList());
+                }
+            }
+            return View(bookings);
+        }
+        public async Task<ActionResult<Booking>> Details(int bookingId, int bookingItemId)
+        {
+            var booking = await _bookingSvc.GetBooking(bookingId);
+            booking.Items = ChangeUriPlaceholderBooking(booking.Items.Where(i => i.Id == bookingItemId).ToList());
+            return View(booking);
+        }
         private List<BookingItem> ChangeUriPlaceholderBooking(List<BookingItem> items)
         {
             var baseUri = _settings.ExternalCatalogBaseUrl;

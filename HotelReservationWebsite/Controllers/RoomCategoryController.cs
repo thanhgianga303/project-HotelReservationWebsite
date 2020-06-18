@@ -5,12 +5,14 @@ using System.Threading.Tasks;
 using HotelReservationWebsite.Models;
 using HotelReservationWebsite.Services.IService;
 using HotelReservationWebsite.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using RabbitMQ.Client;
 
 namespace HotelReservationWebsite.Controllers
 {
+    [Authorize(Roles = "Managers,Administrators")]
     public class RoomCategoryController : Controller
     {
         private readonly IRoomCategoryService _service;

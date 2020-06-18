@@ -1,7 +1,8 @@
+@model AdminViewModel
 @{
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
-<div class="row m-t-25">
+<div class="row m-t-25 shadow p-3 mb-5 bg-white rounded">
     <div class="col-sm-6 col-lg-3">
         <div class="overview-item overview-item--c1">
             <div class="overview__inner">
@@ -10,8 +11,8 @@
                         <i class="zmdi zmdi-account-o"></i>
                     </div>
                     <div class="text">
-                        <h2>10368</h2>
-                        <span>members online</span>
+                        <h2>@Model.NumberOfCustomers</h2>
+                        <span>Customers</span>
                     </div>
                 </div>
                 <div class="overview-chart">
@@ -28,8 +29,8 @@
                         <i class="zmdi zmdi-shopping-cart"></i>
                     </div>
                     <div class="text">
-                        <h2>388,688</h2>
-                        <span>items solid</span>
+                        <h2>@Model.NumberOfHotels</h2>
+                        <span>Hotels</span>
                     </div>
                 </div>
                 <div class="overview-chart">
@@ -46,8 +47,8 @@
                         <i class="zmdi zmdi-calendar-note"></i>
                     </div>
                     <div class="text">
-                        <h2>1111</h2>
-                        <span>this week</span>
+                        <h2>@Model.NumberOfBookings</h2>
+                        <span>NumberOfBookings</span>
                     </div>
                 </div>
                 <div class="overview-chart">
@@ -64,8 +65,8 @@
                         <i class="zmdi zmdi-money"></i>
                     </div>
                     <div class="text">
-                        <h2>$1,060,386</h2>
-                        <span>total earnings</span>
+                        <h2>@Model.totalTransactionAmount</h2>
+                        <span>Total Transaction Amount</span>
                     </div>
                 </div>
                 <div class="overview-chart">

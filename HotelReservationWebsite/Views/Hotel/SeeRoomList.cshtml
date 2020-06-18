@@ -66,17 +66,10 @@
            <div class="col-md-7">Unit Price:</div> 
             <div class="col-md-5">@room.UnitPrice</div>
         </div>
-        <div class="row">
-            @* <input type="hidden" asp-for="@room.HotelID"> *@
-            @if((await AuthorizationService.AuthorizeAsync(User,room,HotelOperations.Update)).Succeeded)
-            { 
-                <a asp-action="EditRoom" asp-controller="Hotel" class="btn btn-secondary" asp-route-hotelID="@room.HotelID" asp-route-roomID="@room.RoomID">Edit</a> 
-            }
-           <a asp-action="DetailsRoom" asp-controller="Hotel" class="btn btn-info" asp-route-hotelID="@room.HotelID" asp-route-roomID="@room.RoomID">Details</a> 
-           @if((await AuthorizationService.AuthorizeAsync(User,room,HotelOperations.Delete)).Succeeded)
-            { 
-                <a asp-action="DeleteRoom" asp-controller="Hotel" class="btn btn-danger" asp-route-hotelID="@room.HotelID" asp-route-roomID="@room.RoomID">Delete</a>
-            }
+        <div class="row">       
+            <a asp-action="EditRoom" asp-controller="Hotel" class="btn btn-secondary" asp-route-hotelID="@room.HotelID" asp-route-roomID="@room.RoomID">Edit</a> 
+            <a asp-action="DetailsRoom" asp-controller="Hotel" class="btn btn-info" asp-route-hotelID="@room.HotelID" asp-route-roomID="@room.RoomID">Details</a> 
+            <a asp-action="DeleteRoom" asp-controller="Hotel" class="btn btn-danger" asp-route-hotelID="@room.HotelID" asp-route-roomID="@room.RoomID">Delete</a>
         </div>
     </div>
 </div>
