@@ -17,6 +17,9 @@ using HotelReservationWebsiteAPI.Mapping;
 using HotelReservationWebsiteAPI.Data.Repositories;
 using HotelReservationWebsiteAPI.Models.IRepositories;
 using Microsoft.AspNetCore.Identity;
+using MassTransit;
+using HotelReservationWebsiteAPI.Consumers;
+using GreenPipes;
 
 namespace HotelReservationWebsiteAPI
 {
@@ -36,6 +39,7 @@ namespace HotelReservationWebsiteAPI
                              options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 
             services.AddAutoMapper(typeof(MappingProfile));
+            services.AddScoped<CreateBookingConsumer>();
 
             services.AddScoped<IHotelRepository, HotelRepository>();
             // services.AddScoped<IApplicationUserRepository, ApplicationUserRepository>();
@@ -48,7 +52,24 @@ namespace HotelReservationWebsiteAPI
 
                 options.UseLazyLoadingProxies();
             });
+            services.AddMassTransit(x =>
+            {
+                x.AddConsumer<CreateBookingConsumer>();
+                x.AddBus(context => Bus.Factory.CreateUsingRabbitMq(cfg =>
+                {
+                    cfg.Host("rabbitmq://localhost", h => { h.Username("guest"); h.Password("guest"); });
 
+                    cfg.ReceiveEndpoint("hotel-api", ep =>
+                    {
+                        ep.PrefetchCount = 16;
+                        ep.UseMessageRetry(r => r.Interval(2, 100));
+                        ep.ConfigureConsumer<CreateBookingConsumer>(context);
+                    });
+                }));
+            });
+            services.AddHostedService<BusService>();
+
+            services.AddMassTransitHostedService();
 
             // services.AddIdentity<ApplicationUser, IdentityRole>()
             //     .AddEntityFrameworkStores<HotelReservationWebsiteContext>()
@@ -60,6 +81,8 @@ namespace HotelReservationWebsiteAPI
                 options.RequireHttpsMetadata = false;
                 options.Audience = "admin";
             });
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -38,14 +38,13 @@ namespace HotelReservationWebsite.Controllers
         [HttpPost]
         public async Task<IActionResult> AddToCart(RoomViewModel roomVM, Room room)
         {
-            Console.WriteLine("testcccc" + room.Hotel.OwnerID);
             var newCartItem = new CartItem
             {
                 Id = Guid.NewGuid().ToString(),
                 HotelId = room.HotelID.ToString(),
                 RoomId = room.RoomID.ToString(),
                 RoomName = room.RoomName,
-                RoomNumber = room.RoomNumber.ToString(),
+                RoomNumber = room.NumberOfRoomsBooked.ToString(),
                 CategoryName = room.RoomCategoryName,
                 HotelName = room.Hotel.HotelName,
                 Address = room.Hotel.Address,

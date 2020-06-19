@@ -8,6 +8,7 @@ using BookingAPI.DTOs;
 using BookingAPI.Models;
 using MassTransit;
 using MessageTypes.BookingService;
+using Newtonsoft.Json;
 
 namespace BookingAPI.Controllers
 {
@@ -64,7 +65,6 @@ namespace BookingAPI.Controllers
 
             CreateBookingMessage message = _mapper.Map<Booking, CreateBookingMessage>(booking);
             await _bus.Publish(message);
-            Console.WriteLine("Send" + message.BookingId);
             return CreatedAtAction(nameof(GetBooking), new { id = booking.BookingId }, bookingDTO);
         }
 

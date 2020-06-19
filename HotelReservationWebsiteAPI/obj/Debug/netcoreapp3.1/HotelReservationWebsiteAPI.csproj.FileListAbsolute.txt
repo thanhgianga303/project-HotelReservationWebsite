@@ -484,3 +484,12 @@ D:\project-HotelReservationWebsite\HotelReservationWebsiteAPI\obj\Debug\netcorea
 D:\project-HotelReservationWebsite\HotelReservationWebsiteAPI\obj\Debug\netcoreapp3.1\HotelReservationWebsiteAPI.dll
 D:\project-HotelReservationWebsite\HotelReservationWebsiteAPI\obj\Debug\netcoreapp3.1\HotelReservationWebsiteAPI.pdb
 D:\project-HotelReservationWebsite\HotelReservationWebsiteAPI\obj\Debug\netcoreapp3.1\HotelReservationWebsiteAPI.genruntimeconfig.cache
+D:\project-HotelReservationWebsite\HotelReservationWebsiteAPI\bin\Debug\netcoreapp3.1\Automatonymous.dll
+D:\project-HotelReservationWebsite\HotelReservationWebsiteAPI\bin\Debug\netcoreapp3.1\GreenPipes.dll
+D:\project-HotelReservationWebsite\HotelReservationWebsiteAPI\bin\Debug\netcoreapp3.1\MassTransit.dll
+D:\project-HotelReservationWebsite\HotelReservationWebsiteAPI\bin\Debug\netcoreapp3.1\MassTransit.AspNetCoreIntegration.dll
+D:\project-HotelReservationWebsite\HotelReservationWebsiteAPI\bin\Debug\netcoreapp3.1\MassTransit.ExtensionsDependencyInjectionIntegration.dll
+D:\project-HotelReservationWebsite\HotelReservationWebsiteAPI\bin\Debug\netcoreapp3.1\MassTransit.RabbitMqTransport.dll
+D:\project-HotelReservationWebsite\HotelReservationWebsiteAPI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.PlatformAbstractions.dll
+D:\project-HotelReservationWebsite\HotelReservationWebsiteAPI\bin\Debug\netcoreapp3.1\NewId.dll
+D:\project-HotelReservationWebsite\HotelReservationWebsiteAPI\bin\Debug\netcoreapp3.1\RabbitMQ.Client.dll

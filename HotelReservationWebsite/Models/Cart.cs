@@ -11,7 +11,7 @@ namespace HotelReservationWebsite.Models
 
         public decimal Total()
         {
-            return Math.Round(Items.Sum(x => x.UnitPrice * Int32.Parse(x.dayNumber().Days.ToString())), 2);
+            return Math.Round(Items.Sum(x => x.UnitPrice * Int32.Parse(x.dayNumber().Days.ToString()) * Int32.Parse(x.RoomNumber)), 2);
         }
     }
 }

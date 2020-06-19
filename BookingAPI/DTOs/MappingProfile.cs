@@ -13,6 +13,7 @@ namespace BookingAPI.DTOs
             CreateMap<BookingDTO, Booking>();
             CreateMap<Booking, BookingDTO>();
             CreateMap<Booking, CreateBookingMessage>();
+            // CreateMap<BookingDTO, CreateBookingMessage>();
         }
     }
 }

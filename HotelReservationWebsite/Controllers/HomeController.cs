@@ -43,11 +43,12 @@ namespace HotelReservationWebsite.Controllers
                 {
                     foreach (var hotel in hotels)
                     {
-                        hotel.Rooms = hotel.Rooms.Where(a => (a.HotelID != Int32.Parse(item.HotelId))
-                         || (a.RoomID != Int32.Parse(item.RoomId))).ToList();
                         foreach (var room in hotel.Rooms)
                         {
-                            Console.WriteLine("hotelIdx: " + room.HotelID + "--RoomIdx: " + room.RoomID);
+                            if (room.HotelID == Int32.Parse(item.HotelId) && room.RoomID == Int32.Parse(item.RoomId))
+                            {
+                                room.RoomNumber = room.RoomNumber - Int32.Parse(item.RoomNumber);
+                            }
                         }
                     }
                 }
@@ -74,8 +75,6 @@ namespace HotelReservationWebsite.Controllers
             hotels = hotels.Where(h => h.HotelStatus == HotelStatus.Approved);
 
             var bookings = await _bookingService.GetBookings();
-            Console.WriteLine("CheckInff: " + hotelVM.CheckIn);
-            Console.WriteLine("CheckOutff: " + hotelVM.CheckOut);
             foreach (var booking in bookings)
             {
                 booking.Items = booking.Items.Where(i => (hotelVM.CheckIn >= i.CheckIn && hotelVM.CheckOut <= i.CheckOut)
@@ -84,11 +83,17 @@ namespace HotelReservationWebsite.Controllers
 
                 foreach (var item in booking.Items)
                 {
-                    Console.WriteLine("hotelIdSearch: " + item.HotelId + "--RoomIdSearch: " + item.RoomId + "--and: " + item.Booking.BookingId + "---and: " + item.CheckIn + "---and: " + item.CheckOut);
                     foreach (var hotel in hotels)
                     {
-                        hotel.Rooms = hotel.Rooms.Where(a => (a.HotelID != Int32.Parse(item.HotelId))
-                         || (a.RoomID != Int32.Parse(item.RoomId))).ToList();
+                        // hotel.Rooms = hotel.Rooms.Where(a => (a.HotelID != Int32.Parse(item.HotelId))
+                        //  || (a.RoomID != Int32.Parse(item.RoomId))).ToList();
+                        foreach (var room in hotel.Rooms)
+                        {
+                            if (room.HotelID == Int32.Parse(item.HotelId) && room.RoomID == Int32.Parse(item.RoomId))
+                            {
+                                room.RoomNumber = room.RoomNumber - Int32.Parse(item.RoomNumber);
+                            }
+                        }
                     }
                 }
             }
@@ -118,8 +123,17 @@ namespace HotelReservationWebsite.Controllers
 
                 foreach (var item in booking.Items)
                 {
-                    findHotel.Rooms = findHotel.Rooms.Where(a => (a.HotelID != Int32.Parse(item.HotelId))
-                     || (a.RoomID != Int32.Parse(item.RoomId))).ToList();
+
+                    // findHotel.Rooms = findHotel.Rooms.Where(a => (a.HotelID != Int32.Parse(item.HotelId))
+                    //  || (a.RoomID != Int32.Parse(item.RoomId))).ToList();
+                    foreach (var room in findHotel.Rooms)
+                    {
+                        if (room.HotelID == Int32.Parse(item.HotelId) && room.RoomID == Int32.Parse(item.RoomId))
+                        {
+                            room.RoomNumber = room.RoomNumber - Int32.Parse(item.RoomNumber);
+                            // Console.WriteLine();
+                        }
+                    }
                 }
             }
             var roomVM = new RoomViewModel()
@@ -161,6 +175,15 @@ namespace HotelReservationWebsite.Controllers
             {
 
                 x.ImageUrl = baseUri + "/images/" + x.ImageUrl;
+                if (x.RoomNumber > 0)
+                {
+                    x.NumberOfRoomsBooked = 1;
+                }
+                else
+                {
+                    x.NumberOfRoomsBooked = 0;
+                }
+
 
             });
 

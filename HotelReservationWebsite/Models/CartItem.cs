@@ -27,7 +27,7 @@ namespace HotelReservationWebsite.Models
         }
         public decimal cost()
         {
-            return Int32.Parse(dayNumber().Days.ToString()) * UnitPrice;
+            return Int32.Parse(dayNumber().Days.ToString()) * UnitPrice * Int32.Parse(RoomNumber);
         }
     }
 }

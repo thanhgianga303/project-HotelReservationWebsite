@@ -2,8 +2,18 @@
 	
             <div class="col-md-4">
 					<div class="hotel-content">
+						
 						<div class="hotel-grid" style="background-image: url(@Model.ImageUrl);">
-							<div class="price"><small>Unit price: </small><span>@Model.UnitPrice USD</span></div>
+							<div class="price">
+								@if(@Model.RoomNumber>0)
+								{
+									<small>Number of rooms available: </small><span>@Model.RoomNumber</span>
+								}
+								else
+								{
+									<small>No room left</small>
+								}	
+							</div>
 							@* <a class="book-now text-center" asp-controller="Cart" asp-action="AddToCart" asp-route-id="@Model.HotelID"><i class="ti-calendar"></i>Select</a> *@											
 							@if(!User.Identity.IsAuthenticated)
 							{
@@ -15,11 +25,20 @@
 							}
 						</div>
 						<div class="desc">
+							
 							<h3>@Model.RoomName</h3>
-							<p>Room number: @Model.RoomNumber</p>
+							@if(@Model.RoomNumber>0)
+								{
+									<p>Number of rooms: <input class="form-control-lg" type="number" asp-for="@Model.NumberOfRoomsBooked" data-decimals="0" min="1" max="@Model.RoomNumber" step="1"/></p>
+								}
+								else
+								{
+									<p>Number of rooms: <input class="form-control-lg" type="number" asp-for="@Model.NumberOfRoomsBooked" data-decimals="0" min="0" max="@Model.RoomNumber" step="1"/></p>
+								}	
+							
                             <p>Category: @Model.RoomCategoryName</p>
 							<p>Room area: @Model.RoomArea</p>
-							<p>Room area: @Model.NumberOfBeds</p>
+							<p>Number of beds: @Model.NumberOfBeds</p>
 						</div>
 					</div>
 				</div>
@@ -27,7 +46,6 @@
 	<input type="hidden" asp-for="@Model.RoomID">
 	<input type="hidden" asp-for="@Model.Hotel.HotelName">
 	<input type="hidden" asp-for="@Model.RoomName">
-	<input type="hidden" asp-for="@Model.RoomNumber">
 	<input type="hidden" asp-for="@Model.RoomArea">
 	<input type="hidden" asp-for="@Model.NumberOfBeds">
 	<input type="hidden" asp-for="@Model.UnitPrice">

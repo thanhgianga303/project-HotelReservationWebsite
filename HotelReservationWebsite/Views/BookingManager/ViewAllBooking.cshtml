@@ -72,7 +72,7 @@
                                 <th>@item.DayNumber</th>
                                 <th>@item.Cost</th>
                                 <td>
-                                    <a asp-action="Details" asp-controller="BookingManager" class="btn btn-info" >Details</a> 
+                                    <a asp-action="Details" asp-controller="BookingManager" class="btn btn-info" asp-route-bookingId="@item.BookingId" asp-route-bookingItemId="@item.Id" >Details</a> 
                                 </td>
                             </tr>
                                 i++;

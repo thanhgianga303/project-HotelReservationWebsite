@@ -28,6 +28,7 @@ namespace HotelReservationWebsite.Models
         [StringLength(3, MinimumLength = 1, ErrorMessage = "Length must be between 1 to 3")]
         [RegularExpression(@"^[1-9]+[0-9]*$", ErrorMessage = "Please enter the number")]
         public string NumberOfBeds { get; set; }
+        public int NumberOfRoomsBooked { get; set; }
         public string OwnerId { get; set; }
         public Hotel Hotel { get; set; }
         public RoomCategory RoomCategory { get; set; }

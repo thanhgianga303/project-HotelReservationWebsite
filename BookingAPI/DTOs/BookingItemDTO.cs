@@ -1,4 +1,5 @@
 using System;
+using System.Text.Json.Serialization;
 using BookingAPI.Models;
 
 namespace BookingAPI.DTOs
@@ -24,7 +25,5 @@ namespace BookingAPI.DTOs
         public DateTime CheckOut { get; set; }
         public int DayNumber { get; set; }
         public decimal Cost { get; set; }
-
-        public Booking Booking { get; set; }
     }
 }
