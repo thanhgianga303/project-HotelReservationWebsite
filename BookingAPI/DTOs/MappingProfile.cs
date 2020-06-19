@@ -1,5 +1,6 @@
 using AutoMapper;
 using BookingAPI.Models;
+using MessageTypes.BookingService;
 
 namespace BookingAPI.DTOs
 {
@@ -11,6 +12,7 @@ namespace BookingAPI.DTOs
             CreateMap<BookingItem, BookingItemDTO>();
             CreateMap<BookingDTO, Booking>();
             CreateMap<Booking, BookingDTO>();
+            CreateMap<Booking, CreateBookingMessage>();
         }
     }
 }

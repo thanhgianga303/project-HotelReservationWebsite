@@ -12,6 +12,9 @@ using BookingAPI.Data.Repositories;
 using BookingAPI.DTOs;
 // using BookingAPI.Infrastructure.Filters;
 using BookingAPI.Models;
+using MassTransit;
+using BookingAPI.Consumers;
+using GreenPipes;
 
 namespace BookingApi
 {
@@ -44,6 +47,26 @@ namespace BookingApi
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Booking API", Version = "v1" });
             });
+            services.AddMassTransit(x =>
+            {
+                x.AddConsumer<ListHotelConsumer>();
+                x.AddBus(context => Bus.Factory.CreateUsingRabbitMq(cfg =>
+                {
+                    cfg.Host("rabbitmq://localhost", h => { h.Username("guest"); h.Password("guest"); });
+
+                    cfg.ReceiveEndpoint("order-api", ep =>
+                    {
+                        ep.PrefetchCount = 16;
+                        ep.UseMessageRetry(r => r.Interval(2, 100));
+                        ep.ConfigureConsumer<ListHotelConsumer>(context);
+                    });
+                }));
+            });
+
+            services.AddHostedService<BusService>();
+
+            services.AddMassTransitHostedService();
+
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

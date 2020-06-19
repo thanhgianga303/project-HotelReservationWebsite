@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using BookingAPI.DTOs;
 using BookingAPI.Models;
+using MassTransit;
+using MessageTypes.BookingService;
 
 namespace BookingAPI.Controllers
 {
@@ -16,12 +18,14 @@ namespace BookingAPI.Controllers
         private readonly AppSettings _settings;
         private readonly IBookingRepository _bookingRepo;
         private readonly IMapper _mapper;
+        private readonly IBus _bus;
 
-        public BookingController(IBookingRepository bookingRepo, IOptions<AppSettings> settings, IMapper mapper)
+        public BookingController(IBookingRepository bookingRepo, IOptions<AppSettings> settings, IMapper mapper, IBus bus)
         {
             _settings = settings.Value;
             _bookingRepo = bookingRepo;
             _mapper = mapper;
+            _bus = bus;
         }
 
         [HttpGet]
@@ -58,6 +62,9 @@ namespace BookingAPI.Controllers
             await _bookingRepo.AddAsync(booking);
             bookingDTO = _mapper.Map<Booking, BookingDTO>(booking);
 
+            CreateBookingMessage message = _mapper.Map<Booking, CreateBookingMessage>(booking);
+            await _bus.Publish(message);
+            Console.WriteLine("Send" + message.BookingId);
             return CreatedAtAction(nameof(GetBooking), new { id = booking.BookingId }, bookingDTO);
         }
 
