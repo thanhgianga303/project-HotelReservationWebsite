@@ -655,3 +655,4 @@ D:\project-HotelReservationWebsite\HotelReservationWebsite\obj\Debug\netcoreapp3
 D:\project-HotelReservationWebsite\HotelReservationWebsite\obj\Debug\netcoreapp3.1\HotelReservationWebsite.genruntimeconfig.cache
 D:\project-HotelReservationWebsite\HotelReservationWebsite\obj\Debug\netcoreapp3.1\Razor\Views\BookingManager\Details.cshtml.g.cs
 D:\project-HotelReservationWebsite\HotelReservationWebsite\obj\Debug\netcoreapp3.1\Razor\Views\BookingManager\ViewAllBooking.cshtml.g.cs
+D:\project-HotelReservationWebsite\HotelReservationWebsite\obj\Debug\netcoreapp3.1\Razor\Views\Booking\Cancel.cshtml.g.cs

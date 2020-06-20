@@ -30,7 +30,7 @@ namespace HotelReservationWebsite.Controllers
         {
             var user = _identitySvc.Get(User);
             var bookings = await _bookingSvc.GetBookings(user.Id);
-
+            bookings = bookings.Where(b => b.Status != BookingStatus.Canceled);
             return View(bookings);
         }
 
@@ -88,6 +88,20 @@ namespace HotelReservationWebsite.Controllers
             var booking = await _bookingSvc.GetBooking(id);
             var bookingView = ChangeUriPlaceholderBooking(booking);
             return View(bookingView);
+        }
+        public async Task<ActionResult<Booking>> Cancel(int id)
+        {
+            var booking = await _bookingSvc.GetBooking(id);
+            var bookingView = ChangeUriPlaceholderBooking(booking);
+            return View(bookingView);
+        }
+        [HttpPost, ActionName("Cancel")]
+        public async Task<ActionResult<Booking>> CancelConfirm(int id)
+        {
+            var booking = await _bookingSvc.GetBooking(id);
+            booking.Status = BookingStatus.Canceled;
+            await _bookingSvc.UpdateBooking(id, booking);
+            return RedirectToAction("Index");
         }
         private Booking ChangeUriPlaceholderBooking(Booking booking)
         {

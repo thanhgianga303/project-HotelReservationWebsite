@@ -20674,6 +20674,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "d:\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\Booking\\Cancel.cshtml",
+      "TargetPath": "Views\\Booking\\Cancel.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "d:\\project-HotelReservationWebsite\\HotelReservationWebsite\\Views\\BookingManager\\Details.cshtml",
       "TargetPath": "Views\\BookingManager\\Details.cshtml",
       "FileKind": "mvc"

@@ -39,7 +39,7 @@
         </div>
             @foreach (var item in Model.Items)
             {
-                <div class="row">
+                <div class="row shadow p-3 mb-5 bg-white rounded">
                     <div class="col-md-4"><img src="@item.ImageUri" width="266.6px" height="300px" /></div>
                     <div class="col-md-4">
                         <div class="row">
@@ -51,7 +51,7 @@
                             <div class="col-md-6">@item.RoomName</div>
                         </div>
                         <div class="row">
-                            <div class="col-md-6"><h3>Room number:</h3></div>
+                            <div class="col-md-6"><h3>Number of rooms:</h3></div>
                             <div class="col-md-6">@item.RoomNumber</div>
                         </div>
                         <div class="row">
@@ -88,4 +88,12 @@
                     </div>
                 </div>
             }
+            <div class="row">
+                <div class="col-md-12" style="text-align:center">
+                    <form asp-action="Cancel">
+                        <input type="hidden" asp-for="@Model.BookingId"/>
+                        <input type="submit" class="btn btn-danger" value="Cancel"/>
+                    </form>
+                </div>
+            </div>
 </div>

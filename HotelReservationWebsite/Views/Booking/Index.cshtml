@@ -44,7 +44,10 @@
                         <td>@item.Status</td>
                         <td>@item.Total</td>
                         
-                        <td><a asp-action="Details" asp-controller="Booking" asp-route-id="@item.BookingId" >Details</a></td>
+                        <td>
+                            <a asp-action="Details" asp-controller="Booking" asp-route-id="@item.BookingId" >Details</a>
+                            <a asp-action="Cancel" asp-controller="Booking" asp-route-id="@item.BookingId" >Cancel</a>
+                        </td>
                         </tr>
                        }
                     </tbody>

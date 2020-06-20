@@ -9,6 +9,7 @@ using BookingAPI.Models;
 using MassTransit;
 using MessageTypes.BookingService;
 using Newtonsoft.Json;
+using Microsoft.EntityFrameworkCore;
 
 namespace BookingAPI.Controllers
 {
@@ -66,6 +67,43 @@ namespace BookingAPI.Controllers
             CreateBookingMessage message = _mapper.Map<Booking, CreateBookingMessage>(booking);
             await _bus.Publish(message);
             return CreatedAtAction(nameof(GetBooking), new { id = booking.BookingId }, bookingDTO);
+        }
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateBooking(int id, BookingDTO bookingDTO)
+        {
+            if (id != bookingDTO.BookingId)
+            {
+                return BadRequest();
+            }
+            try
+            {
+                var booking = _mapper.Map<BookingDTO, Booking>(bookingDTO);
+                await _bookingRepo.UpdateAsync(booking);
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!await BookingExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+            return NoContent();
+        }
+        private async Task<bool> BookingExists(int id)
+        {
+            var booking = await _bookingRepo.GetByAsync(id);
+            if (booking != null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         [HttpDelete("{id}")]

@@ -10,5 +10,6 @@ namespace HotelReservationWebsite.Services.IService
         Task<IEnumerable<Booking>> GetBookings(string userId);
         Task<int> CreateBooking(Booking booking);
         Task<Booking> GetBooking(int id);
+        Task UpdateBooking(int id, Booking booking);
     }
 }

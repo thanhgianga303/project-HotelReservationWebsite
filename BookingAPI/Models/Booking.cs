@@ -21,6 +21,7 @@ namespace BookingAPI.Models
     {
         Booked = 0,
         checkedIn = 1,
-        checkedOut = 2
+        checkedOut = 2,
+        Canceled = 4,
     }
 }

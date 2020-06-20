@@ -48,5 +48,10 @@ namespace HotelReservationWebsite.Services.Service
 
             return await _httpClient.GetListAsync<Booking>(uri);
         }
+        public async Task UpdateBooking(int id, Booking booking)
+        {
+            var uri = _serviceBaseUrl + $"/{id}";
+            await _httpClient.PutAsync(uri, booking);
+        }
     }
 }
