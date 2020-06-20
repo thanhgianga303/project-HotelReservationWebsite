@@ -17,25 +17,24 @@ namespace HotelReservationWebsiteAPI.Consumers
 
         public async Task Consume(ConsumeContext<CreateBookingMessage> context)
         {
-            // foreach (var bookingItem in context.Message.Items)
-            // {
-            // Validate product Quantity
-            // var currentProduct = await _context.Products.FindAsync(orderDetailItem.ProductId);
-            // int newQuantity = currentProduct.Quantity - orderDetailItem.Quantity;
-            // if (newQuantity < 0)
-            // {
-            //     throw new Exception("Quantity must be greater than zero");
-            // }
-            // else
-            // {
-            //     currentProduct.Quantity = newQuantity;
-            // }
-            // var hotels = _context.Hotels.Where(h =>h.NumberofReservation==bookingItem.);
-            Console.WriteLine("con mua ngang qua:" + context.Message.BookingId);
-            Console.WriteLine("con mua ngang qua 1:" + context.Message.Items.Count());
+            var count = 0;
+            foreach (var hotel in _context.Hotels)
+            {
 
-            // }
-
+                foreach (var item in context.Message.Items)
+                {
+                    if (item.HotelId == hotel.HotelID.ToString())
+                    {
+                        count++;
+                    }
+                }
+                if (count > 0)
+                {
+                    hotel.NumberofReservation++;
+                    _context.Update(hotel);
+                    await _context.SaveChangesAsync();
+                }
+            }
             await _context.SaveChangesAsync();
         }
     }
