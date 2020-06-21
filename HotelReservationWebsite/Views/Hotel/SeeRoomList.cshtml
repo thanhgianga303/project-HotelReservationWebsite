@@ -34,36 +34,23 @@
 {
     <div class="row" style="margin-top:40px">
     <div class="col-md-5">
-        <img src="@room.ImageUrl"/>
+        <img src="@room.ImageUrl" width="266.6px" height="300px"/>
      </div>
     <div class="col-md-7">
         <div class="row">
-            <div class="col-md-7">Room Name:</div>
+            <div class="col-md-7">Room name:</div>
             <div class="col-md-5">@room.RoomName</div>
         </div>
         <div class="row">
-            <div class="col-md-7">Room Number:</div>
+            <div class="col-md-7">Number of rooms:</div>
             <div class="col-md-5">@room.RoomNumber</div>
         </div>
         <div class="row">
-           <div class="col-md-7">Room Category:</div> 
+           <div class="col-md-7">Room category:</div> 
             <div class="col-md-5">@room.RoomCategoryName</div>
         </div>
         <div class="row">
-           <div class="col-md-7">Room Status:</div> 
-            <div class="col-md-5">
-                @if(room.RoomStatus == 1)
-                {
-                    <p>Can Put</p>
-                }
-                else
-                {
-                   <p>Reserved</p> 
-                }
-            </div>
-        </div>
-        <div class="row">
-           <div class="col-md-7">Unit Price:</div> 
+           <div class="col-md-7">Unit price:</div> 
             <div class="col-md-5">@room.UnitPrice</div>
         </div>
         <div class="row">       
@@ -87,3 +74,4 @@ else
      </div> 
     </div>    
 }
+<a asp-action="Index" asp-controller="Hotel" class="btn btn-info" >Back</a>

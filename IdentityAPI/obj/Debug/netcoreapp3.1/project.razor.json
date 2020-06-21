@@ -20601,6 +20601,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "d:\\project-HotelReservationWebsite\\IdentityAPI\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
+      "TargetPath": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "d:\\project-HotelReservationWebsite\\IdentityAPI\\Views\\Account\\CreateRole.cshtml",
       "TargetPath": "Views\\Account\\CreateRole.cshtml",
       "FileKind": "mvc"

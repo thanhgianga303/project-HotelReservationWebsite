@@ -37,19 +37,6 @@
                 @Model.Room.RoomCategoryName
             </div>
         </div>
-        <div class="row">
-           <div class="col-md-7">Room Status:</div> 
-            <div class="col-md-5">
-                @if(Model.Room.RoomStatus == 1)
-                {
-                    <a class="btn btn-danger">Can put</a>
-                }
-                else
-                {
-                   <a class="btn btn-info">Reserved</a> 
-                }
-            </div>
-        </div>
          <div class="row">
             <div class="col-md-7">Room area:</div>
             <div class="col-md-5">@Model.Room.RoomArea</div>

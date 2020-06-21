@@ -316,3 +316,4 @@ D:\project-HotelReservationWebsite\IdentityAPI\obj\Debug\netcoreapp3.1\staticweb
 D:\project-HotelReservationWebsite\IdentityAPI\obj\Debug\netcoreapp3.1\IdentityAPI.dll
 D:\project-HotelReservationWebsite\IdentityAPI\obj\Debug\netcoreapp3.1\IdentityAPI.pdb
 D:\project-HotelReservationWebsite\IdentityAPI\obj\Debug\netcoreapp3.1\IdentityAPI.genruntimeconfig.cache
+D:\project-HotelReservationWebsite\IdentityAPI\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs

@@ -66,20 +66,8 @@
                  <span asp-validation-for="@Model.Room.NumberOfBeds" style="font-size:14px" class="text-danger"></span>  
             </div>
         </div>
-        <div class="row">
-           <div class="col-md-7">Room Status:</div> 
-            <div class="col-md-5">
                 <input type="hidden" asp-for="@Model.Room.RoomStatus">
-                @if(Model.Room.RoomStatus == 1)
-                {
-                    <a class="btn btn-danger">Can put</a>
-                }
-                else
-                {
-                   <a class="btn btn-info">Reserved</a> 
-                }
-            </div>
-        </div>
+            
         <div class="row">
            <div class="col-md-7">Unit Price:</div> 
             <div class="col-md-5">

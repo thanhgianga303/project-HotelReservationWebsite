@@ -29,54 +29,32 @@
             <table class="table table-borderless table-striped table-earning">
                 <thead>
                     <tr>
-                        <th>#</th>
-                        <th>ImageUri</th>
-                        <th>HotelName</th>
-                        <th>RoomName</th>
-                        <th>RoomNumber</th>
-                        <th>Address</th>
-                        <th>RoomArea</th>
-                        <th>NumberOfBeds</th>
-                        <th>CategoryName</th>
-                        <th>UnitPrice</th>
-                        <th>CheckIn</th>
-                        <th>CheckOut</th>
-                        <th>DayNumber</th>
-                        <th>Cost</th>
-                        <th>Thao tác</th>
+                        <th>BookingId</th>
+                        <th>Name</th>
+                        <th>IdentityCard</th>
+                        <th>Phone</th>
+                        <th>BookingDate</th>
+                        <th>Status</th>
+                        <th>Operation</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @{
-                       var i=1;  
-                    }
                     
                     @foreach (var booking in Model)
-                     {
-                         foreach(var item in booking.Items)
-                            {
-                                
+                     {    
+                         if(@booking.Items.Count()>0)
+                            {      
                             <tr style="font-size:20px;text-align:center">
-                                <th>@i</th>
-                                <th><img src="@item.ImageUri"/></th>
-                                <th>@item.HotelName</th>
-                                <th>@item.RoomName</th>
-                                <th>@item.RoomNumber</th>
-                                <th>@item.Address</th>
-                                <th>@item.RoomArea</th>
-                                <th>@item.NumberOfBeds</th>
-                                <th>@item.CategoryName</th>
-                                <th>@item.UnitPrice</th>
-                                <th>@item.CheckIn</th>
-                                <th>@item.CheckOut</th>
-                                <th>@item.DayNumber</th>
-                                <th>@item.Cost</th>
+                                <th>@booking.BookingId</th>
+                                <th>@booking.Name</th>
+                                <th>@booking.IdentityCard</th>
+                                <th>@booking.Phone</th>
+                                <th>@booking.BookingDate</th>
+                                <th>@booking.Status</th>
                                 <td>
-                                    <a asp-action="Details" asp-controller="BookingManager" class="btn btn-info" asp-route-bookingId="@item.BookingId" asp-route-bookingItemId="@item.Id" >Details</a> 
+                                    <a asp-action="Details" asp-controller="BookingManager" class="btn btn-info" asp-route-bookingId="@booking.BookingId">Details</a> 
                                 </td>
                             </tr>
-                                i++;
-                                
                             }
                      }
                 </tbody>

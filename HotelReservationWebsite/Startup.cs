@@ -69,6 +69,7 @@ namespace HotelReservationWebsite
                     options.Scope.Add("roles");
                     options.TokenValidationParameters = new TokenValidationParameters()
                     {
+
                         NameClaimType = "name",
                         RoleClaimType = "role"
                     };

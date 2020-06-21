@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace HotelReservationWebsite.Controllers
 {
-    [Authorize(Roles = "Lessors,Managers,Administrators")]
+    [Authorize(Roles = "Renters,Lessors,Managers,Administrators")]
     public class AccountController : Controller
     {
         public IActionResult AccessDenied()

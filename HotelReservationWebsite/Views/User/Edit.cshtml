@@ -51,11 +51,18 @@
   <input type="text" asp-for="PhoneNumber" class="form-control"  size="100px !important ">
 </div>
 <div class="md-form">
-  <label asp-for="Gender"></label>
-  <label class="radio-inline"><input type="radio" asp-for="Role" value="Renters" checked>Renters</label>
-  <label class="radio-inline"><input type="radio" asp-for="Role" value="Lessors">Lessors</label>
-  <label class="radio-inline"><input type="radio" asp-for="Role" value="Managers">Managers</label>
-  <label class="radio-inline"><input type="radio" asp-for="Role" value="Administrators">Administrators</label>
+  
+   @if(User.IsInRole("Administrators"))
+  { <label asp-for="Role"></label>
+    <label class="radio-inline"><input type="radio" asp-for="Role" value="Renters" checked>Renters</label>
+    <label class="radio-inline"><input type="radio" asp-for="Role" value="Lessors">Lessors</label>
+    <label class="radio-inline"><input type="radio" asp-for="Role" value="Managers">Managers</label>
+    <label class="radio-inline"><input type="radio" asp-for="Role" value="Administrators">Administrators</label>
+  }
+  else
+  {
+    <input type="hidden" asp-for="Role">
+  }
 </div>
 <div class="md-form" style="margin-top:20px;">
   <a asp-action="Index" class="btn btn-primary mb-2" >Back</a>

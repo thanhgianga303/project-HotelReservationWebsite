@@ -5,11 +5,13 @@ using System.Threading.Tasks;
 using HotelReservationWebsite.Authorization;
 using HotelReservationWebsite.Models;
 using HotelReservationWebsite.Services.IService;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 
 namespace HotelReservationWebsite.Controllers
 {
+    [Authorize(Roles = "Lessors,Managers,Administrators")]
     public class BookingManagerController : Controller
     {
         private readonly IIdentityService<Buyer> _identitySvc;
@@ -58,11 +60,33 @@ namespace HotelReservationWebsite.Controllers
             }
             return View(bookings);
         }
-        public async Task<ActionResult<Booking>> Details(int bookingId, int bookingItemId)
+        public async Task<ActionResult<Booking>> Details(int bookingId)
         {
+            var userId = _identitySvc.Get(User).Id;
             var booking = await _bookingSvc.GetBooking(bookingId);
-            booking.Items = ChangeUriPlaceholderBooking(booking.Items.Where(i => i.Id == bookingItemId).ToList());
+            booking.Items = ChangeUriPlaceholderBooking(booking.Items.Where(i => i.OwnerId == userId).ToList());
             return View(booking);
+        }
+        [HttpPost]
+        public async Task<IActionResult> Operation(Booking booking, string button)
+        {
+            var getBooking = await _bookingSvc.GetBooking(booking.BookingId);
+            if (button == "ischeckining")
+            {
+                getBooking.Status = BookingStatus.checkedIn;
+                await _bookingSvc.UpdateBooking(booking.BookingId, getBooking);
+            }
+            if (button == "ischeckouting")
+            {
+                getBooking.Status = BookingStatus.checkedOut;
+                await _bookingSvc.UpdateBooking(booking.BookingId, getBooking);
+            }
+            if (button == "cancel")
+            {
+                getBooking.Status = BookingStatus.Canceled;
+                await _bookingSvc.UpdateBooking(booking.BookingId, getBooking);
+            }
+            return RedirectToAction("ViewAllBooking");
         }
         private List<BookingItem> ChangeUriPlaceholderBooking(List<BookingItem> items)
         {

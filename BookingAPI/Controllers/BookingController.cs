@@ -59,7 +59,7 @@ namespace BookingAPI.Controllers
         {
             var booking = _mapper.Map<BookingDTO, Booking>(bookingDTO);
             booking.Status = BookingStatus.Booked;
-            booking.BookingDate = DateTime.UtcNow;
+            booking.BookingDate = DateTime.Now;
 
             await _bookingRepo.AddAsync(booking);
             bookingDTO = _mapper.Map<Booking, BookingDTO>(booking);

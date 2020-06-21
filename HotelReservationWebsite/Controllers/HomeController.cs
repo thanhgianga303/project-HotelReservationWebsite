@@ -32,7 +32,7 @@ namespace HotelReservationWebsite.Controllers
             DateTime dayCheckOut = DateTime.Today.AddDays(2);
 
             var bookings = await _bookingService.GetBookings();
-
+            bookings = bookings.Where(b => b.Status != BookingStatus.Canceled && b.Status != BookingStatus.checkedOut);
             foreach (var booking in bookings)
             {
                 booking.Items = booking.Items.Where(i => (dayCheckIn >= i.CheckIn && dayCheckOut <= i.CheckOut)
@@ -75,6 +75,7 @@ namespace HotelReservationWebsite.Controllers
             hotels = hotels.Where(h => h.HotelStatus == HotelStatus.Approved);
 
             var bookings = await _bookingService.GetBookings();
+            bookings = bookings.Where(b => b.Status != BookingStatus.Canceled && b.Status != BookingStatus.checkedOut);
             foreach (var booking in bookings)
             {
                 booking.Items = booking.Items.Where(i => (hotelVM.CheckIn >= i.CheckIn && hotelVM.CheckOut <= i.CheckOut)
@@ -114,7 +115,7 @@ namespace HotelReservationWebsite.Controllers
             var findHotel = await _service.GetHotel(hotel.HotelID);
 
             var bookings = await _bookingService.GetBookings();
-
+            bookings = bookings.Where(b => b.Status != BookingStatus.Canceled && b.Status != BookingStatus.checkedOut);
             foreach (var booking in bookings)
             {
                 booking.Items = booking.Items.Where(i => (hotelViewModel.CheckIn >= i.CheckIn && hotelViewModel.CheckOut <= i.CheckOut)
@@ -183,8 +184,6 @@ namespace HotelReservationWebsite.Controllers
                 {
                     x.NumberOfRoomsBooked = 0;
                 }
-
-
             });
 
             return rooms;

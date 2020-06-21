@@ -274,9 +274,11 @@ namespace HotelReservationWebsite.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateRoom(RoomViewModel roomVM)
         {
+            var userId = _identityService.Get(User).Id;
             roomVM.Room.HotelID = roomVM.HotelId;
             roomVM.Room.ImageUrl = roomVM.ImageUrl.FileName;
             roomVM.Room.RoomStatus = 1;
+            roomVM.Room.OwnerId = userId;
             await _hotelService.CreateRoom(roomVM.Room);
             await UploadFileImg(roomVM.ImageUrl);
             return RedirectToAction("SeeRoomList", new { id = roomVM.Room.HotelID });
